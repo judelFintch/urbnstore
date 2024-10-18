@@ -30,12 +30,9 @@
 
 			<div class="wrap-menu-desktop">
 				<nav class="limiter-menu-desktop container">
-					<!-- Logo desktop <img src="images/icons/logo-01.png" alt="IMG-LOGO">-->
 					<a href="#" class="logo">
-					<h4 class="ltext-21 cl2 p-t-19 p-b-43 respon1">
-							URBAN Store
-					</h4>
-						
+					<!-- Logo desktop -->
+					<img src="images/logo.png" alt="IMG-LOGO">
 					</a>
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
@@ -50,7 +47,7 @@
 							</li>
 
 							<li>
-								<a href="product.html">Shop</a>
+								<a href="">Shop</a>
 							</li>
 
 							<li class="label1" data-label1="hot">
