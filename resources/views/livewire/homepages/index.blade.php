@@ -33,7 +33,7 @@
 					<!-- Logo desktop <img src="images/icons/logo-01.png" alt="IMG-LOGO">-->
 					<a href="#" class="logo">
 					<h4 class="ltext-21 cl2 p-t-19 p-b-43 respon1">
-						URBAND BRANDS
+							URBAN Store
 					</h4>
 						
 					</a>
@@ -93,7 +93,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="">UBAN BRANDS</a>
+				<a href="">URBAN Store</a>
 			</div>
 
 			<!-- Icon header -->
