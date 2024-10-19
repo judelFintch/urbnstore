@@ -3,8 +3,12 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Homepages\Index;
+use App\Livewire\User\Users;
 
 Route::get('/', Index::class)->name('homepages.index');
+
+Route::get('/users', Users::class)->name('users.index');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
