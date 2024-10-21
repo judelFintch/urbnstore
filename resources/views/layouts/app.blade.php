@@ -296,14 +296,14 @@
 
                             <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                 chez Urban Store
+                                    chez Urban Store
                                 </h2>
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
                                 <a href=""
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Shop Now
+                                    Achetez maintenant
                                 </a>
                             </div>
                         </div>
@@ -322,7 +322,7 @@
                             <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn"
                                 data-delay="800">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                    Style  & Confort
+                                    Style & Confort
                                 </h2>
                             </div>
 
@@ -330,7 +330,7 @@
                                 data-delay="1600">
                                 <a href="product.html"
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Shop Now
+                                    Achetez maitenant
                                 </a>
                             </div>
                         </div>
@@ -350,7 +350,7 @@
                             <div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight"
                                 data-delay="800">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                  
+
                                 </h2>
                             </div>
 
@@ -358,7 +358,7 @@
                                 data-delay="1600">
                                 <a href="product.html"
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Shop Now
+
                                 </a>
                             </div>
                         </div>
@@ -460,7 +460,7 @@
         <div class="container">
             <div class="p-b-10">
                 <h3 class="ltext-103 cl5">
-                    Product Overview
+                    Aperçu des produits
                 </h3>
             </div>
 
@@ -1329,19 +1329,19 @@
                     <ul>
                         <li class="p-b-10">
                             <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Track Order
+                                Commendes
                             </a>
                         </li>
 
                         <li class="p-b-10">
                             <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Returns
+                                Retour
                             </a>
                         </li>
 
                         <li class="p-b-10">
                             <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Shipping
+                                Livraison
                             </a>
                         </li>
 
@@ -1359,21 +1359,24 @@
                     </h4>
 
                     <p class="stext-107 cl7 size-201">
-                        Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us
-                        on (+1) 96 716 6879
+                        07, Av/ Manika Q/ Kasangulu,Lubumbashi, Republique democratique Du Congo,
+                        on (+243) 99 01 000 05 - 99 99 907 56
+
                     </p>
 
                     <div class="p-t-27">
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://www.facebook.com/share/3nycvD3WEvUSQYbB/?mibextid=LQQJ4d"
+                            class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-facebook"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <a href="https://www.instagram.com/urbn_stor.e?igsh=OGlrcnBkeGdpeWVu&utm_source=qr"
+                            class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-instagram"></i>
                         </a>
 
-                        <a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-                            <i class="fa fa-pinterest-p"></i>
+                        <a href="https://www.tiktok.com/@urbn_store?_t=8qeIyZzivnp&_r=1" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                            <i class="fa fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -1386,7 +1389,7 @@
                     <form>
                         <div class="wrap-input1 w-full p-b-4">
                             <input class="input1 bg-none plh1 stext-107 cl7" type="text" name="email"
-                                placeholder="email@example.com">
+                                placeholder="info@urbanbrands.store.">
                             <div class="focus-input1 trans-04"></div>
                         </div>
 
