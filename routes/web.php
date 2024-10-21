@@ -5,7 +5,11 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Homepages\Index;
 use App\Livewire\User\Users;
 
-Route::get('/', Index::class)->name('homepages.index');
+//Route::get('/', Index::class)->name('homepages.index');
+
+Route::get('/', function () {
+    return view('layouts.app');
+}); //
 
 Route::get('/users', Users::class)->name('users.index');
 
