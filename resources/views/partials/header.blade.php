@@ -47,7 +47,7 @@
                             <a href="">Contact</a>
                         </li>
                         <li>
-                            <form wire:click.prevent="checkout">
+                            <form wire:submit.prevent="checkout">
                                 <button class="btn btn-primary">
                                     checkout
                                 </button>
