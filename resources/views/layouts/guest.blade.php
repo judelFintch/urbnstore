@@ -26,7 +26,7 @@
 
 <body class="animsition">
     <!-- Header -->
-    @include('partials.header')
+
 
     <!-- Main Content -->
     <main>
@@ -34,7 +34,7 @@
     </main>
 
     <!-- Footer -->
-    @include('partials.footer')
+   
 
     <!-- Back to Top -->
     @if(View::exists('components.backtop'))

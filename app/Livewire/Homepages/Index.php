@@ -11,13 +11,15 @@ class Index extends Component
     public const APIKEY = '131622986671368790ee253.72229286';
     const SITE_ID = '5881824';
     const SECRET_KEY = '2262259346715eff8207483.20479601';
+    public $tests = true;
     #[Layout('layouts.guest')]
     public function render()
     {
-        return view('livewire.homepages.index');
+       
+    return view('livewire.homepages.index');
     }
 
-    public function checkout()
+    /*public function checkout()
     {
         //Fournir les informations pour notre API
                 $formData = array(
@@ -54,6 +56,7 @@ class Index extends Component
 
             return redirect()->to($url);
         }
-    }
+    }*/
 
 
+ }

@@ -1,5 +1,6 @@
 <header>
     <!-- Header desktop -->
+
     <div class="container-menu-desktop">
         <!-- Topbar -->
         <div class="top-bar">
@@ -52,6 +53,7 @@
                                     checkout
                                 </button>
                             </form>
+
                         </li>
                     </ul>
                 </div>
