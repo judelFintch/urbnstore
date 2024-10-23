@@ -3,6 +3,7 @@
 namespace App\Livewire\Partials;
 
 use Livewire\Component;
+use App\Models\Product;
 
 class ProductFilter extends Component
 {
@@ -41,7 +42,7 @@ class ProductFilter extends Component
             $products->where('color', $this->color);
         }
 
-        return view('llivewire.partials.product-filter', [
+        return view('livewire.partials.product-filter', [
             'products' => $products->get(),
         ]);
     }

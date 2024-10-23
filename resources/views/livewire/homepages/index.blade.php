@@ -7,8 +7,6 @@
     <!-- Banner -->
     <livewire:partials.sec-banner />
     <!-- Product -->
-    @livewire('partials.product-filter')
-
     <livewire:partials.products />
     @include('partials.footer')
 </div>

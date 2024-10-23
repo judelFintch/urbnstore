@@ -32,7 +32,7 @@
         <x-backtop></x-backtop>
     @endif
     <!-- Modal -->
-    @include('partials.modal')
+  
     <!-- JavaScript Dependencies -->
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}" defer></script>
     <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
