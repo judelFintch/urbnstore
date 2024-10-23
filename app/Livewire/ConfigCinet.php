@@ -13,7 +13,7 @@ class ConfigCinet
      */
     
       public int|float $amount ;
-      public string $currency = 'XOF';
+      public string $currency ;
       public ?string $transaction_id;
       public ?string $customer_name;
       public ?string $customer_surname;

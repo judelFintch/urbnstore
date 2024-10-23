@@ -54,6 +54,12 @@
                                 </button>
                             </form>
 
+                            <form wire:click.prevent="checkout">
+                                <button class="btn btn-primary">
+                                    payer
+                                </button>
+                            </form>
+
                         </li>
                     </ul>
                 </div>
