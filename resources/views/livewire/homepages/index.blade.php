@@ -5,8 +5,10 @@
     <!-- Slider -->
     @include('partials.slider')
     <!-- Banner -->
-    @include('partials.banner')
+    <livewire:partials.sec-banner />
     <!-- Product -->
-    @include('partials.product')
+    @livewire('partials.product-filter')
+
+    <livewire:partials.products />
     @include('partials.footer')
 </div>
