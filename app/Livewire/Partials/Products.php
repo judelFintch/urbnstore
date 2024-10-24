@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Models\CategoryArticles;
 
+
 class Products extends Component
 {
 
@@ -15,12 +16,21 @@ class Products extends Component
     public $category = 'all';
     public $priceRange = 'all';
     public $color = 'all';
+    public $product;
+    public $showModal = false; // Variable pour gérer l'affichage de la modale
 
 
     public function mount()
     {
         $this->products = Product::with('category')->get();
         $this->categories = CategoryArticles::all();
+    }
+
+    public function showProduct($productId)
+    {
+        // Récupère le produit depuis la base de données
+        $this->product = Product::find($productId);
+        $this->dispatch('open-modal');
     }
 
     public function filterByCategory($category)

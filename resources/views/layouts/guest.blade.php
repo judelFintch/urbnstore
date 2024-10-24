@@ -22,6 +22,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
+
+    <title>{{ $title ?? "Urban Store" }}</title>
 </head>
 
 <body class="animsition">

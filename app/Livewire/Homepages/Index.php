@@ -2,67 +2,60 @@
 
 namespace App\Livewire\Homepages;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Title;
 use App\Livewire\ConfigCinet;
+
 
 use Livewire\Component;
 
 class Index extends Component
 {
-    public const APIKEY = '131622986671368790ee253.72229286';
-    const SITE_ID = '5881824';
-    const SECRET_KEY = '2262259346715eff8207483.20479601';
-
     public $tests = true;
+
     #[Layout('layouts.guest')]
+    #[Title('TEST')]
     public function render()
     {
-       
-    return view('livewire.homepages.index');
+        return view('livewire.homepages.index');
     }
 
     public function checkout()
     {
-        //Fournir les informations pour notre API
-        $price =2000;
+        // Récupérer les clés API depuis le fichier de configuration
+        $siteId = config('services.cinetpay.site_id');
+        $apiKey = config('services.cinetpay.api_key');
+        $secretKey = config('services.cinetpay.secret_key');
+
+        $price = 2000;
         $priceInCents = intval($price * 5);
-    
-                $formData = array(
-                    "transaction_id"=> \Illuminate\Support\Str::random(10),
-                    "amount"=> $priceInCents,
-                    "currency"=> 'CDF',
-                    "customer_surname"=> 'TEST Customer',
-                    "customer_name"=> 'TEST Customer',
-                    "description"=> 12345,
-                    "notify_url" => 'http://127.0.0.1:8000/dashboard',
-                    "return_url" => 'http://127.0.0.1:8000/dashboard',
-                    "channels" => 'ALL',
-                    "invoice_data" => [],
-                    //pour afficher le paiement par carte de credit
-                    "customer_email" => "", //l'email du client
-                    "customer_phone_number" => "976938094", //Le numéro de téléphone du client
-                    "customer_address" => "", //l'adresse du client
-                    "customer_city" => "", // ville du client
-                    "customer_country" => "",//Le pays du client, la valeur à envoyer est le code ISO du pays (code à deux chiffre) ex : CI, BF, US, CA, FR
-                    "customer_state" => "", //L’état dans de la quel se trouve le client. Cette valeur est obligatoire si le client se trouve au États Unis d’Amérique (US) ou au Canada (CA)
-                   "customer_zip_code" => "" //Le code postal du client 
-            ); 
-                
-            //    //Stocker dans la table
-            //    $insert = new situation();
-            //    $insert->etudiant = $request->customer_name;
-            //    $insert->frais = $nameprice;
-            //    $insert->save();
 
-            $cinetpay = new ConfigCinet(self::SITE_ID, self::APIKEY);
-            $result = $cinetpay->generatePaymentLink($formData);
+        $formData = [
+            "transaction_id" => \Illuminate\Support\Str::random(10),
+            "amount" => $priceInCents,
+            "currency" => 'CDF',
+            "customer_surname" => 'TEST Customer',
+            "customer_name" => 'TEST Customer',
+            "description" => 12345,
+            "notify_url" => 'http://127.0.0.1:8000/dashboard',
+            "return_url" => 'http://127.0.0.1:8000/dashboard',
+            "channels" => 'ALL',
+            "invoice_data" => [],
+            "customer_email" => "",
+            "customer_phone_number" => "976938094",
+            "customer_address" => "",
+            "customer_city" => "",
+            "customer_country" => "",
+            "customer_state" => "",
+            "customer_zip_code" => ""
+        ];
 
-            //dd($result);
-            
-            $url = $result['data']['payment_url']; 
+        // Appel à l'API avec les clés récupérées
+        $cinetpay = new ConfigCinet($siteId, $apiKey);
+        $result = $cinetpay->generatePaymentLink($formData);
 
-            return redirect()->to($url);
-        }
+        $url = $result['data']['payment_url'];
+        return redirect()->to($url);
     }
+}
 
 
- 

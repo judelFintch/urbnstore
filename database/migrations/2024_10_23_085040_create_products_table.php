@@ -22,8 +22,7 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
             $table->foreign('category_id')->references('id')->on('category_articles')->onDelete('cascade');
             $table->timestamps();
-            // Ajout de clés étrangères
-           //$table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+           
         });
 
     
