@@ -1,5 +1,4 @@
 <div>
-    @include('partials.header')
     <!-- Cart -->
     @include('partials.cart')
     <!-- Slider -->
@@ -8,5 +7,4 @@
     <livewire:partials.sec-banner />
     <!-- Product -->
     <livewire:partials.products />
-    @include('partials.footer')
 </div>

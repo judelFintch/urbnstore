@@ -3,13 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Homepages\Index;
-use App\Livewire\User\Users;
-
-Route::get('/', Index::class)->name('homepages.index');
+use App\Livewire\Products\ProductDetails;
 
 
-Route::get('/users', Users::class)->name('users.index');
-
+Route::get('/', Index::class)->name('home.index');
+Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,4 +19,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

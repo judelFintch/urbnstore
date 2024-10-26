@@ -1,6 +1,6 @@
-<header>
+<!-- Header -->
+<header class="header-v4">
     <!-- Header desktop -->
-
     <div class="container-menu-desktop">
         <!-- Topbar -->
         <div class="top-bar">
@@ -32,14 +32,14 @@
             <nav class="limiter-menu-desktop container">
                 <!-- Logo desktop -->
                 <a href="/" class="logo">
-                    <img src="{{ asset('/') }}images/icons/logo.png" alt="IMG-LOGO">
+                    <img src="{{ asset('images/icons/logo.png') }}" alt="IMG-LOGO">
                 </a>
 
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="/">Acceuil</a>
+                            <a href="{{route('home.index')}}">Acceuil</a>
                         </li>
                         <li>
                             <a href="">Shop</a>
@@ -83,9 +83,8 @@
     <div class="wrap-header-mobile">
         <!-- Logo moblie -->
         <div class="logo-mobile">
-            <img src="{{ asset('/') }}images/icons/logo.png" alt="IMG-LOGO">
+            <img src="{{ asset('images/icons/logo.png') }}" alt="IMG-LOGO">
         </div>
-
         <!-- Icon header -->
         <div class="wrap-icon-header flex-w flex-r-m m-r-15">
             <div class="icon-header-item cl2 hov-cl1 trans-04 p-r-11 js-show-modal-search">
@@ -141,7 +140,7 @@
 
         <ul class="main-menu-m">
             <li class="active-menu">
-                <a href="/">Acceuil</a>
+                <a href="route('home.index')">Acceuil</a>
             </li>
             <li>
                 <a href="">Shop</a>
@@ -157,7 +156,7 @@
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
             <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-                <img src="images/icons/icon-close2.png" alt="CLOSE">
+                <img src="{{ asset('images/icons/icon-close2.png') }}" alt="CLOSE">
             </button>
 
             <form class="wrap-search-header flex-w p-l-15">

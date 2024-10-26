@@ -6,6 +6,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
+    
+    <title>{{ $title ?? "Urban Store" }}</title>
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -23,13 +25,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}">
 
-    <title>{{ $title ?? "Urban Store" }}</title>
 </head>
 
 <body class="animsition">
+    @include('partials.header')
+
     <main>
         {{ $slot }}
     </main>
+
+    @include('partials.footer')
     @if (View::exists('components.backtop'))
         <x-backtop></x-backtop>
     @endif

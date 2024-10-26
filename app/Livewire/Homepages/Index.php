@@ -21,7 +21,7 @@ class Index extends Component
 
     public function checkout()
     {
-        // Récupérer les clés API depuis le fichier de configuration
+    
         $siteId = config('services.cinetpay.site_id');
         $apiKey = config('services.cinetpay.api_key');
         $secretKey = config('services.cinetpay.secret_key');
@@ -49,7 +49,6 @@ class Index extends Component
             "customer_zip_code" => ""
         ];
 
-        // Appel à l'API avec les clés récupérées
         $cinetpay = new ConfigCinet($siteId, $apiKey);
         $result = $cinetpay->generatePaymentLink($formData);
 
