@@ -28,6 +28,7 @@ return new class extends Migration
             $table->decimal('discount', 5, 2)->default(0.0);
             $table->date('discount_end_date')->nullable()->default('2024-12-31');
             $table->date('added_date')->nullable()->default(now());
+            $table->text('long_description')->nullable();
 
             // Définir la clé étrangère
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');

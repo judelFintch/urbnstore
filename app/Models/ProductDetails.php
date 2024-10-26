@@ -23,6 +23,7 @@ class ProductDetails extends Model
         'discount',
         'discount_end_date',
         'added_date',
+        'long_description'
     ];
 
     public function product()

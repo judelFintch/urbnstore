@@ -84,15 +84,14 @@
 								<div class="size-203 flex-c-m respon6">
 									Size
 								</div>
-
+						
 								<div class="size-204 respon6-next">
 									<div class="rs1-select2 bor8 bg0">
-										<select class="js-select2" name="time">
+										<select class="js-select2" wire:model="selectedSize" name="size">
 											<option>Choose an option</option>
-											<option>Size S</option>
-											<option>Size M</option>
-											<option>Size L</option>
-											<option>Size XL</option>
+											@foreach (explode(',', $product->details->size_available) as $size)
+												<option value="{{ trim($size) }}">Size {{ trim($size) }}</option>
+											@endforeach
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
@@ -108,10 +107,8 @@
 									<div class="rs1-select2 bor8 bg0">
 										<select class="js-select2" name="time">
 											<option>Choose an option</option>
-											<option>Red</option>
-											<option>Blue</option>
-											<option>White</option>
-											<option>Grey</option>
+											<option>{{ $product->details->color}}</option>
+											
 										</select>
 										<div class="dropDownSelect2"></div>
 									</div>
