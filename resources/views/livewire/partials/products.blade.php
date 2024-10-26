@@ -250,20 +250,20 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                @if ($product['id'] < 10)
-                                    <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}"
-                                        alt="IMG-PRODUCT">
-                                @elseif($product['id'] >= 10)
-                                    <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}"
-                                        alt="IMG-PRODUCT">
-                                @endif
-
+                                <a href="{{ route('show-product', ['id' => $product->id, 'category' => $product['category']->name, 'slug' => $product->slug]) }}">
+                                    @if ($product['id'] < 10)
+                                        <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}" alt="IMG-PRODUCT">
+                                    @elseif($product['id'] >= 10)
+                                        <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}" alt="IMG-PRODUCT">
+                                    @endif
+                                </a>
+                            
                                 <a href="{{ route('show-product', ['id' => $product->id, 'category' => $product['category']->name, 'slug' => $product->slug]) }}"
                                     class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
                                     Voir
-                                    </button>
-
+                                </a>
                             </div>
+                            
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
                                     <a href="product-detail.html"
