@@ -16,9 +16,9 @@ class ArticlesTableSeeder extends Seeder
     {
         DB::table('products')->insert([
         [
-            'title' => 'T-shirt Basique Homme',
-            'slug' => 'tshirt-basique-homme',
-            'description' => 'T-shirt 100% coton pour homme, confortable et léger.',
+            'title' => 'T-shirt Basique Blanc',
+            'slug' => ' T-shirt-Basique-Blanc',
+            'description' => 'Ce t-shirt blanc est un incontournable de toute garde-robe. Fabriqué en coton doux et respirant, il offre un confort optimal tout au long de la journée. Sa coupe décontractée et son design minimaliste en font le choix parfait pour un look simple et épuré. À porter seul ou sous une veste pour un style décontracté et chic..',
             'price' => 19.99,
             'stock' => 50,
             'is_active' => true,

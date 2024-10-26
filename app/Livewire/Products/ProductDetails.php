@@ -8,7 +8,6 @@ use Livewire\Attributes\Layout;
 
 class ProductDetails extends Component
 {
-
    public $product;
    #[Layout('layouts.guest')]
     public function mount($id){
