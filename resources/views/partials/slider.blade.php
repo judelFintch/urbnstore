@@ -73,7 +73,6 @@
 				</div>
 			</div>
 		</div>
-
 		<div class="wrap-slick1-dots p-lr-10"></div>
 	</div>
 </section>

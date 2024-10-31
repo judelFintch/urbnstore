@@ -249,20 +249,26 @@
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product['category']->name }}">
                         <!-- Block2 -->
                         <div class="block2">
-                            <div class="block2-pic hov-img0">
-                                <a
-                                    href="{{ route('show-product', ['id' => $product->id, 'category' => $product['category']->name, 'slug' => $product->slug]) }}">
-                                    @if ($product['id'] < 10)
-                                        <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-                                    @elseif($product['id'] >= 10)
-                                        <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-                                    @endif
+                            @php
+                                $imageId = sprintf('%02d', $product->id); // Formate l'ID pour avoir toujours deux chiffres
+$imagePath = asset("images/product-{$imageId}.jpg"); // Chemin de l'image
+                                $productUrl = route('show-product', [
+                                    'id' => $product->id,
+                                    'category' => $product->category->name,
+                                    'slug' => $product->slug,
+                                ]);
+                            @endphp
+                            <div class="block2-pic hov-img0 {{ $product->details->isNew ? 'label-new' : '' }}"
+                                data-label="{{ $product->details->isNew ? 'New' : '' }}">
+                                <a href="{{ $productUrl }}">
+                                    <img src="{{ $imagePath }}" alt="IMG-PRODUCT">
                                 </a>
-
-
                             </div>
+
+
+
+
+
 
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">

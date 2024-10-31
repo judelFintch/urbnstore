@@ -28,6 +28,7 @@ class ArticlesTableSeeder extends Seeder
                     'category_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
+                    
                 ],
                 'details' => [
                     'color' => 'Blanc',
@@ -44,6 +45,7 @@ class ArticlesTableSeeder extends Seeder
                     'discount' => 0,
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
+                    'isNew' => true,
                 ],
             ],
             [
@@ -73,6 +75,7 @@ class ArticlesTableSeeder extends Seeder
                     'discount' => 0,
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
+                    'isNew' => true,
                 ],
             ],
             [

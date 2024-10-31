@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_details', function (Blueprint $table) {
             $table->id();
+            $table->boolean('isNew')->default(false);    //
+            $table->boolean('inSold')->default(false); //
             $table->unsignedBigInteger('product_id');
             $table->string('color')->default('Blanc');
             $table->string('material')->default('100% coton');
