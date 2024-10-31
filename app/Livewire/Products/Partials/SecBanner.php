@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Livewire\Partials;
+namespace App\Livewire\Products\Partials;
 
 use Livewire\Component;
 
 class SecBanner extends Component
 {
+
 
     public $banners = [
         [
@@ -29,6 +30,6 @@ class SecBanner extends Component
     ];
     public function render()
     {
-        return view('livewire.partials.sec-banner');
+        return view('livewire.products.partials.sec-banner');
     }
 }

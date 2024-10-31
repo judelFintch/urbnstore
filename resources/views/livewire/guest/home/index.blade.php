@@ -4,7 +4,7 @@
     <!-- Slider -->
     @include('partials.slider')
     <!-- Banner -->
-    <livewire:partials.sec-banner />
+    <livewire:products.partials.sec-banner />
     <!-- Product -->
-    <livewire:partials.products />
+    <livewire:products.partials.product-grid />
 </div>

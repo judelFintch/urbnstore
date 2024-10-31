@@ -1,15 +1,14 @@
 <?php
 
-namespace App\Livewire\Partials;
+namespace App\Livewire\Products\Partials;
 
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\CategoryArticles;
-
-
-class Products extends Component
+class ProductGrid extends Component
 {
 
+  
     public $products;
     public $categories;
     public $selectedCategory = 'all';
@@ -39,11 +38,12 @@ class Products extends Component
     }
     public function render()
     {
+
         $filteredProducts = $this->selectedCategory === 'all'
             ? $this->products
             : array_filter($this->products, fn($product) => $product['category'] === $this->selectedCategory);
 
-        return view('livewire.partials.products', ['filteredProducts' => $filteredProducts]);
-
+        return view('livewire.products.partials.product-grid', ['filteredProducts' => $filteredProducts]);
+       
     }
 }

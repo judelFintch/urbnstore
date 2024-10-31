@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Homepages\Index;
+use App\Livewire\Guest\Home\Index;
 use App\Livewire\Products\ProductDetails;
 
 
