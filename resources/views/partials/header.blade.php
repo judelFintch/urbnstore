@@ -39,7 +39,7 @@
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="{{route('home.index')}}">Acceuil</a>
+                            <a href="{{ route('home.index') }}">Acceuil</a>
                         </li>
                         <li>
                             <a href="">Shop</a>

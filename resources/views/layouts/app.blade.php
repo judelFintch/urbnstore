@@ -25,6 +25,8 @@
 
 <body class="animsition">
 
+    @include('layouts.navigation')
+
 
     <main>
         {{ $slot }}

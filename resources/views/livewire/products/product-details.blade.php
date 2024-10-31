@@ -369,7 +369,7 @@
             </span>
 
             <span class="stext-107 cl6 p-lr-25">
-                Categories: Jacket, Men
+                Categories: {{ $product->category->name }}
             </span>
         </div>
     </section>
