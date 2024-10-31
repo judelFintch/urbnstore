@@ -28,14 +28,16 @@
                 <!-- Menu Links -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li class="active-menu"><a href="{{ route('home.index') }}">Accueil</a></li>
-                        <li><a href="#">Shop</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li>
+                        <li><a href="{{ route('home.index') }}">Accueil</a></li>
+                        <li><a href="{{route('home.about')}}">A la une</a></li>
+                        <li><a href="{{route('home.shop')}}">Apropos</a></li>
+                        <li><a href="{{route('home.shop')}}">About</a></li>
+                        <li><a href="{{route('home.contact')}}">Contact</a></li>
+                       <!--  <li>
                             <form wire:submit.prevent="checkout">
                                 <button class="btn btn-primary">Checkout</button>
                             </form>
-                        </li>
+                        </li>-->
                     </ul>
                 </div>
 
@@ -105,8 +107,10 @@
 
         <ul class="main-menu-m">
             <li><a href="{{ route('home.index') }}">Accueil</a></li>
-            <li><a href="#">Shop</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="{{route('home.about')}}">A la une</a></li>
+            <li><a href="{{route('home.shop')}}">Apropos</a></li>
+            <li><a href="{{route('home.shop')}}">About</a></li>
+            <li><a href="{{route('home.contact')}}">Contact</a></li>
         </ul>
     </div>
 
