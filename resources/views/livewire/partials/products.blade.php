@@ -250,17 +250,20 @@
                         <!-- Block2 -->
                         <div class="block2">
                             <div class="block2-pic hov-img0">
-                                <a href="{{ route('show-product', ['id' => $product->id, 'category' => $product['category']->name, 'slug' => $product->slug]) }}">
+                                <a
+                                    href="{{ route('show-product', ['id' => $product->id, 'category' => $product['category']->name, 'slug' => $product->slug]) }}">
                                     @if ($product['id'] < 10)
-                                        <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}" alt="IMG-PRODUCT">
+                                        <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}"
+                                            alt="IMG-PRODUCT">
                                     @elseif($product['id'] >= 10)
-                                        <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}" alt="IMG-PRODUCT">
+                                        <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}"
+                                            alt="IMG-PRODUCT">
                                     @endif
                                 </a>
-                            
-                                
+
+
                             </div>
-                            
+
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l ">
                                     <a href="product-detail.html"
@@ -275,9 +278,9 @@
                                 <div class="block2-txt-child2 flex-r p-t-3">
                                     <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                                         <img class="icon-heart1 dis-block trans-04"
-                                            src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                        <img class="{{asset('icon-heart2 dis-block trans-04 ab-t-l')}}"
-                                            src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
+                                            src="{{ asset('images/icons/icon-heart-01.png') }}" alt="ICON">
+                                        <img class="{{ asset('icon-heart2 dis-block trans-04 ab-t-l') }}"
+                                            src="{{ asset('images/icons/icon-heart-02.png') }}" alt="ICON">
                                     </a>
                                 </div>
                             </div>
