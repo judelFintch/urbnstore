@@ -1,129 +1,155 @@
 <!-- Header -->
-<header class="header-v4">
-    <!-- Desktop Header -->
-    <div class="container-menu-desktop">
-        <!-- Topbar -->
-        <div class="top-bar">
-            <div class="content-topbar flex-sb-m h-full container">
-                <div class="left-top-bar">
-                    Livraison gratuite pour toute commande standard supérieure à 100 $.
-                </div>
-                <div class="right-top-bar flex-w h-full">
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">Aide & FAQs</a>
-                    <a href="{{ route('login') }}" class="flex-c-m trans-04 p-lr-25">Mon Compte</a>
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">FR</a>
-                    <a href="#" class="flex-c-m trans-04 p-lr-25">USD</a>
-                </div>
-            </div>
-        </div>
 
-        <!-- Navigation Bar -->
+<!-- Header -->
+<header class="header-v2">
+    <!-- Header desktop -->
+    <div class="container-menu-desktop trans-03">
         <div class="wrap-menu-desktop">
-            <nav class="limiter-menu-desktop container">
-                <!-- Logo -->
-                <a href="/" class="logo">
+            <nav class="limiter-menu-desktop p-l-45">
+                
+                <!-- Logo desktop -->		
+                <a href="#" class="logo">
                     <img src="{{ asset('images/icons/logo.png') }}" alt="IMG-LOGO">
+
                 </a>
 
-                <!-- Menu Links -->
+                <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
-                        <li><a href="{{ route('home.index') }}">Accueil</a></li>
-                        <li><a href="{{route('home.about')}}">A la une</a></li>
-                        <li><a href="{{route('home.shop')}}">Apropos</a></li>
-                        <li><a href="{{route('home.shop')}}">About</a></li>
-                        <li><a href="{{route('home.contact')}}">Contact</a></li>
-                       <!--  <li>
-                            <form wire:submit.prevent="checkout">
-                                <button class="btn btn-primary">Checkout</button>
-                            </form>
-                        </li>-->
-                    </ul>
-                </div>
+                        <li class="active-menu">
+                            <a href="index.html">Home</a>
+                           
+                        </li>
 
-                <!-- Header Icons -->
-                <div class="wrap-icon-header flex-w flex-r-m">
-                    <div class="icon-header-item js-show-modal-search">
-                        <i class="zmdi zmdi-search"></i>
+                        <li>
+                            <a href="product.html">Shop</a>
+                        </li>
+
+                        <li class="label1" data-label1="hot">
+                            <a href="shoping-cart.html">Features</a>
+                        </li>
+
+                        <li>
+                            <a href="blog.html">Blog</a>
+                        </li>
+
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+                </div>	
+
+                <!-- Icon header -->
+                <div class="wrap-icon-header flex-w flex-r-m h-full">
+                    <div class="flex-c-m h-full p-r-24">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                            <i class="zmdi zmdi-search"></i>
+                        </div>
                     </div>
-                    <div class="icon-header-item icon-header-noti js-show-cart" data-notify="2">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                        
+                    <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                            <i class="zmdi zmdi-shopping-cart"></i>
+                        </div>
                     </div>
-                    <a href="#" class="icon-header-item icon-header-noti" data-notify="0">
-                        <i class="zmdi zmdi-favorite-outline"></i>
-                    </a>
+                        
+                    <div class="flex-c-m h-full p-lr-19">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                            <i class="zmdi zmdi-menu"></i>
+                        </div>
+                    </div>
                 </div>
             </nav>
-        </div>
+        </div>	
     </div>
 
-    <!-- Mobile Header -->
+    <!-- Header Mobile -->
     <div class="wrap-header-mobile">
-        <!-- Logo Mobile -->
+        <!-- Logo moblie -->		
         <div class="logo-mobile">
-            <a href="/">
-                <img src="{{ asset('images/icons/logo.png') }}" alt="IMG-LOGO">
-            </a>
+            <img src="{{ asset('images/icons/logo.png') }}" alt="IMG-LOGO">
+
         </div>
 
-        <!-- Mobile Icons -->
-        <div class="wrap-icon-header flex-w flex-r-m">
-            <div class="icon-header-item js-show-modal-search">
-                <i class="zmdi zmdi-search"></i>
+        <!-- Icon header -->
+        <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+            <div class="flex-c-m h-full p-r-10">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                    <i class="zmdi zmdi-search"></i>
+                </div>
             </div>
-            <div class="icon-header-item icon-header-noti js-show-cart" data-notify="2">
-                <i class="zmdi zmdi-shopping-cart"></i>
+
+            <div class="flex-c-m h-full p-lr-10 bor5">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                    <i class="zmdi zmdi-shopping-cart"></i>
+                </div>
             </div>
-            <a href="#" class="icon-header-item icon-header-noti" data-notify="0">
-                <i class="zmdi zmdi-favorite-outline"></i>
-            </a>
         </div>
 
-        <!-- Mobile Menu Button -->
-        <div class="btn-show-menu-mobile hamburger">
+        <!-- Button show menu -->
+        <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
         </div>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="menu-mobile">
-        <ul class="topbar-mobile">
-            <li>
-                <div class="left-top-bar">
-                    Livraison gratuite pour toute commande standard supérieure à 100 $.
-                </div>
-            </li>
-            <li>
-                <div class="right-top-bar">
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">Aide & FAQs</a>
-                    <a href="{{ route('login') }}" class="flex-c-m p-lr-10 trans-04">Mon Compte</a>
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">FR</a>
-                    <a href="#" class="flex-c-m p-lr-10 trans-04">USD</a>
-                </div>
-            </li>
-        </ul>
 
+    <!-- Menu Mobile -->
+    <div class="menu-mobile">
         <ul class="main-menu-m">
-            <li><a href="{{ route('home.index') }}">Accueil</a></li>
-            <li><a href="{{route('home.about')}}">A la une</a></li>
-            <li><a href="{{route('home.shop')}}">Apropos</a></li>
-            <li><a href="{{route('home.shop')}}">About</a></li>
-            <li><a href="{{route('home.contact')}}">Contact</a></li>
+            <li>
+                <a href="index.html">Home</a>
+                <ul class="sub-menu-m">
+                    <li><a href="index.html">Homepage 1</a></li>
+                    <li><a href="home-02.html">Homepage 2</a></li>
+                    <li><a href="home-03.html">Homepage 3</a></li>
+                </ul>
+                <span class="arrow-main-menu-m">
+                    <i class="fa fa-angle-right" aria-hidden="true"></i>
+                </span>
+            </li>
+
+            <li>
+                <a href="product.html">Shop</a>
+            </li>
+
+            <li>
+                <a href="shoping-cart.html" class="label1 rs1" data-label1="hot">Features</a>
+            </li>
+
+            <li>
+                <a href="blog.html">Blog</a>
+            </li>
+
+            <li>
+                <a href="about.html">About</a>
+            </li>
+
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
         </ul>
     </div>
 
-    <!-- Search Modal -->
+    <!-- Modal Search -->
     <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
         <div class="container-search-header">
-            <button class="btn-hide-modal-search js-hide-modal-search">
-                <img src="{{ asset('images/icons/icon-close2.png') }}" alt="CLOSE">
+            <button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+                <img src="images/icons/icon-close2.png" alt="CLOSE">
             </button>
+
             <form class="wrap-search-header flex-w p-l-15">
-                <button class="flex-c-m trans-04"><i class="zmdi zmdi-search"></i></button>
+                <button class="flex-c-m trans-04">
+                    <i class="zmdi zmdi-search"></i>
+                </button>
                 <input class="plh3" type="text" name="search" placeholder="Search...">
             </form>
         </div>
     </div>
 </header>
+
