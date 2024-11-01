@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
-    
+
     <!-- CSS Dependencies -->
     <link rel="stylesheet" type="text/css" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
@@ -25,25 +25,14 @@
 </head>
 
 <body class="animsition">
-    <!-- Header -->
-
-
-    <!-- Main Content -->
     <main>
         {{ $slot }}
     </main>
-
-    <!-- Footer -->
-   
-
-    <!-- Back to Top -->
-    @if(View::exists('components.backtop'))
+    @if (View::exists('components.backtop'))
         <x-backtop></x-backtop>
     @endif
-
     <!-- Modal -->
-    @include('partials.modal')
-
+  
     <!-- JavaScript Dependencies -->
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}" defer></script>
     <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
@@ -58,7 +47,7 @@
     <script src="{{ asset('vendor/isotope/isotope.pkgd.min.js') }}" defer></script>
     <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}" defer></script>
     <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}" defer></script>
-    
+
     <!-- Custom Scripts -->
     <script src="{{ asset('js/slick-custom.js') }}" defer></script>
     <script src="{{ asset('js/gallerylb.js') }}" defer></script>
@@ -82,5 +71,4 @@
         });
     </script>
 </body>
-
 </html>
