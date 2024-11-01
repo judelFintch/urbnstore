@@ -16,7 +16,7 @@ class ProductGrid extends Component
     public $priceRange = 'all';
     public $color = 'all';
     public $product;
-    public $showModal = false; // Variable pour gérer l'affichage de la modale
+    public $showModal = false; 
 
 
     public function mount()
@@ -27,7 +27,7 @@ class ProductGrid extends Component
 
     public function showProduct($productId)
     {
-        // Récupère le produit depuis la base de données
+    
         $this->product = Product::find($productId);
         $this->dispatch('open-modal');
     }
