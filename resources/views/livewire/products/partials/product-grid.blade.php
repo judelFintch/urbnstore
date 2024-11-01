@@ -12,16 +12,13 @@
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
                         All Products
                     </button>
-
                     @foreach ($categories as $category)
                         <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5"
                             data-filter=".{{ $category['name'] }}">
                             {{ $category['name'] }}
                         </button>
                     @endforeach
-
                 </div>
-
                 <div class="flex-w flex-c-m m-tb-10">
                     <div
                         class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
@@ -29,26 +26,22 @@
                         <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
                         Filter
                     </div>
-
                     <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
                         <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
                         <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
                         Search
                     </div>
                 </div>
-
                 <!-- Search product -->
                 <div class="dis-none panel-search w-full p-t-10 p-b-15">
                     <div class="bor8 dis-flex p-l-15">
                         <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
                             <i class="zmdi zmdi-search"></i>
                         </button>
-
                         <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
                             placeholder="Search">
                     </div>
                 </div>
-
                 <!-- Filter -->
                 <div class="dis-none panel-filter w-full p-t-10">
                     <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
@@ -243,58 +236,66 @@
                     </div>
                 </div>
             </div>
-
             <div class="row isotope-grid">
                 @foreach ($filteredProducts as $product)
                     <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product['category']->name }}">
                         <!-- Block2 -->
                         <div class="block2">
                             @php
-                                $imageId = sprintf('%02d', $product->id); // Formate l'ID pour avoir toujours deux chiffres
-$imagePath = asset("images/product-{$imageId}.jpg"); // Chemin de l'image
+                                $imageId = sprintf('%02d', $product->id);
+                                $imagePath = asset("images/product-{$imageId}.jpg");
                                 $productUrl = route('show-product', [
                                     'id' => $product->id,
                                     'category' => $product->category->name,
                                     'slug' => $product->slug,
                                 ]);
                             @endphp
+                            
                             <div class="block2-pic hov-img0 {{ $product->details->isNew ? 'label-new' : '' }}"
                                 data-label="{{ $product->details->isNew ? 'New' : '' }}">
                                 <a href="{{ $productUrl }}">
                                     <img src="{{ $imagePath }}" alt="IMG-PRODUCT">
                                 </a>
+                                @if ($product->details->isOnSale) <!-- Vérifie si le produit est en promotion -->
+                                    <span class="sale-label">En Promotion</span>
+                                @endif
                             </div>
-
-
-
-
-
-
+                            
                             <div class="block2-txt flex-w flex-t p-t-14">
-                                <div class="block2-txt-child1 flex-col-l ">
-                                    <a href="product-detail.html"
-                                        class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                <div class="block2-txt-child1 flex-col-l">
+                                    <a href="{{ $productUrl }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         {{ $product['title'] }}
                                     </a>
-
-                                    <span class="stext-105 cl3">
-                                        $16.64
-                                    </span>
+                                    
+                                    <div class="product-price">
+                                        @if ($product->isOnSale)
+                                            <!-- Affiche l'ancien prix barré et le nouveau prix -->
+                                            <span class="old-price">{{ $product['currency'] }} {{ $product['originalPrice'] }}</span>
+                                            <span class="new-price">{{ $product['currency'] }} {{ $product['salePrice'] }}</span>
+                                        @else
+                                            <span class="stext-105 cl3">{{ $product['currency'] }} {{ $product['price'] }}</span>
+                                        @endif
+                                    </div>
+            
+                                    @if ($product->isInStock)
+                                        <span class="stock-status">En stock</span>
+                                    @else
+                                        <span class="stock-status out-of-stock">Rupture de stock</span>
+                                    @endif
                                 </div>
+                                
                                 <div class="block2-txt-child2 flex-r p-t-3">
                                     <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                        <img class="icon-heart1 dis-block trans-04"
-                                            src="{{ asset('images/icons/icon-heart-01.png') }}" alt="ICON">
-                                        <img class="{{ asset('icon-heart2 dis-block trans-04 ab-t-l') }}"
-                                            src="{{ asset('images/icons/icon-heart-02.png') }}" alt="ICON">
+                                        <img class="icon-heart1 dis-block trans-04" src="{{ asset('images/icons/icon-heart-01.png') }}" alt="ICON">
+                                        <img class="icon-heart2 dis-block trans-04 ab-t-l" src="{{ asset('images/icons/icon-heart-02.png') }}" alt="ICON">
                                     </a>
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 @endforeach
             </div>
+            
             <!-- Load more -->
             <div class="flex-c-m flex-w w-full p-t-45">
                 <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">

@@ -26,6 +26,7 @@ class ProductDetails extends Model
         'long_description',
         'isNew',
         'isSold',
+        'isOnSale'
 
     ];
 

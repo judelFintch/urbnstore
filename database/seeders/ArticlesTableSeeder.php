@@ -76,6 +76,7 @@ class ArticlesTableSeeder extends Seeder
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
                     'isNew' => true,
+                    'isOnSale' => false,
                 ],
             ],
             [
