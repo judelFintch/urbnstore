@@ -1,6 +1,7 @@
 <!-- Header -->
 
 <!-- Header -->
+
 <header class="header-v2">
     <!-- Header desktop -->
     <div class="container-menu-desktop trans-03">
@@ -8,13 +9,13 @@
             <nav class="limiter-menu-desktop p-l-45">
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
+                    <img  src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
                 </a>
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
-                            <a href="index.html">Home</a>
+                            <a href="">Home</a>
 
                         </li>
 
