@@ -14,7 +14,7 @@ use App\Livewire\Admin\AdminDashboard;
 // Public routes
 Route::get('/', Index::class)->name('home.index');
 Route::get('/about', About::class)->name('home.about');
-Route::get('/shop', Shop::class)->name('home.shop');
+Route::get('/shop/{id}/{slug}', Shop::class)->name('home.shop');
 Route::get('/contact', Contact::class)->name('home.contact');
 Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
 

@@ -14,15 +14,21 @@
                             <li class="active-menu">
                                 <a href="{{ route('home.index') }}">Home</a>
                             </li>
-
                             <li>
-                                <a href="{{ route('home.shop') }}">Shop</a>
+                                <a
+                                    href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultCategoryArticles]) }}">Shop</a>
                             </li>
+
                             @foreach ($categoryArticles as $categoryArticle)
                                 <li>
-                                    <a href="shoping-cart.html">{{ $categoryArticle->name }}</a>
+                                    <a
+                                        href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                        {{ $categoryArticle->name }}
+                                    </a>
                                 </li>
                             @endforeach
+
+
 
                             <li>
                                 <a href="{{ route('home.about') }}">About</a>
@@ -88,7 +94,6 @@
             </div>
         </div>
 
-
         <!-- Menu Mobile -->
         <div class="menu-mobile">
             <ul class="main-menu-m">
@@ -96,8 +101,7 @@
                     <a href="index.html">Home</a>
                     <ul class="sub-menu-m">
                         <li><a href="index.html">Homepage 1</a></li>
-                        <li><a href="home-02.html">Homepage 2</a></li>
-                        <li><a href="home-03.html">Homepage 3</a></li>
+
                     </ul>
                     <span class="arrow-main-menu-m">
                         <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -105,16 +109,20 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('home.shop') }}">Shop</a>
-                </li>
+                    <a
+                        href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultCategoryArticles]) }}">Shop</a>
 
                 </li>
+
                 @foreach ($categoryArticles as $categoryArticle)
                     <li>
-                        <a href="shoping-cart.html">{{ $categoryArticle->name }}</a>
+                        <a
+                            href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                            {{ $categoryArticle->name }}
+                        </a>
                     </li>
                 @endforeach
-                <li>
+
                 <li>
                     <a href="{{ route('home.about') }}">About</a>
                 </li>
@@ -140,5 +148,4 @@
             </div>
         </div>
     </header>
-
 </div>
