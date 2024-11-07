@@ -24,7 +24,8 @@ class ProductGrid extends Component
     {
         $this->products = Product::with('category')->get();
         $this->categories = CategoryArticles::all();
-        $this->isHomePage = $isHomePage ;
+        //this active the title for the homepage product is true
+         $this->isHomePage = $isHomePage ;
     }
 
     public function showProduct($productId)
