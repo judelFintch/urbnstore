@@ -17,12 +17,14 @@ class ProductGrid extends Component
     public $color = 'all';
     public $product;
     public $showModal = false; 
+    public $isHomePage;
 
 
-    public function mount()
+    public function mount($isHomePage)
     {
         $this->products = Product::with('category')->get();
         $this->categories = CategoryArticles::all();
+        $this->isHomePage = $isHomePage ;
     }
 
     public function showProduct($productId)
