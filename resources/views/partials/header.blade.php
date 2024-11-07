@@ -1,7 +1,3 @@
-<!-- Header -->
-
-<!-- Header -->
-
 <header class="header-v2">
     <!-- Header desktop -->
     <div class="container-menu-desktop trans-03">
@@ -9,32 +5,23 @@
             <nav class="limiter-menu-desktop p-l-45">
                 <!-- Logo desktop -->
                 <a href="#" class="logo">
-                    <img  src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
+                    <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
                 </a>
                 <!-- Menu desktop -->
                 <div class="menu-desktop">
                     <ul class="main-menu">
                         <li class="active-menu">
                             <a href="">Home</a>
-
                         </li>
-
                         <li>
-                            <a href="product.html">Shop</a>
+                            <a href="{{route('home.shop')}}">Shop</a>
                         </li>
-
                         <li class="label1" data-label1="hot">
                             <a href="shoping-cart.html">Features</a>
                         </li>
-
-                        <li>
-                            <a href="blog.html">Blog</a>
-                        </li>
-
                         <li>
                             <a href="about.html">About</a>
                         </li>
-
                         <li>
                             <a href="contact.html">Contact</a>
                         </li>
