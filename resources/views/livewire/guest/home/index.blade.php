@@ -6,5 +6,6 @@
     <!-- Banner -->
     <livewire:products.partials.sec-banner />
     <!-- Product -->
-    <livewire:products.partials.product-grid />
+    @livewire('products.partials.product-grid', ['isHomePage' => true])
+
 </div>

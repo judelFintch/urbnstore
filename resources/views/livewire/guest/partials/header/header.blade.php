@@ -16,9 +16,8 @@
                             </li>
                             <li>
                                 <a
-                                    href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultCategoryArticles]) }}">Shop</a>
+                                    href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
                             </li>
-
                             @foreach ($categoryArticles as $categoryArticle)
                                 <li>
                                     <a
@@ -27,9 +26,6 @@
                                     </a>
                                 </li>
                             @endforeach
-
-
-
                             <li>
                                 <a href="{{ route('home.about') }}">About</a>
                             </li>
@@ -38,7 +34,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
                         <div class="flex-c-m h-full p-r-24">
@@ -110,10 +105,8 @@
 
                 <li>
                     <a
-                        href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultCategoryArticles]) }}">Shop</a>
-
+                        href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
                 </li>
-
                 @foreach ($categoryArticles as $categoryArticle)
                     <li>
                         <a
@@ -122,7 +115,6 @@
                         </a>
                     </li>
                 @endforeach
-
                 <li>
                     <a href="{{ route('home.about') }}">About</a>
                 </li>
@@ -131,7 +123,6 @@
                 </li>
             </ul>
         </div>
-
         <!-- Modal Search -->
         <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
             <div class="container-search-header">
