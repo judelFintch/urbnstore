@@ -28,11 +28,18 @@ return [
         'key' => env('RESEND_KEY'),
     ],
 
+    'cinetpay' => [
+        'api_key' => env('CINETPAY_API_KEY'),
+        'site_id' => env('CINETPAY_SITE_ID'),
+        'secret_key' => env('CINETPAY_SECRET_KEY'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
 
 ];

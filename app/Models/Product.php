@@ -23,5 +23,11 @@ class Product extends Model
     {
         return $this->belongsTo(CategoryArticles::class);
     }
+
+    public function details()
+    {
+        return $this->hasOne(ProductDetails::class);
+    }
+
     
 }
