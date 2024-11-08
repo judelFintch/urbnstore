@@ -10,6 +10,10 @@ use App\Livewire\Guest\{
 };
 use App\Livewire\Products\ProductDetails;
 use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\Invoices\Invoicelist;
+use App\Livewire\Admin\Invoices\Invoiceview;
+use App\Livewire\Admin\Products\ProductsList;
+use App\Livewire\Admin\Products\Productsview;
 
 // Public routes
 Route::get('/', Index::class)->name('home.index');
@@ -21,7 +25,15 @@ Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show
 // Admin routes
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
-    
+
+    //ProductsRoutes
+    Route::get('productslist', ProductsList::class)->name('productslist');
+    Route::get('productsview', Productsview::class)->name('productsview');
+
+    //InvoicesRoutes
+    Route::get('invoiceslist', Invoicelist::class)->name('invoiceslist');
+    Route::get('invoicesview', Invoiceview::class)->name('invoicesview');
+
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
