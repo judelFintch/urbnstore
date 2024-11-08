@@ -27,12 +27,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
     //ProductsRoutes
-    Route::get('productslist', ProductsList::class)->name('productslist');
-    Route::get('productsview', Productsview::class)->name('productsview');
+    Route::get('productslist', ProductsList::class)->name('admin.products.list');
+    Route::get('productsview', Productsview::class)->name('admin.products.view');
 
     //InvoicesRoutes
-    Route::get('invoiceslist', Invoicelist::class)->name('invoiceslist');
-    Route::get('invoicesview', Invoiceview::class)->name('invoicesview');
+    Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');
+    Route::get('invoicesview', Invoiceview::class)->name('admin.invoices.view');
 
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');

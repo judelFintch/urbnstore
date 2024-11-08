@@ -1,4 +1,12 @@
 <div>
+    <h1>Votre Panier</h1>
+    <div id="cart" class="cart">
+        
+    </div>
+
+
+
+
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -123,6 +131,7 @@
                                 </div>
                             </div>
 
+                        
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -140,7 +149,7 @@
                                     </div>
 
                                     <button
-                                    wire:click="addToCart({{ $product->id }})"
+                                    onclick="addToCart(1, 'Produit 3', 10.00)"
                                    
                                     class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Add to cart
@@ -376,6 +385,10 @@
             </span>
         </div>
     </section>
+    
+   
 
 	@livewire('products.partials.related-products',[$product->category->id])
+
+    
 </div>

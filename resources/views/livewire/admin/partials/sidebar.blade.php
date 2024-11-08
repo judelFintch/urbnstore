@@ -15,13 +15,13 @@
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('productslist')}}" class="nk-menu-link">
+                                    <a href="{{route('admin.products.list')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
                                         <span class="nk-menu-text">Produits</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
                                 <li class="nk-menu-item">
-                                    <a href="{{route('invoiceslist')}}" class="nk-menu-link">
+                                    <a href="{{route('admin.invoices.list')}}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
                                         <span class="nk-menu-text">Facturation</span>
                                     </a>
