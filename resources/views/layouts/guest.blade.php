@@ -27,6 +27,7 @@
 
 <body class="animsition">
     @livewire('guest.partials.header.header')
+    @include('partials.cart')
     <main>
         {{ $slot }}
     </main>

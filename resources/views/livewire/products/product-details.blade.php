@@ -1,12 +1,4 @@
 <div>
-    <h1>Votre Panier</h1>
-    <div id="cart" class="cart">
-        
-    </div>
-
-
-
-
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -131,7 +123,7 @@
                                 </div>
                             </div>
 
-                        
+
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
@@ -148,10 +140,13 @@
                                         </div>
                                     </div>
 
+                                    @php
+                                         $imagePath = "images/item-cart-{{$product->id}}.jpg";
+                                    @endphp
+
                                     <button
-                                    onclick="addToCart(1, 'Produit 3', 10.00)"
-                                   
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        onclick="addToCart({{ $product->id }}, '{{ $product->titless }}', {{ $product->price }})"
+                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Add to cart
                                     </button>
                                 </div>
@@ -205,22 +200,19 @@
                         <li class="nav-item p-b-10">
                             <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
                         </li>
+                        <li class="nav-item p-b-10">
+                            <a class="nav-link" data-toggle="tab" href="#pdf" role="tab">Pdf</a>
+                        </li>
                     </ul>
 
                     <!-- Tab panes -->
                     <div class="tab-content p-t-43">
+
                         <!-- - -->
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6">
-                                    Aenean sit amet gravida nisi. Nam fermentum est felis, quis feugiat nunc fringilla
-                                    sit amet. Ut in blandit ipsum. Quisque luctus dui at ante aliquet, in hendrerit
-                                    lectus interdum. Morbi elementum sapien rhoncus pretium maximus. Nulla lectus enim,
-                                    cursus et elementum sed, sodales vitae eros. Ut ex quam, porta consequat interdum
-                                    in, faucibus eu velit. Quisque rhoncus ex ac libero varius molestie. Aenean tempor
-                                    sit amet orci nec iaculis. Cras sit amet nulla libero. Curabitur dignissim, nunc nec
-                                    laoreet consequat, purus nunc porta lacus, vel efficitur tellus augue in ipsum. Cras
-                                    in arcu sed metus rutrum iaculis. Nulla non tempor erat. Duis in egestas nunc.
+                                    {{ $product->details->description }}
                                 </p>
                             </div>
                         </div>
@@ -370,6 +362,8 @@
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
@@ -385,10 +379,5 @@
             </span>
         </div>
     </section>
-    
-   
-
-	@livewire('products.partials.related-products',[$product->category->id])
-
-    
+    @livewire('products.partials.related-products', [$product->category->id])
 </div>

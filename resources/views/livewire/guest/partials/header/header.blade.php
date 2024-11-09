@@ -8,20 +8,23 @@
                     <a href="#" class="logo">
                         <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
                     </a>
-                    
                     <!-- Menu pour bureau -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="active-menu"><a href="{{ route('home.index') }}">Home</a></li>
-                            <li><a href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a></li>
+                            <li><a
+                                    href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
+                            </li>
                             @foreach ($categoryArticles as $categoryArticle)
-                                <li><a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a></li>
+                                <li><a
+                                        href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a>
+                                </li>
                             @endforeach
                             <li><a href="{{ route('home.about') }}">About</a></li>
                             <li><a href="{{ route('home.contact') }}">Contact</a></li>
                         </ul>
                     </div>
-    
+
                     <!-- Icônes pour bureau -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
                         <!-- Icône de recherche -->
@@ -29,13 +32,12 @@
                             <i class="zmdi zmdi-search"></i>
                         </div>
                         <!-- Icône de panier -->
-                        <div class="icon-header-item cl2 p-lr-15 js-show-cart" data-notify="2">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
+                        
                         <!-- Icône de menu latéral -->
-                        <div class="icon-header-item cl2 p-lr-15 js-show-sidebar">
-                            <i class="zmdi zmdi-menu"></i>
-                        </div>
+                       
                         <!-- Sélecteur de langue -->
                         <div class="icon-header-item cl2 p-lr-15">
                             <select id="language-select" class="form-control" onchange="changeLanguage(this)">
@@ -62,7 +64,7 @@
                 </nav>
             </div>
         </div>
-    
+
         <!-- Header pour mobile -->
         <div class="wrap-header-mobile">
             <div class="logo-mobile">
@@ -72,7 +74,7 @@
                 <div class="icon-header-item cl2 p-lr-15 js-show-modal-search">
                     <i class="zmdi zmdi-search"></i>
                 </div>
-                <div class="icon-header-item cl2 p-lr-15 js-show-cart" data-notify="2">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
             </div>
@@ -83,20 +85,22 @@
                 </span>
             </div>
         </div>
-    
+
         <!-- Menu mobile -->
         <div class="menu-mobile" id="menu-mobile">
             <ul class="main-menu-m">
                 <li><a href="{{ route('home.index') }}">Home</a></li>
-                <li><a href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a></li>
+                <li><a
+                        href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
+                </li>
                 @foreach ($categoryArticles as $categoryArticle)
-                    <li><a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a></li>
+                    <li><a
+                            href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a>
+                    </li>
                 @endforeach
                 <li><a href="{{ route('home.about') }}">About</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
             </ul>
         </div>
     </header>
-
-
 </div>

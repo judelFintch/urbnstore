@@ -1,15 +1,16 @@
-// Récupérer le panier depuis le localStorage ou initialiser un panier vide
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
 // Fonction pour afficher le contenu du panier dans la structure d'overlay
 function displayCart() {
     const cartContent = document.querySelector('.header-cart-wrapitem');
     const cartTotal = document.querySelector('.header-cart-total');
+    const cartIcon = document.querySelector('.icon-header-noti'); // Sélection de l'icône du panier
     cartContent.innerHTML = '';
 
     if (cart.length === 0) {
         cartContent.innerHTML = '<p>Votre panier est vide.</p>';
         cartTotal.innerHTML = 'Total: $0.00';
+        cartIcon.setAttribute('data-notify', 0); // Met à jour l'icône avec 0
         return;
     }
 
@@ -25,7 +26,7 @@ function displayCart() {
 
         cartItem.innerHTML = `
             <div class="header-cart-item-img">
-                <img src="{{asset(images/item-cart-${item.id}.jpg')}}" alt="IMG">
+                <img src="${item.image}" alt="${item.name}">
             </div>
             <div class="header-cart-item-txt p-t-8">
                 <a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
@@ -42,18 +43,31 @@ function displayCart() {
 
     // Affichage du total global
     cartTotal.innerHTML = `Total: $${total.toFixed(2)}`;
+
+    // Mettre à jour l'icône du panier avec le nombre total d'articles
+    updateCartIcon();
+}
+
+// Fonction pour calculer le total des produits dans le panier
+function updateCartIcon() {
+    const totalQuantity = getTotalQuantity();
+    const cartIcon = document.querySelector('.icon-header-noti');
+    
+    // Met à jour l'attribut data-notify avec le total des produits
+    cartIcon.setAttribute('data-notify', totalQuantity);
 }
 
 // Fonction pour ajouter un produit au panier
-function addToCart(id, name, price) {
+function addToCart(id, name, price, imageUrl) {
     const existingProductIndex = cart.findIndex(item => item.id === id);
 
     if (existingProductIndex >= 0) {
         cart[existingProductIndex].quantity += 1;
     } else {
-        cart.push({ id, name, price, quantity: 1 });
+        cart.push({ id, name, price, image: imageUrl, quantity: 1 });
     }
 
+    // Met à jour le localStorage et l'affichage du panier
     localStorage.setItem('cart', JSON.stringify(cart));
     displayCart();
 }
@@ -74,6 +88,17 @@ function updateQuantity(id, quantity) {
         localStorage.setItem('cart', JSON.stringify(cart));
         displayCart();
     }
+}
+
+function getTotalQuantity() {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+}
+
+// Fonction pour vider le panier
+function clearCart() {
+    cart = [];
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
 }
 
 // Afficher le panier au chargement de la page

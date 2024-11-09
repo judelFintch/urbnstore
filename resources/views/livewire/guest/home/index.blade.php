@@ -1,6 +1,4 @@
 <div>
-    <!-- Cart -->
-    @include('partials.cart')
     <!-- Slider -->
     @include('partials.slider')
     <!-- Banner -->
