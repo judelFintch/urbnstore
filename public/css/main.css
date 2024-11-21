@@ -3331,28 +3331,41 @@ input.num-product::-webkit-inner-spin-button {
 
 }
 
+/*  style adding for about page */
+
 .custom-list {
-  list-style-type: none;
-  /* Supprime les puces par défaut */
+  list-style-type: none; /* Supprime les puces par défaut */
   padding: 0;
   margin: 0;
 }
 
 .custom-list li {
   position: relative;
-  padding-left: 20px;
-  /* Espace pour l'icône ou la puce personnalisée */
-  margin-bottom: 10px;
-  /* Espacement entre les éléments */
+  padding-left: 25px; /* Espace pour l'icône ou la puce personnalisée */
+  margin-bottom: 12px; /* Espacement entre les éléments */
+  font-size: 16px; /* Taille de police pour un affichage clair */
+  line-height: 1.5; /* Améliore la lisibilité */
 }
 
 .custom-list li::before {
-  content: '•';
-  /* Icône personnalisée */
+  content: '•'; /* Icône personnalisée */
   position: absolute;
   left: 0;
-  color: #111213;
-  /* Couleur de la puce */
-  font-size: 18px;
-  /* Taille de la puce */
+  top: 0.4em; /* Alignement vertical */
+  color: #007BFF; /* Couleur de la puce */
+  font-size: 18px; /* Taille de la puce */
+}
+
+/* Responsiveness */
+@media (max-width: 768px) { /* Tablettes et téléphones */
+  .custom-list li {
+      padding-left: 20px; /* Réduit l'espace pour s'adapter aux petits écrans */
+      font-size: 14px; /* Réduit la taille de police */
+      margin-bottom: 10px; /* Ajuste l'espacement entre les éléments */
+  }
+
+  .custom-list li::before {
+      font-size: 16px; /* Réduit légèrement la taille de la puce */
+      color: #0056b3; /* Légèrement plus sombre pour un contraste optimal sur mobile */
+  }
 }
