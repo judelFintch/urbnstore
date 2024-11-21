@@ -17,7 +17,7 @@
                             Notre histoire
                         </h3>
 
-                        <p class="stext-113 cl6 p-b-26">
+                        <p class="stext-113 cl6 p-b-26" style="text-align:justify">
                             C'est en observant la scène mode à Lubumbashi que <b>Moise A. NGONGO</b> a perçu une
                             opportunité
                             unique : créer une marque qui non seulement suit les tendances internationales, mais célèbre
@@ -31,7 +31,7 @@
 
 
                         <h3 class="mtext-111 cl2 p-b-16"> Notre vision :</h3>
-                        <p class="stext-113 cl6 p-b-26">
+                        <p class="stext-113 cl6 p-b-26" style="text-align:justify">
                             Urban Store est né avec une mission claire : réinventer le style urbain et contemporain en
                             proposant des produits qui reflètent les besoins et les aspirations de ses clients. Fondée
                             par <b>Moise A. NGONGO</b>, l’entreprise se positionne comme un pont entre les tendances
@@ -59,7 +59,7 @@
                             Notre Mission
                         </h3>
 
-                        <p class="stext-113 cl6 p-b-26">
+                        <p class="stext-113 cl6 p-b-26" style="text-align:justify">
                             La mission de Urban Store est simple mais puissante :
                             “Offrir à chacun les moyens de s’exprimer à travers un style qui leur ressemble.”
                             L’entreprise vise à devenir une destination incontournable pour tous ceux qui recherchent
@@ -72,7 +72,7 @@
                     
                         <h3 class="mtext-111 cl2 p-b-16"> Nos engagements :</h3>
                         <p class="stext-113">
-                        <ul class="custom-list">
+                        <ul class="custom-list" style="text-align:justify">
                             <li>Offrir des vêtements, accessoires et produits lifestyle qui incarnent un équilibre
                                 parfait entre innovation et authenticité.</li>
                             <li>Construire une communauté autour de la mode urbaine, où chacun peut se sentir unique
