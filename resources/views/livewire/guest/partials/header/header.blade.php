@@ -11,7 +11,7 @@
                     <!-- Menu pour bureau -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="active-menu"><a href="{{ route('home.index') }}">Home</a></li>
+                            <li class="active-menu"><a href="{{ route('home.index') }}">Acceuil</a></li>
                             <li><a
                                     href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
                             </li>
@@ -20,7 +20,7 @@
                                         href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a>
                                 </li>
                             @endforeach
-                            <li><a href="{{ route('home.about') }}">About</a></li>
+                            <li><a href="{{ route('home.about') }}">A propos</a></li>
                             <li><a href="{{ route('home.contact') }}">Contact</a></li>
                         </ul>
                     </div>
@@ -91,7 +91,7 @@
         <!-- Menu mobile -->
         <div class="menu-mobile" id="menu-mobile">
             <ul class="main-menu-m">
-                <li><a href="{{ route('home.index') }}">Home</a></li>
+                <li><a href="{{ route('home.index') }}">Acceuil</a></li>
                 <li><a
                         href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
                 </li>
@@ -100,7 +100,7 @@
                             href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">{{ $categoryArticle->name }}</a>
                     </li>
                 @endforeach
-                <li><a href="{{ route('home.about') }}">About</a></li>
+                <li><a href="{{ route('home.about') }}">A propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
             </ul>
         </div>

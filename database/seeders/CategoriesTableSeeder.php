@@ -32,7 +32,7 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Afro',
+                'name' => 'Afro Styles',
                 'slug' => 'Afro',
                 'description' => 'Vêtements et accessoires pour enfant',
                 'is_active' => false,
@@ -40,8 +40,8 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Chaussures',
-                'slug' => 'chaussures',
+                'name' => 'Collections',
+                'slug' => 'Collections',
                 'description' => 'Chaussures pour tous les âges',
                 'is_active' => true,
                 'created_at' => now(),
