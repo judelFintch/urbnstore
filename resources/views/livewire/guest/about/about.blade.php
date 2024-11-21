@@ -1,5 +1,4 @@
 <div>
-
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
         <h2 class="ltext-105 cl0 txt-center">
@@ -42,7 +41,6 @@
                         </p>
                     </div>
                 </div>
-
                 <div class="col-11 col-md-5 col-lg-4 m-lr-auto">
                     <div class="how-bor1 ">
                         <div class="hov-img0">
@@ -69,7 +67,7 @@
 
                         </p>
 
-                    
+
                         <h3 class="mtext-111 cl2 p-b-16"> Nos engagements :</h3>
                         <p class="stext-113">
                         <ul class="custom-list" style="text-align:justify">
