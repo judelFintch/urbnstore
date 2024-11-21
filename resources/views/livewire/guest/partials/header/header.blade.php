@@ -5,7 +5,7 @@
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
                     <!-- Logo -->
-                    <a href="#" class="logo">
+                    <a href="/" class="logo">
                         <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
                     </a>
                     <!-- Menu pour bureau -->
@@ -68,7 +68,9 @@
         <!-- Header pour mobile -->
         <div class="wrap-header-mobile">
             <div class="logo-mobile">
+                <a href="/" class="logo">
                 <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
+                </a>
             </div>
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="icon-header-item cl2 p-lr-15 js-show-modal-search">

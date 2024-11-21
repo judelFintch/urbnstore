@@ -31,7 +31,8 @@
     <main>
         {{ $slot }}
     </main>
-    @include('partials.footer')
+    <!-- no sens adfing partials footer and partials header -->
+    @livewire('guest.partials.footer.footer')
     @if (View::exists('components.backtop'))
         <x-backtop></x-backtop>
     @endif

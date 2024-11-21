@@ -32,10 +32,10 @@ class CategoriesTableSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'name' => 'Enfant',
-                'slug' => 'enfant',
+                'name' => 'Afro',
+                'slug' => 'Afro',
                 'description' => 'Vêtements et accessoires pour enfant',
-                'is_active' => true,
+                'is_active' => false,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
