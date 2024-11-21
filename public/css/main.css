@@ -3330,3 +3330,29 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 }
+
+.custom-list {
+  list-style-type: none;
+  /* Supprime les puces par défaut */
+  padding: 0;
+  margin: 0;
+}
+
+.custom-list li {
+  position: relative;
+  padding-left: 20px;
+  /* Espace pour l'icône ou la puce personnalisée */
+  margin-bottom: 10px;
+  /* Espacement entre les éléments */
+}
+
+.custom-list li::before {
+  content: '•';
+  /* Icône personnalisée */
+  position: absolute;
+  left: 0;
+  color: #111213;
+  /* Couleur de la puce */
+  font-size: 18px;
+  /* Taille de la puce */
+}

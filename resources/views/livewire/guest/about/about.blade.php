@@ -3,10 +3,9 @@
     <!-- Title page -->
     <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('images/bg-01.jpg');">
         <h2 class="ltext-105 cl0 txt-center">
-            About
+            A propos
         </h2>
     </section>
-
 
     <!-- Content page -->
     <section class="bg0 p-t-75 p-b-120">
@@ -57,14 +56,32 @@
                 <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
                     <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
                         <h3 class="mtext-111 cl2 p-b-16">
-                            Our Mission
+                            Notre Mission
                         </h3>
 
                         <p class="stext-113 cl6 p-b-26">
-							La mission de Urban Store est simple mais puissante :
-							“Offrir à chacun les moyens de s’exprimer à travers un style qui leur ressemble.”
-							L’entreprise vise à devenir une destination incontournable pour tous ceux qui recherchent des produits modernes, de qualité, et conçus pour inspirer. Urban Store s’engage également à intégrer des pratiques responsables, en collaborant avec des marques respectueuses de l’environnement et des valeurs humaines.
-							
+                            La mission de Urban Store est simple mais puissante :
+                            “Offrir à chacun les moyens de s’exprimer à travers un style qui leur ressemble.”
+                            L’entreprise vise à devenir une destination incontournable pour tous ceux qui recherchent
+                            des produits modernes, de qualité, et conçus pour inspirer. Urban Store s’engage également à
+                            intégrer des pratiques responsables, en collaborant avec des marques respectueuses de
+                            l’environnement et des valeurs humaines.
+
+                        </p>
+
+                    
+                        <h3 class="mtext-111 cl2 p-b-16"> Nos engagements :</h3>
+                        <p class="stext-113">
+                        <ul class="custom-list">
+                            <li>Offrir des vêtements, accessoires et produits lifestyle qui incarnent un équilibre
+                                parfait entre innovation et authenticité.</li>
+                            <li>Construire une communauté autour de la mode urbaine, où chacun peut se sentir unique
+                                tout en étant connecté à sa ville.</li>
+                            <li>Mettre en avant des collections qui célèbrent l’expression de soi tout en valorisant les
+                                racines locales.</li>
+                        </ul>
+
+
                         </p>
 
                         <div class="bor16 p-l-29 p-b-9 m-t-22">
