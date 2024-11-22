@@ -223,7 +223,7 @@
                                                 Materials
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->material ?? 'Not specified' }}
+                                                {{ $product->details->material ?? '100% coton' }}
                                             </span>
                                         </li>
 
@@ -233,7 +233,37 @@
                                                 Color
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->color ?? 'Not specified' }}
+                                                {{ $product->details->color ?? 'Blanc' }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Type de manches -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Sleeve Type
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->sleeve_type ?? 'Manches courtes' }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Type de col -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Collar Type
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->collar_type ?? 'Col rond' }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Coupe -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Fit
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->fit ?? 'Coupe droite' }}
                                             </span>
                                         </li>
 
@@ -243,7 +273,7 @@
                                                 Size
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->size_available ?? 'Not specified' }}
+                                                {{ $product->details->size_available ?? 'S, M, L, XL' }}
                                             </span>
                                         </li>
 
@@ -253,7 +283,7 @@
                                                 Care Instructions
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->care_instructions ?? 'Not specified' }}
+                                                {{ $product->details->care_instructions ?? 'Lavable en machine à 30°C' }}
                                             </span>
                                         </li>
 
@@ -266,16 +296,53 @@
                                                 {{ $product->details->tags ?? 'Not specified' }}
                                             </span>
                                         </li>
+
+                                        <!-- Note moyenne -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Rating
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->rating ?? '4.5' }} / 5
+                                            </span>
+                                        </li>
+
+                                        <!-- Ventes -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Sales Count
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->sales_count ?? 0 }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Remise -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Discount
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->discount ?? 0 }}%
+                                                @if ($product->details->discount_end_date)
+                                                    (until
+                                                    {{ \Carbon\Carbon::parse($product->details->discount_end_date)->format('d M Y') }})
+                                                @endif
+                                            </span>
+                                        </li>
+
+
                                     </ul>
                                 </div>
                             </div>
                         </div>
 
 
+
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
                             @livewire('guest.partials.post.review', ['productId' => $product->id])
                         </div>
-                      
+
                     </div>
                 </div>
             </div>

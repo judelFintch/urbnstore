@@ -31,11 +31,11 @@
             <!-- Add review -->
             <form wire:submit.prevent="submit" class="w-full">
                 <h5 class="mtext-108 cl2 p-b-7">
-                    Add a review
+                    Ajouter un avis
                 </h5>
 
                 <p class="stext-102 cl6">
-                    Your email address will not be published. Required fields are marked *
+                    Votre adresse e-mail ne sera pas publiée. *
                 </p>
 
                 <div class="flex-w flex-m p-t-50 p-b-23">
@@ -50,7 +50,7 @@
 
                 <div class="row p-b-25">
                     <div class="col-12 p-b-5">
-                        <label class="stext-102 cl3" for="review">Your review</label>
+                        <label class="stext-102 cl3" for="review">Votre avis</label>
                         <textarea wire:model="content" class="size-110 bor8 stext-102 cl2 p-lr-20 p-tb-10"></textarea>
                         
                     </div>

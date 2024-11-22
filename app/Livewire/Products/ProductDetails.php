@@ -12,6 +12,10 @@ class ProductDetails extends Component
    public $selectedSize;
    #[Layout('layouts.guest')]
     public function mount($id){
+        if (!ctype_digit($id)) {
+            abort(404);
+        }
+    
         $this->product = Product::with('details')->findOrFail($id);
         $this->selectedSize = null;
     }

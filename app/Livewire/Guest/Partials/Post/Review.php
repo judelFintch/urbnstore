@@ -44,7 +44,6 @@ class Review extends Component
         ]);
 
        
-
         // Reset form fields
         $this->reset(['name', 'email', 'rating', 'content']);
 
