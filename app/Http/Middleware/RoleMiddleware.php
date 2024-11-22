@@ -27,9 +27,7 @@ class RoleMiddleware
         // Vérifie si l'utilisateur est connecté, a le rôle requis et est actif
         if (Auth::check() && Auth::user()->role === (int) $role && Auth::user()->isActive) {
             return $next($request);
-        }
-
-
+        
         // Journalise l'accès non autorisé
         Log::warning(sprintf(
             'Access denied for user ID: %d (role: %d), required role: %s',

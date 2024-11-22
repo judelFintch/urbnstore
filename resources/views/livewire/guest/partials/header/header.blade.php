@@ -1,5 +1,10 @@
 <div>
     <header class="header-v2">
+        @if (session()->has('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <!-- Header pour bureau -->
         <div class="container-menu-desktop">
             <div class="wrap-menu-desktop">
@@ -32,12 +37,13 @@
                             <i class="zmdi zmdi-search"></i>
                         </div>
                         <!-- Icône de panier -->
-                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                            data-notify="2">
                             <i class="zmdi zmdi-shopping-cart"></i>
                         </div>
-                        
+
                         <!-- Icône de menu latéral -->
-                       
+
                         <!-- Sélecteur de langue -->
                         <div class="icon-header-item cl2 p-lr-15">
                             <select id="language-select" class="form-control" onchange="changeLanguage(this)">
@@ -69,14 +75,15 @@
         <div class="wrap-header-mobile">
             <div class="logo-mobile">
                 <a href="/" class="logo">
-                <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
+                    <img src="{{ asset('images/icons/lg.png') }}" alt="IMG-LOGO">
                 </a>
             </div>
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="icon-header-item cl2 p-lr-15 js-show-modal-search">
                     <i class="zmdi zmdi-search"></i>
                 </div>
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart" data-notify="2">
+                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                    data-notify="2">
                     <i class="zmdi zmdi-shopping-cart"></i>
                 </div>
             </div>
