@@ -28,7 +28,6 @@ class ArticlesTableSeeder extends Seeder
                     'category_id' => 1,
                     'created_at' => now(),
                     'updated_at' => now(),
-                    
                 ],
                 'details' => [
                     'color' => 'Blanc',
@@ -46,6 +45,7 @@ class ArticlesTableSeeder extends Seeder
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
                     'isNew' => true,
+                    'long_description' => 'Fabriqué en coton de haute qualité, ce t-shirt blanc allie simplicité et confort. Son tissu respirant et doux est idéal pour les journées chaudes ou comme base pour des superpositions. Avec une coupe décontractée et un style intemporel, il convient à toutes les occasions informelles.',
                 ],
             ],
             [
@@ -76,7 +76,7 @@ class ArticlesTableSeeder extends Seeder
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
                     'isNew' => true,
-                    'isOnSale' => false,
+                    'long_description' => 'Conçue pour les professionnels et les amateurs de style classique, cette chemise blanche est fabriquée en coton de qualité supérieure pour un confort optimal. Sa coupe ajustée épouse parfaitement le corps pour une allure élégante. Idéale pour le bureau, les réunions ou les événements formels.',
                 ],
             ],
             [
@@ -106,8 +106,8 @@ class ArticlesTableSeeder extends Seeder
                     'discount' => 0,
                     'discount_end_date' => null,
                     'added_date' => Carbon::now(),
+                    'long_description' => 'Cette chemise à carreaux bleue pour homme est un mélange parfait de style et de confort. Son design moderne et décontracté convient à diverses occasions, qu\'il s\'agisse d\'une sortie entre amis ou d\'une journée au travail. Le tissu en coton assure une sensation de fraîcheur tout au long de la journée.',
                 ],
-                
             ],
             [
                 'product' => [
@@ -130,12 +130,13 @@ class ArticlesTableSeeder extends Seeder
                     'size_available' => 'S,M,L,XL',
                     'care_instructions' => 'Nettoyage à sec uniquement',
                     'tags' => 'manteau, hiver, fourrure, vert olive, élégant',
-                    'image_url' => '/mnt/data/product-04.jpg',
+                    'image_url' => '/images/product-04.jpg',
                     'rating' => 4.8,
                     'sales_count' => 50,
                     'discount' => 10,
                     'discount_end_date' => Carbon::now()->addDays(10),
                     'added_date' => Carbon::now(),
+                    'long_description' => 'Ce manteau long avec col en fausse fourrure est un choix parfait pour les mois d\'hiver. Fabriqué en laine mélangée, il est conçu pour offrir une chaleur optimale tout en ajoutant une touche sophistiquée à votre tenue. Idéal pour les soirées froides ou les événements formels.',
                 ],
             ],
             [
@@ -159,45 +160,16 @@ class ArticlesTableSeeder extends Seeder
                     'size_available' => 'S,M,L,XL',
                     'care_instructions' => 'Laver en machine à 40°C',
                     'tags' => 'chemise, denim, gris, décontracté, tendance',
-                    'image_url' => '/mnt/data/product-05.jpg',
+                    'image_url' => '/images/product-05.jpg',
                     'rating' => 4.5,
                     'sales_count' => 60,
                     'discount' => 5,
                     'discount_end_date' => Carbon::now()->addDays(7),
                     'added_date' => Carbon::now(),
+                    'long_description' => 'Ajoutez une touche moderne à votre garde-robe avec cette chemise en denim pour femme. Confortable et stylée, elle est idéale pour les tenues décontractées. Avec son tissu en denim résistant et ses finitions soignées, elle constitue un élément polyvalent pour toute garde-robe.',
                 ],
             ],
-            [
-                'product' => [
-                    'title' => 'Blazer Carreaux Femme',
-                    'slug' => 'blazer-carreaux-femme',
-                    'description' => 'Blazer à carreaux pour femme, un indispensable pour un style professionnel ou chic-casual.',
-                    'price' => 69.99,
-                    'stock' => 25,
-                    'is_active' => true,
-                    'category_id' => 3,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ],
-                'details' => [
-                    'color' => 'Gris à carreaux',
-                    'material' => 'Polyester et laine',
-                    'sleeve_type' => 'Manches longues',
-                    'collar_type' => 'Col cranté',
-                    'fit' => 'Slim',
-                    'size_available' => 'S,M,L,XL',
-                    'care_instructions' => 'Laver à la main ou nettoyage à sec',
-                    'tags' => 'blazer, carreaux, gris, chic, professionnel',
-                    'image_url' => '/mnt/data/product-07.jpg',
-                    'rating' => 4.7,
-                    'sales_count' => 40,
-                    'discount' => 15,
-                    'long_description' => "",
-                    'discount_end_date' => Carbon::now()->addDays(5),
-                    'added_date' => Carbon::now(),
-                ],
-            ],
-            
+            // Ajoutez plus de produits si nécessaire...
         ];
 
         // Insérer les produits et leurs détails dans la base de données

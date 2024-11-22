@@ -141,7 +141,7 @@
                                     </div>
 
                                     @php
-                                         $imagePath = "images/item-cart-{{$product->id}}.jpg";
+                                        $imagePath = 'images/item-cart-{{ $product->id }}.jpg';
                                     @endphp
 
                                     <button
@@ -201,7 +201,8 @@
                             <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
                         </li>
                         <li class="nav-item p-b-10">
-                            <a class="nav-link"  href="{{asset('images/doc/size_guide.pdf')}}" role="tab">Size Guide</a>
+                            <a class="nav-link" href="{{ asset('images/doc/size_guide.pdf') }}" role="tab">Size
+                                Guide</a>
                         </li>
                     </ul>
 
@@ -212,7 +213,7 @@
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6">
-                                    {{ $product->details->description }}
+                                    {{ $product->details->long_description }}
                                 </p>
                             </div>
                         </div>
@@ -222,59 +223,70 @@
                             <div class="row">
                                 <div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
                                     <ul class="p-lr-28 p-lr-15-sm">
+                                        <!-- Poids -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
                                                 Weight
                                             </span>
-
                                             <span class="stext-102 cl6 size-206">
-                                                0.79 kg
+                                                {{ $product->details->weight ?? 'Not specified' }}
                                             </span>
                                         </li>
 
-                                        <li class="flex-w flex-t p-b-7">
-                                            <span class="stext-102 cl3 size-205">
-                                                Dimensions
-                                            </span>
-
-                                            <span class="stext-102 cl6 size-206">
-                                                110 x 33 x 100 cm
-                                            </span>
-                                        </li>
-
+                                        <!-- Matériaux -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
                                                 Materials
                                             </span>
-
                                             <span class="stext-102 cl6 size-206">
-                                                60% cotton
+                                                {{ $product->details->material ?? 'Not specified' }}
                                             </span>
                                         </li>
 
+                                        <!-- Couleur -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
                                                 Color
                                             </span>
-
                                             <span class="stext-102 cl6 size-206">
-                                                Black, Blue, Grey, Green, Red, White
+                                                {{ $product->details->color ?? 'Not specified' }}
                                             </span>
                                         </li>
 
+                                        <!-- Tailles disponibles -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
                                                 Size
                                             </span>
-
                                             <span class="stext-102 cl6 size-206">
-                                                XL, L, M, S
+                                                {{ $product->details->size_available ?? 'Not specified' }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Instructions d'entretien -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Care Instructions
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->care_instructions ?? 'Not specified' }}
+                                            </span>
+                                        </li>
+
+                                        <!-- Tags -->
+                                        <li class="flex-w flex-t p-b-7">
+                                            <span class="stext-102 cl3 size-205">
+                                                Tags
+                                            </span>
+                                            <span class="stext-102 cl6 size-206">
+                                                {{ $product->details->tags ?? 'Not specified' }}
                                             </span>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
+
 
                         <!-- - -->
                         <div class="tab-pane fade" id="reviews" role="tabpanel">

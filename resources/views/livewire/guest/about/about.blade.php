@@ -51,7 +51,7 @@
             </div>
 
             <div class="row">
-                <div class="order-md-2 col-md-7 col-lg-8 p-b-30">
+                <div class="order-md-2 col-md-7 col-lg-8 p-b-0">
                     <div class="p-t-7 p-l-85 p-l-15-lg p-l-0-md">
                         <h3 class="mtext-111 cl2 p-b-16">
                             Notre Mission

@@ -19,6 +19,8 @@ class ProductGrid extends Component
     public $showModal = false; 
     public $isHomePage;
 
+    public $articPerPage = 8;
+
 
     public function mount($isHomePage)
     {
@@ -26,6 +28,8 @@ class ProductGrid extends Component
         $this->categories = CategoryArticles::all();
         //this active the title for the homepage product is true
          $this->isHomePage = $isHomePage ;
+
+
     }
 
     public function showProduct($productId)
