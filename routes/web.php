@@ -22,7 +22,7 @@ Route::get('/about', About::class)->name('home.about');
 Route::get('/shop/{id}/{slug}', Shop::class)->name('home.shop');
 Route::get('/contact', Contact::class)->name('home.contact');
 Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
-Route::get('/denied', Denied::class)->name('access.denied');
+Route::get('/access_denied', Denied::class)->name('access.denied');
 
 
 // Admin routes

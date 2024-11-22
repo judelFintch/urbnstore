@@ -24,10 +24,11 @@ class RoleMiddleware
             return redirect()->route('login')->with('error', 'You need to log in to access this resource.');
         }
 
-        // Vérifie le rôle de l'utilisateur
-        if (Auth::user()->role === (int) $role) {
+        // Vérifie si l'utilisateur est connecté, a le rôle requis et est actif
+        if (Auth::check() && Auth::user()->role === (int) $role && Auth::user()->isActive) {
             return $next($request);
         }
+
 
         // Journalise l'accès non autorisé
         Log::warning(sprintf(
