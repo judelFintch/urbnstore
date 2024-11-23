@@ -7,10 +7,14 @@ use App\Models\Product;
 use App\Models\ProductDetail;
 use App\Models\CategoryArticles;
 use Livewire\WithPagination;
+use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class Productsview extends Component
 {
     use WithPagination;
+    use WithFileUploads;
 
     #[Layout('layouts.app')]
 
@@ -36,6 +40,7 @@ class Productsview extends Component
     public $currency = 'USD';
     public $is_active = 1;
     public $categories = []; // Add categories here if necessary.
+    public $image; // Image property
 
 
     public function mount()
@@ -87,6 +92,9 @@ class Productsview extends Component
         ]);*/
 
         // Créer ou mettre à jour le produit
+       // $imagePath = $this->image->store('products', 'public');
+       // $img = Image::make(Storage::disk('public')->get($imagePath));
+       // $img->encode('jpg')->save(Storage::disk('public')->path('products/' . pathinfo($imagePath, PATHINFO_FILENAME) . '.jpg'));
         if ($this->isEdit) {
             $product = Product::find($this->productId);
             $product->update([

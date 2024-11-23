@@ -201,6 +201,14 @@
                 </div>
             </div>
 
+            <div class="col-12">
+                <div class="upload-zone small bg-lighter my-2">
+                    <div class="dz-message">
+                        <span class="dz-message-text">Drag and drop file</span>
+                    </div>
+                </div>
+            </div>
+
             <!-- Long Description -->
             <div class="col-12">
                 <div class="form-group">

@@ -59,7 +59,6 @@
 
                             @endphp
 
-
                             <div class="nk-tb-col tb-col-sm">
                                 <span class="tb-product">
                                     <img src="{{ $imagePath }}" alt="" class="thumb">
