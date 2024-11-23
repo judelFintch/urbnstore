@@ -19,7 +19,7 @@ use App\Livewire\Guest\Error\Page\Denied;
 // Public routes
 Route::get('/', Index::class)->name('home.index');
 Route::get('/about', About::class)->name('home.about');
-Route::get('/shop/{id}/{slug}', Shop::class)->name('home.shop');
+Route::get('/shop/{id}/{slug}', Shop::class)->where(['id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-]+'])->name('home.shop');
 Route::get('/contact', Contact::class)->name('home.contact');
 Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
 Route::get('/access_denied', Denied::class)->name('access.denied');
@@ -30,8 +30,8 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
     // ProductsRoutes
-    Route::get('productslist', ProductsList::class)->name('admin.products.list');
-    Route::get('productsview', Productsview::class)->name('admin.products.view');
+   
+    Route::get('products_view', Productsview::class)->name('admin.products.view');
 
     // InvoicesRoutes
     Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');

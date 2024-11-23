@@ -7,8 +7,6 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use App\Livewire\ConfigCinet;
 
-
-
 class Index extends Component
 {
     #[Layout('layouts.guest')]

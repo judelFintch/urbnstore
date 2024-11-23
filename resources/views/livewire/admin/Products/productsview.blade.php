@@ -1,4 +1,5 @@
 <div>
+
     @include('livewire.admin.partials.sidebar')
     @include('livewire.admin.partials.header')
     <div class="nk-content ">
@@ -6,353 +7,455 @@
             <div class="nk-content-inner">
                 <div class="nk-content-body">
                     <div class="nk-block-head nk-block-head-sm">
-                        <div class="nk-block-between g-3">
+                        <div class="nk-block-between">
                             <div class="nk-block-head-content">
-                                <h3 class="nk-block-title page-title">Product Details</h3>
-                                <div class="nk-block-des text-soft">
-                                    <p>An example page for product details</p>
+                                <h3 class="nk-block-title page-title">Products</h3>
+                            </div><!-- .nk-block-head-content -->
+                            <div class="nk-block-head-content">
+                                <div class="toggle-wrap nk-block-tools-toggle">
+                                    <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1"
+                                        data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                                    <div class="toggle-expand-content" data-content="pageMenu">
+                                        <ul class="nk-block-tools g-3">
+                                            <li>
+                                                <div class="form-control-wrap">
+                                                    <div class="form-icon form-icon-right">
+                                                        <em class="icon ni ni-search"></em>
+                                                    </div>
+                                                    <input type="text" class="form-control" id="default-04"
+                                                        placeholder="Quick search by id">
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="drodown">
+                                                    <a href="#"
+                                                        class="dropdown-toggle dropdown-indicator btn btn-outline-light btn-white"
+                                                        data-bs-toggle="dropdown">Status</a>
+                                                    <div class="dropdown-menu dropdown-menu-end">
+                                                        <ul class="link-list-opt no-bdr">
+                                                            <li><a href="#"><span>New Items</span></a></li>
+                                                            <li><a href="#"><span>Featured</span></a></li>
+                                                            <li><a href="#"><span>Out of Stock</span></a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nk-block-tools-opt">
+                                                <a href="#" data-target="addProduct"
+                                                    class="toggle btn btn-icon btn-primary d-md-none"><em
+                                                        class="icon ni ni-plus"></em></a>
+                                                <a href="#" data-target="addProduct"
+                                                    class="toggle btn btn-primary d-none d-md-inline-flex"><em
+                                                        class="icon ni ni-plus"></em><span>Add Product</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="nk-block-head-content">
-                                <a href="html/product-list.html" class="btn btn-outline-light bg-white d-none d-sm-inline-flex"><em class="icon ni ni-arrow-left"></em><span>Back</span></a>
-                                <a href="html/product-list.html" class="btn btn-icon btn-outline-light bg-white d-inline-flex d-sm-none"><em class="icon ni ni-arrow-left"></em></a>
-                            </div>
-                        </div>
+                            </div><!-- .nk-block-head-content -->
+                        </div><!-- .nk-block-between -->
                     </div><!-- .nk-block-head -->
+
+
+
+
+
+
                     <div class="nk-block">
                         <div class="card card-bordered">
-                            <div class="card-inner">
-                                <div class="row pb-5">
-                                    <div class="col-lg-6">
-                                        <div class="product-gallery me-xl-1 me-xxl-5">
-                                            <div class="slider-init" id="sliderFor" data-slick='{"arrows": false, "fade": true, "asNavFor":"#sliderNav", "slidesToShow": 1, "slidesToScroll": 1}'>
-                                                <div class="slider-item rounded">
-                                                    <img src="./images/product/lg-a.jpg" class="rounded w-100" alt="">
+                            <div class="card-inner-group">
+                                <div class="card-inner p-0">
+                                    <div class="nk-tb-list">
+                                        <!-- Table Head -->
+                                        <div class="nk-tb-item nk-tb-head">
+                                            <div class="nk-tb-col nk-tb-col-check">
+                                                <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                    <input type="checkbox" class="custom-control-input" id="pid">
+                                                    <label class="custom-control-label" for="pid"></label>
                                                 </div>
-                                                <div class="slider-item rounded">
-                                                    <img src="./images/product/lg-g.jpg" class="rounded w-100" alt="">
-                                                </div>
-                                                <div class="slider-item rounded">
-                                                    <img src="./images/product/lg-d.jpg" class="rounded w-100" alt="">
-                                                </div>
-                                                <div class="slider-item rounded">
-                                                    <img src="./images/product/lg-h.jpg" class="rounded w-100" alt="">
-                                                </div>
-                                                <div class="slider-item rounded">
-                                                    <img src="./images/product/lg-e.jpg" class="rounded w-100" alt="">
-                                                </div>
-                                            </div><!-- .slider-init -->
-                                            <div class="slider-init slider-nav" id="sliderNav" data-slick='{"arrows": false, "slidesToShow": 5, "slidesToScroll": 1, "asNavFor":"#sliderFor", "centerMode":true, "focusOnSelect": true, 
-                    "responsive":[ {"breakpoint": 1539,"settings":{"slidesToShow": 4}}, {"breakpoint": 768,"settings":{"slidesToShow": 3}}, {"breakpoint": 420,"settings":{"slidesToShow": 2}} ]
-                }'>
-                                                <div class="slider-item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/lg-a.jpg" class="rounded" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="slider-item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/lg-g.jpg" class="rounded" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="slider-item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/lg-d.jpg" class="rounded" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="slider-item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/lg-h.jpg" class="rounded" alt="">
-                                                    </div>
-                                                </div>
-                                                <div class="slider-item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/lg-e.jpg" class="rounded" alt="">
-                                                    </div>
-                                                </div>
-                                            </div><!-- .slider-nav -->
-                                        </div><!-- .product-gallery -->
-                                    </div><!-- .col -->
-                                    <div class="col-lg-6">
-                                        <div class="product-info mt-5 me-xxl-5">
-                                            <h4 class="product-price text-primary">$78.00 <small class="text-muted fs-14px">$98.00</small></h4>
-                                            <h2 class="product-title">Classy Modern Smart watch</h2>
-                                            <div class="product-rating">
-                                                <ul class="rating">
-                                                    <li><em class="icon ni ni-star-fill"></em></li>
-                                                    <li><em class="icon ni ni-star-fill"></em></li>
-                                                    <li><em class="icon ni ni-star-fill"></em></li>
-                                                    <li><em class="icon ni ni-star-fill"></em></li>
-                                                    <li><em class="icon ni ni-star-half"></em></li>
-                                                </ul>
-                                                <div class="amount">(2 Reviews)</div>
-                                            </div><!-- .product-rating -->
-                                            <div class="product-excrept text-soft">
-                                                <p class="lead">I must explain to you how all this mistaken idea of denoun cing ple praising pain was born and I will give you a complete account of the system, and expound the actual teaching.</p>
                                             </div>
-                                            <div class="product-meta">
-                                                <ul class="d-flex g-3 gx-5">
-                                                    <li>
-                                                        <div class="fs-14px text-muted">Type</div>
-                                                        <div class="fs-16px fw-bold text-secondary">Watch</div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="fs-14px text-muted">Model Number</div>
-                                                        <div class="fs-16px fw-bold text-secondary">Forerunner 290XT</div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="product-meta">
-                                                <h6 class="title">Color</h6>
-                                                <ul class="custom-control-group">
-                                                    <li>
-                                                        <div class="custom-control color-control">
-                                                            <input type="radio" class="custom-control-input" id="productColor1" name="productColor" checked>
-                                                            <label class="custom-control-label dot dot-xl" data-bg="#754c24" for="productColor1"></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control color-control">
-                                                            <input type="radio" class="custom-control-input" id="productColor2" name="productColor">
-                                                            <label class="custom-control-label dot dot-xl" data-bg="#636363" for="productColor2"></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control color-control">
-                                                            <input type="radio" class="custom-control-input" id="productColor3" name="productColor">
-                                                            <label class="custom-control-label dot dot-xl" data-bg="#ba6ed4" for="productColor3"></label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control color-control">
-                                                            <input type="radio" class="custom-control-input" id="productColor4" name="productColor">
-                                                            <label class="custom-control-label dot dot-xl" data-bg="#ff87a3" for="productColor4"></label>
+                                            <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
+                                            <div class="nk-tb-col"><span>SKU</span></div>
+                                            <div class="nk-tb-col"><span>Price</span></div>
+                                            <div class="nk-tb-col"><span>Stock</span></div>
+                                            <div class="nk-tb-col tb-col-md"><span>Category</span></div>
+                                            <div class="nk-tb-col tb-col-md"><em
+                                                    class="tb-asterisk icon ni ni-star-round"></em></div>
+                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                <ul class="nk-tb-actions gx-1 my-n1">
+                                                    <li class="me-n1">
+                                                        <div class="dropdown">
+                                                            <a href="#"
+                                                                class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                data-bs-toggle="dropdown">
+                                                                <em class="icon ni ni-more-h"></em>
+                                                            </a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li><a href="#"><em
+                                                                                class="icon ni ni-edit"></em><span>Edit
+                                                                                Selected</span></a></li>
+                                                                    <li><a href="#"><em
+                                                                                class="icon ni ni-trash"></em><span>Remove
+                                                                                Selected</span></a></li>
+                                                                    <li><a href="#"><em
+                                                                                class="icon ni ni-bar-c"></em><span>Update
+                                                                                Stock</span></a></li>
+                                                                    <li><a href="#"><em
+                                                                                class="icon ni ni-invest"></em><span>Update
+                                                                                Price</span></a></li>
+                                                                </ul>
+                                                            </div>
                                                         </div>
                                                     </li>
                                                 </ul>
                                             </div>
-                                            <div class="product-meta">
-                                                <h6 class="title">Size</h6>
-                                                <ul class="custom-control-group">
-                                                    <li>
-                                                        <div class="custom-control custom-radio custom-control-pro no-control">
-                                                            <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck1" checked>
-                                                            <label class="custom-control-label" for="sizeCheck1">XS</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio custom-control-pro no-control">
-                                                            <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck2">
-                                                            <label class="custom-control-label" for="sizeCheck2">SM</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio custom-control-pro no-control">
-                                                            <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck3">
-                                                            <label class="custom-control-label" for="sizeCheck3">L</label>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="custom-control custom-radio custom-control-pro no-control">
-                                                            <input type="radio" class="custom-control-input" name="sizeCheck" id="sizeCheck4">
-                                                            <label class="custom-control-label" for="sizeCheck4">XL</label>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- .product-meta -->
-                                            <div class="product-meta">
-                                                <ul class="d-flex flex-wrap ailgn-center g-2 pt-1">
-                                                    <li class="w-140px">
-                                                        <div class="form-control-wrap number-spinner-wrap">
-                                                            <button class="btn btn-icon btn-outline-light number-spinner-btn number-minus" data-number="minus"><em class="icon ni ni-minus"></em></button>
-                                                            <input type="number" class="form-control number-spinner" value="0">
-                                                            <button class="btn btn-icon btn-outline-light number-spinner-btn number-plus" data-number="plus"><em class="icon ni ni-plus"></em></button>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <button class="btn btn-primary">Add to Cart</button>
-                                                    </li>
-                                                    <li class="ms-n1">
-                                                        <button class="btn btn-icon btn-trigger text-primary"><em class="icon ni ni-heart"></em></button>
-                                                    </li>
-                                                </ul>
-                                            </div><!-- .product-meta -->
-                                        </div><!-- .product-info -->
-                                    </div><!-- .col -->
-                                </div><!-- .row -->
-                                <hr class="hr border-light">
-                                <div class="row g-gs flex-lg-row-reverse pt-5">
-                                    <div class="col-lg-5">
-                                        <div class="video">
-                                            <img class="video-poster w-100" src="./images/product/video-a.jpg" alt="">
-                                            <a class="video-play popup-video" href="https://www.youtube.com/watch?v=SSo_EIwHSd4">
-                                                <em class="icon ni ni-play"></em>
-                                                <span>Watch Video</span>
-                                            </a>
                                         </div>
-                                    </div><!-- .col -->
-                                    <div class="col-lg-7">
-                                        <div class="product-details entry me-xxl-3">
-                                            <h3>Product details of Comfy cushions</h3>
-                                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Neque porro quisquam est, qui dolorem consectetur, adipisci velit.Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-                                            <ul class="list list-sm list-checked">
-                                                <li>Meets and/or exceeds performance standards.</li>
-                                                <li>Liumbar support.</li>
-                                                <li>Made of bonded teather and poiyurethane.</li>
-                                                <li>Metal frame.</li>
-                                                <li>Anatomically shaped cork-latex</li>
-                                                <li>As attractively priced as you look attractive in one</li>
-                                            </ul>
-                                            <p>Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
-                                            <h3>The best seats in the house</h3>
-                                            <p>I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system, and expound the actual teachings. Unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae.</p>
+
+                                        <!-- Loop through products -->
+                                        @foreach ($products as $product)
+                                            <div class="nk-tb-item">
+                                                <div class="nk-tb-col nk-tb-col-check">
+                                                    <div
+                                                        class="custom-control custom-control-sm custom-checkbox notext">
+                                                        <input type="checkbox" class="custom-control-input"
+                                                            id="pid{{ $product->id }}">
+                                                        <label class="custom-control-label"
+                                                            for="pid{{ $product->id }}"></label>
+                                                    </div>
+                                                </div>
+
+
+                                                @php
+                                                $imageId = sprintf('%02d', $product->id);
+                                                $imagePath = asset("images/product-{$imageId}.jpg");
+                                                
+                                            @endphp
+
+
+                                                <div class="nk-tb-col tb-col-sm">
+                                                    <span class="tb-product">
+                                                        <img src="{{ $imagePath }}" alt=""
+                                                            class="thumb">
+                                                        <span class="title">{{ $product->name }}</span>
+                                                    </span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-sub">{{ $product->sku }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span
+                                                        class="tb-lead">${{ number_format($product->price, 2) }}</span>
+                                                </div>
+                                                <div class="nk-tb-col">
+                                                    <span class="tb-sub">{{ $product->stock }}</span>
+                                                </div>
+                                                <div class="nk-tb-col tb-col-md">
+                                                    <span class="tb-sub">{{ $product->category->name }}</span>
+                                                </div>
+                                                <div class="nk-tb-col tb-col-md">
+                                                    <div class="asterisk tb-asterisk">
+                                                        <a href="#"><em
+                                                                class="asterisk-off icon ni ni-star"></em><em
+                                                                class="asterisk-on icon ni ni-star-fill"></em></a>
+                                                    </div>
+                                                </div>
+                                                <div class="nk-tb-col nk-tb-col-tools">
+                                                    <ul class="nk-tb-actions gx-1 my-n1">
+                                                        <li class="me-n1">
+                                                            <div class="dropdown">
+                                                                <a href="#"
+                                                                    class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                    data-bs-toggle="dropdown">
+                                                                    <em class="icon ni ni-more-h"></em>
+                                                                </a>
+                                                                <div class="dropdown-menu dropdown-menu-end">
+                                                                    <ul class="link-list-opt no-bdr">
+                                                                        <li><a href="#"><em
+                                                                                    class="icon ni ni-edit"></em><span>Edit
+                                                                                    Product</span></a></li>
+                                                                        <li><a
+                                                                                href="{{ route('admin.products.view', $product->id) }}"><em
+                                                                                    class="icon ni ni-eye"></em><span>View
+                                                                                    Product</span></a></li>
+                                                                        <li><a href="#"><em
+                                                                                    class="icon ni ni-activity-round"></em><span>Product
+                                                                                    Orders</span></a></li>
+                                                                        <li><a href="#"><em
+                                                                                    class="icon ni ni-trash"></em><span>Remove
+                                                                                    Product</span></a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div><!-- .nk-tb-item -->
+                                        @endforeach
+
+                                    </div><!-- .nk-tb-list -->
+                                </div>
+                                <div class="card-inner">
+                                    <div class="nk-block-between-md g-3">
+                                        <div class="g">
+                                            <ul class="pagination justify-content-center justify-content-md-start">
+                                                <li class="page-item"><a class="page-link" href="#"><em
+                                                            class="icon ni ni-chevrons-left"></em></a></li>
+                                                <li class="page-item"><a class="page-link" href="#"><em
+                                                            class="icon ni ni-chevrons-right"></em></a></li>
+                                            </ul><!-- .pagination -->
                                         </div>
-                                    </div><!-- .col -->
-                                </div><!-- .row -->
+                                        <div class="g">
+                                            <div
+                                                class="pagination-goto d-flex justify-content-center justify-content-md-start gx-3">
+                                                <div>Page</div>
+                                                <div>
+                                                    <select class="form-select js-select2" data-search="on"
+                                                        data-dropdown="xs center">
+                                                        <option value="page-1">1</option>
+                                                        <option value="page-2">2</option>
+                                                        <option value="page-3">3</option>
+                                                        <!-- Add other pages as needed -->
+                                                    </select>
+                                                </div>
+                                                <div>OF 102</div>
+                                            </div>
+                                        </div><!-- .pagination-goto -->
+                                    </div><!-- .nk-block-between -->
+                                </div>
                             </div>
                         </div>
                     </div><!-- .nk-block -->
-                    <div class="nk-block nk-block-lg">
+
+
+                    <div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct"
+                        data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
                         <div class="nk-block-head">
-                            <div class="nk-block-between g-3">
-                                <div class="nk-block-head-content">
-                                    <h3 class="nk-block-title page-title">Related Products</h3>
+                            <div class="nk-block-head-content">
+                                <h5 class="nk-block-title">New Product</h5>
+                                <div class="nk-block-des">
+                                    <p>Add information and add new product.</p>
                                 </div>
                             </div>
                         </div><!-- .nk-block-head -->
-                        <div class="slider-init row" data-slick='{"slidesToShow": 4, "centerMode": false, "slidesToScroll": 1, "infinite":false, "responsive":[ {"breakpoint": 1540,"settings":{"slidesToShow": 3}},{"breakpoint": 992,"settings":{"slidesToShow": 2}}, {"breakpoint": 576,"settings":{"slidesToShow": 1}} ]}'>
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-a.jpg" alt="">
-                                        </a>
-                                        <ul class="product-badges">
-                                            <li><span class="badge bg-success">New</span></li>
-                                        </ul>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Smart Watch</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">Classy Modern Smart watch</a></h5>
-                                        <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$350</small> $324</div>
+
+                        <div class="nk-block">
+                            <div class="row g-3">
+                                <!-- Product Title -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="product-title">Product Title</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="product-title"
+                                                wire:model="title">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-b.jpg" alt="">
-                                        </a>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Vintage Phone</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">White Vintage telephone</a></h5>
-                                        <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$209</small> $119</div>
+
+                                <!-- Regular Price -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="regular-price">Regular Price</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="regular-price"
+                                                wire:model="price">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-c.jpg" alt="">
-                                        </a>
-                                        <ul class="product-badges">
-                                            <li><span class="badge bg-danger">Hot</span></li>
-                                        </ul>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Headphone</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">Black Wireless Headphones</a></h5>
-                                        <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$129</small> $89</div>
+
+                                <!-- Stock -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="stock">Stock</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="stock"
+                                                wire:model="stock">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-d.jpg" alt="">
-                                        </a>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Smart Watch</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">Modular Smart Watch</a></h5>
-                                        <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$169</small> $120</div>
+
+                                <!-- Category -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="category">Category</label>
+                                        <div class="form-control-wrap">
+                                            <select class="form-control" id="category" wire:model="category_id">
+                                                <option value="">Select Category</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-e.jpg" alt="">
-                                        </a>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Headphones</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">White Wireless Headphones</a></h5>
-                                        <div class="product-price text-primary h5"><small class="text-muted del fs-13px">$109</small> $78</div>
+
+                                <!-- Color -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="color">Color</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="color"
+                                                wire:model="color">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                            <div class="col">
-                                <div class="card card-bordered product-card">
-                                    <div class="product-thumb">
-                                        <a href="html/product-details.html">
-                                            <img class="card-img-top" src="./images/product/lg-f.jpg" alt="">
-                                        </a>
-                                        <ul class="product-actions">
-                                            <li><a href="#"><em class="icon ni ni-cart"></em></a></li>
-                                            <li><a href="#"><em class="icon ni ni-heart"></em></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="card-inner text-center">
-                                        <ul class="product-tags">
-                                            <li><a href="#">Phone</a></li>
-                                        </ul>
-                                        <h5 class="product-title"><a href="html/product-details.html">Black Android Phone</a></h5>
-                                        <div class="product-price text-primary h5">$329</div>
+
+                                <!-- Material -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="material">Material</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="material"
+                                                wire:model="material">
+                                        </div>
                                     </div>
                                 </div>
-                            </div><!-- .col -->
-                        </div>
+
+                                <!-- Sleeve Type -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="sleeve_type">Sleeve Type</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="sleeve_type"
+                                                wire:model="sleeve_type">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Collar Type -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="collar_type">Collar Type</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="collar_type"
+                                                wire:model="collar_type">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Fit -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="fit">Fit</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="fit"
+                                                wire:model="fit">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Size Available -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="size_available">Size Available</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="size_available"
+                                                wire:model="size_available">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Care Instructions -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="care_instructions">Care Instructions</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="care_instructions"
+                                                wire:model="care_instructions">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Tags -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="tags">Tags</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="tags"
+                                                wire:model="tags">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Image URL -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="image_url">Image URL</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" class="form-control" id="image_url"
+                                                wire:model="image_url">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Rating -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="rating">Rating</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="rating"
+                                                wire:model="rating" min="0" max="5" step="0.1">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sales Count -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="sales_count">Sales Count</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="sales_count"
+                                                wire:model="sales_count">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Discount -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="discount">Discount</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="discount"
+                                                wire:model="discount">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Discount End Date -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="form-label" for="discount_end_date">Discount End Date</label>
+                                        <div class="form-control-wrap">
+                                            <input type="date" class="form-control" id="discount_end_date"
+                                                wire:model="discount_end_date">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Long Description -->
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <label class="form-label" for="long_description">Long Description</label>
+                                        <div class="form-control-wrap">
+                                            <textarea class="form-control" id="long_description" wire:model="long_description"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Submit Button -->
+                                <div class="col-12">
+                                    <button class="btn btn-primary" wire:click="save"><em
+                                            class="icon ni ni-plus"></em><span>Add New</span></button>
+                                </div>
+                            </div>
+                        </div><!-- .nk-block -->
                     </div>
+
+
+
                 </div>
             </div>
         </div>
     </div>
-
     @include('livewire.admin.partials.footer')
+
 </div>
