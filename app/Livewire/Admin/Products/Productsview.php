@@ -14,13 +14,29 @@ class Productsview extends Component
 
     #[Layout('layouts.app')]
 
-    public $title, $slug, $description, $price, $stock, $currency, $is_active, $category_id, $productId;
-    public $isEdit = false;
-    public $detail_id;
-    public $isNew, $inSold, $isOnSale, $color, $material, $sleeve_type, $collar_type, $fit, $size_available;
-    public $care_instructions, $tags, $image_url, $rating, $sales_count, $discount, $discount_end_date, $long_description;
+    public $title = 'Test Product';
+    public $price = 99.99;
+    public $stock = 100;
+    public $category_id = 1; // Assuming category with ID 1 exists
+    public $color = 'Red';
+    public $material = 'Cotton';
+    public $sleeve_type = 'Short Sleeve';
+    public $collar_type = 'V-neck';
+    public $fit = 'Regular';
+    public $size_available = 'M, L, XL';
+    public $care_instructions = 'Machine Washable';
+    public $tags = 'Summer, Casual';
+    public $image_url = 'https://example.com/product-image.jpg';
+    public $rating = 4.5;
+    public $sales_count = 200;
+    public $discount = 10;
+    public $discount_end_date = '2024-12-31';
+    public $long_description = 'This is a sample long description for the test product.';
+    public  $isEdit =false;
+    public $currency = 'USD';
+    public $is_active = 1;
+    public $categories = []; // Add categories here if necessary.
 
-    public $categories;
 
     public function mount()
     {
@@ -44,7 +60,9 @@ class Productsview extends Component
     // Sauvegarder un produit et ses détails (ajout ou modification)
     public function save()
     {
-        $this->validate([
+
+       
+        /* $this->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|unique:products,slug,' . $this->productId,
             'description' => 'required|string',
@@ -66,30 +84,32 @@ class Productsview extends Component
             'discount' => 'required|numeric|min:0',
             'discount_end_date' => 'required|date',
             'long_description' => 'nullable|string',
-        ]);
+        ]);*/
 
         // Créer ou mettre à jour le produit
         if ($this->isEdit) {
             $product = Product::find($this->productId);
             $product->update([
                 'title' => $this->title,
-                'slug' => $this->slug,
-                'description' => $this->description,
+                'slug' => $this->title,
+                'description' => $this->long_description,
                 'price' => $this->price,
                 'stock' => $this->stock,
                 'currency' => $this->currency,
-                'is_active' => $this->is_active,
+                'is_active' => 1,
                 'category_id' => $this->category_id,
             ]);
         } else {
+
+            
             $product = Product::create([
                 'title' => $this->title,
-                'slug' => $this->slug,
-                'description' => $this->description,
+                'slug' => $this->title,
+                'description' => $this->long_description,
                 'price' => $this->price,
                 'stock' => $this->stock,
                 'currency' => $this->currency,
-                'is_active' => $this->is_active,
+                'is_active' => 1,
                 'category_id' => $this->category_id,
             ]);
         }
@@ -98,9 +118,9 @@ class Productsview extends Component
         $product->details()->updateOrCreate(
             ['product_id' => $product->id],
             [
-                'isNew' => $this->isNew,
-                'inSold' => $this->inSold,
-                'isOnSale' => $this->isOnSale,
+                'isNew' => 1,
+                'inSold' => 1,
+                'isOnSale' => 1,
                 'color' => $this->color,
                 'material' => $this->material,
                 'sleeve_type' => $this->sleeve_type,

@@ -15,6 +15,7 @@ use App\Livewire\Admin\Invoices\Invoiceview;
 use App\Livewire\Admin\Products\ProductsList;
 use App\Livewire\Admin\Products\Productsview;
 use App\Livewire\Guest\Error\Page\Denied;
+use App\Livewire\Admin\Category\Category;
 
 // Public routes
 Route::get('/', Index::class)->name('home.index');
@@ -29,10 +30,14 @@ Route::get('/access_denied', Denied::class)->name('access.denied');
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
-    // ProductsRoutes
-   
-    Route::get('products_view', Productsview::class)->name('admin.products.view');
 
+   
+   
+    //category routes
+    Route::get('category_view', Category::class)->name('admin.category.view');
+
+
+    Route::get('products_view', Productsview::class)->name('admin.products.view');
     // InvoicesRoutes
     Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');
     Route::get('invoicesview', Invoiceview::class)->name('admin.invoices.view');

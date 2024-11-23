@@ -91,12 +91,12 @@
                                 ]);
                             @endphp
 
-                            <div class="block2-pic hov-img0 {{ $product->details->isNew ? 'label-new' : '' }}"
-                                data-label="{{ $product->details->isNew ? 'New' : '' }}">
+                            <div class="block2-pic hov-img0 {{ $product->details && $product->details->isNew ? 'label-new' : '' }}"
+                                data-label="{{ $product->details && $product->details->isNew ? 'New' : '' }}">
                                 <a href="{{ $productUrl }}">
                                     <img src="{{ $imagePath }}" alt="{{ $product['title'] }}" loading="lazy">
                                 </a>
-                                @if ($product->details->isOnSale)
+                                @if ($product->details && ($product->details->isOnSale ?? false))
                                     <span class="sale-label">On Sale</span>
                                 @endif
                             </div>

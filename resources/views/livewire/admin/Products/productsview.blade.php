@@ -8,11 +8,9 @@
                     @include('livewire.admin.products.partials.header')
                     @include('livewire.admin.products.partials.list')
                     @include('livewire.admin.products.partials.create')
-
                 </div>
             </div>
         </div>
     </div>
     @include('livewire.admin.partials.footer')
-
 </div>
