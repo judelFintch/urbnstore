@@ -63,7 +63,7 @@
                             <div class="nk-tb-col tb-col-sm">
                                 <span class="tb-product">
                                     <img src="{{ $imagePath }}" alt="" class="thumb">
-                                    <span class="title">{{ $product->name }}</span>
+                                    <span class="title">{{ $product->title }}</span>
                                 </span>
                             </div>
                             <div class="nk-tb-col">

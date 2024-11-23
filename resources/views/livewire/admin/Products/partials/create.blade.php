@@ -49,12 +49,17 @@
                     <div class="form-control-wrap">
                         <select class="form-control" id="category" wire:model="category_id">
                             <option value="">Select Category</option>
-                            <option value="1" selected>T-Shirts</option>
-                            <option value="2">Pants</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}"
+                                    {{ $category->id == $category_id ? 'selected' : '' }}>
+                                    {{ $category->name }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
             </div>
+
 
             <!-- Color -->
             <div class="col-md-6">
