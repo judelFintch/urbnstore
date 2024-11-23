@@ -1,5 +1,5 @@
-<div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct"
-    data-toggle-screen="any" data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
+<div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct" data-toggle-screen="any"
+    data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
     <div class="nk-block-head">
         <div class="nk-block-head-content">
             <h5 class="nk-block-title">New Product</h5>
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label class="form-label" for="product-title">Product Title</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="product-title" wire:model="title">
+                        <input type="text" class="form-control" id="product-title" wire:mode="title">
                     </div>
                 </div>
             </div>
@@ -121,7 +121,8 @@
                 <div class="form-group">
                     <label class="form-label" for="care_instructions">Care Instructions</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="care_instructions" wire:model="care_instructions">
+                        <input type="text" class="form-control" id="care_instructions"
+                            wire:model="care_instructions">
                     </div>
                 </div>
             </div>
@@ -151,7 +152,8 @@
                 <div class="form-group">
                     <label class="form-label" for="rating">Rating</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="rating" wire:model="rating" min="0" max="5" step="0.1">
+                        <input type="number" class="form-control" id="rating" wire:model="rating"
+                            min="0" max="5" step="0.1">
                     </div>
                 </div>
             </div>
@@ -181,7 +183,8 @@
                 <div class="form-group">
                     <label class="form-label" for="discount_end_date">Discount End Date</label>
                     <div class="form-control-wrap">
-                        <input type="date" class="form-control" id="discount_end_date" wire:model="discount_end_date">
+                        <input type="date" class="form-control" id="discount_end_date"
+                            wire:model="discount_end_date">
                     </div>
                 </div>
             </div>
@@ -198,7 +201,8 @@
 
             <!-- Submit Button -->
             <div class="col-12">
-                <button class="btn btn-primary" wire:click="save"><em class="icon ni ni-plus"></em><span>Add New</span></button>
+                <button class="btn btn-primary" wire:click="save"><em class="icon ni ni-plus"></em><span>Add
+                        New</span></button>
             </div>
         </div>
     </div><!-- .nk-block -->
