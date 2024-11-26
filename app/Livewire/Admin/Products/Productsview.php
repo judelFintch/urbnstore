@@ -50,8 +50,10 @@ class Productsview extends Component
 
     public function render()
     {
+       
         // Récupérer les produits avec leurs détails
         $products = Product::with('details', 'category')->paginate(10);
+        dd( $products );
         return view('livewire.admin.products.productsview', compact('products'));
     }
 
