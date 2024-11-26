@@ -3,6 +3,7 @@
         <div class="nk-app-root">
             <div class="nk-sidebar" data-content="sidebarMenu">
                 <div class="nk-sidebar-main is-light">
+
                     <div class="nk-sidebar-inner" data-simplebar>
                         <div class="nk-menu-content menu-active" data-content="navDashboards">
                             <h5 class="title">Dashboards</h5>
@@ -25,6 +26,30 @@
                                         <span class="nk-menu-text">Produits</span>
                                     </a>
                                 </li><!-- .nk-menu-item -->
+
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('admin.stock.view') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
+                                        <span class="nk-menu-text">Stock</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('admin.shipping.view') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
+                                        <span class="nk-menu-text">Shipping</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+
+                                <li class="nk-menu-item">
+                                    <a href="{{ route('admin.promotions.view') }}" class="nk-menu-link">
+                                        <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
+                                        <span class="nk-menu-text">Prommotion</span>
+                                    </a>
+                                </li><!-- .nk-menu-item -->
+
+
+
                                 <li class="nk-menu-item">
                                     <a href="{{ route('admin.invoices.list') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
@@ -66,5 +91,7 @@
                             </ul><!-- .nk-menu -->
                         </div>
                     </div>
+
+                    
                 </div>
             </div>

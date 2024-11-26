@@ -10,6 +10,7 @@
                                 <input type="checkbox" class="custom-control-input" id="pid">
                                 <label class="custom-control-label" for="pid"></label>
                             </div>
+
                         </div>
                         <div class="nk-tb-col tb-col-sm"><span>Name</span></div>
                         <div class="nk-tb-col"><span>SKU</span></div>
@@ -95,7 +96,7 @@
                                                 <ul class="link-list-opt no-bdr">
                                                     <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
                                                                 Product</span></a></li>
-                                                    <li><a href="{{ route('admin.products.view', $product->id) }}"><em
+                                                    <li><a href="{{ route('admin.products.details', $product->id) }}"><em
                                                                 class="icon ni ni-eye"></em><span>View
                                                                 Product</span></a></li>
                                                     <li><a href="#"><em

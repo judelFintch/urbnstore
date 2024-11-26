@@ -16,6 +16,11 @@ use App\Livewire\Admin\Products\ProductsList;
 use App\Livewire\Admin\Adminproduct\Adminproduct;
 use App\Livewire\Guest\Error\Page\Denied;
 use App\Livewire\Admin\Category\Category;
+use App\Livewire\Admin\Stock\Stock;
+use App\Livewire\Admin\Promotion\Promotion;
+use App\Livewire\Admin\Adminproduct\Adminproductdetails;
+use App\Livewire\Admin\Shipping\Shipping;
+
 
 // Public routes
 Route::get('/', Index::class)->name('home.index');
@@ -31,13 +36,18 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
 
-   
+   Route::get('/stock', Stock::class)->name('admin.stock.view');
+
+   Route::get('/Promotion', Promotion::class)->name('admin.promotions.view');
+
+   Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
    
     //category routes
     Route::get('category_view', Category::class)->name('admin.category.view');
 
 
     Route::get('products_view',Adminproduct::class)->name('admin.products.view');
+    Route::get('products_details/{id}', Adminproductdetails::class)->name('admin.products.details');
     // InvoicesRoutes
     Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');
     Route::get('invoicesview', Invoiceview::class)->name('admin.invoices.view');
