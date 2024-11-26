@@ -5,9 +5,9 @@
         <div class="container-fluid">
             <div class="nk-content-inner">
                 <div class="nk-content-body">
-                    @include('livewire.admin.products.partials.header')
-                    @include('livewire.admin.products.partials.list')
-                    @include('livewire.admin.products.partials.create')
+                    @include('livewire.admin.adminproduct.partials.header')
+                    @include('livewire.admin.adminproduct.partials.list')
+                    @include('livewire.admin.adminproduct.partials.create')
                 </div>
             </div>
         </div>
