@@ -13,7 +13,7 @@ use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Invoices\Invoicelist;
 use App\Livewire\Admin\Invoices\Invoiceview;
 use App\Livewire\Admin\Products\ProductsList;
-use App\Livewire\Admin\Products\Productsview;
+use App\Livewire\Admin\Adminproduct\Adminproduct;
 use App\Livewire\Guest\Error\Page\Denied;
 use App\Livewire\Admin\Category\Category;
 
@@ -37,7 +37,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     Route::get('category_view', Category::class)->name('admin.category.view');
 
 
-    Route::get('products_view', Productsview::class)->name('admin.products.view');
+    Route::get('products_view',Adminproduct::class)->name('admin.products.view');
     // InvoicesRoutes
     Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');
     Route::get('invoicesview', Invoiceview::class)->name('admin.invoices.view');
