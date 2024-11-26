@@ -54,7 +54,7 @@ class Productsview extends Component
         // Récupérer les produits avec leurs détails
         $products = Product::with('details', 'category')->paginate(10);
         
-        return view('livewire.admin.products.test', compact('products'));
+        return view('livewire.admin.adminproduct.adminproduct', compact('products'));
     }
 
     // Afficher le formulaire pour ajouter un produit
