@@ -253,8 +253,6 @@
                                              <li>{{ $product->details->fit ?? 'Coupe droite' }}</li>
                                              <li> {{ $product->details->size_available ?? 'S, M, L, XL' }}</li>
                                          </ul>
-                                        
-                                        
                                      </div>
                                  </div><!-- .col -->
                              </div><!-- .row -->
