@@ -53,19 +53,26 @@
                                 </div>
                             </div>
 
-
                             @php
-                                $imageId = sprintf('%02d', $product->id);
-                                $imagePath = asset("images/product-{$imageId}.jpg");
+                                $images = json_decode($product->details->image_url, true); // Decode JSON into an array
 
                             @endphp
 
                             <div class="nk-tb-col tb-col-sm">
                                 <span class="tb-product">
-                                    <img src="{{ $imagePath }}" alt="" class="thumb">
+                                    @if (count($images) > 0)
+                                        <!-- Affiche la première image si elle existe -->
+                                        <img src="{{ url($images[0]) }}" alt="{{ $product->title }}" class="thumb">
+                                    @else
+                                        <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                                        <img src="{{ asset('path/to/default-image.jpg') }}" alt="No image"
+                                            class="thumb">
+                                    @endif
                                     <span class="title">{{ $product->title }}</span>
                                 </span>
                             </div>
+
+
                             <div class="nk-tb-col">
                                 <span class="tb-sub">{{ $product->sku }}</span>
                             </div>

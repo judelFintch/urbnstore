@@ -98,25 +98,125 @@
                 </div>
             </div>
 
-            <!-- File Upload -->
-            <div class="col-12">
+            <!-- Sleeve Type -->
+            <div class="col-md-6">
                 <div class="form-group">
-                    <label class="form-label" for="images">Product Images</label>
+                    <label class="form-label" for="sleeve_type">Sleeve Type</label>
                     <div class="form-control-wrap">
-                        <input type="file" class="form-control" id="images" wire:model="images" multiple>
+                        <input type="text" class="form-control" id="sleeve_type" wire:model.defer="sleeve_type">
                         <span class="text-danger">
-                            @error('images.*')
+                            @error('sleeve_type')
                                 {{ $message }}
                             @enderror
                         </span>
-                        <div class="mt-2">
-                            @if ($images)
-                                @foreach ($images as $image)
-                                    <img src="{{ $image->temporaryUrl() }}" alt="Preview" class="img-thumbnail"
-                                        width="100">
-                                @endforeach
-                            @endif
-                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Collar Type -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="collar_type">Collar Type</label>
+                    <div class="form-control-wrap">
+                        <input type="text" class="form-control" id="collar_type" wire:model.defer="collar_type">
+                        <span class="text-danger">
+                            @error('collar_type')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fit -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="fit">Fit</label>
+                    <div class="form-control-wrap">
+                        <input type="text" class="form-control" id="fit" wire:model.defer="fit">
+                        <span class="text-danger">
+                            @error('fit')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Size Available -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="size_available">Size Available</label>
+                    <div class="form-control-wrap">
+                        <input type="text" class="form-control" id="size_available" wire:model.defer="size_available">
+                        <span class="text-danger">
+                            @error('size_available')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Care Instructions -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="care_instructions">Care Instructions</label>
+                    <div class="form-control-wrap">
+                        <input type="text" class="form-control" id="care_instructions" wire:model.defer="care_instructions">
+                        <span class="text-danger">
+                            @error('care_instructions')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tags -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="tags">Tags</label>
+                    <div class="form-control-wrap">
+                        <input type="text" class="form-control" id="tags" wire:model.defer="tags">
+                        <span class="text-danger">
+                            @error('tags')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image URL -->
+          
+
+            <!-- Rating -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="rating">Rating</label>
+                    <div class="form-control-wrap">
+                        <input type="number" class="form-control" id="rating" step="0.1" wire:model.defer="rating">
+                        <span class="text-danger">
+                            @error('rating')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sales Count -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="form-label" for="sales_count">Sales Count</label>
+                    <div class="form-control-wrap">
+                        <input type="number" class="form-control" id="sales_count" wire:model.defer="sales_count">
+                        <span class="text-danger">
+                            @error('sales_count')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -126,7 +226,7 @@
                 <div class="form-group">
                     <label class="form-label" for="discount">Discount</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="discount" wire:model.defer="discount">
+                        <input type="number" class="form-control" id="discount" step="0.01" wire:model.defer="discount">
                         <span class="text-danger">
                             @error('discount')
                                 {{ $message }}
@@ -136,6 +236,7 @@
                 </div>
             </div>
 
+            <!-- Discount End Date -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="discount_end_date">Discount End Date</label>
@@ -165,6 +266,29 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Product Images (Re-integrated) -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label" for="images">Product Images</label>
+                    <div class="form-control-wrap">
+                        <input type="file" class="form-control" id="images" wire:model="uploadedFiles" multiple>
+                        <span class="text-danger">
+                            @error('uploadedFiles.*')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                        <div class="mt-2">
+                            @if ($uploadedFiles)
+                                @foreach ($uploadedFiles as $file)
+                                    <img src="{{ $file->temporaryUrl() }}" alt="Preview" class="img-thumbnail" width="100">
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
             <!-- Submit Button -->
             <div class="col-12">

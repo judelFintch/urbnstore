@@ -26,45 +26,41 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3"
-                                    data-thumb="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
+                                @php
+                                    // Décoder les images du produit depuis le champ 'image_url' dans les détails du produit
+                                    $images = json_decode($product->details->image_url, true); // Assurez-vous que ce champ est bien un tableau d'URLs
+                                @endphp
+                            
+                                @if ($images && count($images) > 0)
+                                    @foreach ($images as $index => $image)
+                                        <div class="item-slick3" data-thumb="{{ url($image) }}">
+                                            <div class="wrap-pic-w pos-relative">
+                                                <img src="{{ url($image) }}" alt="IMG-PRODUCT">
+                            
+                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                                   href="{{ url($image) }}">
+                                                    <i class="fa fa-expand"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                                    <div class="item-slick3">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="{{ asset('path/to/default-image.jpg') }}" alt="No Image Available">
+                            
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                               href="{{ asset('path/to/default-image.jpg') }}">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
-
-                                <div class="item-slick3"
-                                    data-thumb="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ asset('images/product-detail-02.jpg') }}">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="item-slick3"
-                                    data-thumb="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ asset('images/product-detail-0' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="images/product-detail-03.jpg">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                @endif
                             </div>
+                            
+
+
                         </div>
                     </div>
                 </div>
