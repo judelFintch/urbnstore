@@ -1,5 +1,5 @@
 <div class="nk-block">
-    <form wire:submit.prevent="save">
+    <form wire:submit.prevent="save" enctype="multipart/form-data">
         <div class="row g-3">
             <!-- Product Title -->
             <div class="col-12">
@@ -179,13 +179,8 @@
 </div>
 <script>
     document.addEventListener('livewire:load', () => {
-        Livewire.on('showNotification', message => {
-            Swal.fire({
-                title: 'Success!',
-                text: message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
+        window.addEventListener('notification', event => {
+            alert(event.detail.message); // Replace with your notification logic
         });
     });
 </script>

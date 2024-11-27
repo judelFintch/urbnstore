@@ -1,5 +1,4 @@
 <div>
-
     <body class="nk-body ui-rounder npc-default has-sidebar ">
         <div class="nk-app-root">
             <div class="nk-sidebar" data-content="sidebarMenu">
@@ -89,7 +88,7 @@
                                 </li><!-- .nk-menu-item -->
 
                                 <li class="nk-menu-item">
-                                    <a href="{{route('home.index')}}" class="nk-menu-link">
+                                    <a href="{{ route('home.index') }}" class="nk-menu-link">
                                         <span class="nk-menu-icon"><em class="icon ni ni-user-fill"></em></span>
                                         <span class="nk-menu-text">URBAN</span>
                                     </a>

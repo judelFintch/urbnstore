@@ -41,8 +41,8 @@ class Adminproduct extends Component
     public $is_active = 1;
     public $categories = [];
     public $productId;
-    public $images = []; // To store multiple images
-    public $isList = false;
+    public $images = [];
+    public $isList = true;
     public $isCreate = false;
 
     protected $rules = [
@@ -81,23 +81,39 @@ class Adminproduct extends Component
     {
         $this->resetFields();
         $this->isEdit = false;
-    }
-    public function CreateOrListShow(){
-        $this->isCreate = true;
         $this->isList = false;
+        $this->isCreate = true;
     }
 
-    public function uploadImages($files)
+    public function showList()
     {
-        foreach ($files as $file) {
-            $path = $file->store('products', 'public');
-            $this->images[] = Storage::disk('public')->url($path);
-        }
+        $this->isList = true;
+        $this->isCreate = false;
     }
+
+    public function uploadImages($files) 
+{
+    try {
+        foreach ($files as $file) {
+            // Ensure the file is an instance of UploadedFile
+            if ($file instanceof \Illuminate\Http\UploadedFile) {
+                $path = $file->store('products', 'public');
+                $this->images[] = asset('storage/' . $path); // Utilise asset() pour une URL correcte
+            } else {
+                throw new \Exception("The provided file is not valid.");
+            }
+        }
+    } catch (\Exception $e) {
+        session()->flash('error', 'Error uploading images: ' . $e->getMessage());
+    }
+}
 
     public function save()
     {
         //$this->validate();
+        if (!empty($this->images)) {
+            $this->uploadImages($this->images);
+        }
 
         $data = [
             'title' => $this->title,
@@ -137,9 +153,13 @@ class Adminproduct extends Component
             ]
         );
 
-        $this->emit('showNotification', 'Product created successfully!');
+        /*$this->dispatchBrowserEvent('notification', [
+            'type' => 'success',
+            'message' => $this->isEdit ? 'Product updated successfully!' : 'Product created successfully!'
+        ]);*/
 
         //$this->resetFields();
+        $this->showList();
     }
 
     private function resetFields()
