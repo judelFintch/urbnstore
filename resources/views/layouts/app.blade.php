@@ -9,12 +9,29 @@
     <meta name="description" content="Urban Store - La meilleure boutique pour des produits urbains">
     <link rel="stylesheet" href="{{ asset('admin/assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="{{ asset('stylesheet" href="admin/assets/css/theme.css?ver=3.1.2') }}">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body class="animsition">
+
     <main>
         {{ $slot }}
     </main>
+
+    <script>
+        document.addEventListener('livewire:load', () => {
+            Livewire.on('showNotification', message => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: message,
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                });
+            });
+        });
+    </script>
+
 
     <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>

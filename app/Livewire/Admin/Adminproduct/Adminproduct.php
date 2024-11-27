@@ -42,6 +42,8 @@ class Adminproduct extends Component
     public $categories = [];
     public $productId;
     public $images = []; // To store multiple images
+    public $isList = false;
+    public $isCreate = false;
 
     protected $rules = [
         'title' => 'required|string|max:255',
@@ -66,6 +68,7 @@ class Adminproduct extends Component
     public function mount()
     {
         $this->categories = CategoryArticles::all();
+        $this->isList = true;
     }
 
     public function render()
@@ -78,6 +81,10 @@ class Adminproduct extends Component
     {
         $this->resetFields();
         $this->isEdit = false;
+    }
+    public function CreateOrListShow(){
+        $this->isCreate = true;
+        $this->isList = false;
     }
 
     public function uploadImages($files)
@@ -130,7 +137,8 @@ class Adminproduct extends Component
             ]
         );
 
-        session()->flash('message', $this->isEdit ? 'Product updated successfully!' : 'Product created successfully!');
+        $this->emit('showNotification', 'Product created successfully!');
+
         //$this->resetFields();
     }
 

@@ -33,12 +33,20 @@
                             </div>
                         </li>
                         <li class="nk-block-tools-opt">
-                            <a href="#" data-target="addProduct"
-                                class="toggle btn btn-icon btn-primary d-md-none"><em class="icon ni ni-plus"></em></a>
-                            <a href="#" data-target="addProduct"
-                                class="toggle btn btn-primary d-none d-md-inline-flex"><em
-                                    class="icon ni ni-plus"></em><span>Add Product</span></a>
+                            <!-- Pour mobile : Bouton d'ajout -->
+                            <a href="#" wire:click="CreateOrListShow()" 
+                               class="toggle btn btn-icon btn-primary d-md-none">
+                                <em class="icon ni ni-plus"></em>
+                            </a>
+                        
+                            <!-- Pour les écrans plus larges : Bouton d'ajout -->
+                            <a href="#" wire:click="CreateOrListShow()" 
+                               class="toggle btn btn-primary d-none d-md-inline-flex">
+                                <em class="icon ni ni-plus"></em>
+                                <span>Add Product</span>
+                            </a>
                         </li>
+                        
                     </ul>
                 </div>
             </div>
