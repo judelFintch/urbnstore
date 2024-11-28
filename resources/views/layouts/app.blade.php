@@ -17,7 +17,9 @@
         @if (Auth::check())
             @include('livewire.admin.partials.sidebar')
         @endif
-        {{ $slot }}
+       
+                <!-- main header @s -->
+                {{ $slot }}
 
     </div>
     <!-- app-root @e -->
@@ -37,4 +39,5 @@
     <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
 </body>
+
 </html>
