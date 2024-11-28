@@ -22,7 +22,8 @@ class Adminproduct extends Component
     public $discount_end_date, $long_description, $description, $currency = 'USD', $is_active = 1, $productId;
     public $isEdit = false, $isList = true, $isCreate = false, $categories = [], $images = [];
     public $uploadedFiles = [];
-   
+    public $showSuccessModal = false;
+
 
     protected $rules = [
         'title' => 'required|string|max:255',
@@ -58,7 +59,7 @@ class Adminproduct extends Component
     public function render()
     {
         $products = Product::with('details', 'category')->paginate(10);
-    
+
         return view('livewire.admin.adminproduct.adminproduct', compact('products'));
     }
 
@@ -79,7 +80,7 @@ class Adminproduct extends Component
     public function uploadImages($files)
     {
 
-    
+
         foreach ($files as $file) {
             if ($file instanceof \Illuminate\Http\UploadedFile) {
                 $path = $file->store('products', 'public');
@@ -94,12 +95,12 @@ class Adminproduct extends Component
         if (!empty($this->uploadedFiles)) {
             $this->uploadImages($this->uploadedFiles); // Traite les nouveaux fichiers
         }
-    
+
 
         $slug = $this->generateUniqueSlug(Str::slug($this->title));
-        
+
         // Upload files if there are any new uploads
-       
+
 
         $data = [
             'title' => $this->title,
@@ -116,8 +117,8 @@ class Adminproduct extends Component
             ? tap(Product::findOrFail($this->productId))->update($data)
             : Product::create($data);
 
-            
-           
+
+
         $product->details()->updateOrCreate(
             ['product_id' => $product->id],
             [
@@ -137,26 +138,41 @@ class Adminproduct extends Component
                 'long_description' => $this->long_description,
             ]
 
-            
+
         );
 
-        $this->dispatchBrowserEvent('notification', [
+        session()->flash('notification', [
             'type' => 'success',
             'message' => $this->isEdit ? 'Product updated successfully!' : 'Product created successfully!'
         ]);
 
+
+        $this->showSuccessModal = true;
         $this->resetFields();
-        $this->showList();
+
     }
 
     private function resetFields()
     {
         $this->fill([
-            'title' => '', 'price' => '', 'stock' => '', 'category_id' => null, 'color' => '',
-            'material' => '', 'sleeve_type' => '', 'collar_type' => '', 'fit' => '',
-            'size_available' => '', 'care_instructions' => 'Machine washable at 30°C',
-            'tags' => '', 'rating' => 4.5, 'sales_count' => 0, 'discount' => 0.0,
-            'discount_end_date' => '2024-12-31', 'long_description' => '', 'currency' => 'USD',
+            'title' => '',
+            'price' => '',
+            'stock' => '',
+            'category_id' => null,
+            'color' => '',
+            'material' => '',
+            'sleeve_type' => '',
+            'collar_type' => '',
+            'fit' => '',
+            'size_available' => '',
+            'care_instructions' => 'Machine washable at 30°C',
+            'tags' => '',
+            'rating' => 4.5,
+            'sales_count' => 0,
+            'discount' => 0.0,
+            'discount_end_date' => '2024-12-31',
+            'long_description' => '',
+            'currency' => 'USD',
             'images' => []
         ]);
     }

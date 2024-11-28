@@ -148,7 +148,8 @@
                 <div class="form-group">
                     <label class="form-label" for="size_available">Size Available</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="size_available" wire:model.defer="size_available">
+                        <input type="text" class="form-control" id="size_available"
+                            wire:model.defer="size_available">
                         <span class="text-danger">
                             @error('size_available')
                                 {{ $message }}
@@ -163,7 +164,8 @@
                 <div class="form-group">
                     <label class="form-label" for="care_instructions">Care Instructions</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="care_instructions" wire:model.defer="care_instructions">
+                        <input type="text" class="form-control" id="care_instructions"
+                            wire:model.defer="care_instructions">
                         <span class="text-danger">
                             @error('care_instructions')
                                 {{ $message }}
@@ -189,14 +191,15 @@
             </div>
 
             <!-- Image URL -->
-          
+
 
             <!-- Rating -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="rating">Rating</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="rating" step="0.1" wire:model.defer="rating">
+                        <input type="number" class="form-control" id="rating" step="0.1"
+                            wire:model.defer="rating">
                         <span class="text-danger">
                             @error('rating')
                                 {{ $message }}
@@ -226,7 +229,8 @@
                 <div class="form-group">
                     <label class="form-label" for="discount">Discount</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="discount" step="0.01" wire:model.defer="discount">
+                        <input type="number" class="form-control" id="discount" step="0.01"
+                            wire:model.defer="discount">
                         <span class="text-danger">
                             @error('discount')
                                 {{ $message }}
@@ -272,7 +276,8 @@
                 <div class="form-group">
                     <label class="form-label" for="images">Product Images</label>
                     <div class="form-control-wrap">
-                        <input type="file" class="form-control" id="images" wire:model="uploadedFiles" multiple>
+                        <input type="file" class="form-control" id="images" wire:model="uploadedFiles"
+                            multiple>
                         <span class="text-danger">
                             @error('uploadedFiles.*')
                                 {{ $message }}
@@ -281,14 +286,15 @@
                         <div class="mt-2">
                             @if ($uploadedFiles)
                                 @foreach ($uploadedFiles as $file)
-                                    <img src="{{ $file->temporaryUrl() }}" alt="Preview" class="img-thumbnail" width="100">
+                                    <img src="{{ $file->temporaryUrl() }}" alt="Preview" class="img-thumbnail"
+                                        width="100">
                                 @endforeach
                             @endif
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
             <!-- Submit Button -->
             <div class="col-12">
@@ -301,10 +307,31 @@
         </div>
     </form>
 </div>
-<script>
-    document.addEventListener('livewire:load', () => {
-        window.addEventListener('notification', event => {
-            alert(event.detail.message); // Replace with your notification logic
-        });
-    });
-</script>
+
+<div class="modal fade @if ($showSuccessModal) show @endif" tabindex="-1" id="modalAlert"
+    style="@if ($showSuccessModal) display: block; @else display: none; @endif">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <a href="#" class="close" data-bs-dismiss="modal" wire:click="$set('showSuccessModal', false)">
+                <em class="icon ni ni-cross"></em>
+            </a>
+            <div class="modal-body modal-body-lg text-center">
+                <div class="nk-modal">
+                    <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-check bg-success"></em>
+                    <h4 class="nk-modal-title">Congratulations!</h4>
+                    <div class="nk-modal-text">
+                        <div class="caption-text">
+                            Product successfully created!
+                        </div>
+                    </div>
+                    <div class="nk-modal-action">
+                        <button class="btn btn-lg btn-primary" wire:click="$set('showSuccessModal', false)">
+                            OK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
