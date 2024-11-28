@@ -22,6 +22,7 @@ class Adminproduct extends Component
     public $discount_end_date, $long_description, $description, $currency = 'USD', $is_active = 1, $productId;
     public $isEdit = false, $isList = true, $isCreate = false, $categories = [], $images = [];
     public $uploadedFiles = [];
+   
 
     protected $rules = [
         'title' => 'required|string|max:255',
