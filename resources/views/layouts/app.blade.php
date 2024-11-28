@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="{{ asset('stylesheet" href="admin/assets/css/theme.css?ver=3.1.2') }}">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
-<body class="animsition">
-
-    <main>
+<body class="nk-body ui-rounder npc-default has-sidebar ">
+    <div class="nk-app-root">
+        @if (Auth::check())
+            @include('livewire.admin.partials.sidebar')
+        @endif
         {{ $slot }}
-    </main>
 
+    </div>
+    <!-- app-root @e -->
     <script>
         document.addEventListener('livewire:load', () => {
             Livewire.on('showNotification', message => {
@@ -31,12 +33,8 @@
             });
         });
     </script>
-
-
     <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
-
 </body>
-
 </html>

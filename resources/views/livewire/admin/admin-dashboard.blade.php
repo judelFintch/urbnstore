@@ -1,5 +1,5 @@
 {{-- SideBar --}}
-@include('livewire.admin.partials.sidebar')
+
 
 {{-- Header --}}
 @include('livewire.admin.partials.header')
@@ -570,4 +570,4 @@
     </div>
 </div>
 {{-- Footer --}}
-@include('livewire.admin.partials.footer')
+
