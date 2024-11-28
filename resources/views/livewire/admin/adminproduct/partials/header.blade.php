@@ -32,20 +32,39 @@
                                 </div>
                             </div>
                         </li>
+
+                        @if($isList)
                         <li class="nk-block-tools-opt">
                             <!-- Pour mobile : Bouton d'ajout -->
-                            <a href="#" wire:click="create()" 
+                            <a href="#" wire:click="create('list')" 
                                class="toggle btn btn-icon btn-primary d-md-none">
                                 <em class="icon ni ni-plus"></em>
                             </a>
                         
                             <!-- Pour les écrans plus larges : Bouton d'ajout -->
-                            <a href="#" wire:click="create()" 
+                            <a href="#" wire:click="create('list')" 
                                class="toggle btn btn-primary d-none d-md-inline-flex">
                                 <em class="icon ni ni-plus"></em>
                                 <span>Add Product</span>
                             </a>
                         </li>
+                        @endif
+                        @if($isCreate)
+                        <li class="nk-block-tools-opt">
+                            <!-- Pour mobile : Bouton d'ajout -->
+                            <a href="#" wire:click="create('create')" 
+                               class="toggle btn btn-icon btn-primary d-md-none">
+                                
+                            </a>
+                        
+                            <!-- Pour les écrans plus larges : Bouton d'ajout -->
+                            <a href="#" wire:click="create('create')" 
+                               class="toggle btn btn-primary d-none d-md-inline-flex">
+                                
+                                <span>Show list</span>
+                            </a>
+                        </li>
+                        @endif
                         
                     </ul>
                 </div>

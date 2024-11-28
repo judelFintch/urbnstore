@@ -63,12 +63,21 @@ class Adminproduct extends Component
         return view('livewire.admin.adminproduct.adminproduct', compact('products'));
     }
 
-    public function create()
+    public function create($data)
     {
+
+     if ($data =='list'){
         $this->resetFields();
         $this->isEdit = false;
         $this->isList = false;
         $this->isCreate = true;
+    }
+    else{
+        $this->resetFields();
+        $this->isEdit = false;
+        $this->isList = true;
+        $this->isCreate = false;
+    }
     }
 
     public function showList()
