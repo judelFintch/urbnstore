@@ -61,7 +61,9 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     });
 });
 
-
+Route::fallback(function () {
+    return view('404');
+});
 
 
 require __DIR__ . '/auth.php';
