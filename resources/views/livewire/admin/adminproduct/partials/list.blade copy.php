@@ -1,3 +1,14 @@
+<style type="text/css">
+.tb-product img {
+    max-width: 50px; /* Limite la largeur de l'image */
+    max-height: 50px; /* Limite la hauteur de l'image */
+    object-fit: cover; /* Coupe l'image pour s'adapter */
+    border-radius: 5px; /* Optionnel : arrondit légèrement les coins */
+    margin-right: 10px; /* Ajoute un espace entre l'image et le texte */
+}
+
+</style>
+
 <div class="nk-block">
     <div class="card card-bordered">
         <div class="card-inner-group">
