@@ -23,6 +23,8 @@ class Adminproduct extends Component
     public $isEdit = false, $isList = true, $isCreate = false, $categories = [], $images = [];
     public $uploadedFiles = [];
     public $showSuccessModal = false;
+    protected $paginationTheme = 'bootstrap';
+
 
 
     protected $rules = [
