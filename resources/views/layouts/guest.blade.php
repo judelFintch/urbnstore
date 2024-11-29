@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personaliz.css') }}">
 </head>
 
 <body class="animsition">
@@ -60,6 +61,7 @@
     <script src="{{ asset('js/addwish.js') }}" defer></script>
     <script src="{{ asset('js/pscroll.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/personaliz.js') }}" defer></script>
 
     <!-- Initialize Scripts -->
     <script>

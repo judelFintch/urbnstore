@@ -162,7 +162,7 @@
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.invoices.list') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
-                            <span class="nk-menu-text">Commandes</span>
+                            <span class="nk-menu-text">Orders</span>
                         </a>
                     </li><!-- .nk-menu-item -->
 

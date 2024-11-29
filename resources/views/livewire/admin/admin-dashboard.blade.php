@@ -362,24 +362,36 @@
                                                        </div>
                                                    </div>
                                                </div>
+
                                                <ul class="nk-top-products">
-                                                @foreach ($products as $product)
-                                                <li class="item">
-                                                    <div class="thumb">
-                                                        <img src="./images/product/e.png" alt="">
-                                                    </div>
-                                                    <div class="info">
-                                                        <div class="title">iPhone 7 Headphones</div>
-                                                        <div class="price">$99.00</div>
-                                                    </div>
-                                                    <div class="total">
-                                                        <div class="amount">$990.00</div>
-                                                        <div class="count">10 Sold</div>
-                                                    </div>
-                                                </li>
-                                                    
-                                                @endforeach
-                                                   
+                                                   @foreach ($products as $product)
+                                                       @php
+
+                                                           $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+
+                                                       @endphp
+                                                       <li class="item">
+                                                           <div class="thumb">
+                                                               @if (count($images) > 0)
+                                                                   <img src="{{ url($images[0]) }}"
+                                                                       alt="{{ $product['title'] }}" loading="lazy">
+                                                               @else
+                                                                   <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                                                                   <img src="{{ asset('path/to/default-image.jpg') }}"
+                                                                       alt="No image" class="thumb">
+                                                               @endif
+                                                           </div>
+                                                           <div class="info">
+                                                               <div class="title">{{ $product->title }}</div>
+                                                               <div class="price">$ {{ $product->price }}</div>
+                                                           </div>
+                                                           <div class="total">
+                                                               <div class="amount">$990.00</div>
+                                                               <div class="count">10 Sold</div>
+                                                           </div>
+                                                       </li>
+                                                   @endforeach
+
                                                </ul>
                                            </div><!-- .card-inner -->
                                        </div><!-- .card -->

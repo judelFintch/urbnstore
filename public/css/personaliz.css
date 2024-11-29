@@ -1,0 +1,148 @@
+/* Styles de base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-v2 {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.menu-desktop .main-menu li {
+    display: inline-block;
+    margin-right: 20px;
+    position: relative;
+}
+
+.menu-desktop .main-menu li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.menu-desktop .main-menu li a:hover,
+.menu-desktop .main-menu li.active-menu a {
+    color: #ff6600;
+}
+
+/* Icônes */
+.wrap-icon-header .icon-header-item {
+    margin-left: 15px;
+}
+
+.icon-header-item select {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Mobile menu */
+.menu-mobile {
+    display: none;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.menu-mobile.show {
+    display: block;
+}
+
+.main-menu-m li {
+    margin-bottom: 15px;
+}
+
+.main-menu-m li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+}
+
+/* Hamburger menu */
+.hamburger {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+/* General Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.header-v2 {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Menu Styles */
+.main-menu li {
+    position: relative;
+    margin-right: 20px;
+}
+
+.main-menu li a {
+    text-decoration: none;
+    font-size: 16px;
+    color: #333;
+    padding: 10px 15px;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.main-menu li.active-menu > a,
+.main-menu li a:hover {
+    color: #ff6600;
+    font-weight: bold;
+}
+
+/* Submenu Styles */
+.submenu {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+    z-index: 1000;
+}
+
+.main-menu li:hover .submenu {
+    display: block;
+}
+
+.submenu li a {
+    display: block;
+    color: #333;
+    padding: 5px 10px;
+    white-space: nowrap;
+}
+
+.submenu li a:hover {
+    background-color: #f6f6f6;
+}
+
+/* Mobile Menu */
+.menu-mobile {
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+    list-style: none;
+}
+
+.menu-mobile.show {
+    display: block;
+}
+
+.hamburger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}

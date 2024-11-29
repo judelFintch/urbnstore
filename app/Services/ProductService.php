@@ -7,7 +7,7 @@ use App\Models\ProductDetail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-use Livewire\WithPagination;
+
 
 class ProductService
 {
@@ -81,7 +81,6 @@ class ProductService
             throw new \RuntimeException('Impossible de supprimer le produit.');
         }
     }
-
 
     public function getLatestProduct()
     {
