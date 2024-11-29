@@ -11,9 +11,9 @@
                            <div class="nk-block-head nk-block-head-sm">
                                <div class="nk-block-between">
                                    <div class="nk-block-head-content">
-                                       <h3 class="nk-block-title page-title">E-Commerce Panel</h3>
+                                       <h3 class="nk-block-title page-title">Panel {{ config('app.name')}}</h3>
                                        <div class="nk-block-des text-soft">
-                                           <p>Welcome to DashLite Dashboard Template.</p>
+                                           <p>Welcome {{ Auth::User()->name}}.</p>
                                        </div>
                                    </div><!-- .nk-block-head-content -->
                                    <div class="nk-block-head-content">
@@ -68,14 +68,14 @@
                                                        </div>
                                                    </div>
                                                    <div class="data">
-                                                       <div class="amount">$74,958.49</div>
-                                                       <div class="info"><strong>$7,395.37</strong> in last month
+                                                       <div class="amount">$0</div>
+                                                       <div class="info"><strong>$ 0</strong> in last month
                                                        </div>
                                                    </div>
                                                    <div class="data">
                                                        <h6 class="sub-title">This week so far</h6>
                                                        <div class="data-group">
-                                                           <div class="amount">$1,338.72</div>
+                                                           <div class="amount">$0</div>
                                                            <div class="info text-end"><span
                                                                    class="change up text-danger"><em
                                                                        class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs.
@@ -119,10 +119,10 @@
                                                    </div>
                                                    <div class="data">
                                                        <div class="data-group">
-                                                           <div class="amount">$463.35</div>
+                                                           <div class="amount">$ 0</div>
                                                            <div class="info text-end"><span
                                                                    class="change up text-danger"><em
-                                                                       class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs.
+                                                                       class="icon ni ni-arrow-long-up"></em>0 %</span><br><span>vs.
                                                                    last week</span></div>
                                                        </div>
                                                    </div>
@@ -147,7 +147,7 @@
                                                            </div>
                                                            <div class="data">
                                                                <div class="data-group">
-                                                                   <div class="amount">329</div>
+                                                                   <div class="amount">0</div>
                                                                    <div class="info text-end"><span
                                                                            class="change up text-danger"><em
                                                                                class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs.
@@ -173,10 +173,10 @@
                                                            </div>
                                                            <div class="data">
                                                                <div class="data-group">
-                                                                   <div class="amount">194</div>
+                                                                   <div class="amount">0</div>
                                                                    <div class="info text-end"><span
                                                                            class="change up text-danger"><em
-                                                                               class="icon ni ni-arrow-long-up"></em>4.63%</span><br><span>vs.
+                                                                               class="icon ni ni-arrow-long-up"></em>0 %</span><br><span>vs.
                                                                            last week</span></div>
                                                                </div>
                                                            </div>
@@ -226,7 +226,7 @@
                                                        <span class="tb-sub">02/11/2020</span>
                                                    </div>
                                                    <div class="nk-tb-col">
-                                                       <span class="tb-sub tb-amount">4,596.75 <span>USD</span></span>
+                                                       <span class="tb-sub tb-amount">0 <span>USD</span></span>
                                                    </div>
                                                    <div class="nk-tb-col">
                                                        <span
@@ -251,7 +251,7 @@
                                                        <span class="tb-sub">02/02/2020</span>
                                                    </div>
                                                    <div class="nk-tb-col">
-                                                       <span class="tb-sub tb-amount">596.75 <span>USD</span></span>
+                                                       <span class="tb-sub tb-amount">0 <span>USD</span></span>
                                                    </div>
                                                    <div class="nk-tb-col">
                                                        <span
@@ -363,7 +363,7 @@
                                                <ul class="nk-top-products">
                                                    <li class="item">
                                                        <div class="thumb">
-                                                           <img src="./images/product/a.png" alt="">
+                                                           <img src="{{asset('images/product/a.png')}}" alt="">
                                                        </div>
                                                        <div class="info">
                                                            <div class="title">Pink Fitness Tracker</div>
@@ -442,14 +442,14 @@
                                                    <li class="item">
                                                        <div class="info">
                                                            <div class="title">Orders</div>
-                                                           <div class="count">1,795</div>
+                                                           <div class="count">0</div>
                                                        </div>
                                                        <em class="icon bg-primary-dim ni ni-bag"></em>
                                                    </li>
                                                    <li class="item">
                                                        <div class="info">
                                                            <div class="title">Customers</div>
-                                                           <div class="count">2,327</div>
+                                                           <div class="count">0</div>
                                                        </div>
                                                        <em class="icon bg-info-dim ni ni-users"></em>
                                                    </li>

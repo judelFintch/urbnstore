@@ -14,13 +14,14 @@ class Adminproductdetails extends Component
 
     public $product;
 
-    public function mount($id){
-      
+    public function mount($id): void
+    {
+
         // Fetch product details based on ID here.
             $this->product = Product::with('details','category')->findOrFail($id);
 
     }
-    public function render()
+    public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
         return view('livewire.admin.adminproduct.adminproductdetails');
     }

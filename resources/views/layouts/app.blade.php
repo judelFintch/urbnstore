@@ -10,9 +10,7 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/theme.css?ver=3.1.2') }}">
-
-
-
+    <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/aditional.css') }}">
 </head>
 
 <body class="nk-body ui-rounder npc-default has-sidebar ">
@@ -25,11 +23,15 @@
         <!-- Main Content -->
         {{ $slot }}
     </div>
+
     <!-- Bundle Scripts -->
     <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
-    <script src="{{asset('admin/assets/js/libs/datatable-btns.js?ver=3.1.2')}}"></script>
+    <script src="{{ asset('admin/assets/js/libs/datatable-btns.js?ver=3.1.2') }}"></script>
+    <script src="{{ asset('admin/js/personal.js') }}"></script>
+
+    
 </body>
 
 </html>
