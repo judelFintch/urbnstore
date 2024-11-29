@@ -11,9 +11,9 @@
                            <div class="nk-block-head nk-block-head-sm">
                                <div class="nk-block-between">
                                    <div class="nk-block-head-content">
-                                       <h3 class="nk-block-title page-title">Panel {{ config('app.name')}}</h3>
+                                       <h3 class="nk-block-title page-title">Panel {{ config('app.name') }}</h3>
                                        <div class="nk-block-des text-soft">
-                                           <p>Welcome {{ Auth::User()->name}}.</p>
+                                           <p>Welcome {{ Auth::User()->name }}.</p>
                                        </div>
                                    </div><!-- .nk-block-head-content -->
                                    <div class="nk-block-head-content">
@@ -122,7 +122,8 @@
                                                            <div class="amount">$ 0</div>
                                                            <div class="info text-end"><span
                                                                    class="change up text-danger"><em
-                                                                       class="icon ni ni-arrow-long-up"></em>0 %</span><br><span>vs.
+                                                                       class="icon ni ni-arrow-long-up"></em>0
+                                                                   %</span><br><span>vs.
                                                                    last week</span></div>
                                                        </div>
                                                    </div>
@@ -176,7 +177,8 @@
                                                                    <div class="amount">0</div>
                                                                    <div class="info text-end"><span
                                                                            class="change up text-danger"><em
-                                                                               class="icon ni ni-arrow-long-up"></em>0 %</span><br><span>vs.
+                                                                               class="icon ni ni-arrow-long-up"></em>0
+                                                                           %</span><br><span>vs.
                                                                            last week</span></div>
                                                                </div>
                                                            </div>
@@ -361,71 +363,23 @@
                                                    </div>
                                                </div>
                                                <ul class="nk-top-products">
-                                                   <li class="item">
-                                                       <div class="thumb">
-                                                           <img src="{{asset('images/product/a.png')}}" alt="">
-                                                       </div>
-                                                       <div class="info">
-                                                           <div class="title">Pink Fitness Tracker</div>
-                                                           <div class="price">$99.00</div>
-                                                       </div>
-                                                       <div class="total">
-                                                           <div class="amount">$990.00</div>
-                                                           <div class="count">10 Sold</div>
-                                                       </div>
-                                                   </li>
-                                                   <li class="item">
-                                                       <div class="thumb">
-                                                           <img src="./images/product/b.png" alt="">
-                                                       </div>
-                                                       <div class="info">
-                                                           <div class="title">Purple Smartwatch</div>
-                                                           <div class="price">$99.00</div>
-                                                       </div>
-                                                       <div class="total">
-                                                           <div class="amount">$990.00</div>
-                                                           <div class="count">10 Sold</div>
-                                                       </div>
-                                                   </li>
-                                                   <li class="item">
-                                                       <div class="thumb">
-                                                           <img src="./images/product/c.png" alt="">
-                                                       </div>
-                                                       <div class="info">
-                                                           <div class="title">Black Mi Band Smartwatch</div>
-                                                           <div class="price">$99.00</div>
-                                                       </div>
-                                                       <div class="total">
-                                                           <div class="amount">$990.00</div>
-                                                           <div class="count">10 Sold</div>
-                                                       </div>
-                                                   </li>
-                                                   <li class="item">
-                                                       <div class="thumb">
-                                                           <img src="./images/product/d.png" alt="">
-                                                       </div>
-                                                       <div class="info">
-                                                           <div class="title">Black Headphones</div>
-                                                           <div class="price">$99.00</div>
-                                                       </div>
-                                                       <div class="total">
-                                                           <div class="amount">$990.00</div>
-                                                           <div class="count">10 Sold</div>
-                                                       </div>
-                                                   </li>
-                                                   <li class="item">
-                                                       <div class="thumb">
-                                                           <img src="./images/product/e.png" alt="">
-                                                       </div>
-                                                       <div class="info">
-                                                           <div class="title">iPhone 7 Headphones</div>
-                                                           <div class="price">$99.00</div>
-                                                       </div>
-                                                       <div class="total">
-                                                           <div class="amount">$990.00</div>
-                                                           <div class="count">10 Sold</div>
-                                                       </div>
-                                                   </li>
+                                                @foreach ($products as $product)
+                                                <li class="item">
+                                                    <div class="thumb">
+                                                        <img src="./images/product/e.png" alt="">
+                                                    </div>
+                                                    <div class="info">
+                                                        <div class="title">iPhone 7 Headphones</div>
+                                                        <div class="price">$99.00</div>
+                                                    </div>
+                                                    <div class="total">
+                                                        <div class="amount">$990.00</div>
+                                                        <div class="count">10 Sold</div>
+                                                    </div>
+                                                </li>
+                                                    
+                                                @endforeach
+                                                   
                                                </ul>
                                            </div><!-- .card-inner -->
                                        </div><!-- .card -->

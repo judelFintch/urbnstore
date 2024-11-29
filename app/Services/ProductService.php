@@ -5,6 +5,9 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\ProductDetail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Livewire\WithPagination;
 
 class ProductService
 {
@@ -64,12 +67,34 @@ class ProductService
      */
     public function deleteProduct(int $productId): bool
     {
-        $product = Product::findOrFail($productId);
+        try {
+            $product = Product::findOrFail($productId);
 
-        // Delete associated details first
-        $product->details()->delete();
+            DB::transaction(function () use ($product) {
+                $product->details()->delete();
+                $product->delete();
+            });
 
-        // Delete the product itself
-        return $product->delete();
+            return true;
+        } catch (\Exception $e) {
+            Log::error('Erreur lors de la suppression du produit : ' . $e->getMessage());
+            throw new \RuntimeException('Impossible de supprimer le produit.');
+        }
     }
+
+
+    public function getLatestProduct()
+    {
+
+        return Product::with('details')->get();
+    }
+
+    public function getPaginateProduct(int $paginate )
+    {
+        $paginator = Product::with('details')->paginate($paginate);
+
+        return $paginator->items();
+
+    }
+
 }
