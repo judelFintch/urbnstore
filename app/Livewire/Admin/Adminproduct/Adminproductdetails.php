@@ -16,10 +16,8 @@ class Adminproductdetails extends Component
 
     public function mount($id): void
     {
-
         // Fetch product details based on ID here.
             $this->product = Product::with('details','category')->findOrFail($id);
-
     }
     public function render(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
