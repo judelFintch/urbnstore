@@ -108,8 +108,6 @@ class Adminproduct extends Component
     {
         $delete = $productService->DeleteProduct($productId);
 
-        dd($delete);
-
     }
 
     private function prepareProductDetails()

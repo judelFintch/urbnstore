@@ -79,7 +79,7 @@
                 </tbody>
             </table>
         </div>
-        <x-delete-confirmation :productToDelete="$product->id" />
+      
 
 
         <!-- /. a mettre dans un composant?/ -->
