@@ -56,9 +56,7 @@
                                 <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
                                     <i class="fas fa-sign-in-alt"></i> Connexion
                                 </a>
-                                <a href="{{ route('register') }}" class="icon-header-item cl2 hov-cl1 trans-04 ml-3">
-                                    <i class="fas fa-user-plus"></i> Inscription
-                                </a>
+                                
                             </div>
                         @else
                             <div class="dropdown">
@@ -66,8 +64,8 @@
                                     <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('profile') }}">
-                                        <i class="fas fa-user"></i> Mon Profil
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        <i class="fas fa-user"></i> Dashboard
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -135,7 +133,7 @@
                     <li>
                         <a href="#"><i class="fas fa-user-circle"></i> Mon Compte</a>
                         <ul class="sub-menu-m">
-                            <li><a href="{{ route('profile') }}"><i class="fas fa-user"></i> Mon Profil</a></li>
+                            <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i> Dashboard</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">

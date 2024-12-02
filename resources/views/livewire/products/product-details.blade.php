@@ -30,15 +30,15 @@
                                     // Décoder les images du produit depuis le champ 'image_url' dans les détails du produit
                                     $images = json_decode($product->details->image_url, true); // Assurez-vous que ce champ est bien un tableau d'URLs
                                 @endphp
-                            
+
                                 @if ($images && count($images) > 0)
                                     @foreach ($images as $index => $image)
                                         <div class="item-slick3" data-thumb="{{ url($image) }}">
                                             <div class="wrap-pic-w pos-relative">
                                                 <img src="{{ url($image) }}" alt="IMG-PRODUCT">
-                            
+
                                                 <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                   href="{{ url($image) }}">
+                                                    href="{{ url($image) }}">
                                                     <i class="fa fa-expand"></i>
                                                 </a>
                                             </div>
@@ -48,17 +48,18 @@
                                     <!-- Si aucune image n'est disponible, afficher une image par défaut -->
                                     <div class="item-slick3">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img src="{{ asset('path/to/default-image.jpg') }}" alt="No Image Available">
-                            
+                                            <img src="{{ asset('path/to/default-image.jpg') }}"
+                                                alt="No Image Available">
+
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                               href="{{ asset('path/to/default-image.jpg') }}">
+                                                href="{{ asset('path/to/default-image.jpg') }}">
                                                 <i class="fa fa-expand"></i>
                                             </a>
                                         </div>
                                     </div>
                                 @endif
                             </div>
-                            
+
 
 
                         </div>
@@ -125,14 +126,16 @@
                                         </div>
                                     </div>
                                     @php
-                                        $imagePath = 'images/item-cart-{{ $product->id }}.jpg';
+                                        $imagePath = url($image);
+                                       
                                     @endphp
 
                                     <button
-                                        onclick="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }})"
-                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
+                                    onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset($imagePath) }}')"
+                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                    Add to cart
                                     </button>
+
                                 </div>
                             </div>
                         </div>
@@ -356,4 +359,5 @@
         </div>
     </section>
     @livewire('products.partials.related-products', [$product->category->id])
-</div>
+
+

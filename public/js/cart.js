@@ -15,13 +15,13 @@ function displayCart() {
         updateCartIcon(0);
         return;
     }
-
+    
     let total = 0;
 
     cart.forEach(item => {
         const itemTotal = item.price * item.quantity;
         total += itemTotal;
-
+    
         const cartItem = document.createElement('li');
         cartItem.className = 'header-cart-item flex-w flex-t m-b-12';
         cartItem.innerHTML = `
@@ -33,7 +33,7 @@ function displayCart() {
                     ${item.name}
                 </a>
                 <span class="header-cart-item-info">
-                    ${item.quantity} x $${item.price.toFixed(2)}
+                    ${item.quantity} x $${item.price.toFixed(2)} - Couleur: ${item.color}
                 </span>
             </div>
         `;
@@ -59,6 +59,26 @@ function updateCartIcon(totalQuantity) {
         }
     });
 }
+function validateAndAddToCart(id, name, price, imageUrl) {
+    const colorSelect = document.querySelector('.js-select2');
+    const color = colorSelect ? colorSelect.value : null;
+
+    const quantityInput = document.querySelector('input[name="num-product"]');
+    const quantity = quantityInput ? parseInt(quantityInput.value, 10) : 1;
+
+    if (!color || color === 'Choose an option') {
+        alert('Veuillez sélectionner une couleur.');
+        return;
+    }
+
+    if (quantity <= 0) {
+        alert('Veuillez sélectionner une quantité valide.');
+        return;
+    }
+
+    // Appelle la fonction addToCart avec les valeurs validées
+    addToCart(id, name, price, imageUrl, color, quantity);
+}
 
 /**
  * Ajoute un produit au panier ou met à jour sa quantité.
@@ -67,13 +87,13 @@ function updateCartIcon(totalQuantity) {
  * @param {number} price - Le prix unitaire du produit.
  * @param {string} imageUrl - L'URL de l'image du produit.
  */
-function addToCart(id, name, price, imageUrl) {
-    const existingProduct = cart.find(item => item.id === id);
+function addToCart(id, name, price, imageUrl, color, quantity = 1) {
+    const existingProduct = cart.find(item => item.id === id && item.color === color);
 
     if (existingProduct) {
-        existingProduct.quantity += 1;
+        existingProduct.quantity += quantity;
     } else {
-        cart.push({ id, name, price, image: imageUrl, quantity: 1 });
+        cart.push({ id, name, price, image: imageUrl, color, quantity });
     }
 
     saveCart();
