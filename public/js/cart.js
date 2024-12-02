@@ -1,5 +1,6 @@
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+
 // Fonction pour afficher le contenu du panier dans la structure d'overlay
 function displayCart() {
     const cartContent = document.querySelector('.header-cart-wrapitem');
@@ -56,6 +57,24 @@ function updateCartIcon() {
     // Met à jour l'attribut data-notify avec le total des produits
     cartIcon.setAttribute('data-notify', totalQuantity);
 }
+
+function updateCartIcon() {
+    const totalQuantity = getTotalQuantity();
+
+    // Cibler les icônes pour desktop et mobile
+    const desktopIcon = document.querySelector('.container-menu-desktop .icon-header-noti');
+    const mobileIcon = document.querySelector('.wrap-header-mobile .icon-header-noti');
+
+    // Mettre à jour l'attribut data-notify pour chaque icône
+    if (desktopIcon) {
+        desktopIcon.setAttribute('data-notify', totalQuantity);
+    }
+
+    if (mobileIcon) {
+        mobileIcon.setAttribute('data-notify', totalQuantity);
+    }
+}
+
 
 // Fonction pour ajouter un produit au panier
 function addToCart(id, name, price, imageUrl) {

@@ -72,16 +72,11 @@
                                     </div>
                                 </li>
                             </td>
-
                         </tr>
                     @endforeach
-
                 </tbody>
             </table>
         </div>
-      
-
-
         <!-- /. a mettre dans un composant?/ -->
     </div><!-- .card-preview -->
 </div> <!-- nk-block -->

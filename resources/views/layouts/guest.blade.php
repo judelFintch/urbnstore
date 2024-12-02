@@ -77,7 +77,15 @@
             // Parallax Initialization
             $('.parallax100').parallax100();
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+    displayCart(); // Affiche le contenu du panier après le chargement du DOM
+});
+
     </script>
+
+    
+<script src="{{ asset('js/cart.js') }}" defer></script>
 </body>
 
 </html>

@@ -82,20 +82,24 @@
                         <!-- Product Block -->
                         <article class="block2">
                             @php
-                            
+
                                 $imageId = sprintf('%02d', $product->id);
                                 $images = json_decode($product->details->image_url, true); // Decode JSON into an array
-                                
-                                $productUrl = route('show-product', ['id' => $product->id,'category' => $product->category->name,'slug' => $product->slug]);
+
+                                $productUrl = route('show-product', [
+                                    'id' => $product->id,
+                                    'category' => $product->category->name,
+                                    'slug' => $product->slug,
+                                ]);
                             @endphp
 
                             <div class="block2-pic hov-img0 {{ $product->details && $product->details->isNew ? 'label-new' : '' }}"
                                 data-label="{{ $product->details && $product->details->isNew ? 'New' : '' }}">
                                 <a href="{{ $productUrl }}">
+                                    @php $images= $images ?? [] @endphp
                                     @if (count($images) > 0)
-
-                                     <img src="{{ url($images[0])}}" alt="{{ $product['title'] }}" loading="lazy">
-                                     @else
+                                        <img src="{{ url($images[0]) }}" alt="{{ $product['title'] }}" loading="lazy">
+                                    @else
                                         <!-- Si aucune image n'est disponible, afficher une image par défaut -->
                                         <img src="{{ asset('path/to/default-image.jpg') }}" alt="No image"
                                             class="thumb">

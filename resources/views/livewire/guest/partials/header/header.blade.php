@@ -1,112 +1,142 @@
 <div>
+    <!-- Header -->
     <header class="header-v2">
-        @if (session()->has('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
-
-        <!-- Header -->
-        <div class="container-menu-desktop">
+        <!-- Header desktop -->
+        <div class="container-menu-desktop trans-03">
             <div class="wrap-menu-desktop">
-                <nav class="limiter-menu-desktop">
-                    <!-- Logo -->
+                <nav class="limiter-menu-desktop p-l-45">
+
+                    <!-- Logo desktop -->
                     <a href="{{ route('home.index') }}" class="logo" aria-label="Accueil">
                         <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
                     </a>
 
-                    <!-- Main Menu -->
+                    <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
-                                <a href="{{ route('home.index') }}">Accueil</a>
-                            </li>
-                            <li class="has-submenu {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
-                                <a href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">
-                                    Shop
-                                </a>
-                                <ul class="submenu">
-                                    @foreach ($categoryArticles as $categoryArticle)
-                                        <li>
-                                            <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                                                {{ $categoryArticle->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
-                            <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
-                                <a href="{{ route('home.about') }}">À propos</a>
-                            </li>
-                            <li class="{{ request()->routeIs('home.contact') ? 'active-menu' : '' }}">
-                                <a href="{{ route('home.contact') }}">Contact</a>
-                            </li>
-                        </ul>
+                            <ul class="main-menu">
+                                <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('home.index') }}">Accueil</a>
+                                </li>
+                                <li class="active-menu">
+                                    <a href="index.html">Shop</a>
+                                    <ul class="sub-menu">
+                                        @foreach ($categoryArticles as $categoryArticle)
+                                            <li> <a
+                                                    href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                                    {{ $categoryArticle->name }}
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </li>
+                                <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('home.about') }}">À propos</a>
+                                </li>
+                                <li class="{{ request()->routeIs('home.contact') ? 'active-menu' : '' }}">
+                                    <a href="{{ route('home.contact') }}">Contact</a>
+                                </li>
+                            </ul>
                     </div>
 
-                    <!-- Utility Icons -->
-                    <div class="wrap-icon-header flex-w flex-r-m">
-                        <button class="icon-header-item js-show-modal-search" aria-label="Recherche">
-                            <i class="zmdi zmdi-search"></i>
-                        </button>
-                        <button class="icon-header-item js-show-cart" aria-label="Panier" data-notify="2">
-                            <i class="zmdi zmdi-shopping-cart"></i>
-                        </button>
-                        <div class="icon-header-item">
-                            <select id="language-select" class="form-control" onchange="changeLanguage(this)" aria-label="Langue">
-                                <option value="en" {{ app()->getLocale() == 'en' ? 'selected' : '' }}>English</option>
-                                <option value="fr" {{ app()->getLocale() == 'fr' ? 'selected' : '' }}>Français</option>
-                                <option value="es" {{ app()->getLocale() == 'es' ? 'selected' : '' }}>Español</option>
-                            </select>
+                    <!-- Icon header -->
+                    <div class="wrap-icon-header flex-w flex-r-m h-full">
+                        <div class="flex-c-m h-full p-r-24">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                                <i class="zmdi zmdi-search"></i>
+                            </div>
                         </div>
-                        <div class="icon-header-item">
-                            <select id="currency-select" class="form-control" onchange="changeCurrency(this)" aria-label="Devise">
-                                <option value="USD">USD</option>
-                                <option value="EUR">EUR</option>
-                                <option value="GBP">GBP</option>
-                            </select>
+
+                        <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                                data-notify="2">
+                                <i class="zmdi zmdi-shopping-cart"></i>
+                            </div>
                         </div>
-                        <a href="{{ route('login') }}" class="icon-header-item" aria-label="Connexion">
-                            <i class="fas fa-user"></i>
-                        </a>
+
+                        <div class="flex-c-m h-full p-lr-19">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
+                                <i class="zmdi zmdi-menu"></i>
+                            </div>
+                        </div>
                     </div>
                 </nav>
             </div>
         </div>
 
-        <!-- Mobile Header -->
+        <!-- Header Mobile -->
         <div class="wrap-header-mobile">
+            <!-- Logo moblie -->
             <div class="logo-mobile">
-                <a href="{{ route('home.index') }}">
-                    <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
-                </a>
+                <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
             </div>
-            <button class="hamburger" id="hamburger-menu" aria-label="Menu Mobile">
+            <!-- Icon header -->
+            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
+                <div class="flex-c-m h-full p-r-10">
+                    <div class="icon-header-item js-show-car " aria-label="Panier" data-notify="0">
+                        <i class="zmdi zmdi-search"></i>
+                    </div>
+                </div>
+
+                <div class="flex-c-m h-full p-lr-10 bor5">
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                        data-notify="0">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button show menu -->
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
                 </span>
-            </button>
+            </div>
         </div>
 
-        <!-- Mobile Menu -->
-        <div class="menu-mobile" id="menu-mobile">
+
+        <!-- Menu Mobile -->
+        <div class="menu-mobile">
             <ul class="main-menu-m">
                 <li><a href="{{ route('home.index') }}">Accueil</a></li>
-                <li>
-                    <a href="{{ route('home.shop', ['id' => $defaultCategoryArticles, 'slug' => $defaultUrl]) }}">Shop</a>
-                    <ul class="submenu-mobile">
-                        @foreach ($categoryArticles as $categoryArticle)
-                            <li>
-                                <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                                    {{ $categoryArticle->name }}
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                <li class="active-menu">
+                    <a href="index.html">Home</a>
                 </li>
+
+                <li>
+					<a href="">Shop</a>
+					<ul class="sub-menu-m">
+                        @foreach ($categoryArticles as $categoryArticle)
+						<li><a
+                            href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                            {{ $categoryArticle->name }}
+                        </a>></li>
+                        @endforeach
+						
+					</ul>
+					<span class="arrow-main-menu-m">
+						<i class="fa fa-angle-right" aria-hidden="true"></i>
+					</span>
+				</li>
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
             </ul>
         </div>
+
+        <!-- Modal Search -->
+        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
+			<div class="container-search-header">
+				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
+					<img src="images/icons/icon-close2.png" alt="CLOSE">
+				</button>
+
+				<form class="wrap-search-header flex-w p-l-15">
+					<button class="flex-c-m trans-04">
+						<i class="zmdi zmdi-search"></i>
+					</button>
+					<input class="plh3" type="text" name="search" placeholder="Search...">
+				</form>
+			</div>
+		</div>
     </header>
 </div>
