@@ -1,4 +1,5 @@
 <div>
+    
     <!-- Related Products -->
     <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">
@@ -14,13 +15,22 @@
                         <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                             <!-- Block2 -->
                             <div class="block2">
+
+                                @php
+
+                                $imageId = sprintf('%02d', $product->id);
+                                $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+
+                                $productUrl = route('show-product', [
+                                    'id' => $product->id,
+                                    'category' => $product->category->name,
+                                    'slug' => $product->slug,
+                                ]);
+                            @endphp
                                 <div class="block2-pic hov-img0">
-                                    @if ($product['id'] < 10)
-                                        <img src="{{ asset('images/product-0' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
-                                    @elseif($product['id'] >= 10)
-                                        <img src="{{ asset('images/product-' . $product['id'] . '.jpg') }}"
-                                            alt="IMG-PRODUCT">
+                                    @if (count($images) > 0)
+                                    <img src="{{ url($images[0]) }}" alt="{{ $product['title'] }}" loading="lazy">
+                                    
                                     @endif
 
                                 </div>

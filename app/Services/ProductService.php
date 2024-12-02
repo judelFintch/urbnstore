@@ -96,4 +96,11 @@ class ProductService
 
     }
 
+
+    public function getImagesUrl($productId){
+        $product = Product::findOrFail($productId);
+        return $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+       
+    }
+
 }
