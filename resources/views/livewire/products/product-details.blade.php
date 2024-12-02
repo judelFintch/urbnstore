@@ -79,10 +79,12 @@
                         <!--  -->
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">Size</div>
+                                <div class="size-203 flex-c-m respon6">
+                                    Size
+                                </div>
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="size" id="size-{{ $product->id }}">
+                                        <select class="js-select2" wire:model="selectedSize" name="size">
                                             <option>Choose an option</option>
                                             @foreach (explode(',', $product->details->size_available) as $size)
                                                 <option value="{{ trim($size) }}">Size {{ trim($size) }}</option>
@@ -92,40 +94,48 @@
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="flex-w flex-r-m p-b-10">
-                                <div class="size-203 flex-c-m respon6">Color</div>
+                                <div class="size-203 flex-c-m respon6">
+                                    Color
+                                </div>
+
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
-                                        <select class="js-select2" name="color" id="color-{{ $product->id }}">
+                                        <select class="js-select2" name="time">
                                             <option>Choose an option</option>
                                             <option>{{ $product->details->color }}</option>
+
                                         </select>
                                         <div class="dropDownSelect2"></div>
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-204 flex-w flex-m respon6-next">
                                     <div class="wrap-num-product flex-w m-r-20 m-tb-10">
                                         <div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-minus"></i>
                                         </div>
-                                        <input class="mtext-104 cl3 txt-center num-product" type="number" id="quantity-{{ $product->id }}" name="num-product" value="1">
+                                        <input class="mtext-104 cl3 txt-center num-product" type="number"
+                                            name="num-product" value="1">
                                         <div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
+                                    @php
+                                        $imagePath = 'images/item-cart-{{ $product->id }}.jpg';
+                                    @endphp
+
                                     <button
-                                        onclick="handleAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset("images/item-cart-$product->id.jpg") }}')"
+                                        onclick="addToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }})"
                                         class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Add to cart
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        
 
                         <!--  -->
                         <div class="flex-w flex-m p-l-100 p-t-40 respon7">

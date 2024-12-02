@@ -5,88 +5,102 @@
         <div class="container-menu-desktop trans-03">
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
-
                     <!-- Logo desktop -->
                     <a href="{{ route('home.index') }}" class="logo" aria-label="Accueil">
                         <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
                     </a>
-
                     <!-- Menu desktop -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
-                            <ul class="main-menu">
-                                <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
-                                    <a href="{{ route('home.index') }}">Accueil</a>
-                                </li>
-                                <li class="active-menu">
-                                    <a href="index.html">Shop</a>
-                                    <ul class="sub-menu">
-                                        @foreach ($categoryArticles as $categoryArticle)
-                                            <li> <a
-                                                    href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                                                    {{ $categoryArticle->name }}
-                                                </a>
-                                            </li>
-                                        @endforeach
-                                    </ul>
-                                </li>
-                                <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
-                                    <a href="{{ route('home.about') }}">À propos</a>
-                                </li>
-                                <li class="{{ request()->routeIs('home.contact') ? 'active-menu' : '' }}">
-                                    <a href="{{ route('home.contact') }}">Contact</a>
-                                </li>
-                            </ul>
+                            <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
+                                <a href="{{ route('home.index') }}">Accueil</a>
+                            </li>
+                            <li class="active-menu">
+                                <a href="#">Shop</a>
+                                <ul class="sub-menu">
+                                    @foreach ($categoryArticles as $categoryArticle)
+                                        <li>
+                                            <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                                {{ $categoryArticle->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </li>
+                            <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
+                                <a href="{{ route('home.about') }}">À propos</a>
+                            </li>
+                            <li class="{{ request()->routeIs('home.contact') ? 'active-menu' : '' }}">
+                                <a href="{{ route('home.contact') }}">Contact</a>
+                            </li>
+                        </ul>
                     </div>
 
                     <!-- Icon header -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
                         <div class="flex-c-m h-full p-r-24">
                             <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
-                                <i class="zmdi zmdi-search"></i>
+                                <i class="fas fa-search"></i>
                             </div>
                         </div>
 
                         <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                                data-notify="2">
-                                <i class="zmdi zmdi-shopping-cart"></i>
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                                <i class="fas fa-shopping-cart"></i>
                             </div>
                         </div>
 
-                        <div class="flex-c-m h-full p-lr-19">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-sidebar">
-                                <i class="zmdi zmdi-menu"></i>
+                        <!-- Auth options -->
+                        @guest
+                            <div class="flex-c-m h-full p-lr-19">
+                                <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
+                                    <i class="fas fa-sign-in-alt"></i> Connexion
+                                </a>
+                                <a href="{{ route('register') }}" class="icon-header-item cl2 hov-cl1 trans-04 ml-3">
+                                    <i class="fas fa-user-plus"></i> Inscription
+                                </a>
                             </div>
-                        </div>
+                        @else
+                            <div class="dropdown">
+                                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
+                                </a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">
+                                        <i class="fas fa-user"></i> Mon Profil
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                    </a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </div>
+                        @endguest
                     </div>
                 </nav>
             </div>
         </div>
 
-        <!-- Header Mobile -->
+        <!-- Menu Mobile -->
         <div class="wrap-header-mobile">
-            <!-- Logo moblie -->
             <div class="logo-mobile">
                 <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
             </div>
-            <!-- Icon header -->
             <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
                 <div class="flex-c-m h-full p-r-10">
-                    <div class="icon-header-item js-show-car " aria-label="Panier" data-notify="0">
-                        <i class="zmdi zmdi-search"></i>
+                    <div class="icon-header-item js-show-car" aria-label="Panier" data-notify="0">
+                        <i class="fas fa-search"></i>
                     </div>
                 </div>
-
                 <div class="flex-c-m h-full p-lr-10 bor5">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
-                        data-notify="0">
-                        <i class="zmdi zmdi-shopping-cart"></i>
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="0">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
                 </div>
             </div>
-
-            <!-- Button show menu -->
             <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
@@ -94,49 +108,47 @@
             </div>
         </div>
 
-
         <!-- Menu Mobile -->
         <div class="menu-mobile">
             <ul class="main-menu-m">
                 <li><a href="{{ route('home.index') }}">Accueil</a></li>
                 <li class="active-menu">
-                    <a href="index.html">Home</a>
-                </li>
-
-                <li>
-					<a href="">Shop</a>
-					<ul class="sub-menu-m">
+                    <a href="#">Shop</a>
+                    <ul class="sub-menu-m">
                         @foreach ($categoryArticles as $categoryArticle)
-						<li><a
-                            href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                            {{ $categoryArticle->name }}
-                        </a>></li>
+                            <li>
+                                <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                    {{ $categoryArticle->name }}
+                                </a>
+                            </li>
                         @endforeach
-						
-					</ul>
-					<span class="arrow-main-menu-m">
-						<i class="fa fa-angle-right" aria-hidden="true"></i>
-					</span>
-				</li>
+                    </ul>
+                </li>
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
+
+                <!-- Auth options -->
+                @guest
+                    <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
+                    <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                @else
+                    <li>
+                        <a href="#"><i class="fas fa-user-circle"></i> Mon Compte</a>
+                        <ul class="sub-menu-m">
+                            <li><a href="{{ route('profile') }}"><i class="fas fa-user"></i> Mon Profil</a></li>
+                            <li>
+                                <a href="{{ route('logout') }}"
+                                   onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
+                                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                </a>
+                                <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                @endguest
             </ul>
         </div>
-
-        <!-- Modal Search -->
-        <div class="modal-search-header flex-c-m trans-04 js-hide-modal-search">
-			<div class="container-search-header">
-				<button class="flex-c-m btn-hide-modal-search trans-04 js-hide-modal-search">
-					<img src="images/icons/icon-close2.png" alt="CLOSE">
-				</button>
-
-				<form class="wrap-search-header flex-w p-l-15">
-					<button class="flex-c-m trans-04">
-						<i class="zmdi zmdi-search"></i>
-					</button>
-					<input class="plh3" type="text" name="search" placeholder="Search...">
-				</form>
-			</div>
-		</div>
     </header>
 </div>

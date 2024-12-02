@@ -1,81 +1,49 @@
-/* Global Menu Styles */
-.menu-container {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    font-family: 'Roboto', sans-serif;
+.btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.menu-links ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-    margin: 0;
+.btn-outline-primary {
+    color: #007bff;
+    border: 1px solid #007bff;
 }
 
-.menu-links ul li {
-    position: relative;
-    margin-right: 20px;
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
 }
 
-.menu-links ul li a {
-    text-decoration: none;
-    color: #333;
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+
+.icon-header-item {
     font-size: 18px;
-    padding: 10px;
-    transition: color 0.3s ease, border-bottom 0.3s ease;
-}
-
-.menu-links ul li a:hover {
-    color: #007bff;
-    border-bottom: 2px solid #007bff;
-}
-
-/* Dropdown Styles */
-.has-dropdown:hover .dropdown {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.dropdown {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.dropdown li {
-    padding: 10px;
-}
-
-.dropdown li a {
+    margin: 0 10px;
     color: #333;
-    font-size: 16px;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-.dropdown li a:hover {
+.icon-header-item:hover {
     color: #007bff;
 }
 
-/* Mobile Responsive */
-@media (max-width: 768px) {
-    .menu-links ul {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .menu-links ul li {
-        margin-right: 0;
-    }
-
-    .dropdown {
-        position: relative;
-        transform: translateY(0);
-    }
+.icon-header-item i {
+    font-size: 20px;
+    vertical-align: middle;
 }
+
+
+
+
+
