@@ -18,13 +18,15 @@
                 <tbody>
                     @foreach ($products as $product)
                         @php
-                            $images = json_decode($product->details->image_url, true ?? ''); // Decode JSON into an array
+                            $images = json_decode($product->details->image_url, true) ?? []; // Decode JSON into an array
                         @endphp
                         <tr>
                             <td class="nk-tb-col tb-col-sm">
                                 <div class="user-card">
                                     <span class="tb-product">
                                         @if (count($images) > 0)
+                                        <!-- Affiche la première image si elle existe -->
+                                        
                                             <img src="{{ url($images[0]) }}" alt="{{ $product->title }}"
                                                 class="thumb tb-product-img">
                                         @else

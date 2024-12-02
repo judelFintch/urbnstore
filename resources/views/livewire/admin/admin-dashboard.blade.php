@@ -367,7 +367,8 @@
                                                    @foreach ($products as $product)
                                                        @php
 
-                                                           $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+                                                           $images =
+                                                               json_decode($product->details->image_url, true) ?? []; // Decode JSON into an array
 
                                                        @endphp
                                                        <li class="item">
