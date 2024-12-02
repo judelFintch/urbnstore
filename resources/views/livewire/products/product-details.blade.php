@@ -105,7 +105,9 @@
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" name="time">
                                             <option>Choose an option</option>
-                                            <option>{{ $product->details->color }}</option>
+                                            @foreach (explode(',', $product->details->color) as $color)
+                                            <option>{{ trim($color) }}</option>
+                                            @endforeach
 
                                         </select>
                                         <div class="dropDownSelect2"></div>
@@ -127,7 +129,6 @@
                                     </div>
                                     @php
                                         $imagePath = url($image);
-                                       
                                     @endphp
 
                                     <button
