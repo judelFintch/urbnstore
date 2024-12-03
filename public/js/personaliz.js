@@ -1,4 +1,4 @@
-function changeLanguage(select) {
+/*function changeLanguage(select) {
     const selectedLanguage = select.value;
     window.location.href = `/change-language/${selectedLanguage}`;
 }
@@ -21,3 +21,4 @@ document.getElementById('hamburger-menu').addEventListener('click', function () 
     const menuMobile = document.getElementById('menu-mobile');
     menuMobile.classList.toggle('show');
 });
+*/

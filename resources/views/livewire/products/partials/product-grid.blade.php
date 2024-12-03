@@ -105,7 +105,6 @@
                                             class="thumb">
                                     @endif
 
-
                                 </a>
                                 @if ($product->details && ($product->details->isOnSale ?? false))
                                     <span class="sale-label">On Sale</span>

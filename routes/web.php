@@ -6,52 +6,58 @@ use App\Livewire\Guest\{
     Home\Index,
     About\About,
     Shop\Shop,
-    Contact\Contact
+    Contact\Contact,
+    Error\Page\Denied
 };
 use App\Livewire\Products\ProductDetails;
-use App\Livewire\Admin\AdminDashboard;
-use App\Livewire\Admin\Invoices\Invoicelist;
-use App\Livewire\Admin\Invoices\Invoiceview;
-use App\Livewire\Admin\Adminproduct\Adminproduct;
-use App\Livewire\Guest\Error\Page\Denied;
-use App\Livewire\Admin\Category\Category;
-use App\Livewire\Admin\Stock\Stock;
-use App\Livewire\Admin\Promotion\Promotion;
-use App\Livewire\Admin\Adminproduct\Adminproductdetails;
-use App\Livewire\Admin\Shipping\Shipping;
+use App\Livewire\Admin\{
+    AdminDashboard,
+    Invoices\Invoicelist,
+    Invoices\Invoiceview,
+    Adminproduct\Adminproduct,
+    Adminproduct\Adminproductdetails,
+    Category\Category,
+    Stock\Stock,
+    Promotion\Promotion,
+    Shipping\Shipping
+};
 
+use App\Livewire\Cart\Cartshow;
 
 // Public routes
-Route::get('/', Index::class)->name('home.index');
-Route::get('/about', About::class)->name('home.about');
-Route::get('/shop/{id}/{slug}', Shop::class)->where(['id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-]+'])->name('home.shop');
-Route::get('/contact', Contact::class)->name('home.contact');
-Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
-Route::get('/access_denied', Denied::class)->name('access.denied');
+Route::prefix('/')->group(function () {
+    Route::get('/', Index::class)->name('home.index');
+    Route::get('/about', About::class)->name('home.about');
+    Route::get('/shop/{id}/{slug}', Shop::class)
+        ->where(['id' => '[0-9]+', 'slug' => '[a-zA-Z0-9\-]+'])
+        ->name('home.shop');
+    Route::get('/contact', Contact::class)->name('home.contact');
+    Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
+    Route::get('/access_denied', Denied::class)->name('access.denied');
+    Route::get('/cart', Cartshow::class)->name('cart.details');
 
+});
 
 // Admin routes
-Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
+Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group(function () {
+    // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
+    // Stock & Promotions
+    Route::get('/stock', Stock::class)->name('admin.stock.view');
+    Route::get('/promotion', Promotion::class)->name('admin.promotions.view');
+    Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
 
-   Route::get('/stock', Stock::class)->name('admin.stock.view');
+    // Category routes
+    Route::get('/categories', Category::class)->name('admin.category.view');
 
-   Route::get('/Promotion', Promotion::class)->name('admin.promotions.view');
+    // Product routes
+    Route::get('/products', Adminproduct::class)->name('admin.products.view');
+    Route::get('/products/{id}', Adminproductdetails::class)->name('admin.products.details');
 
-   Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
-
-    //category routes
-    Route::get('category_view', Category::class)->name('admin.category.view');
-
-
-    //product routes
-    Route::get('products_view',Adminproduct::class)->name('admin.products.view');
-    Route::get('products_details/{id}', Adminproductdetails::class)->name('admin.products.details');
-
-    // InvoicesRoutes
-    Route::get('invoiceslist', Invoicelist::class)->name('admin.invoices.list');
-    Route::get('invoicesview', Invoiceview::class)->name('admin.invoices.view');
+    // Invoice routes
+    Route::get('/invoices', Invoicelist::class)->name('admin.invoices.list');
+    Route::get('/invoices/{id}', Invoiceview::class)->name('admin.invoices.view');
 
     // Profile routes
     Route::prefix('profile')->group(function () {
@@ -61,9 +67,10 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     });
 });
 
+// Fallback route
 Route::fallback(function () {
     return view('404');
 });
 
-
+// Authentication routes
 require __DIR__ . '/auth.php';

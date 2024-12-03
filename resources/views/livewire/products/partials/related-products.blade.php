@@ -1,58 +1,68 @@
 <div>
-    
-    <!-- Related Products -->
+    <!-- Produits Associés -->
     <section class="sec-relate-product bg0 p-t-45 p-b-105">
         <div class="container">
             <div class="p-b-45">
                 <h3 class="ltext-106 cl5 txt-center">
-                    Produits associés
+                    Produits Associés
                 </h3>
             </div>
-            <!-- Slide2 -->
+            <!-- Carousel Produits -->
             <div class="wrap-slick2">
                 <div class="slick2">
                     @foreach ($products as $product)
                         <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
-                            <!-- Block2 -->
+                            <!-- Bloc Produit -->
                             <div class="block2">
-
                                 @php
-
-                                $imageId = sprintf('%02d', $product->id);
-                                $images = json_decode($product->details->image_url, true); // Decode JSON into an array
-
-                                $productUrl = route('show-product', [
-                                    'id' => $product->id,
-                                    'category' => $product->category->name,
-                                    'slug' => $product->slug,
-                                ]);
-                            @endphp
+                                    $images = json_decode($product->details->image_url, true); // Décoder les images JSON
+                                    $productUrl = route('show-product', [
+                                        'id' => $product->id,
+                                        'category' => $product->category->name,
+                                        'slug' => $product->slug,
+                                    ]);
+                                @endphp
                                 <div class="block2-pic hov-img0">
-                                    @if (count($images) > 0)
-                                    <img src="{{ url($images[0]) }}" alt="{{ $product['title'] }}" loading="lazy">
-                                    
+                                    @if (!empty($images) && count($images) > 0)
+                                        <a href="{{ $productUrl }}">
+                                            <img 
+                                                src="{{ url($images[0]) }}" 
+                                                alt="Image de {{ $product->title }}" 
+                                                loading="lazy"
+                                                class="img-fluid"
+                                            >
+                                        </a>
+                                    @else
+                                        <img 
+                                            src="{{ asset('images/default-product.png') }}" 
+                                            alt="Image par défaut pour {{ $product->title }}" 
+                                            loading="lazy"
+                                            class="img-fluid"
+                                        >
                                     @endif
-
                                 </div>
-
                                 <div class="block2-txt flex-w flex-t p-t-14">
                                     <div class="block2-txt-child1 flex-col-l">
-                                        <a href="" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                        <a href="{{ $productUrl }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                             {{ $product->title }}
                                         </a>
-
                                         <span class="stext-105 cl3">
-                                            ${{ number_format($product->price, 2) }}
+                                            {{ number_format($product->price, 2) }} €
                                         </span>
                                     </div>
-
                                     <div class="block2-txt-child2 flex-r p-t-3">
-                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                            <img class="icon-heart1 dis-block trans-04"
-                                                src="{{asset('images/icons/icon-heart-01.png')}}" alt="ICON">
-                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                                src="{{asset('images/icons/icon-heart-02.png')}}" alt="ICON">
-                                        </a>
+                                        <button class="btn-addwish-b2 dis-block pos-relative js-addwish-b2" aria-label="Ajouter aux favoris">
+                                            <img 
+                                                class="icon-heart1 dis-block trans-04" 
+                                                src="{{ asset('images/icons/icon-heart-01.png') }}" 
+                                                alt="Ajouter aux favoris"
+                                            >
+                                            <img 
+                                                class="icon-heart2 dis-block trans-04 ab-t-l" 
+                                                src="{{ asset('images/icons/icon-heart-02.png') }}" 
+                                                alt="Déjà ajouté aux favoris"
+                                            >
+                                        </button>
                                     </div>
                                 </div>
                             </div>
