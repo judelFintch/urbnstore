@@ -43,6 +43,13 @@
     vertical-align: middle;
 }
 
+/* disable butonn car show and empty cart on heade component*/
+.disabled {
+    pointer-events: none; /* Désactive les clics */
+    opacity: 0.5; /* Rendre visuellement désactivé */
+    cursor: not-allowed;
+}
+
 
 
 

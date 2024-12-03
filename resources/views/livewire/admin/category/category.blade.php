@@ -18,7 +18,7 @@
                     </div>
                 </div>
             </div>
-            @include('livewire.admin.partials.footer')
+          
         </div>
     </div>
 </div>

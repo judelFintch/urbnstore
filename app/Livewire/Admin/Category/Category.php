@@ -26,12 +26,12 @@ class Category extends Component
     // Méthode pour sauvegarder la catégorie
     public function save()
     {
-        /*$this->validate([
+        $this->validate([
             'name' => 'required|string|max:255',
             'slug' => 'nullable|string|unique:category_articles,slug',
             'description' => 'nullable|string',
             'is_active' => 'required|boolean',
-        ]);*/
+        ]);
 
         CategoryArticles::create([
             'name' => $this->name,
