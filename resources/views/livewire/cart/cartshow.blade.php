@@ -102,6 +102,8 @@
         const cartSubtotal = document.querySelector('.cart-subtotal');
         const cartTotal = document.querySelector('.cart-total');
         const proceedToCheckout = document.querySelector('.proceed-to-checkout');
+        const cartCounterDesktop = document.querySelector('.icon-header-noti'); // Ex. classe pour le badge desktop
+        const cartCounterMobile = document.querySelector('.icon-header-noti-mobile');  // Ex. classe pour le badge mobile
 
         function renderCart() {
             cartTable.querySelectorAll('.table_row').forEach(row => row.remove());
@@ -110,6 +112,7 @@
                 cartTable.insertAdjacentHTML('beforeend', '<tr><td colspan="5">Your cart is empty.</td></tr>');
                 cartSubtotal.textContent = '$0.00';
                 cartTotal.textContent = '$0.00';
+                updateCartCounter(0); // Met à jour le compteur à zéro
                 return;
             }
 
@@ -148,6 +151,19 @@
             cartTotal.textContent = `$${subtotal.toFixed(2)}`;
         }
 
+        // Met à jour le compteur d'articles dans le panier
+        function updateCartCounter(totalQuantity) {
+            const quantity = totalQuantity ?? cart.reduce((sum, item) => sum + item.quantity, 0);
+
+            if (cartCounterDesktop) {
+                cartCounterDesktop.setAttribute('data-notify', quantity);
+            }
+
+            if (cartCounterMobile) {
+                cartCounterMobile.setAttribute('data-notify', quantity);
+            }
+        }
+
         function attachEventListeners() {
             document.querySelectorAll('.btn-num-product-down').forEach(btn => {
                 btn.addEventListener('click', () => {
@@ -184,6 +200,7 @@
         function saveCart() {
             localStorage.setItem('cart', JSON.stringify(cart));
             renderCart();
+            updateCartCounter(); // Met à jour le compteur à chaque modification
         }
 
         proceedToCheckout.addEventListener('click', () => {
@@ -194,6 +211,8 @@
             window.location.href = 'checkout.html';
         });
 
+        // Initialisation
         renderCart();
+        updateCartCounter(); // Met à jour le compteur au chargement
     });
 </script>
