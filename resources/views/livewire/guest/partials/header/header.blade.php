@@ -18,7 +18,13 @@
                             <li class="active-menu">
                                 <a href="#">Shop</a>
                                 <ul class="sub-menu">
-                                   
+                                    @foreach ($categoryArticles as $categoryArticle)
+                                        <li>
+                                            <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                                {{ $categoryArticle->name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
@@ -107,7 +113,13 @@
                 <li class="active-menu">
                     <a href="#">Shop</a>
                     <ul class="sub-menu-m">
-                       
+                        @foreach ($categoryArticles as $categoryArticle)
+                            <li>
+                                <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                    {{ $categoryArticle->name }}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </li>
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
