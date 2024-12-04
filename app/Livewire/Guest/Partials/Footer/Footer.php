@@ -12,7 +12,7 @@ class Footer extends Component
 
     public function mount(){
 
-        $this->categories = CategoryArticles::all();
+        $this->categories = CategoryArticles::select('id', 'name')->where('is_active',true)->get(); 
 
     }
     public function render()
