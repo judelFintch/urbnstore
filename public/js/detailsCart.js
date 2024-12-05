@@ -7,6 +7,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const cartCounterDesktop = document.querySelector('.icon-header-noti'); // Ex. classe pour le badge desktop
     const cartCounterMobile = document.querySelector('.icon-header-noti-mobile');  // Ex. classe pour le badge mobile
 
+    //details element 
+    const billingDetailsForm = document.querySelector('form');
+    const orderDetailsSection = document.querySelector('.bor10 .flex-w');
+    const totalSection = document.querySelector('.bor10 .p-t-15 .mtext-110');
+
+     // Fonction pour afficher les détails du panier dans "Your Order"
+     function renderOrderDetails() {
+        const productDetailsContainer = document.querySelector('.flex-w.flex-t.bor12.p-b-13');
+        const totalElement = document.querySelector('.flex-w.flex-t.p-t-15.p-b-30 .mtext-110'); // Élément pour le total
+        productDetailsContainer.innerHTML = ''; // Réinitialiser le contenu
+    
+        if (cart.length === 0) {
+            productDetailsContainer.innerHTML = '<p>Your order is empty.</p>';
+            totalElement.textContent = '$0.00'; // Si le panier est vide
+            return;
+        }
+    
+        let total = 0;
+    
+        cart.forEach(item => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+    
+            const productHTML = `
+                <div class="flex-w flex-t p-b-13">
+                    <div class="size-208">
+                        <span class="stext-110 cl2">${item.name} (x${item.quantity})</span>
+                    </div>
+                    <div class="size-209">
+                        <span class="mtext-110 cl2">$${itemTotal.toFixed(2)}</span>
+                    </div>
+                </div>
+            `;
+    
+            productDetailsContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
+    
+        // Mettre à jour le total
+        totalElement.textContent = `$${total.toFixed(2)}`;
+    }
+    
+
+    // Préremplir les informations de facturation (si enregistrées)
+    function prefillBillingDetails() {
+        const billingData = JSON.parse(localStorage.getItem('billingDetails')) || {};
+        Array.from(billingDetailsForm.elements).forEach(input => {
+            if (billingData[input.name]) {
+                input.value = billingData[input.name];
+            }
+        });
+    }
+
+    // Sauvegarder les détails de facturation dans le localStorage
+    billingDetailsForm.addEventListener('input', () => {
+        const billingData = {};
+        Array.from(billingDetailsForm.elements).forEach(input => {
+            if (input.name) {
+                billingData[input.name] = input.value;
+            }
+        });
+        localStorage.setItem('billingDetails', JSON.stringify(billingData));
+    });
+
     function renderCart() {
         cartTable.querySelectorAll('.table_row').forEach(row => row.remove());
 
@@ -117,4 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialisation
     renderCart();
     updateCartCounter(); // Met à jour le compteur au chargement
+    prefillBillingDetails(); // Préremplir les informations de facturation si disponibles
+    renderOrderDetails();
 });
