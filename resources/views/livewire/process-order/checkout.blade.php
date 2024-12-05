@@ -55,8 +55,11 @@
                     <div class="p-t-20">
                         <h5>Payment Methods</h5>
                         <div class="d-flex">
-                            <img src="{{asset('images/icons/icon-pay-02.png')}}" alt="Visa" class="m-r-10" style="width:50px;">
-                            <img src="{{asset('images/icons/icon-pay-02.png')}}" alt="Visa" class="m-r-10" style="width:50px;">
+                            
+                            
+                            <img src="{{asset('images/icons/orange.png')}}" alt="Orange" class="m-r-10" style="width:80px;">
+                            <img src="{{asset('images/icons/airtel.png')}}" alt="Airtel" class="m-r-10" style="width:80px;">
+                            <img src="{{asset('images/icons/visa.png')}}" alt="Orange" class="m-r-10" style="width:140px;">
                         </div>
                     </div>
 
@@ -64,6 +67,7 @@
                         Place Order
                     </button>
                 </div>
+                
             </div>
         </div>
     </div>
