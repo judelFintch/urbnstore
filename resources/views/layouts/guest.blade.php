@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? "Urban Store" }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+  
     <link rel="stylesheet" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/linearicons-v1.0.0/icon-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}">
@@ -23,6 +24,7 @@
     <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/util.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/personaliz.css') }}">
 </head>
 
 <body class="animsition">
@@ -60,6 +62,7 @@
     <script src="{{ asset('js/addwish.js') }}" defer></script>
     <script src="{{ asset('js/pscroll.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/personaliz.js') }}" defer></script>
 
     <!-- Initialize Scripts -->
     <script>
@@ -75,7 +78,15 @@
             // Parallax Initialization
             $('.parallax100').parallax100();
         });
+
+        document.addEventListener("DOMContentLoaded", () => {
+    displayCart(); // Affiche le contenu du panier après le chargement du DOM
+});
+
     </script>
+
+    
+<script src="{{ asset('js/cart.js') }}" defer></script>
 </body>
 
 </html>

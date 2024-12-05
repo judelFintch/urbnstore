@@ -48,4 +48,14 @@ class ProductDetails extends Component
     {
         return view('livewire.products.product-details');
     }
+
+
+    public function show($id, $category, $slug)
+{
+    $product = Product::with(['details', 'reviews', 'category.relatedProducts'])
+        ->findOrFail($id);
+
+    // Rest of the code...
+    return $product;
+}
 }

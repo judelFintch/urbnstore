@@ -1,23 +1,18 @@
-<div class="nk-add-product toggle-slide toggle-slide-right" data-content="addProduct" data-toggle-screen="any"
-    data-toggle-overlay="true" data-toggle-body="true" data-simplebar>
-    <div class="nk-block-head">
-        <div class="nk-block-head-content">
-            <h5 class="nk-block-title">New Product</h5>
-            <div class="nk-block-des">
-                <p>Add information and add new product.</p>
-            </div>
-        </div>
-    </div>
-
-    <div class="nk-block">
+<div class="nk-block">
+    <form wire:submit.prevent="save" enctype="multipart/form-data">
         <div class="row g-3">
             <!-- Product Title -->
             <div class="col-12">
                 <div class="form-group">
                     <label class="form-label" for="product-title">Product Title</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="product-title" value="Test Product"
-                            wire:model="title">
+                        <input type="text" value="TEST" class="form-control" id="product-title"
+                            wire:model.defer="title">
+                        <span class="text-danger">
+                            @error('title')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -27,7 +22,13 @@
                 <div class="form-group">
                     <label class="form-label" for="regular-price">Regular Price</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="regular-price" value="99.99" wire:model="price">
+                        <input type="number" value="10" class="form-control" id="regular-price"
+                            wire:model.defer="price">
+                        <span class="text-danger">
+                            @error('price')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -37,7 +38,13 @@
                 <div class="form-group">
                     <label class="form-label" for="stock">Stock</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="stock" value="100" wire:model="stock">
+                        <input value="10" type="number" class="form-control" id="stock"
+                            wire:model.defer="stock">
+                        <span class="text-danger">
+                            @error('stock')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -47,36 +54,46 @@
                 <div class="form-group">
                     <label class="form-label" for="category">Category</label>
                     <div class="form-control-wrap">
-                        <select class="form-control" id="category" wire:model="category_id">
+                        <select class="form-control" id="category" wire:model.defer="category_id">
                             <option value="">Select Category</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}"
-                                    {{ $category->id == $category_id ? 'selected' : '' }}>
-                                    {{ $category->name }}
-                                </option>
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        <span class="text-danger">
+                            @error('category_id')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
 
-
-            <!-- Color -->
+            <!-- Additional Fields -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="color">Color</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="color" value="Red" wire:model="color">
+                        <input type="text" class="form-control" id="color" wire:model.defer="color">
+                        <span class="text-danger">
+                            @error('color')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <!-- Material -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="material">Material</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="material" value="Cotton" wire:model="material">
+                        <input type="text" class="form-control" id="material" wire:model.defer="material">
+                        <span class="text-danger">
+                            @error('material')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -86,8 +103,12 @@
                 <div class="form-group">
                     <label class="form-label" for="sleeve_type">Sleeve Type</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="sleeve_type" value="Short Sleeve"
-                            wire:model="sleeve_type">
+                        <input type="text" class="form-control" id="sleeve_type" wire:model.defer="sleeve_type">
+                        <span class="text-danger">
+                            @error('sleeve_type')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -97,8 +118,12 @@
                 <div class="form-group">
                     <label class="form-label" for="collar_type">Collar Type</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="collar_type" value="V-neck"
-                            wire:model="collar_type">
+                        <input type="text" class="form-control" id="collar_type" wire:model.defer="collar_type">
+                        <span class="text-danger">
+                            @error('collar_type')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -108,7 +133,12 @@
                 <div class="form-group">
                     <label class="form-label" for="fit">Fit</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="fit" value="Regular" wire:model="fit">
+                        <input type="text" class="form-control" id="fit" wire:model.defer="fit">
+                        <span class="text-danger">
+                            @error('fit')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -118,8 +148,13 @@
                 <div class="form-group">
                     <label class="form-label" for="size_available">Size Available</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="size_available" value="M, L, XL"
-                            wire:model="size_available">
+                        <input type="text" class="form-control" id="size_available"
+                            wire:model.defer="size_available">
+                        <span class="text-danger">
+                            @error('size_available')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -129,8 +164,13 @@
                 <div class="form-group">
                     <label class="form-label" for="care_instructions">Care Instructions</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="care_instructions" value="Machine Washable"
-                            wire:model="care_instructions">
+                        <input type="text" class="form-control" id="care_instructions"
+                            wire:model.defer="care_instructions">
+                        <span class="text-danger">
+                            @error('care_instructions')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -140,30 +180,31 @@
                 <div class="form-group">
                     <label class="form-label" for="tags">Tags</label>
                     <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="tags" value="Summer, Casual"
-                            wire:model="tags">
+                        <input type="text" class="form-control" id="tags" wire:model.defer="tags">
+                        <span class="text-danger">
+                            @error('tags')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
 
             <!-- Image URL -->
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label class="form-label" for="image_url">Image URL</label>
-                    <div class="form-control-wrap">
-                        <input type="text" class="form-control" id="image_url"
-                            value="https://example.com/product-image.jpg" wire:model="image_url">
-                    </div>
-                </div>
-            </div>
+
 
             <!-- Rating -->
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="form-label" for="rating">Rating</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="rating" value="4.5"
-                            wire:model="rating" min="0" max="5" step="0.1">
+                        <input type="number" class="form-control" id="rating" step="0.1"
+                            wire:model.defer="rating">
+                        <span class="text-danger">
+                            @error('rating')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -173,8 +214,12 @@
                 <div class="form-group">
                     <label class="form-label" for="sales_count">Sales Count</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="sales_count" value="200"
-                            wire:model="sales_count">
+                        <input type="number" class="form-control" id="sales_count" wire:model.defer="sales_count">
+                        <span class="text-danger">
+                            @error('sales_count')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -184,8 +229,13 @@
                 <div class="form-group">
                     <label class="form-label" for="discount">Discount</label>
                     <div class="form-control-wrap">
-                        <input type="number" class="form-control" id="discount" value="10"
-                            wire:model="discount">
+                        <input type="number" class="form-control" id="discount" step="0.01"
+                            wire:model.defer="discount">
+                        <span class="text-danger">
+                            @error('discount')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -195,16 +245,13 @@
                 <div class="form-group">
                     <label class="form-label" for="discount_end_date">Discount End Date</label>
                     <div class="form-control-wrap">
-                        <input type="date" class="form-control" id="discount_end_date" value="2024-12-31"
-                            wire:model="discount_end_date">
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12">
-                <div class="upload-zone small bg-lighter my-2">
-                    <div class="dz-message">
-                        <span class="dz-message-text">Drag and drop file</span>
+                        <input type="date" class="form-control" id="discount_end_date"
+                            wire:model.defer="discount_end_date">
+                        <span class="text-danger">
+                            @error('discount_end_date')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
@@ -214,16 +261,52 @@
                 <div class="form-group">
                     <label class="form-label" for="long_description">Long Description</label>
                     <div class="form-control-wrap">
-                        <textarea class="form-control" id="long_description" wire:model="long_description">This is a sample long description for the test product. It provides more detailed information about the product's features, material, and usage.</textarea>
+                        <textarea class="form-control" id="long_description" wire:model.defer="long_description"></textarea>
+                        <span class="text-danger">
+                            @error('long_description')
+                                {{ $message }}
+                            @enderror
+                        </span>
                     </div>
                 </div>
             </div>
 
+            <!-- Product Images (Re-integrated) -->
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="form-label" for="images">Product Images</label>
+                    <div class="form-control-wrap">
+                        <input type="file" class="form-control" id="images" wire:model="uploadedFiles"
+                            multiple>
+                        <span class="text-danger">
+                            @error('uploadedFiles.*')
+                                {{ $message }}
+                            @enderror
+                        </span>
+                        <div class="mt-2">
+                            @if ($uploadedFiles)
+                                @foreach ($uploadedFiles as $file)
+                                    <img src="{{ $file->temporaryUrl() }}" alt="Preview" class="img-thumbnail"
+                                        width="100">
+                                @endforeach
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             <!-- Submit Button -->
             <div class="col-12">
-                <button class="btn btn-primary" wire:click="save"><em class="icon ni ni-plus"></em><span>Add
-                        New</span></button>
+                <button type="submit" class="btn btn-primary">
+                    <em class="icon ni ni-save"></em>
+                    <span wire:loading.remove>Save Product</span>
+                    <span wire:loading>Saving...</span>
+                </button>
             </div>
         </div>
-    </div><!-- .nk-block -->
+    </form>
+</div>
+
+
 </div>
