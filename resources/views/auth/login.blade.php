@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-login-layout>
     <div class="nk-app-root">
         <!-- main @s -->
         <div class="nk-main">

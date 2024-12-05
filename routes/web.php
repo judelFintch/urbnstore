@@ -22,6 +22,13 @@ use App\Livewire\Admin\{
     Shipping\Shipping
 };
 
+use App\Livewire\ProcessOrder\{
+    Checkout,
+    Payment,
+    OrderCompleted,
+    OrderCancelled
+};
+
 use App\Livewire\Cart\Cartshow;
 
 // Public routes
@@ -35,6 +42,11 @@ Route::prefix('/')->group(function () {
     Route::get('/product/{id}/{category}/{slug}', ProductDetails::class)->name('show-product');
     Route::get('/access_denied', Denied::class)->name('access.denied');
     Route::get('/cart', Cartshow::class)->name('cart.details');
+
+    //route processing
+
+    Route::get('/checkout', Checkout::class)->name('process.checkout');
+    
 
 });
 
