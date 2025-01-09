@@ -31,32 +31,18 @@
         <x-backtop></x-backtop>
     @endif
 
-    <script src="{{ asset('js/cart.js') }}" defer></script>
-
+   
     <!-- JavaScript Dependencies -->
     <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}" defer></script>
     <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
     <script src="{{ asset('vendor/bootstrap/js/popper.js') }}" defer></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/select2/select2.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/daterangepicker/moment.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/daterangepicker/daterangepicker.js') }}" defer></script>
     <script src="{{ asset('vendor/slick/slick.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/parallax100/parallax100.js') }}" defer></script>
-    <script src="{{ asset('vendor/MagnificPopup/jquery.magnific-popup.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/isotope/isotope.pkgd.min.js') }}" defer></script>
     <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}" defer></script>
-
     <!-- Custom Scripts -->
     <script src="{{ asset('js/slick-custom.js') }}" defer></script>
-    <script src="{{ asset('js/gallerylb.js') }}" defer></script>
-    <script src="{{ asset('js/addwish.js') }}" defer></script>
-    <script src="{{ asset('js/pscroll.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
     <script src="{{ asset('js/personaliz.js') }}" defer></script>
-
-
     <script src="{{ asset('js/cart.js') }}" defer></script>
 </body>
 
