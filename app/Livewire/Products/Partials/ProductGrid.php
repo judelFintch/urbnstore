@@ -25,7 +25,7 @@ class ProductGrid extends Component
     public function mount($isHomePage)
     {
         $this->products = Product::with('category')->get();
-        $this->categories = CategoryArticles::all();
+        $this->categories = CategoryArticles::take(5)->get();
         //this active the title for the homepage product is true
          $this->isHomePage = $isHomePage ;
 

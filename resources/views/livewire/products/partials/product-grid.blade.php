@@ -21,6 +21,7 @@
                             {{ $category['name'] }}
                         </button>
                     @endforeach
+                    
                 </div>
                 <div class="flex-w flex-c-m m-tb-10">
                     <div
