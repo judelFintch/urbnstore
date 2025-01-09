@@ -11,19 +11,21 @@
 
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
-  
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
+     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fonts/linearicons-v1.0.0/icon-font.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
+    
     <link rel="stylesheet" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+   
     <link rel="stylesheet" href="{{ asset('vendor/MagnificPopup/magnific-popup.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/util.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+   
     <link rel="stylesheet" href="{{ asset('css/personaliz.css') }}">
 </head>
 
@@ -66,22 +68,31 @@
 
     <!-- Initialize Scripts -->
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // Select2 Initialization
-            $(".js-select2").each(function() {
-                $(this).select2({
-                    minimumResultsForSearch: 20,
-                    dropdownParent: $(this).next('.dropDownSelect2')
-                });
-            });
-
-            // Parallax Initialization
-            $('.parallax100').parallax100();
+       document.addEventListener("DOMContentLoaded", function() {
+    // Initialisation de Select2
+    $(".js-select2").each(function() {
+        $(this).select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $(this).next('.dropDownSelect2')
         });
+    });
 
-        document.addEventListener("DOMContentLoaded", () => {
-    displayCart(); // Affiche le contenu du panier après le chargement du DOM
+    // Initialisation de Slick Slider
+    $('.slick-slider').slick();
+
+    // Initialisation d'Isotope pour les grilles
+    var $grid = $('.grid-container').isotope({
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows'
+    });
+
+    // Recharge Isotope après chargement des images
+    $grid.imagesLoaded().progress(function() {
+        $grid.isotope('layout');
+    });
 });
+
+
 
     </script>
 
