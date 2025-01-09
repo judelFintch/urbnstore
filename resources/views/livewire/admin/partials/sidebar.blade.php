@@ -47,14 +47,14 @@
                 @if (Auth::check())
                     @php
                         // Récupérer le nom de l'utilisateur a refactore dans le helper
-                            $name = Auth::user()->name;
+$name = Auth::user()->name;
 
-                            // Diviser le nom complet en mots (en supposant que le nom complet est composé de prénom et nom de famille)
-                            $words = explode(' ', $name);
+// Diviser le nom complet en mots (en supposant que le nom complet est composé de prénom et nom de famille)
+$words = explode(' ', $name);
 
-                            // Récupérer la première lettre de chaque mot et les mettre en majuscule
-                            $initials = '';
-                                                    foreach ($words as $word) {
+// Récupérer la première lettre de chaque mot et les mettre en majuscule
+$initials = '';
+                        foreach ($words as $word) {
                             $initials .= strtoupper($word[0]);
                         }
                     @endphp
@@ -145,6 +145,12 @@
                         </a>
                     </li><!-- .nk-menu-item -->
 
+                    <li class="nk-menu-item">
+                        <a href="{{ route('admin.contact.message') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>
+                            <span class="nk-menu-text">Messages</span>
+                        </a>
+                    </li>
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.promotions.view') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-bag-fill"></em></span>

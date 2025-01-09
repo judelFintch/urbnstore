@@ -22,7 +22,8 @@ use App\Livewire\Admin\{
     Category\Category,
     Stock\Stock,
     Promotion\Promotion,
-    Shipping\Shipping
+    Shipping\Shipping,
+    Message\ContactMessage
 };
 use App\Livewire\ProcessOrder\{
     Checkout,
@@ -88,6 +89,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
         Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
+        Route::get('/Message', ContactMessage::class)->name('admin.contact.message');
     });
 });
 

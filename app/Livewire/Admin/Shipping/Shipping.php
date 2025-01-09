@@ -5,6 +5,8 @@ namespace App\Livewire\Admin\Shipping;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 
+#[Layout('layouts.app')]
+
 class Shipping extends Component
 {
     public function render()
