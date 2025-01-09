@@ -10,6 +10,8 @@ class Contact extends Component
     #[Layout('layouts.guest')]
     public function render()
     {
-        return view('livewire.guest.contact.contact');
+
+        $contact = config('contact');
+        return view('livewire.guest.contact.contact', compact('contact'));
     }
 }
