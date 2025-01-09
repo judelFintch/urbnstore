@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title ?? "Urban Store" }}</title>
+    <title>{{ $title ?? 'Urban Store' }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
@@ -12,20 +12,10 @@
     <!-- CSS Dependencies -->
     <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/select2/select2.min.css') }}">
-     <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('fonts/linearicons-v1.0.0/icon-font.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/animate/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/css-hamburgers/hamburgers.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/animsition/css/animsition.min.css') }}">
-    
-    <link rel="stylesheet" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
-   
-    <link rel="stylesheet" href="{{ asset('vendor/MagnificPopup/magnific-popup.css') }}">
-    <link rel="stylesheet" href="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/util.css') }}">
-   
+    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('css/personaliz.css') }}">
 </head>
 
@@ -57,7 +47,7 @@
     <script src="{{ asset('vendor/isotope/isotope.pkgd.min.js') }}" defer></script>
     <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}" defer></script>
     <script src="{{ asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js') }}" defer></script>
-    
+
     <!-- Custom Scripts -->
     <script src="{{ asset('js/slick-custom.js') }}" defer></script>
     <script src="{{ asset('js/gallerylb.js') }}" defer></script>
@@ -68,36 +58,26 @@
 
     <!-- Initialize Scripts -->
     <script>
-       document.addEventListener("DOMContentLoaded", function() {
-    // Initialisation de Select2
-    $(".js-select2").each(function() {
-        $(this).select2({
-            minimumResultsForSearch: 20,
-            dropdownParent: $(this).next('.dropDownSelect2')
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select2 Initialization
+            $(".js-select2").each(function() {
+                $(this).select2({
+                    minimumResultsForSearch: 20,
+                    dropdownParent: $(this).next('.dropDownSelect2')
+                });
+            });
+
+            // Parallax Initialization
+            $('.parallax100').parallax100();
         });
-    });
 
-    // Initialisation de Slick Slider
-    $('.slick-slider').slick();
-
-    // Initialisation d'Isotope pour les grilles
-    var $grid = $('.grid-container').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows'
-    });
-
-    // Recharge Isotope après chargement des images
-    $grid.imagesLoaded().progress(function() {
-        $grid.isotope('layout');
-    });
-});
-
-
-
+        document.addEventListener("DOMContentLoaded", () => {
+            displayCart(); // Affiche le contenu du panier après le chargement du DOM
+        });
     </script>
 
-    
-<script src="{{ asset('js/cart.js') }}" defer></script>
+
+    <script src="{{ asset('js/cart.js') }}" defer></script>
 </body>
 
 </html>
