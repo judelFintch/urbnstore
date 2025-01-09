@@ -86,9 +86,7 @@
                                                                     {{ $message->created_at }}
                                                                 </span>
                                                             </div>
-                                                            <div
-                                                                class="nk-tb-col
-                                        nk-tb-col-tools">
+                                                            <div class="nk-tb-col nk-tb-col-tools">
                                                                 <ul class="nk-tb-actions gx-1 my-n1">
                                                                     <li class="me-n1">
                                                                         <div class="dropdown">

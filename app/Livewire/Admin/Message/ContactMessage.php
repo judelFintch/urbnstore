@@ -12,9 +12,9 @@ class ContactMessage extends Component
 {
     public $messages;
 
-    public function mount()
+    public function mount(Message $message)
     {
-        $this->messages = Message::all();
+        $this->messages = $message->latest()->get();
     }
 
     public function render()
