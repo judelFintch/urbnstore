@@ -11,24 +11,40 @@
         <div class="container">
             <div class="flex-w flex-tr">
                 <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                    <form>
+                     <form wire:submit.prevent="submit">
                         <h4 class="mtext-105 cl2 txt-center p-b-30">
                             {{ $contact['subtitle'] }}
                         </h4>
 
+                        <!-- Email -->
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email" placeholder="Votre adresse email">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" 
+                                   type="email" 
+                                   wire:model="email" 
+                                   placeholder="Your Email Address">
                             <img class="how-pos4 pointer-none" src="{{ asset('images/icons/icon-email.png') }}" alt="ICON">
+                            @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
+                        <!-- Message -->
                         <div class="bor8 m-b-30">
-                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="msg" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" 
+                                      wire:model="msg" 
+                                      placeholder="How Can We Help?"></textarea>
+                            @error('msg') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
+                        <!-- Submit Button -->
                         <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">
-                            Envoyer
+                            Submit
                         </button>
                     </form>
+
+                    @if (session()->has('success'))
+                        <div class="alert alert-success mt-4">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                 </div>
 
                 <div class="size-210 bor10 flex-w flex-col-m p-lr-93 p-tb-30 p-lr-15-lg w-full-md">
