@@ -7,7 +7,10 @@ use App\Livewire\Guest\{
     About\About,
     Shop\Shop,
     Contact\Contact,
-    Error\Page\Denied
+    Error\Page\Denied,
+    Shipping\AboutShipping,
+    Commande\AboutCommend,
+    Cancel\AboutCancel,
 };
 use App\Livewire\Products\ProductDetails;
 use App\Livewire\Admin\{
@@ -21,14 +24,12 @@ use App\Livewire\Admin\{
     Promotion\Promotion,
     Shipping\Shipping
 };
-
 use App\Livewire\ProcessOrder\{
     Checkout,
     Payment,
     OrderCompleted,
     OrderCancelled
 };
-
 use App\Livewire\Cart\Cartshow;
 
 // Public routes
@@ -43,11 +44,16 @@ Route::prefix('/')->group(function () {
     Route::get('/access_denied', Denied::class)->name('access.denied');
     Route::get('/cart', Cartshow::class)->name('cart.details');
 
-    //route processing
+    Route::get('/orders', AboutCommend::class)->name('help.orders');
+    //Route::get('/returns', AboutCancel::class)->name('help.returns');
+    Route::get('/shipping', AboutShipping::class)->name('help.shipping');
+    Route::get('/faq', Denied::class)->name('help.faq'); // Assuming Denied is a placeholder for the actual FAQ component
 
+    // Newsletter
+    // Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
+
+    // Processing routes
     Route::get('/checkout', Checkout::class)->name('process.checkout');
-    
-
 });
 
 // Admin routes
@@ -55,21 +61,27 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
-    // Stock & Promotions
-    Route::get('/stock', Stock::class)->name('admin.stock.view');
-    Route::get('/promotion', Promotion::class)->name('admin.promotions.view');
-    Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
+    // Management routes
+    Route::prefix('management')->group(function () {
+        Route::get('/stock', Stock::class)->name('admin.stock.view');
+        Route::get('/promotion', Promotion::class)->name('admin.promotions.view');
+        Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
+    });
 
     // Category routes
     Route::get('/categories', Category::class)->name('admin.category.view');
 
     // Product routes
-    Route::get('/products', Adminproduct::class)->name('admin.products.view');
-    Route::get('/products/{id}', Adminproductdetails::class)->name('admin.products.details');
+    Route::prefix('products')->group(function () {
+        Route::get('/', Adminproduct::class)->name('admin.products.view');
+        Route::get('/{id}', Adminproductdetails::class)->name('admin.products.details');
+    });
 
     // Invoice routes
-    Route::get('/invoices', Invoicelist::class)->name('admin.invoices.list');
-    Route::get('/invoices/{id}', Invoiceview::class)->name('admin.invoices.view');
+    Route::prefix('invoices')->group(function () {
+        Route::get('/', Invoicelist::class)->name('admin.invoices.list');
+        Route::get('/{id}', Invoiceview::class)->name('admin.invoices.view');
+    });
 
     // Profile routes
     Route::prefix('profile')->group(function () {
