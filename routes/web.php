@@ -2,36 +2,45 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\Guest\{
-    Home\Index,
-    About\About,
-    Shop\Shop,
-    Contact\Contact,
-    Error\Page\Denied,
-    Shipping\AboutShipping,
-    Commande\AboutCommend,
-    Cancel\AboutCancel,
-};
+
+// Guest components
+use App\Livewire\Guest\Home\Index;
+use App\Livewire\Guest\About\About;
+use App\Livewire\Guest\Shop\Shop;
+use App\Livewire\Guest\Contact\Contact;
+use App\Livewire\Guest\Error\Page\Denied;
+use App\Livewire\Guest\Shipping\AboutShipping;
+use App\Livewire\Guest\Commande\AboutCommend;
+use App\Livewire\Guest\Cancel\AboutCancel;
+
+// Product components
 use App\Livewire\Products\ProductDetails;
-use App\Livewire\Admin\{
-    AdminDashboard,
-    Invoices\Invoicelist,
-    Invoices\Invoiceview,
-    Adminproduct\Adminproduct,
-    Adminproduct\Adminproductdetails,
-    Category\Category,
-    Stock\Stock,
-    Promotion\Promotion,
-    Shipping\Shipping,
-    Message\ContactMessage
-};
-use App\Livewire\ProcessOrder\{
-    Checkout,
-    Payment,
-    OrderCompleted,
-    OrderCancelled
-};
+
+// Admin components
+use App\Livewire\Admin\AdminDashboard;
+use App\Livewire\Admin\Invoices\Invoicelist;
+use App\Livewire\Admin\Invoices\Invoiceview;
+use App\Livewire\Admin\Adminproduct\Adminproduct;
+use App\Livewire\Admin\Adminproduct\Adminproductdetails;
+use App\Livewire\Admin\Category\Category;
+use App\Livewire\Admin\Stock\Stock;
+use App\Livewire\Admin\Promotion\Promotion;
+use App\Livewire\Admin\Shipping\Shipping;
+use App\Livewire\Admin\Message\ContactMessage;
+
+// Order processing components
+use App\Livewire\ProcessOrder\Checkout;
+use App\Livewire\ProcessOrder\Payment;
+use App\Livewire\ProcessOrder\OrderCompleted;
+use App\Livewire\ProcessOrder\OrderCancelled;
+
+// Cart components
 use App\Livewire\Cart\Cartshow;
+
+use App\Livewire\Admin\Category\CategoryList;
+use App\Livewire\Admin\Category\CategoryCreate;
+use App\Livewire\Admin\Category\CategoryEdit;
+use App\Livewire\Admin\Category\CategoryDelete;
 
 // Public routes
 Route::prefix('/')->group(function () {
@@ -46,15 +55,8 @@ Route::prefix('/')->group(function () {
     Route::get('/cart', Cartshow::class)->name('cart.details');
 
     Route::get('/orders', AboutCommend::class)->name('help.orders');
-    //Route::get('/returns', AboutCancel::class)->name('help.returns');
     Route::get('/shipping', AboutShipping::class)->name('help.shipping');
     Route::get('/faq', Denied::class)->name('help.faq'); // Assuming Denied is a placeholder for the actual FAQ component
-
-    // Newsletter
-    // Route::post('/newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
-
-    // Processing routes
-    Route::get('/checkout', Checkout::class)->name('process.checkout');
 });
 
 // Admin routes
@@ -70,7 +72,17 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
     });
 
     // Category routes
-    Route::get('/categories', Category::class)->name('admin.category.view');
+
+    Route::prefix('categories')->name('categories.')->group(function () {
+        // Route pour afficher la liste des catégories
+        Route::get('/categories', Category::class)->name('list');
+        // Route pour créer une nouvelle catégorie
+        Route::get('/create', CategoryCreate::class)->name('create');
+        // Route pour éditer une catégorie
+        Route::get('/edit/{id}', CategoryEdit::class)->name('edit');
+        // Route pour supprimer une catégorie
+        Route::get('/delete/{id}', CategoryDelete::class)->name('delete');
+    });
 
     // Product routes
     Route::prefix('products')->group(function () {

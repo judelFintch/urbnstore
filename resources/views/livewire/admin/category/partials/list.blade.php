@@ -24,8 +24,10 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <ul class="link-list-opt no-bdr">
-                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit Selected</span></a></li>
-                                                <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove Selected</span></a></li>
+                                                <li><a href="#"><em class="icon ni ni-edit"></em><span>Edit
+                                                            Selected</span></a></li>
+                                                <li><a href="#"><em class="icon ni ni-trash"></em><span>Remove
+                                                            Selected</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -64,8 +66,17 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul class="link-list-opt no-bdr">
-                                                    <li><a href="#" wire:click="edit({{ $category->id }})"><em class="icon ni ni-edit"></em><span>Edit Category</span></a></li>
-                                                    <li><a href="#" wire:click="delete({{ $category->id }})"><em class="icon ni ni-trash"></em><span>Delete Category</span></a></li>
+                                                    <li>
+                                                        <a
+                                                            href="{{ route('categories.edit', ['id' => $category->id]) }}">
+                                                            <em class="icon ni ni-edit"></em>
+                                                            <span>Éditer</span>
+                                                        </a>
+                                                    </li>
+                                                    <li><a
+                                                            href="{{ route('categories.delete', ['id' => $category->id]) }}"><em
+                                                                class="icon ni ni-trash"></em><span>Delete
+                                                                Category</span></a></li>
                                                 </ul>
                                             </div>
                                         </div>
