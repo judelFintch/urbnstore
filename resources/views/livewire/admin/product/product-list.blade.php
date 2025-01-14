@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class="nk-content-inner">
                         <div class="nk-content-body">
-                            @livewire('admin.product.partials.header', ['content' => 'list'])
+                            @livewire('admin.product.partials.header', ['content' => 'create'])
                             <div class="nk-block nk-block-lg">
                                 <div class="nk-block-head">
                                 </div>

@@ -51,15 +51,11 @@
                         @if ($isCreated)
                             <li class="nk-block-tools-opt">
                                 <!-- Pour mobile : Bouton d'ajout -->
-                                <a href="" class="btn btn-icon btn-primary d-md-none">
-
+                                <a href="{{route('product.list')}}" class="btn btn-icon btn-primary d-md-none">
                                 </a>
-
                                 <!-- Pour les écrans plus larges : Bouton d'ajout -->
-                                <a href=""
-                                    class="btn btn-primary d-none d-md-inline-flex">
-
-                                    <span>Afficher la liste</span>
+                                <a href="{{route('product.list')}}" class="btn btn-primary d-none d-md-inline-flex">
+                                    <span>liste</span>
                                 </a>
                             </li>
                         @endif

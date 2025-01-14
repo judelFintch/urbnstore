@@ -47,6 +47,7 @@ use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Product\ProductDelete;
 use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
+use App\Livewire\Admin\Product\ProductListCard;
 
 
 
@@ -117,6 +118,8 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/delete/{id}', ProductDelete::class)->name('delete');
         Route::get('/detail/{id}', ProductDetail::class)->name('details');
         Route::get('/list', ProductList::class)->name('list'); // admin.products.list
+       
+        Route::get('/list-card', ProductListCard::class)->name('list-card');
     });
 
 });
