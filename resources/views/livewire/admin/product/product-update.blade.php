@@ -25,7 +25,8 @@
                                             <!-- Title -->
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="product-title">Titre du Produit</label>
+                                                    <label class="form-label" for="product-title">Titre du
+                                                        Produit</label>
                                                     <div class="form-control-wrap">
                                                         <input type="text" class="form-control" id="product-title"
                                                             wire:model.defer="form.title">
@@ -86,27 +87,15 @@
                                             </div>
 
                                             <!-- Fields Group -->
-                                            @foreach ([
-                                                ['color', 'Couleur'], 
-                                                ['material', 'Matériel'], 
-                                                ['sleeve_type', 'Type de Manche'], 
-                                                ['collar_type', 'Type de Col'], 
-                                                ['fit', 'Coupe'], 
-                                                ['size_available', 'Tailles Disponibles'], 
-                                                ['care_instructions', 'Instructions de Soin'], 
-                                                ['tags', 'Tags'], 
-                                                ['rating', 'Note (0-5)'], 
-                                                ['sales_count', 'Nombre de Ventes'], 
-                                                ['discount', 'Réduction (%)'], 
-                                                ['discount_end_date', 'Date de Fin de Réduction']
-                                            ] as $field)
+                                            @foreach ([['color', 'Couleur'], ['material', 'Matériel'], ['sleeve_type', 'Type de Manche'], ['collar_type', 'Type de Col'], ['fit', 'Coupe'], ['size_available', 'Tailles Disponibles'], ['care_instructions', 'Instructions de Soin'], ['tags', 'Tags'], ['rating', 'Note (0-5)'], ['sales_count', 'Nombre de Ventes'], ['discount', 'Réduction (%)'], ['discount_end_date', 'Date de Fin de Réduction']] as $field)
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <label class="form-label" for="{{ $field[0] }}">{{ $field[1] }}</label>
+                                                        <label class="form-label"
+                                                            for="{{ $field[0] }}">{{ $field[1] }}</label>
                                                         <div class="form-control-wrap">
-                                                            <input type="{{ $field[0] === 'discount_end_date' ? 'date' : 'text' }}" 
-                                                                class="form-control" 
-                                                                id="{{ $field[0] }}" 
+                                                            <input
+                                                                type="{{ $field[0] === 'discount_end_date' ? 'date' : 'text' }}"
+                                                                class="form-control" id="{{ $field[0] }}"
                                                                 wire:model.defer="form.{{ $field[0] }}">
                                                             @error("form.{$field[0]}")
                                                                 <span class="text-danger">{{ $message }}</span>
@@ -119,10 +108,10 @@
                                             <!-- Long Description -->
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="long_description">Description Longue</label>
+                                                    <label class="form-label" for="long_description">Description
+                                                        Longue</label>
                                                     <div class="form-control-wrap">
-                                                        <textarea class="form-control" id="long_description"
-                                                            wire:model.defer="form.long_description"></textarea>
+                                                        <textarea class="form-control" id="long_description" wire:model.defer="form.long_description"></textarea>
                                                         @error('form.long_description')
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
@@ -138,7 +127,8 @@
                                                         <div class="position-relative">
                                                             <img src="{{ asset('storage/' . $image) }}" alt="Image"
                                                                 class="img-thumbnail" width="100">
-                                                            <button type="button" class="btn btn-danger btn-sm position-absolute"
+                                                            <button type="button"
+                                                                class="btn btn-danger btn-sm position-absolute"
                                                                 style="top: 5px; right: 5px;"
                                                                 wire:click="deleteImage({{ $key }})">×</button>
                                                         </div>
@@ -149,7 +139,8 @@
                                             <!-- Upload New Images -->
                                             <div class="col-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="new-images">Ajouter des Images</label>
+                                                    <label class="form-label" for="new-images">Ajouter des
+                                                        Images</label>
                                                     <div class="form-control-wrap">
                                                         <input type="file" class="form-control" id="new-images"
                                                             wire:model="uploadedFiles" multiple>

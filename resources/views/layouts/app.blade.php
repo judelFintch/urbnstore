@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/dashlite.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/theme.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/aditional.css') }}">
+    <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/personaliz.css') }}" />
+       
+
+    
 </head>
 
 <body class="nk-body ui-rounder npc-default has-sidebar ">

@@ -24,7 +24,7 @@ class ProductUpdate extends Component
         'form.title' => 'required|string|max:255',
         'form.price' => 'required|numeric|min:0',
         'form.stock' => 'required|integer|min:0',
-        'form.category_id' => 'required|exists:categories,id',
+        'form.category_id' => 'required|exists:category_articles,id',
         'form.color' => 'required|string',
         'form.material' => 'required|string',
         'form.sleeve_type' => 'required|string',
@@ -56,10 +56,14 @@ class ProductUpdate extends Component
     {
         $this->validate();
 
+        // Mise à jour du produit
         $this->product->update($this->prepareProductData());
-        $this->product->details()->update($this->prepareProductDetails());
 
-        session()->flash('message', 'Product updated successfully!');
+        // Mise à jour des détails du produit
+        $details = $this->prepareProductDetails();
+        $this->product->details()->update($details);
+
+        session()->flash('message', 'Produit mis à jour avec succès.');
         return redirect()->route('admin.products.view');
     }
 
@@ -73,7 +77,7 @@ class ProductUpdate extends Component
 
         unset($this->images[$imageKey]);
         $this->updateProductImages();
-        session()->flash('message', 'Image deleted successfully!');
+        session()->flash('message', 'Image supprimée avec succès.');
     }
 
     private function updateProductImages()
@@ -97,14 +101,34 @@ class ProductUpdate extends Component
 
     private function prepareProductDetails()
     {
-        return array_merge($this->form, [
-            'image_url' => json_encode(array_merge($this->images, $this->uploadImages($this->uploadedFiles))),
-        ]);
+        return collect($this->form)
+            ->only([
+                'color',
+                'material',
+                'sleeve_type',
+                'collar_type',
+                'fit',
+                'size_available',
+                'care_instructions',
+                'tags',
+                'rating',
+                'sales_count',
+                'discount',
+                'discount_end_date',
+                'long_description',
+            ])
+            ->merge([
+                'image_url' => json_encode(array_merge($this->images, $this->uploadImages($this->uploadedFiles))),
+            ])
+            ->toArray();
     }
 
     private function uploadImages($files)
     {
-        return collect($files)->map(fn($file) => $file->store('products', 'public'))->toArray();
+        return collect($files)
+            ->filter(fn($file) => $file->isValid())
+            ->map(fn($file) => $file->store('products', 'public'))
+            ->toArray();
     }
 
     public function render()

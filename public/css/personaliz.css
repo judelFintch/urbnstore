@@ -50,7 +50,37 @@
     cursor: not-allowed;
 }
 
+/* Conteneur des prévisualisations */
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
+/* Images par défaut */
+.preview-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Animation d'apparition */
+.preview-image.animate-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Effet au survol */
+.preview-image:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
 
 
