@@ -37,10 +37,16 @@ use App\Livewire\ProcessOrder\OrderCancelled;
 // Cart components
 use App\Livewire\Cart\Cartshow;
 
-use App\Livewire\Admin\Category\CategoryList;
+
 use App\Livewire\Admin\Category\CategoryCreate;
 use App\Livewire\Admin\Category\CategoryEdit;
 use App\Livewire\Admin\Category\CategoryDelete;
+
+use App\Livewire\Admin\Product\ProductStore;
+use App\Livewire\Admin\Product\ProductUpdate;
+
+
+
 
 // Public routes
 Route::prefix('/')->group(function () {
@@ -102,7 +108,16 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/Message', ContactMessage::class)->name('admin.contact.message');
+
     });
+
+    Route::prefix('product')->group(function () {
+        Route::get('/create', ProductStore::class)->name('product.create');
+        Route::post('/edit/{id}', ProductUpdate::class)->name('product.edit');
+    });
+
+
+
 });
 
 // Fallback route

@@ -25,8 +25,7 @@
                                 <div class="user-card">
                                     <span class="tb-product">
                                         @if (count($images) > 0)
-                                        <!-- Affiche la première image si elle existe -->
-                                        
+                                            <!-- Affiche la première image si elle existe -->
                                             <img src="{{ url($images[0]) }}" alt="{{ $product->title }}"
                                                 class="thumb tb-product-img">
                                         @else
@@ -49,7 +48,13 @@
                             <td>{{ $product->sku }}</td>
                             <td>${{ number_format($product->price, 2) }}</td>
                             <td>{{ $product->stock }}</td>
-                            <td>{{ $product->category->name }}</td>
+                            <td>
+                                @if ($product->category)
+                                    {{ $product->category->name }}
+                                @else
+                                    <span class="text-danger">No category</span>
+                                @endif
+                            </td>
                             <td>
                                 <li>
                                     <div class="drodown">
@@ -58,17 +63,14 @@
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <ul class="link-list-opt no-bdr">
                                                 <li>
-                                                    <a wire.click.prevent="edit('{{ $product->id}}')" href="#"><em class="icon ni ni-edit"></em><span>Edit  Product</span></a>
+                                                    <a href="{{ route('product.edit', ['id' => $product->id]) }}" href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a>
                                                 </li>
                                                 <li><a href="{{ route('admin.products.details', $product->id) }}"><em
-                                                            class="icon ni ni-eye"></em><span>View
-                                                            Product</span></a></li>
+                                                            class="icon ni ni-eye"></em><span>View Product</span></a></li>
                                                 <li><a href="#"><em
-                                                            class="icon ni ni-activity-round"></em><span>Product
-                                                            Orders</span></a></li>
+                                                            class="icon ni ni-activity-round"></em><span>Product Orders</span></a></li>
                                                 <li><a wire:click.prevent="confirmDeleteProduct({{ $product->id }})" href=""><em
-                                                            class="icon ni ni-trash"></em><span>Remove
-                                                            Product</span></a></li>
+                                                            class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -79,6 +81,5 @@
                 </tbody>
             </table>
         </div>
-        <!-- /. a mettre dans un composant?/ -->
     </div><!-- .card-preview -->
 </div> <!-- nk-block -->
