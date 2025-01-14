@@ -33,10 +33,12 @@
                         </a>
                         <ul class="nk-menu-sub">
                             <li class="nk-menu-item">
-                                <a href="{{ route('product.list') }}" class="nk-menu-link"><span class="nk-menu-text">Liste des Produits</span></a>
+                                <a href="{{ route('product.list') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Liste des Produits</span></a>
                             </li>
                             <li class="nk-menu-item">
-                                <a href="{{ route('product.list') }}" class="nk-menu-link"><span class="nk-menu-text">Cartes des Produits</span></a>
+                                <a href="{{ route('product.list-card') }}" class="nk-menu-link"><span
+                                        class="nk-menu-text">Cartes des Produits</span></a>
                             </li>
                         </ul>
                     </li>
@@ -64,6 +66,7 @@
                             <span class="nk-menu-text">Promotions</span>
                         </a>
                     </li>
+
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.invoices.list') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-coin"></em></span>

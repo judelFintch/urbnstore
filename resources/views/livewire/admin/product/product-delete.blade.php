@@ -36,7 +36,7 @@
                                         <button type="button" class="btn btn-danger" wire:click="delete">
                                             <em class="icon ni ni-trash"></em> Supprimer
                                         </button>
-                                        <a href="{{ route('admin.products.view') }}" class="btn btn-secondary">
+                                        <a href="{{ route('product.list') }}" class="btn btn-secondary">
                                             Annuler
                                         </a>
                                     </div>

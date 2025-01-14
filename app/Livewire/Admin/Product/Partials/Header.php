@@ -7,7 +7,7 @@ use Livewire\Component;
 class Header extends Component
 {
     public $content;
-    public $isCreated = false;
+    public $isCreated = true;
     public $isUpdated = false;
     public $isList = false;
 
