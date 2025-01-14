@@ -48,17 +48,16 @@
                                 </a>
                             </li>
                         @endif
-                        @if ($isCreate)
+                        @if ($isCreated)
                             <li class="nk-block-tools-opt">
                                 <!-- Pour mobile : Bouton d'ajout -->
-                                <a href="#" wire:click="create('create')"
-                                    class="toggle btn btn-icon btn-primary d-md-none">
+                                <a href="{{ route('admin.products.view') }}" class="btn btn-icon btn-primary d-md-none">
 
                                 </a>
 
                                 <!-- Pour les écrans plus larges : Bouton d'ajout -->
-                                <a href="#" wire:click="create('create')"
-                                    class="toggle btn btn-primary d-none d-md-inline-flex">
+                                <a href="{{ route('admin.products.view') }}"
+                                    class="btn btn-primary d-none d-md-inline-flex">
 
                                     <span>Afficher la liste</span>
                                 </a>

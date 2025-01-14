@@ -95,7 +95,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
     // Product routes
     Route::prefix('products')->group(function () {
         Route::get('/', Adminproduct::class)->name('admin.products.view');
-        Route::get('/{id}', Adminproductdetails::class)->name('product.details');
+        Route::get('/{id}', Adminproductdetails::class)->name('admin.products.details');
     });
 
     // Invoice routes

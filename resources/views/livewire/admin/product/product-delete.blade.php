@@ -9,6 +9,7 @@
                 <div class="container-fluid">
                     <div class="nk-content-inner">
                         <div class="nk-content-body">
+                            @livewire('admin.product.partials.header', ['content' => 'create'])
                             <div class="nk-block">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
@@ -20,7 +21,8 @@
                                 </div>
                                 <!-- Titre et message de confirmation -->
                                 <div class="alert alert-warning">
-                                    <strong>Attention !</strong> Vous êtes sur le point de supprimer ce produit. Cette action est
+                                    <strong>Attention !</strong> Vous êtes sur le point de supprimer ce produit. Cette
+                                    action est
                                     irréversible.
                                 </div>
 

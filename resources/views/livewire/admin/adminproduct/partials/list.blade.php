@@ -68,7 +68,7 @@
                                                         <span>Edit Product</span>
                                                     </a>
                                                 </li>
-                                                <li><a href="{{ route('product.details', $product->id) }}"><em
+                                                <li><a href="{{ route('admin.products.details', $product->id) }}"><em
                                                             class="icon ni ni-eye"></em><span>View Product</span></a>
                                                 </li>
                                                 <li><a href=""><em

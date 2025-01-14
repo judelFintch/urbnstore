@@ -11,6 +11,7 @@ use App\Services\ProductService;
 use App\Traits\HandlesProductImages;
 use App\Models\Product;
 
+
 class Adminproduct extends Component
 {
     use WithPagination, WithFileUploads, HandlesProductImages;
@@ -28,12 +29,23 @@ class Adminproduct extends Component
 
 
     protected $rules = [
-        'title' => 'required|string|max:255', 'price' => 'required|numeric|min:0', 'stock' => 'required|integer|min:0',
-        'category_id' => 'required|exists:category_articles,id', 'color' => 'required|string', 'material' => 'required|string',
-        'sleeve_type' => 'required|string', 'collar_type' => 'required|string', 'fit' => 'required|string',
-        'size_available' => 'required|string', 'care_instructions' => 'required|string', 'tags' => 'required|string',
-        'rating' => 'required|numeric|min:0|max:5', 'sales_count' => 'required|integer|min:0', 'discount' => 'required|numeric|min:0',
-        'discount_end_date' => 'required|date', 'images.*' => 'image|mimes:jpg,png,jpeg|max:2048'
+        'title' => 'required|string|max:255',
+        'price' => 'required|numeric|min:0',
+        'stock' => 'required|integer|min:0',
+        'category_id' => 'required|exists:category_articles,id',
+        'color' => 'required|string',
+        'material' => 'required|string',
+        'sleeve_type' => 'required|string',
+        'collar_type' => 'required|string',
+        'fit' => 'required|string',
+        'size_available' => 'required|string',
+        'care_instructions' => 'required|string',
+        'tags' => 'required|string',
+        'rating' => 'required|numeric|min:0|max:5',
+        'sales_count' => 'required|integer|min:0',
+        'discount' => 'required|numeric|min:0',
+        'discount_end_date' => 'required|date',
+        'images.*' => 'image|mimes:jpg,png,jpeg|max:2048'
     ];
 
     public function mount()
@@ -93,9 +105,10 @@ class Adminproduct extends Component
         $this->isList = false;
     }
 
-    public function confirmDeleteProduct($productId){
+    public function confirmDeleteProduct($productId)
+    {
         $this->productToDelete = $productId;
-    $this->dispatch('show-delete-confirmation'); //
+        $this->dispatch('show-delete-confirmation'); //
 
     }
 

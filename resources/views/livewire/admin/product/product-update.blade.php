@@ -9,6 +9,8 @@
                 <div class="container-fluid">
                     <div class="nk-content-inner">
                         <div class="nk-content-body">
+                            @livewire('admin.product.partials.header', ['content' => 'update'])
+
                             <div class="nk-block">
                                 <div class="nk-block-head">
                                     <div class="nk-block-head-content">
