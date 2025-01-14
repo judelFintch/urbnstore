@@ -3,6 +3,10 @@
 namespace App\Livewire\Admin\Product;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
+
+
+#[Layout('layouts.app')]
 
 class ProductDetail extends Component
 {

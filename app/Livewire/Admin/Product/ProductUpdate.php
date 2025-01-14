@@ -64,7 +64,7 @@ class ProductUpdate extends Component
         $this->product->details()->update($details);
 
         session()->flash('message', 'Produit mis à jour avec succès.');
-        return redirect()->route('admin.products.view');
+        //return redirect()->route('admin.products.view');
     }
 
     public function deleteImage($imageKey)

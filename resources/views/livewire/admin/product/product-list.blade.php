@@ -4,14 +4,12 @@
         <!-- wrap @s -->
         <div class="nk-wrap ">
             <!-- main header @s -->
-
             @include('livewire.admin.partials.header')
-
             <div class="nk-content ">
                 <div class="container-fluid">
                     <div class="nk-content-inner">
                         <div class="nk-content-body">
-                            @livewire('admin.product.partials.header', ['content' => 'create'])
+                            @livewire('admin.product.partials.header', ['content' => 'list'])
                             <div class="nk-block nk-block-lg">
                                 <div class="nk-block-head">
                                 </div>

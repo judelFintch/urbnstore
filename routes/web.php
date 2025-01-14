@@ -20,8 +20,8 @@ use App\Livewire\Products\ProductDetails;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Invoices\Invoicelist;
 use App\Livewire\Admin\Invoices\Invoiceview;
-use App\Livewire\Admin\Adminproduct\Adminproduct;
-use App\Livewire\Admin\Adminproduct\Adminproductdetails;
+
+
 use App\Livewire\Admin\Category\Category;
 use App\Livewire\Admin\Stock\Stock;
 use App\Livewire\Admin\Promotion\Promotion;
@@ -94,11 +94,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/delete/{id}', CategoryDelete::class)->name('delete');
     });
 
-    // Product routes
-    Route::prefix('products')->group(function () {
-        Route::get('/', Adminproduct::class)->name('admin.products.view');
-        Route::get('/{id}', Adminproductdetails::class)->name('admin.products.details');
-    });
+
 
     // Invoice routes
     Route::prefix('invoices')->group(function () {
