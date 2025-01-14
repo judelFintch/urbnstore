@@ -11,6 +11,7 @@ use App\Services\ProductService;
 use App\Traits\HandlesProductImages;
 use App\Models\Product;
 
+
 class ProductStore extends Component
 {
     use WithPagination, WithFileUploads, HandlesProductImages;
@@ -43,27 +44,33 @@ class ProductStore extends Component
         'sales_count' => 'required|integer|min:0',
         'discount' => 'required|numeric|min:0',
         'discount_end_date' => 'required|date',
-        'images.*' => 'image|mimes:jpg,png,jpeg|max:2048'
+        'images.*' => 'image|mimes:jpg,png,jpeg|max:2048',
+        'uploadedFiles' => 'array|min:1',
     ];
 
     public function mount()
     {
         $this->categories = CategoryArticles::all();
     }
+
     public function render()
     {
         $products = Product::with('details', 'category')->paginate(10);
         return view('livewire.admin.product.product-store', compact('products'));
     }
 
-     public function save(ProductService $productService)
+    public function save(ProductService $productService)
     {
         $this->validate();
+
+        // Gestion des images téléchargées
         if (!empty($this->uploadedFiles)) {
-            $this->images = $this->uploadImages($this->uploadedFiles);
+            $this->images = array_merge($this->images, $this->uploadImages($this->uploadedFiles));
         }
+
         $data = $this->prepareProductData();
         $dataDetails = $this->prepareProductDetails();
+
         try {
             $productService->createOrUpdateProduct($data, $dataDetails, $this->isEdit, $this->productId);
 
@@ -85,6 +92,24 @@ class ProductStore extends Component
         }
     }
 
+    private function uploadImages($files)
+    {
+        $paths = [];
+        foreach ($files as $file) {
+            $paths[] = $file->store('uploads/products', 'public');
+        }
+        return $paths;
+    }
+
+    public function removeImage($index)
+    {
+        if (isset($this->images[$index])) {
+            \Storage::disk('public')->delete($this->images[$index]);
+            unset($this->images[$index]);
+            $this->images = array_values($this->images);
+        }
+    }
+
     private function resetFields()
     {
         $this->fill([
@@ -93,31 +118,8 @@ class ProductStore extends Component
             'stock' => '',
             'category_id' => null,
             'images' => [],
+            'uploadedFiles' => [],
         ]);
-    }
-
-    public function create(string $options)
-    {
-        $this->isCreate = true;
-        $this->isList = false;
-    }
-
-    public function confirmDeleteProduct($productId)
-    {
-        $this->productToDelete = $productId;
-        $this->dispatch('show-delete-confirmation'); //
-
-    }
-
-    public function edit($productId)
-    {
-
-    }
-
-    public function deleteProduct(ProductService $productService, $productId)
-    {
-        $delete = $productService->DeleteProduct($productId);
-
     }
 
     private function prepareProductDetails()
@@ -138,7 +140,6 @@ class ProductStore extends Component
             'discount_end_date' => $this->discount_end_date,
             'long_description' => $this->long_description,
         ];
-
     }
 
     private function prepareProductData()
@@ -153,7 +154,4 @@ class ProductStore extends Component
             'category_id' => $this->category_id,
         ];
     }
-
 }
-
-
