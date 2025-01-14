@@ -44,6 +44,8 @@ use App\Livewire\Admin\Category\CategoryDelete;
 
 use App\Livewire\Admin\Product\ProductStore;
 use App\Livewire\Admin\Product\ProductUpdate;
+use App\Livewire\Admin\Product\ProductDelete;
+
 
 
 
@@ -93,7 +95,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
     // Product routes
     Route::prefix('products')->group(function () {
         Route::get('/', Adminproduct::class)->name('admin.products.view');
-        Route::get('/{id}', Adminproductdetails::class)->name('admin.products.details');
+        Route::get('/{id}', Adminproductdetails::class)->name('product.details');
     });
 
     // Invoice routes
@@ -114,6 +116,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
     Route::prefix('product')->group(function () {
         Route::get('/create', ProductStore::class)->name('product.create');
         Route::get('/edit/{id}', ProductUpdate::class)->name('product.edit');
+        Route::get('/delete/{id}', ProductDelete::class)->name('product.delete');
     });
 
 });
