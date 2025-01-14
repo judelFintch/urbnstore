@@ -63,14 +63,20 @@
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <ul class="link-list-opt no-bdr">
                                                 <li>
-                                                    <a href="{{ route('product.edit', ['id' => $product->id]) }}" href="#"><em class="icon ni ni-edit"></em><span>Edit Product</span></a>
+                                                    <a href="{{ route('product.edit', ['id' => $product->id]) }}">
+                                                        <em class="icon ni ni-edit"></em>
+                                                        <span>Edit Product</span>
+                                                    </a>
                                                 </li>
                                                 <li><a href="{{ route('admin.products.details', $product->id) }}"><em
-                                                            class="icon ni ni-eye"></em><span>View Product</span></a></li>
+                                                            class="icon ni ni-eye"></em><span>View Product</span></a>
+                                                </li>
                                                 <li><a href="#"><em
-                                                            class="icon ni ni-activity-round"></em><span>Product Orders</span></a></li>
-                                                <li><a wire:click.prevent="confirmDeleteProduct({{ $product->id }})" href=""><em
-                                                            class="icon ni ni-trash"></em><span>Remove Product</span></a></li>
+                                                            class="icon ni ni-activity-round"></em><span>Product
+                                                            Orders</span></a></li>
+                                                <li><a wire:click.prevent="confirmDeleteProduct({{ $product->id }})"
+                                                        href=""><em class="icon ni ni-trash"></em><span>Remove
+                                                            Product</span></a></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -113,10 +113,8 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
 
     Route::prefix('product')->group(function () {
         Route::get('/create', ProductStore::class)->name('product.create');
-        Route::post('/edit/{id}', ProductUpdate::class)->name('product.edit');
+        Route::get('/edit/{id}', ProductUpdate::class)->name('product.edit');
     });
-
-
 
 });
 
