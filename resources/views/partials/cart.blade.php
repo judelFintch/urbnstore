@@ -19,14 +19,14 @@
                 <div class="header-cart-total w-full p-tb-40">
                 </div>
                 <div class="header-cart-buttons flex-w w-full">
-                    <a href=""
-                        class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
+                    <a href="{{ route('cart.details') }}"
+                       data-route="{{ route('cart.details') }}"
+                       class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10 btn-view-cart ">
                         Voir
                     </a>
-
-                    <a href="" onclick="clearCart()"
-                        class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        vider
+                    <a href="javascript:void(0);" onclick="clearCart()"
+                       class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10 btn-clear-cart ">
+                        Vider
                     </a>
                 </div>
             </div>

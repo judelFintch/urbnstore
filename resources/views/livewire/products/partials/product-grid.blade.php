@@ -9,6 +9,7 @@
                     </h3>
                 </div>
             @endif
+            
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
@@ -20,6 +21,7 @@
                             {{ $category['name'] }}
                         </button>
                     @endforeach
+                    
                 </div>
                 <div class="flex-w flex-c-m m-tb-10">
                     <div
@@ -82,8 +84,10 @@
                         <!-- Product Block -->
                         <article class="block2">
                             @php
+
                                 $imageId = sprintf('%02d', $product->id);
-                                $imagePath = asset("images/product-{$imageId}.jpg");
+                                $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+
                                 $productUrl = route('show-product', [
                                     'id' => $product->id,
                                     'category' => $product->category->name,
@@ -94,7 +98,15 @@
                             <div class="block2-pic hov-img0 {{ $product->details && $product->details->isNew ? 'label-new' : '' }}"
                                 data-label="{{ $product->details && $product->details->isNew ? 'New' : '' }}">
                                 <a href="{{ $productUrl }}">
-                                    <img src="{{ $imagePath }}" alt="{{ $product['title'] }}" loading="lazy">
+                                    @php $images= $images ?? [] @endphp
+                                    @if (count($images) > 0)
+                                        <img src="{{ url($images[0]) }}" alt="{{ $product['title'] }}" loading="lazy">
+                                    @else
+                                        <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                                        <img src="{{ asset('path/to/default-image.jpg') }}" alt="No image"
+                                            class="thumb">
+                                    @endif
+
                                 </a>
                                 @if ($product->details && ($product->details->isOnSale ?? false))
                                     <span class="sale-label">On Sale</span>

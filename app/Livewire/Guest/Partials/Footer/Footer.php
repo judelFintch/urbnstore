@@ -9,11 +9,15 @@ class Footer extends Component
 {
 
     public $categories;
+    const CATEGORIES_LIMIT = 5;
 
-    public function mount(){
-
-        $this->categories = CategoryArticles::all();
-
+    public function mount()
+    {
+        $this->categories = CategoryArticles::select('id', 'name')
+            ->where('is_active', true)
+            ->orderBy('id', 'desc')
+            ->take(self::CATEGORIES_LIMIT)
+            ->get();
     }
     public function render()
     {
