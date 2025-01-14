@@ -45,6 +45,8 @@ use App\Livewire\Admin\Category\CategoryDelete;
 use App\Livewire\Admin\Product\ProductStore;
 use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Product\ProductDelete;
+use App\Livewire\Admin\Product\ProductDetail;
+use App\Livewire\Admin\Product\ProductList;
 
 
 
@@ -68,7 +70,7 @@ Route::prefix('/')->group(function () {
 });
 
 // Admin routes
-Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
@@ -113,10 +115,12 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->prefix('admin')->group
 
     });
 
-    Route::prefix('product')->group(function () {
-        Route::get('/create', ProductStore::class)->name('product.create');
-        Route::get('/edit/{id}', ProductUpdate::class)->name('product.edit');
-        Route::get('/delete/{id}', ProductDelete::class)->name('product.delete');
+    Route::prefix('product')->name('product.')->group(function () {
+        Route::get('/create', ProductStore::class)->name('create'); 
+        Route::get('/edit/{id}', ProductUpdate::class)->name('edit'); 
+        Route::get('/delete/{id}', ProductDelete::class)->name('delete'); 
+        Route::get('/detail/{id}', ProductDetail::class)->name('detail'); 
+        Route::get('/list', ProductList::class)->name('list'); // admin.products.list
     });
 
 });
