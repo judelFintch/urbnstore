@@ -84,12 +84,13 @@
                                                                                 <li>
                                                                                     <a
                                                                                         href="{{ route('product.edit', ['id' => $product->id]) }}">
-                                                                                        <em class="icon ni ni-edit"></em>
+                                                                                        <em
+                                                                                            class="icon ni ni-edit"></em>
                                                                                         <span>Edit Product</span>
                                                                                     </a>
                                                                                 </li>
                                                                                 <li><a
-                                                                                        href="{{ route('admin.products.details', $product->id) }}"><em
+                                                                                        href="{{ route('product.details', $product->id) }}"><em
                                                                                             class="icon ni ni-eye"></em><span>View
                                                                                             Product</span></a>
                                                                                 </li>

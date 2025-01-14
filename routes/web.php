@@ -116,10 +116,10 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     });
 
     Route::prefix('product')->name('product.')->group(function () {
-        Route::get('/create', ProductStore::class)->name('create'); 
-        Route::get('/edit/{id}', ProductUpdate::class)->name('edit'); 
-        Route::get('/delete/{id}', ProductDelete::class)->name('delete'); 
-        Route::get('/detail/{id}', ProductDetail::class)->name('detail'); 
+        Route::get('/create', ProductStore::class)->name('create');
+        Route::get('/edit/{id}', ProductUpdate::class)->name('edit');
+        Route::get('/delete/{id}', ProductDelete::class)->name('delete');
+        Route::get('/detail/{id}', ProductDetail::class)->name('details');
         Route::get('/list', ProductList::class)->name('list'); // admin.products.list
     });
 
