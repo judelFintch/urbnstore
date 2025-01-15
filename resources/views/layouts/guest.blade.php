@@ -7,6 +7,7 @@
     <title>{{ $title ?? 'Urban Store' }}</title>
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="build/css/app-CcB-kJ62.css">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
 
@@ -25,7 +26,7 @@
         <x-backtop></x-backtop>
     @endif
 </body>
-
+<script src="{{ asset('build/assets/app-CcB-kJ62.js') }}" defer></script>
 <script src="{{ asset('js/cart.js') }}" defer></script>
 <!-- JavaScript Dependencies -->
 <script src="{{ asset('vendor/select2/select2.min.js') }}" defer></script>
