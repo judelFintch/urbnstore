@@ -9,7 +9,7 @@ use App\Services\ProductService;
 
 class AdminDashboard extends Component
 {
-    
+
 
     public $products;
     public const PAGINATE_NUMBER = 5;
@@ -20,7 +20,8 @@ class AdminDashboard extends Component
     }
 
 
-    public function mount(ProductService $productService){
+    public function mount(ProductService $productService)
+    {
 
         $this->products = $productService->getPaginateProduct(5);
 
