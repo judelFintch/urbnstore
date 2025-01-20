@@ -3,7 +3,7 @@
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
             <a href="{{ route('home.index') }}" class="stext-109 cl8 hov-cl1 trans-04">
-                Acceuil
+                Accueil
                 <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
             </a>
             <a href="product.html" class="stext-109 cl8 hov-cl1 trans-04">
@@ -77,14 +77,14 @@
                         <div class="p-t-33">
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Size
+                                    Taille
                                 </div>
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" wire:model="selectedSize" name="size">
-                                            <option>Choose an option</option>
+                                            <option>Choisissez une option</option>
                                             @foreach (explode(',', $product->details->size_available) as $size)
-                                                <option value="{{ trim($size) }}">Size {{ trim($size) }}</option>
+                                                <option value="{{ trim($size) }}">Taille {{ trim($size) }}</option>
                                             @endforeach
                                         </select>
                                         <div class="dropDownSelect2"></div>
@@ -94,13 +94,13 @@
 
                             <div class="flex-w flex-r-m p-b-10">
                                 <div class="size-203 flex-c-m respon6">
-                                    Color
+                                    Couleur
                                 </div>
 
                                 <div class="size-204 respon6-next">
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" name="time">
-                                            <option>Choose an option</option>
+                                            <option>Choisissez une option</option>
                                             @foreach (explode(',', $product->details->color) as $color)
                                                 <option>{{ trim($color) }}</option>
                                             @endforeach
@@ -130,7 +130,7 @@
                                     <button
                                         onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset($imagePath) }}')"
                                         class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
+                                        Ajouter au panier
                                     </button>
 
                                 </div>
@@ -142,7 +142,7 @@
                             <div class="flex-m bor9 p-r-10 m-r-11">
                                 <a href="#"
                                     class="fs-14 cl3 hov-cl1 trans-04 lh-10 p-lr-5 p-tb-2 js-addwish-detail tooltip100"
-                                    data-tooltip="Add to Wishlist">
+                                    data-tooltip="Ajouter à la liste de souhaits">
                                     <i class="zmdi zmdi-favorite"></i>
                                 </a>
                             </div>
@@ -175,15 +175,15 @@
                             <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
                         </li>
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional
-                                information</a>
+                            <a class="nav-link" data-toggle="tab" href="#information" role="tab">Informations
+                                supplémentaires</a>
                         </li>
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Reviews (1)</a>
+                            <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Avis (1)</a>
                         </li>
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" href="{{ asset('images/doc/size_guide.pdf') }}" role="tab">Size
-                                Guide</a>
+                            <a class="nav-link" href="{{ asset('images/doc/size_guide.pdf') }}" role="tab">Guide des
+                                tailles</a>
                         </li>
                     </ul>
 
@@ -205,17 +205,17 @@
                                         <!-- Poids -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Weight
+                                                Poids
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->weight ?? 'Not specified' }}
+                                                {{ $product->details->weight ?? 'Non spécifié' }}
                                             </span>
                                         </li>
 
                                         <!-- Matériaux -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Materials
+                                                Matériaux
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->material ?? '100% coton' }}
@@ -225,7 +225,7 @@
                                         <!-- Couleur -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Color
+                                                Couleur
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->color ?? 'Blanc' }}
@@ -235,7 +235,7 @@
                                         <!-- Type de manches -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Sleeve Type
+                                                Type de manches
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->sleeve_type ?? 'Manches courtes' }}
@@ -245,7 +245,7 @@
                                         <!-- Type de col -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Collar Type
+                                                Type de col
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->collar_type ?? 'Col rond' }}
@@ -255,7 +255,7 @@
                                         <!-- Coupe -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Fit
+                                                Coupe
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->fit ?? 'Coupe droite' }}
@@ -265,7 +265,7 @@
                                         <!-- Tailles disponibles -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Size
+                                                Taille
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->size_available ?? 'S, M, L, XL' }}
@@ -275,7 +275,7 @@
                                         <!-- Instructions d'entretien -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Care Instructions
+                                                Instructions d'entretien
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->care_instructions ?? 'Lavable en machine à 30°C' }}
@@ -288,14 +288,14 @@
                                                 Tags
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->tags ?? 'Not specified' }}
+                                                {{ $product->details->tags ?? 'Non spécifié' }}
                                             </span>
                                         </li>
 
                                         <!-- Note moyenne -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Rating
+                                                Note moyenne
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->rating ?? '4.5' }} / 5
@@ -305,7 +305,7 @@
                                         <!-- Ventes -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Sales Count
+                                                Nombre de ventes
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->sales_count ?? 0 }}
@@ -315,12 +315,12 @@
                                         <!-- Remise -->
                                         <li class="flex-w flex-t p-b-7">
                                             <span class="stext-102 cl3 size-205">
-                                                Discount
+                                                Remise
                                             </span>
                                             <span class="stext-102 cl6 size-206">
                                                 {{ $product->details->discount ?? 0 }}%
                                                 @if ($product->details->discount_end_date)
-                                                    (until
+                                                    (jusqu'au
                                                     {{ \Carbon\Carbon::parse($product->details->discount_end_date)->format('d M Y') }})
                                                 @endif
                                             </span>
@@ -345,15 +345,14 @@
 
         <div class="bg6 flex-c-m flex-w size-302 m-t-73 p-tb-15">
             <span class="stext-107 cl6 p-lr-25">
-                <!--  code unique de l article-->
+                <!--  code unique de l'article -->
                 {{ $product->category->name }}
             </span>
 
             <span class="stext-107 cl6 p-lr-25">
-                Categories: {{ $product->category->name }}
+                Catégories : {{ $product->category->name }}
             </span>
         </div>
     </section>
     @livewire('products.partials.related-products', [$product->category->id])
-
-
+</div>

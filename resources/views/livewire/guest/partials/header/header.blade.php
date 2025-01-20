@@ -17,7 +17,7 @@
                                 <a href="{{ route('home.index') }}">Accueil</a>
                             </li>
                             <li class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
-                                <a href="#">Shop</a>
+                                <a href="#">Boutique</a>
                                 <ul class="sub-menu">
                                     <!-- Ajout d'un loader AJAX (chargement différé des catégories si nécessaire) -->
                                     <li id="shop-loading" style="display: none;">
@@ -72,7 +72,7 @@
                                 </a>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item" href="{{ route('dashboard') }}">
-                                        <i class="fas fa-user"></i> Dashboard
+                                        <i class="fas fa-user"></i> Tableau de bord
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
@@ -120,7 +120,7 @@
             <ul class="main-menu-m">
                 <li><a href="{{ route('home.index') }}">Accueil</a></li>
                 <li class="menu-item-has-children">
-                    <a href="#">Shop</a>
+                    <a href="#">Boutique</a>
                     <ul class="sub-menu-m">
                         <li id="shop-loading-mobile" style="display: none;">
                             <span>Chargement...</span>
@@ -145,7 +145,7 @@
                     <li class="menu-item-has-children">
                         <a href="#"><i class="fas fa-user-circle"></i> Mon Compte</a>
                         <ul class="sub-menu-m">
-                            <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i> Dashboard</a></li>
+                            <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i> Tableau de bord</a></li>
                             <li>
                                 <a href="{{ route('logout') }}"
                                    onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">

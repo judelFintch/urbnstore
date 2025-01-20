@@ -55,7 +55,7 @@
                         Contactez-nous
                     </h4>
                     <p class="stext-107 cl7 size-201">
-                        Adresse : 180, Av/ 30 juin Q/ Gambela, Lubumbashi, République Démocratique du Congo.
+                        Adresse : 180, Av. 30 Juin, Q. Gambela, Lubumbashi, République Démocratique du Congo.<br>
                         Téléphone : (+243) 99 01 000 05, (+243) 99 99 907 56
                     </p>
 
@@ -84,7 +84,7 @@
                         @csrf
                         <div class="wrap-input1 w-full p-b-4">
                             <input class="input1 bg-none plh1 stext-107 cl7" type="email" name="email"
-                                placeholder="Votre email">
+                                placeholder="Votre e-mail">
                             <div class="focus-input1 trans-04"></div>
                         </div>
                         <div class="p-t-18">
