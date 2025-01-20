@@ -1,5 +1,7 @@
 <div>
     <!-- Header -->
+   <div>
+    <!-- Header -->
     <header class="header-v2">
         <!-- Header desktop -->
         <div class="container-menu-desktop trans-03">
@@ -19,7 +21,6 @@
                             <li class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
                                 <a href="#">Boutique</a>
                                 <ul class="sub-menu">
-                                    <!-- Ajout d'un loader AJAX (chargement différé des catégories si nécessaire) -->
                                     <li id="shop-loading" style="display: none;">
                                         <span>Chargement...</span>
                                     </li>
@@ -67,21 +68,24 @@
                             </div>
                         @else
                             <div class="dropdown">
-                                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 dropdown-toggle" data-toggle="dropdown">
+                                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 dropdown-toggle" 
+                                   data-bs-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->name }}
                                 </a>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">
                                         <i class="fas fa-user"></i> Tableau de bord
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fas fa-sign-out-alt"></i> Déconnexion
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
+                                    </a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                        </a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
                             </div>
                         @endguest
                     </div>
@@ -164,18 +168,29 @@
 </div>
 
 <script>
-    // Exemple de logique AJAX pour le chargement différé des catégories
     document.addEventListener('DOMContentLoaded', function () {
-        const subMenu = document.querySelector('.menu-item-has-children .sub-menu');
-        const loading = document.getElementById('shop-loading');
-        if (subMenu && loading) {
-            subMenu.addEventListener('mouseenter', () => {
-                loading.style.display = 'block';
-                // Simulation d'un appel AJAX (à remplacer par un appel réel)
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                }, 1000);
+        // Dropdown menu toggle (Bootstrap 5 or custom)
+        const dropdowns = document.querySelectorAll('.dropdown-toggle');
+        dropdowns.forEach(dropdown => {
+            dropdown.addEventListener('click', function (e) {
+                e.preventDefault();
+                const menu = this.nextElementSibling;
+                menu.classList.toggle('show');
+            });
+        });
+
+        // Simulation AJAX pour la boutique
+        const shopLoading = document.getElementById('shop-loading');
+        if (shopLoading) {
+            const shopMenu = shopLoading.closest('.menu-item-has-children').querySelector('.sub-menu');
+            shopMenu.addEventListener('mouseenter', () => {
+                shopLoading.style.display = 'block';
+                setTimeout(() => shopLoading.style.display = 'none', 1000);
             });
         }
     });
 </script>
+
+
+</div>
+

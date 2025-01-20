@@ -18,6 +18,8 @@
 
     <!-- CSS Critical -->
     <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
+
 
     <!-- Minimal JS Critical -->
     <script>
@@ -53,6 +55,7 @@
     @endif
 
     <!-- Vendor JS -->
+    <script src="{{asset('js/personaliz.js')}}"></script>
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" defer
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -64,6 +67,7 @@
     <script src="{{ asset('js/cart.js') }}" defer></script>
     <script src="{{ asset('js/slick-custom.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+
 
 </body>
 
