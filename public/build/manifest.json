@@ -93,7 +93,11 @@
     "src": "resources/images/icons/icon-prev.png"
   },
   "resources/js/app.js": {
+<<<<<<< HEAD
     "file": "assets/app-Ct2Aw4Ba.js",
+=======
+    "file": "assets/app-CcB-kJ62.js",
+>>>>>>> ff0c84d4015223b31736c36d89eb6e92ec3b6bc4
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true
