@@ -60,17 +60,20 @@
                             <span class="nk-menu-text">Messages</span>
                         </a>
                     </li>
-                    <li class="nk-menu-item">
-                        <a href="{{ route('admin.promotions.view') }}" class="nk-menu-link">
-                            <span class="nk-menu-icon"><em class="icon ni ni-flash"></em></span>
-                            <span class="nk-menu-text">Promotions</span>
-                        </a>
-                    </li>
+
+
 
                     <li class="nk-menu-item">
                         <a href="{{ route('admin.invoices.list') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-coin"></em></span>
                             <span class="nk-menu-text">Facturation</span>
+                        </a>
+                    </li>
+
+                    <li class="nk-menu-item">
+                        <a href="{{ route('slider.list') }}" class="nk-menu-link">
+                            <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
+                            <span class="nk-menu-text">Slider</span>
                         </a>
                     </li>
                     <li class="nk-menu-item">

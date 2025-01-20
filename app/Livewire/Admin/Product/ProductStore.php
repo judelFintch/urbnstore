@@ -10,6 +10,7 @@ use App\Models\CategoryArticles;
 use App\Services\ProductService;
 use App\Traits\HandlesProductImages;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
 
 
 class ProductStore extends Component

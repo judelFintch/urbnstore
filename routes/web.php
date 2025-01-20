@@ -48,6 +48,9 @@ use App\Livewire\Admin\Product\ProductDelete;
 use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
 use App\Livewire\Admin\Product\ProductListCard;
+use App\Livewire\Admin\SliderManager\SliderList;
+use App\Livewire\Admin\SliderManager\SliderManager;
+use App\Livewire\Admin\SliderManager\SliderStore;
 
 
 
@@ -118,9 +121,17 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/delete/{id}', ProductDelete::class)->name('delete');
         Route::get('/detail/{id}', ProductDetail::class)->name('details');
         Route::get('/list', ProductList::class)->name('list'); // admin.products.list
-       
+
         Route::get('/list-card', ProductListCard::class)->name('list-card');
     });
+
+    Route::prefix('slider')->name('slider.')->group(function () {
+        Route::get('/slider_list', SliderList::class)->name('list');
+        Route::get('/slider_store', SliderStore::class)->name('store');
+    });
+
+
+
 
 });
 
