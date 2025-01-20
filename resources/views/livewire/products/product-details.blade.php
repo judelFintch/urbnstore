@@ -48,8 +48,7 @@
                                     <!-- Si aucune image n'est disponible, afficher une image par défaut -->
                                     <div class="item-slick3">
                                         <div class="wrap-pic-w pos-relative">
-                                            <img src="{{ asset('path/to/default-image.jpg') }}"
-                                                alt="No Image Available">
+                                            <img src="{{ asset('path/to/default-image.jpg') }}" alt="No Image Available">
 
                                             <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                                 href="{{ asset('path/to/default-image.jpg') }}">
@@ -59,9 +58,6 @@
                                     </div>
                                 @endif
                             </div>
-
-
-
                         </div>
                     </div>
                 </div>
@@ -106,7 +102,7 @@
                                         <select class="js-select2" name="time">
                                             <option>Choose an option</option>
                                             @foreach (explode(',', $product->details->color) as $color)
-                                            <option>{{ trim($color) }}</option>
+                                                <option>{{ trim($color) }}</option>
                                             @endforeach
 
                                         </select>
@@ -132,9 +128,9 @@
                                     @endphp
 
                                     <button
-                                    onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset($imagePath) }}')"
-                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to cart
+                                        onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset($imagePath) }}')"
+                                        class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
+                                        Add to cart
                                     </button>
 
                                 </div>
@@ -176,8 +172,7 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item p-b-10">
-                            <a class="nav-link active" data-toggle="tab" href="#description"
-                                role="tab">Description</a>
+                            <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
                         </li>
                         <li class="nav-item p-b-10">
                             <a class="nav-link" data-toggle="tab" href="#information" role="tab">Additional

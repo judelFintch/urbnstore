@@ -12,7 +12,7 @@ class Index extends Component
     #[Layout('layouts.guest')]
     public function checkout()
     {
-    
+
         $siteId = config('services.cinetpay.site_id');
         $apiKey = config('services.cinetpay.api_key');
         $secretKey = config('services.cinetpay.secret_key');
