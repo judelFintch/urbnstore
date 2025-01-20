@@ -53,12 +53,12 @@
     @endif
 
     <!-- Vendor JS -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" defer
-    integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" defer
+        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
     <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
     <script src="{{ asset('vendor/slick/slick.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/isotope/isotope.pkgd.min.js') }}" defer></script>
+
 
     <!-- Custom Scripts -->
     <script src="{{ asset('js/cart.js') }}" defer></script>

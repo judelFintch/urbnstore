@@ -10,8 +10,10 @@ use App\Livewire\ConfigCinet;
 class Index extends Component
 {
     #[Layout('layouts.guest')]
+    public $isHomePage = true;
     public function checkout()
     {
+
 
         $siteId = config('services.cinetpay.site_id');
         $apiKey = config('services.cinetpay.api_key');
