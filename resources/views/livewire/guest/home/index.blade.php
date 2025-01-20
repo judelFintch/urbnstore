@@ -1,7 +1,7 @@
 <div>
     <!-- Hero Slider -->
     <section id="hero-slider">
-        @include('partials.slider')
+        @livewire('partials.slide.home-slide')
     </section>
 
     <!-- Promotional Banner Section -->
