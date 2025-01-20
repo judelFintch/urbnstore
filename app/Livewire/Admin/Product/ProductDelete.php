@@ -46,7 +46,7 @@ class ProductDelete extends Component
         session()->flash('message', 'Produit supprimé avec succès.');
 
         // Rediriger vers la liste des produits
-        return redirect()->route('admin.products.view');
+        return redirect()->route('product.list');
     }
 
     public function render()
