@@ -24,39 +24,20 @@
                         <div class="wrap-slick3 flex-sb flex-w">
                             <div class="wrap-slick3-dots"></div>
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
                             <div class="slick3 gallery-lb">
-                                @php
-                                    // Décoder les images du produit depuis le champ 'image_url' dans les détails du produit
-                                    $images = json_decode($product->details->image_url, true); // Assurez-vous que ce champ est bien un tableau d'URLs
-                                @endphp
+                                <div class="item-slick3" data-thumb="{{ $product->getFirstImageUrl() }}">
+                                    <div class="wrap-pic-w pos-relative">
+                                        <img src="{{ $product->getFirstImageUrl() }}" alt="IMG-PRODUCT">
 
-                                @if ($images && count($images) > 0)
-                                    @foreach ($images as $index => $image)
-                                        <div class="item-slick3" data-thumb="{{ url($image) }}">
-                                            <div class="wrap-pic-w pos-relative">
-                                                <img src="{{ url($image) }}" alt="IMG-PRODUCT">
-
-                                                <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                    href="{{ url($image) }}">
-                                                    <i class="fa fa-expand"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @else
-                                    <!-- Si aucune image n'est disponible, afficher une image par défaut -->
-                                    <div class="item-slick3">
-                                        <div class="wrap-pic-w pos-relative">
-                                            <img src="{{ asset('path/to/default-image.jpg') }}" alt="No Image Available">
-
-                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                                href="{{ asset('path/to/default-image.jpg') }}">
-                                                <i class="fa fa-expand"></i>
-                                            </a>
-                                        </div>
+                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                            href="{{ $product->getFirstImageUrl() }}">
+                                            <i class="fa fa-expand"></i>
+                                        </a>
                                     </div>
-                                @endif
+                                </div>
+
+                                <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                               
                             </div>
                         </div>
                     </div>
@@ -123,12 +104,10 @@
                                             <i class="fs-16 zmdi zmdi-plus"></i>
                                         </div>
                                     </div>
-                                    @php
-                                        $imagePath = url($image);
-                                    @endphp
+
 
                                     <button
-                                        onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ asset($imagePath) }}')"
+                                        onclick="validateAndAddToCart({{ $product->id }}, '{{ $product->title }}', {{ $product->price }}, '{{ $product->getFirstImageUrl() }}')"
                                         class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
                                         Ajouter au panier
                                     </button>
@@ -325,7 +304,6 @@
                                                 @endif
                                             </span>
                                         </li>
-
 
                                     </ul>
                                 </div>

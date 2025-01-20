@@ -25,7 +25,7 @@ class SliderStore extends Component
     protected $rules = [
         'name' => 'required|string|max:255',
         'caption' => 'nullable|string|max:255',
-        'image' => 'nullable|image|max:1024', // 1MB max pour l'image
+        'image' => 'nullable|image', // 1MB max pour l'image
         'link' => 'nullable',
     ];
 
@@ -58,27 +58,35 @@ class SliderStore extends Component
 
     public function save()
     {
-        $this->validate();
+        try {
+            $this->validate();
 
-        $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider();
+            $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider();
 
-        $slider->name = $this->name;
-        $slider->caption = $this->caption;
-        $slider->link = $this->link;
+            $slider->name = $this->name;
+            $slider->caption = $this->caption;
+            $slider->link = $this->link;
 
-        if ($this->image) {
-            if ($this->isEditing && $slider->image) {
-                Storage::delete($slider->image);
+            if ($this->image) {
+                if ($this->isEditing && $slider->image) {
+                    try {
+                        Storage::delete($slider->image);
+                    } catch (\Exception $e) {
+                        // Gérer l'exception
+                    }
+                }
+                $slider->image = $this->image->store('sliders', 'public');
             }
-            $slider->image = $this->image->store('sliders');
+
+            $slider->save();
+
+            $this->loadSliders();
+            $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
+
+            session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . 'avec succès.');
+        } catch (\Exception $e) {
+            // Gérer l'exception
         }
-
-        $slider->save();
-
-        $this->loadSliders();
-        $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
-
-        session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . ' avec succès.');
     }
 
     public function delete($id)

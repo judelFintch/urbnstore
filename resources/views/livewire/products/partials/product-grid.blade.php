@@ -97,14 +97,7 @@
                                             <div class="block2-pic hov-img0 {{ $product->details && $product->details->isNew ? 'label-new' : '' }}"
                                                 data-label="{{ $product->details && $product->details->isNew ? 'Nouveau' : '' }}">
                                                 <a href="{{ $productUrl }}">
-                                                    @php $images = $images ?? [] @endphp
-                                                    @if (count($images) > 0)
-                                                        <img src="{{ url($images[0]) }}" alt="{{ $product['title'] }}" loading="lazy">
-                                                    @else
-                                                        <!-- Si aucune image n'est disponible, afficher une image par défaut -->
-                                                        <img src="{{ asset('path/to/default-image.jpg') }}" alt="Pas d'image disponible"
-                                                            class="thumb">
-                                                    @endif
+                                                    <img src="{{ $product->getFirstImageUrl() }}" alt="{{ $product->title ?? 'Produit' }}" loading="lazy">
                                                 </a>
                                                 @if ($product->details && ($product->details->isOnSale ?? false))
                                                     <span class="sale-label">En promotion</span>

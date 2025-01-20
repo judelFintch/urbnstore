@@ -12,7 +12,6 @@ use App\Traits\HandlesProductImages;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 
-
 class ProductStore extends Component
 {
     use WithPagination, WithFileUploads, HandlesProductImages;
@@ -64,9 +63,10 @@ class ProductStore extends Component
     {
         $this->validate();
 
-        // Gestion des images téléchargées
+        // Upload des images
         if (!empty($this->uploadedFiles)) {
-            $this->images = array_merge($this->images, $this->uploadImages($this->uploadedFiles));
+            $uploadedImages = $this->uploadImages($this->uploadedFiles);
+            $this->images = array_merge($this->images, $uploadedImages);
         }
 
         $data = $this->prepareProductData();
@@ -86,6 +86,7 @@ class ProductStore extends Component
             $this->showSuccessModal = true;
 
         } catch (\Exception $e) {
+            \Log::error('Error saving product: ' . $e->getMessage());
             session()->flash('notification', [
                 'type' => 'error',
                 'message' => 'Error: ' . $e->getMessage(),
@@ -95,17 +96,22 @@ class ProductStore extends Component
 
     private function uploadImages($files)
     {
-        $paths = [];
+        $uploadedPaths = [];
         foreach ($files as $file) {
-            $paths[] = $file->store('uploads/products', 'public');
+            try {
+                $path = $file->store('products', 'public');
+                $uploadedPaths[] = $path;
+            } catch (\Exception $e) {
+                \Log::error('Image upload failed: ' . $e->getMessage());
+            }
         }
-        return $paths;
+        return $uploadedPaths;
     }
 
     public function removeImage($index)
     {
         if (isset($this->images[$index])) {
-            \Storage::disk('public')->delete($this->images[$index]);
+            Storage::disk('public')->delete($this->images[$index]);
             unset($this->images[$index]);
             $this->images = array_values($this->images);
         }
@@ -134,7 +140,7 @@ class ProductStore extends Component
             'size_available' => $this->size_available,
             'care_instructions' => $this->care_instructions,
             'tags' => $this->tags,
-            'image_url' => json_encode($this->images),
+            'image_url' => json_encode($this->images), // Encodage propre des images
             'rating' => $this->rating,
             'sales_count' => $this->sales_count,
             'discount' => $this->discount,
