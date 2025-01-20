@@ -359,14 +359,14 @@
                                                 @foreach ($products as $product)
                                                     <li class="item">
                                                         <div class="thumb">
-                                                            @if (count($images) > 0)
-                                                                <img src="{{ $product->getFirstImageUrl()}}"
-                                                                    alt=" {{ $product['title'] }}" loading="lazy">
-                                                            @else
-                                                                <!-- Si aucune image n'est disponible, afficher une image par défaut -->
-                                                                <img src="{{ asset('path/to/default-image.jpg') }}"
-                                                                    alt=" No image" class="thumb">
-                                                            @endif
+
+                                                            <img src="{{ $product->getFirstImageUrl()}}"
+                                                                alt=" {{ $product['title'] }}" loading="lazy">
+
+                                                            <!-- Si aucune image n'est disponible, afficher une image par défaut -->
+                                                            <img src="{{ asset('path/to/default-image.jpg') }}"
+                                                                alt=" No image" class="thumb">
+
                                                         </div>
                                                         <div class="info">
                                                             <div class="title">{{ $product->title }}</div>
