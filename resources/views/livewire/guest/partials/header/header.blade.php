@@ -127,4 +127,28 @@
             </ul>
         </div>
     </header>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Gestion du menu mobile
+            const mobileMenus = document.querySelectorAll('.menu-mobile .menu-item-has-children');
+
+            mobileMenus.forEach(menu => {
+                menu.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    // Fermer tous les autres menus
+                    mobileMenus.forEach(item => {
+                        if (item !== menu) {
+                            item.classList.remove('open');
+                        }
+                    });
+
+                    // Basculer l'état du menu actuel
+                    menu.classList.toggle('open');
+                });
+            });
+        });
+    </script>
+
 </div>
