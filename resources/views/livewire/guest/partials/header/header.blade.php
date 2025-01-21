@@ -16,13 +16,15 @@
                             <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
                                 <a href="{{ route('home.index') }}">Accueil</a>
                             </li>
-                            <li class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
+                            <li
+                                class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
                                 <a href="#">Boutique</a>
                                 <ul class="sub-menu">
                                     <li id="shop-loading" style="display: none;">Chargement...</li>
                                     @foreach ($categoryArticles as $categoryArticle)
                                         <li>
-                                            <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                            <a
+                                                href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
                                                 {{ $categoryArticle->name }}
                                             </a>
                                         </li>
@@ -47,7 +49,8 @@
                         </div>
 
                         <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart"
+                                data-notify="2">
                                 <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                             </div>
                         </div>
@@ -99,22 +102,23 @@
         <!-- Menu Mobile -->
         <div class="menu-mobile">
             <ul class="main-menu-m">
-            <li><a href="{{ route('home.index') }}">Accueil</a></li>
-            <li class="menu-item-has-children">
-                <a href="#">Boutique</a>
-                <ul class="sub-menu-m">
-                    <li id="shop-loading-mobile" style="display: none;">Chargement...</li>
-                    @foreach ($categoryArticles as $categoryArticle)
-                        <li>
-                            <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                                {{ $categoryArticle->name }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-            </li>
-            <li><a href="{{ route('home.about') }}">À propos</a></li>
-            <li><a href="{{ route('home.contact') }}">Contact</a></li>
+                <li><a href="{{ route('home.index') }}">Accueil</a></li>
+                <li class="menu-item-has-children">
+                    <a href="#">Boutique</a>
+                    <ul class="sub-menu-m">
+                        <li id="shop-loading-mobile" style="display: none;">Chargement...</li>
+                        @foreach ($categoryArticles as $categoryArticle)
+                            <li>
+                                <a
+                                    href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
+                                    {{ $categoryArticle->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li><a href="{{ route('home.about') }}">À propos</a></li>
+                <li><a href="{{ route('home.contact') }}">Contact</a></li>
             </ul>
         </div>
 
@@ -153,35 +157,60 @@
                     </li>
 
                     <li class="p-b-13">
-                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            My Wishlist
+                        <a href="{{route('terms-and-conditions')}}"" class=" stext-102 cl2 hov-cl1 trans-04">
+                            Termes et Conditions
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="{{ route('refund-policy') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Réclamation et remboursement
+                        </a>
+                    </li>
+
+                    <li class="p-b-13">
+                        <a href="{{route('privacy-policy')}}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Politique de confidentialité
                         </a>
                     </li>
 
                     <li class="p-b-13">
                         <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            My Account
+                            Mom compte
                         </a>
                     </li>
 
-                    <li class="p-b-13">
-                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            Track Oder
-                        </a>
-                    </li>
+                      <!-- User Options -->
+                        @guest
+                            <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
+                        @else
+                            <div class="dropdown">
+                                <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Tableau de bord</a></li>
+                                    <li>
+                                        <a class="dropdown-item" href="{{ route('logout') }}" 
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                           Déconnexion
+                                        </a>
+                                    </li>
+                                </ul>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        @endguest
 
-                    <li class="p-b-13">
-                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            Refunds
-                        </a>
-                    </li>
 
-                   
                 </ul>
 
                 <div class="sidebar-gallery w-full p-tb-30">
                     <span class="mtext-101 cl5">
-                        Urban 
+                        Urban
                     </span>
 
                     <div class="flex-w flex-sb p-t-36 gallery-lb">
