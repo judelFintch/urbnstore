@@ -1,6 +1,7 @@
 <div>
     <!-- Titre de la page -->
-    <section class="bg-img1 txt-center p-lr-15 p-tb-92" style="background-image: url('{{ asset('images/bg-01.jpg') }}');">
+    <section class="bg-img1 txt-center p-lr-15 p-tb-92"
+        style="background-image: url('{{ asset('images/bg-01.jpg') }}');">
         <h2 class="ltext-105 cl0 txt-center">
             {{ $contact['title'] }}
         </h2>
@@ -11,26 +12,24 @@
         <div class="container">
             <div class="flex-w flex-tr">
                 <div class="size-210 bor10 p-lr-70 p-t-55 p-b-70 p-lr-15-lg w-full-md">
-                     <form wire:submit.prevent="submit">
+                    <form wire:submit.prevent="submit">
                         <h4 class="mtext-105 cl2 txt-center p-b-30">
                             {{ $contact['subtitle'] }}
                         </h4>
 
                         <!-- Email -->
                         <div class="bor8 m-b-20 how-pos4-parent">
-                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" 
-                                   type="email" 
-                                   wire:model="email" 
-                                   placeholder="Your Email Address">
-                            <img class="how-pos4 pointer-none" src="{{ asset('images/icons/icon-email.png') }}" alt="ICON">
+                            <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="email" wire:model="email"
+                                placeholder="Your Email Address">
+                            <img class="how-pos4 pointer-none" src="{{ asset('images/icons/icon-email.png') }}"
+                                alt="ICON">
                             @error('email') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
                         <!-- Message -->
                         <div class="bor8 m-b-30">
-                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" 
-                                      wire:model="msg" 
-                                      placeholder="How Can We Help?"></textarea>
+                            <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" wire:model="msg"
+                                placeholder="How Can We Help?"></textarea>
                             @error('msg') <span class="text-red-500">{{ $message }}</span> @enderror
                         </div>
 
@@ -100,15 +99,4 @@
         </div>
     </section>
 
-    <!-- Carte -->
-    <div class="map">
-        <div class="size-303" id="google_map" 
-            data-map-x="{{ $contact['map']['x'] }}" 
-            data-map-y="{{ $contact['map']['y'] }}" 
-            data-pin="{{ asset($contact['map']['pin']) }}" 
-            data-scrollwheel="{{ $contact['map']['scrollwheel'] ? '1' : '0' }}" 
-            data-draggable="{{ $contact['map']['draggable'] ? '1' : '0' }}" 
-            data-zoom="{{ $contact['map']['zoom'] }}">
-        </div>
-    </div>
 </div>

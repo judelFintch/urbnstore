@@ -67,6 +67,7 @@
     <script src="{{ asset('js/cart.js') }}" defer></script>
     <script src="{{ asset('js/slick-custom.js') }}" defer></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    
 
 
 </body>
