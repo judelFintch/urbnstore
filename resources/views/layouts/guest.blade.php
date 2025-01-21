@@ -9,14 +9,9 @@
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
     <!-- Font Awesome (Preloaded for better performance) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <!-- CSS Critical -->
     <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
-   
-   
-
-
     <!-- Minimal JS Critical -->
     <script>
         // Lazy-load images for performance
@@ -50,10 +45,10 @@
     @endif
 
     <!-- Vendor JS -->
-    
+
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" defer
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
     <script src="{{ asset('vendor/slick/slick.min.js') }}" defer></script>
 
