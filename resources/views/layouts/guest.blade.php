@@ -10,8 +10,8 @@
     <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
 
     <!-- Font Awesome (Preloaded for better performance) -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <noscript>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </noscript>
