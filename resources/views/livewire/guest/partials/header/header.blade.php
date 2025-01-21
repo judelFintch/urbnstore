@@ -149,9 +149,7 @@
             <div class="sidebar-content flex-w w-full p-lr-65 js-pscroll">
                 <ul class="sidebar-link w-full">
                     <li class="p-b-13">
-                        <a href="index.html" class="stext-102 cl2 hov-cl1 trans-04">
-                            Home
-                        </a>
+                        <a href="{{ route('home.index') }}">Accueil</a>
                     </li>
 
                     <li class="p-b-13">
@@ -178,16 +176,12 @@
                         </a>
                     </li>
 
-                    <li class="p-b-13">
-                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            Help & FAQs
-                        </a>
-                    </li>
+                   
                 </ul>
 
                 <div class="sidebar-gallery w-full p-tb-30">
                     <span class="mtext-101 cl5">
-                        @ CozaStore
+                        Urban 
                     </span>
 
                     <div class="flex-w flex-sb p-t-36 gallery-lb">
