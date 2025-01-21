@@ -27,26 +27,7 @@
                     </h4>
 
                     <ul class="help-menu">
-                        <li class="p-b-10">
-                            <a href="help.orders" class="stext-107 cl7 hov-cl1 trans-04">
-                                Commandes
-                            </a>
-                        </li>
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Retours
-                            </a>
-                        </li>
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                Livraison
-                            </a>
-                        </li>
-                        <li class="p-b-10">
-                            <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                                FAQ
-                            </a>
-                        </li>
+
                         <li class="p-b-10">
                             <a href="{{route('privacy-policy')}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 Politique de confidentialité
@@ -60,6 +41,13 @@
                         <li class="p-b-10">
                             <a href="{{ route('refund-policy') }}" class="stext-107 cl7 hov-cl1 trans-04">
                                 Réclamation et remboursement
+                            </a>
+                        </li>
+
+
+                        <li class="p-b-10">
+                            <a href="{{route('help.shipping')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Livraison
                             </a>
                         </li>
                     </ul>

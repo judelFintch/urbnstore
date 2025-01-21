@@ -3,6 +3,9 @@
 namespace App\Livewire\Guest\Shipping;
 
 use Livewire\Component;
+use Livewire\Attributes\Layout;
+
+#[Layout('layouts.guest', ['title' => 'About Shipping'])]
 
 class AboutShipping extends Component
 {
