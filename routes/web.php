@@ -13,6 +13,10 @@ use App\Livewire\Guest\Shipping\AboutShipping;
 use App\Livewire\Guest\Commande\AboutCommend;
 use App\Livewire\Guest\Cancel\AboutCancel;
 
+use App\Livewire\Guest\PrivacyPolicy\PrivacyPolicy;
+use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
+use App\Livewire\Guest\RefundPolicy\RefundPolicy;
+
 // Product components
 use App\Livewire\Products\ProductDetails;
 
@@ -27,6 +31,7 @@ use App\Livewire\Admin\Stock\Stock;
 use App\Livewire\Admin\Promotion\Promotion;
 use App\Livewire\Admin\Shipping\Shipping;
 use App\Livewire\Admin\Message\ContactMessage;
+
 
 // Order processing components
 use App\Livewire\ProcessOrder\Checkout;
@@ -49,14 +54,12 @@ use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
 use App\Livewire\Admin\Product\ProductListCard;
 use App\Livewire\Admin\SliderManager\SliderList;
-use App\Livewire\Admin\SliderManager\SliderManager;
+
 use App\Livewire\Admin\SliderManager\SliderStore;
 
 
 
 
-
-// Public routes
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
     Route::get('/about', About::class)->name('home.about');
@@ -70,7 +73,11 @@ Route::prefix('/')->group(function () {
 
     Route::get('/orders', AboutCommend::class)->name('help.orders');
     Route::get('/shipping', AboutShipping::class)->name('help.shipping');
-    Route::get('/faq', Denied::class)->name('help.faq'); // Assuming Denied is a placeholder for the actual FAQ component
+    Route::get('/faq', Denied::class)->name('help.faq');
+
+    Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
+    Route::get('/terms-and-conditions', TermsAndConditions::class)->name('terms-and-conditions');
+    Route::get('/refund-policy', RefundPolicy::class)->name('refund-policy');
 });
 
 // Admin routes

@@ -1,18 +1,16 @@
 <div>
     <!-- Header -->
-   <div>
-    <!-- Header -->
     <header class="header-v2">
         <!-- Header desktop -->
         <div class="container-menu-desktop trans-03">
             <div class="wrap-menu-desktop">
                 <nav class="limiter-menu-desktop p-l-45">
-                    <!-- Logo desktop -->
+                    <!-- Logo -->
                     <a href="{{ route('home.index') }}" class="logo" aria-label="Accueil">
                         <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
                     </a>
 
-                    <!-- Menu desktop -->
+                    <!-- Desktop Menu -->
                     <div class="menu-desktop">
                         <ul class="main-menu">
                             <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
@@ -21,9 +19,7 @@
                             <li class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
                                 <a href="#">Boutique</a>
                                 <ul class="sub-menu">
-                                    <li id="shop-loading" style="display: none;">
-                                        <span>Chargement...</span>
-                                    </li>
+                                    <li id="shop-loading" style="display: none;">Chargement...</li>
                                     @foreach ($categoryArticles as $categoryArticle)
                                         <li>
                                             <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
@@ -42,44 +38,33 @@
                         </ul>
                     </div>
 
-                    <!-- Icon header -->
+                    <!-- Icons -->
                     <div class="wrap-icon-header flex-w flex-r-m h-full">
-                        <div class="flex-c-m h-full p-r-24">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
-                                <i class="fas fa-search" aria-hidden="true"></i>
-                                <span class="sr-only">Rechercher</span>
-                            </div>
+                        <!-- Search Icon -->
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 js-show-modal-search">
+                            <i class="fas fa-search" aria-hidden="true"></i>
+                        </div>
+                        <!-- Cart Icon -->
+                        <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
+                            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
                         </div>
 
-                        <div class="flex-c-m h-full p-l-18 p-r-25 bor5">
-                            <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="2">
-                                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                                <span class="sr-only">Panier</span>
-                            </div>
-                        </div>
-
-                        <!-- Auth options -->
+                        <!-- User Options -->
                         @guest
-                            <div class="flex-c-m h-full p-lr-19">
-                                <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
-                                    <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
-                                    <span class="sr-only">Connexion</span>
-                                </a>
-                            </div>
+                            <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
+                                <i class="fas fa-sign-in-alt"></i>
+                            </a>
                         @else
                             <div class="dropdown">
-                                <a href="#" class="icon-header-item cl2 hov-cl1 trans-04 dropdown-toggle" 
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="fas fa-user-circle" aria-hidden="true"></i> {{ Auth::user()->name }}
+                                <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">
-                                        <i class="fas fa-user"></i> Tableau de bord
-                                    </a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Tableau de bord</a></li>
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                        <a class="dropdown-item" href="{{ route('logout') }}" 
                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                            <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                           Déconnexion
                                         </a>
                                     </li>
                                 </ul>
@@ -93,42 +78,22 @@
             </div>
         </div>
 
-        <!-- Menu Mobile -->
+        <!-- Mobile Menu -->
         <div class="wrap-header-mobile">
-            <div class="logo-mobile">
+            <a href="{{ route('home.index') }}" class="logo-mobile">
                 <img src="{{ asset('images/icons/lg.png') }}" alt="Logo" />
-            </div>
-            <div class="wrap-icon-header flex-w flex-r-m h-full m-r-15">
-                <div class="flex-c-m h-full p-r-10">
-                    <div class="icon-header-item js-show-car" aria-label="Panier" data-notify="0">
-                        <i class="fas fa-search" aria-hidden="true"></i>
-                        <span class="sr-only">Rechercher</span>
-                    </div>
-                </div>
-                <div class="flex-c-m h-full p-lr-10 bor5">
-                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-lr-11 icon-header-noti js-show-cart" data-notify="0">
-                        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-                        <span class="sr-only">Panier</span>
-                    </div>
-                </div>
-            </div>
-            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
+            </a>
+            <div class="hamburger hamburger--squeeze">
+                <span class="hamburger-box"><span class="hamburger-inner"></span></span>
             </div>
         </div>
-
-        <!-- Menu Mobile -->
         <div class="menu-mobile">
             <ul class="main-menu-m">
                 <li><a href="{{ route('home.index') }}">Accueil</a></li>
                 <li class="menu-item-has-children">
                     <a href="#">Boutique</a>
                     <ul class="sub-menu-m">
-                        <li id="shop-loading-mobile" style="display: none;">
-                            <span>Chargement...</span>
-                        </li>
+                        <li id="shop-loading-mobile" style="display: none;">Chargement...</li>
                         @foreach ($categoryArticles as $categoryArticle)
                             <li>
                                 <a href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
@@ -140,20 +105,17 @@
                 </li>
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
-
-                <!-- Auth options -->
                 @guest
-                    <li><a href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i> Connexion</a></li>
-                    <li><a href="{{ route('register') }}"><i class="fas fa-user-plus"></i> Inscription</a></li>
+                    <li><a href="{{ route('login') }}">Connexion</a></li>
                 @else
                     <li class="menu-item-has-children">
                         <a href="#"><i class="fas fa-user-circle"></i> Mon Compte</a>
                         <ul class="sub-menu-m">
-                            <li><a href="{{ route('dashboard') }}"><i class="fas fa-user"></i> Tableau de bord</a></li>
+                            <li><a href="{{ route('dashboard') }}">Tableau de bord</a></li>
                             <li>
-                                <a href="{{ route('logout') }}"
+                                <a href="{{ route('logout') }}" 
                                    onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();">
-                                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                                   Déconnexion
                                 </a>
                                 <form id="logout-form-mobile" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
@@ -166,31 +128,3 @@
         </div>
     </header>
 </div>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Dropdown menu toggle (Bootstrap 5 or custom)
-        const dropdowns = document.querySelectorAll('.dropdown-toggle');
-        dropdowns.forEach(dropdown => {
-            dropdown.addEventListener('click', function (e) {
-                e.preventDefault();
-                const menu = this.nextElementSibling;
-                menu.classList.toggle('show');
-            });
-        });
-
-        // Simulation AJAX pour la boutique
-        const shopLoading = document.getElementById('shop-loading');
-        if (shopLoading) {
-            const shopMenu = shopLoading.closest('.menu-item-has-children').querySelector('.sub-menu');
-            shopMenu.addEventListener('mouseenter', () => {
-                shopLoading.style.display = 'block';
-                setTimeout(() => shopLoading.style.display = 'none', 1000);
-            });
-        }
-    });
-</script>
-
-
-</div>
-

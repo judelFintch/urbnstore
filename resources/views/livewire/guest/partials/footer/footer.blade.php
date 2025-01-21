@@ -26,7 +26,7 @@
                         Aide
                     </h4>
 
-                    <ul>
+                    <ul class="help-menu">
                         <li class="p-b-10">
                             <a href="help.orders" class="stext-107 cl7 hov-cl1 trans-04">
                                 Commandes
@@ -47,8 +47,24 @@
                                 FAQ
                             </a>
                         </li>
+                        <li class="p-b-10">
+                            <a href="{{route('privacy-policy')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Politique de confidentialité
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="{{route('terms-and-conditions')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Termes et Conditions
+                            </a>
+                        </li>
+                        <li class="p-b-10">
+                            <a href="{{ route('refund-policy') }}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Réclamation et remboursement
+                            </a>
+                        </li>
                     </ul>
                 </div>
+
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">
