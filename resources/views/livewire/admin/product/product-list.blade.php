@@ -34,15 +34,12 @@
                                                         <td class="nk-tb-col tb-col-sm">
                                                             <div class="user-card">
                                                                 <span class="tb-product">
-                                                                  
-                                                                        <!-- Affiche la première image si elle existe -->
-                                                                        <img src="{{ $product->getFirstImageUrl() }}"
-                                                                            alt="{{ $product->title }}"
-                                                                            class="thumb tb-product-img">
-                                                                   
-                                                                        <img src="{{ asset('path/to/default-image.jpg') }}"
-                                                                            alt="No image" class="thumb tb-product-img">
-                                                                   
+
+                                                                    <!-- Affiche la première image si elle existe -->
+                                                                    <img src="{{ $product->getFirstImageUrl() }}"
+                                                                        alt="{{ $product->title }}"
+                                                                        class="thumb tb-product-img">
+
                                                                     <span class="title">{{ $product->title }}</span>
                                                                 </span>
                                                             </div>
@@ -80,8 +77,7 @@
                                                                                 <li>
                                                                                     <a
                                                                                         href="{{ route('product.edit', ['id' => $product->id]) }}">
-                                                                                        <em
-                                                                                            class="icon ni ni-edit"></em>
+                                                                                        <em class="icon ni ni-edit"></em>
                                                                                         <span>Edit Product</span>
                                                                                     </a>
                                                                                 </li>

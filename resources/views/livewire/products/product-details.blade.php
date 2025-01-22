@@ -329,9 +329,6 @@
                                 </div>
                             </div>
                         </div>
-
-
-
                         <div class="tab-pane fade" id="reviews" role="tabpanel">
                             @livewire('guest.partials.post.review', ['productId' => $product->id])
                         </div>

@@ -34,6 +34,23 @@
     <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/assets/js/libs/datatable-btns.js?ver=3.1.2') }}"></script>
     <script src="{{ asset('admin/js/personal.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.addEventListener('notification', event => {
+            Swal.fire({
+                icon: event.detail.type,
+                title: event.detail.type === 'error' ? 'Erreur' : 'Succès',
+                text: event.detail.message,
+                showConfirmButton: false,
+                timer: 3000
+            });
+        });
+    });
+</script>
 
     
 </body>
