@@ -192,6 +192,49 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 }
 
 
+
+/* Icônes de survol */
+.icon-header-item {
+  transition: color 0.3s ease;
+}
+
+.icon-header-item:hover i {
+  color: #717fe0;
+}
+
+/* Icône de connexion */
+.icon-header-item a i {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Masquer le hamburger sur desktop */
+@media (min-width: 992px) {
+  .wrap-header-mobile .btn-show-menu-mobile {
+      display: none;
+  }
+}
+
+/* Masquer le menu desktop sur mobile */
+@media (max-width: 991px) {
+  .menu-desktop {
+      display: none;
+  }
+  .wrap-header-mobile {
+      display: flex;
+  }
+  .menu-mobile {
+      display: none;
+  }
+  .menu-mobile.active {
+      display: block;
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+
+
 /*//////////////////////////////////////////////////////////////////
 [ Header ]*/
 
@@ -323,7 +366,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  height: 90%;
+  height: 65%;
   margin-right: 55px;
 }
 
@@ -669,7 +712,7 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 .logo-mobile {
   display: block;
   position: relative;
-  height: 100%;
+  height: 80%;
   padding-right: 25px;
   -webkit-flex-grow: 1;
   -moz-flex-grow: 1;
@@ -3330,44 +3373,3 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 }
-
-/*  style adding for about page */
-
-.custom-list {
-  list-style-type: none; /* Supprime les puces par défaut */
-  padding: 0;
-  margin: 0;
-}
-
-.custom-list li {
-  position: relative;
-  padding-left: 25px; /* Espace pour l'icône ou la puce personnalisée */
-  margin-bottom: 12px; /* Espacement entre les éléments */
-  font-size: 16px; /* Taille de police pour un affichage clair */
-  line-height: 1.5; /* Améliore la lisibilité */
-}
-
-.custom-list li::before {
-  content: '•'; /* Icône personnalisée */
-  position: absolute;
-  left: 0;
-  top: 0.4em; /* Alignement vertical */
-  color: #007BFF; /* Couleur de la puce */
-  font-size: 18px; /* Taille de la puce */
-}
-
-/* Responsiveness */
-@media (max-width: 768px) { /* Tablettes et téléphones */
-  .custom-list li {
-      padding-left: 20px; /* Réduit l'espace pour s'adapter aux petits écrans */
-      font-size: 14px; /* Réduit la taille de police */
-      margin-bottom: 10px; /* Ajuste l'espacement entre les éléments */
-  }
-
-  .custom-list li::before {
-      font-size: 16px; /* Réduit légèrement la taille de la puce */
-      color: #0056b3; /* Légèrement plus sombre pour un contraste optimal sur mobile */
-  }
-}
-
-   

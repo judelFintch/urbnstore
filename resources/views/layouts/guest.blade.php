@@ -5,22 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Urban Store' }}</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}">
-    <!-- Font Awesome (Preloaded for better performance) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- CSS Critical -->
-    <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
-    <!-- Minimal JS Critical -->
-    <script>
-        // Lazy-load images for performance
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll("img[loading='lazy']").forEach(img => {
-                img.src = img.dataset.src || img.src;
-            });
-        });
-    </script>
+
+<link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
+<link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
 </head>
 
 <body class="animsition">
@@ -44,18 +32,110 @@
         <x-backtop></x-backtop>
     @endif
 
-    <!-- Vendor JS -->
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/slick/slick.min.js')}}"></script>
+    <script src="{{asset('js/slick-custom.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+   
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
+    <script>
+        $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+            e.preventDefault();
+        });
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" defer
-        integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/slick/slick.min.js') }}" defer></script>
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
 
-    <!-- Custom Scripts -->
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+        /*---------------------------------------------*/
+
+        $('.js-addcart-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('js/main.js')}}"></script>
     <script src="{{ asset('js/cart.js') }}" defer></script>
-    <script src="{{ asset('js/slick-custom.js') }}" defer></script>
-    <script src="{{ asset('js/main.js') }}" defer></script>
+
+
 
 </body>
 
