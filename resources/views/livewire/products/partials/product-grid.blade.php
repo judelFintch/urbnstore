@@ -21,7 +21,6 @@
                             {{ $category['name'] }}
                         </button>
                     @endforeach
-
                 </div>
                 <div class="flex-w flex-c-m m-tb-10">
                     <div
@@ -99,7 +98,8 @@
                                             <a href="{{ $productUrl }}">
                                                 @php $images = $images ?? [] @endphp
                                                 @if (count($images) > 0)
-                                                    <img src="{{ $product->getFirstImageUrl()}}" loading="lazy">
+                                                    <img src="{{$product->getFirstImageUrl()}}" alt="{{ $product['title'] }}"
+                                                        loading="lazy">
                                                 @else
                                                     <!-- Si aucune image n'est disponible, afficher une image par défaut -->
                                                     <img src="{{ asset('path/to/default-image.jpg') }}" alt="No image" class="thumb">
