@@ -3,14 +3,14 @@
         <div class="container">
             <div class="p-b-10">
                 <h3 class="ltext-103 cl5">
-                    Product Overview
+                    Aperçu des produits
                 </h3>
             </div>
 
             <div class="flex-w flex-sb-m p-b-52">
                 <div class="flex-w flex-l-m filter-tope-group m-tb-10">
                     <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
-                        All Products
+                        Tous les produits
                     </button>
 
                     @foreach ($categories as $category)
@@ -26,17 +26,17 @@
                         class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
                         <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
                         <i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                        Filter
+                        Filtrer
                     </div>
 
                     <div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
                         <i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
                         <i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-                        Search
+                        Rechercher
                     </div>
                 </div>
 
-                <!-- Search product -->
+                <!-- Rechercher un produit -->
                 <div class="dis-none panel-search w-full p-t-10 p-b-15">
                     <div class="bor8 dis-flex p-l-15">
                         <button class="size-113 flex-c-m fs-16 cl2 hov-cl1 trans-04">
@@ -44,28 +44,28 @@
                         </button>
 
                         <input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product"
-                            placeholder="Search">
+                            placeholder="Rechercher">
                     </div>
                 </div>
 
-                <!-- Filter -->
+                <!-- Filtrer -->
                 <div class="dis-none panel-filter w-full p-t-10">
                     <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
                         <div class="filter-col1 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">
-                                Sort By
+                                Trier par
                             </div>
 
                             <ul>
                                 <li class="p-b-6">
                                     <a href="#" class="filter-link stext-106 trans-04">
-                                        Default
+                                        Par défaut
                                     </a>
                                 </li>
 
                                 <li class="p-b-6">
                                     <a href="#" class="filter-link stext-106 trans-04">
-                                        Popularity
+                                        Popularité
                                     </a>
                                 </li>
                             </ul>
@@ -73,19 +73,19 @@
 
                         <div class="filter-col2 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">
-                                Price
+                                Prix
                             </div>
 
                             <ul>
                                 <li class="p-b-6">
                                     <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-                                        All
+                                        Tous
                                     </a>
                                 </li>
 
                                 <li class="p-b-6">
                                     <a href="#" class="filter-link stext-106 trans-04">
-                                        $0.00 - $50.00
+                                        0,00 € - 50,00 €
                                     </a>
                                 </li>
                             </ul>
@@ -93,7 +93,7 @@
 
                         <div class="filter-col3 p-r-15 p-b-27">
                             <div class="mtext-102 cl2 p-b-15">
-                                Color
+                                Couleur
                             </div>
 
                             <ul>
@@ -103,7 +103,7 @@
                                     </span>
 
                                     <a href="#" class="filter-link stext-106 trans-04">
-                                        Black
+                                        Noir
                                     </a>
                                 </li>
                                 <li class="p-b-6">
@@ -112,7 +112,7 @@
                                     </span>
 
                                     <a href="#" class="filter-link stext-106 trans-04">
-                                        Grey
+                                        Gris
                                     </a>
                                 </li>
                             </ul>
@@ -126,12 +126,12 @@
                             <div class="flex-w p-t-4 m-r--5">
                                 <a href="#"
                                     class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Fashion
+                                    Mode
                                 </a>
 
                                 <a href="#"
                                     class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                    Lifestyle
+                                    Style de vie
                                 </a>
                             </div>
                         </div>
@@ -141,55 +141,55 @@
 
             <div class="row isotope-grid">
                 @foreach ($products as $product)
-                                                                @php
+                                    @php
 
-                    $productUrl = route('show-product', [
-                        'id' => $product->id,
-                        'category' => $product->category->name,
-                        'slug' => $product->slug,
-                    ]);
+    $productUrl = route('show-product', [
+        'id' => $product->id,
+        'category' => $product->category->name,
+        'slug' => $product->slug,
+    ]);
 
-                    $categoryName = $product->category->name;
-                                                                @endphp
-                                                                <a href="{{ $productUrl }}">
-                                                                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }}">
-                                                                        <!-- Block2 -->
+    $categoryName = $product->category->name;
+                                    @endphp
+                                    <a href="{{ $productUrl }}">
+                                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }}">
+                                            <!-- Block2 -->
 
-                                                                        <div class="block2">
-                                                                            <div class="block2-pic hov-img0 label-new" data-label="New">
-                                                                                <img src="{{$product->getFirstImageUrl()}}" alt="IMG-PRODUCT">
+                                            <div class="block2">
+                                                <div class="block2-pic hov-img0 label-new" data-label="Nouveau">
+                                                    <img src="{{$product->getFirstImageUrl()}}" alt="IMG-PRODUCT">
 
-                                                                                <a href="#"
-                                                                                    class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-                                                                                    Quick View
-                                                                                </a>
-                                                                            </div>
+                                                    <a href="#"
+                                                        class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+                                                        Vue rapide
+                                                    </a>
+                                                </div>
 
-                                                                            <div class="block2-txt flex-w flex-t p-t-14">
-                                                                                <div class="block2-txt-child1 flex-col-l ">
-                                                                                    <a href="product-detail.html"
-                                                                                        class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                                                                                        {{ $product['title'] }}
-                                                                                    </a>
+                                                <div class="block2-txt flex-w flex-t p-t-14">
+                                                    <div class="block2-txt-child1 flex-col-l ">
+                                                        <a href="product-detail.html"
+                                                            class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                            {{ $product['title'] }}
+                                                        </a>
 
-                                                                                    <span class="stext-105 cl3">
-                                                                                <span class="new-price">{{ $product['currency'] }}
-                                                                                    {{ $product['price'] }}</span>
-                                                                                    </span>
-                                                                                </div>
+                                                        <span class="stext-105 cl3">
+                                                            <span class="new-price">{{ $product['currency'] }}
+                                                                {{ $product['price'] }}</span>
+                                                        </span>
+                                                    </div>
 
-                                                                                <div class="block2-txt-child2 flex-r p-t-3">
-                                                                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                                                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png"
-                                                                                            alt="ICON">
-                                                                                        <img class="icon-heart2 dis-block trans-04 ab-t-l"
-                                                                                            src="images/icons/icon-heart-02.png" alt="ICON">
-                                                                                    </a>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </a>
+                                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                                        <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                                            <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png"
+                                                                alt="ICON">
+                                                            <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                                                src="images/icons/icon-heart-02.png" alt="ICON">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
                 @endforeach
 
             </div>
