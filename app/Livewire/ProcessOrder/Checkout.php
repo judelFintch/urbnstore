@@ -2,8 +2,8 @@
 
 namespace App\Livewire\ProcessOrder;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Checkout extends Component
 {

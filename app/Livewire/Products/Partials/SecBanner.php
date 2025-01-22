@@ -6,8 +6,6 @@ use Livewire\Component;
 
 class SecBanner extends Component
 {
-
-
     public $banners = [
         [
             'image' => 'images/banner-01.jpg',
@@ -28,6 +26,7 @@ class SecBanner extends Component
             'link' => 'product.html',
         ],
     ];
+
     public function render()
     {
         return view('livewire.products.partials.sec-banner');

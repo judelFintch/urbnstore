@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Admin\Promotion;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Promotion extends Component
 {

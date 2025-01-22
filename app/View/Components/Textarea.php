@@ -7,9 +7,13 @@ use Illuminate\View\Component;
 class Textarea extends Component
 {
     public string $label;
+
     public string $id;
+
     public string $wireModel;
+
     public string $placeholder;
+
     public string $error;
 
     public function __construct(

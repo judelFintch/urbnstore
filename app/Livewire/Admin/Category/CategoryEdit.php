@@ -2,16 +2,23 @@
 
 namespace App\Livewire\Admin\Category;
 
-use Livewire\Component;
 use App\Models\CategoryArticles;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 class CategoryEdit extends Component
 {
     public $categoryId;
-    public $name, $slug, $description, $is_active;
+
+    public $name;
+
+    public $slug;
+
+    public $description;
+
+    public $is_active;
 
     public function mount($id)
     {
@@ -29,7 +36,7 @@ class CategoryEdit extends Component
     {
         $this->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|unique:category_articles,slug,' . $this->categoryId,
+            'slug' => 'nullable|string|unique:category_articles,slug,'.$this->categoryId,
             'description' => 'nullable|string',
             'is_active' => 'required|boolean',
         ]);
@@ -44,6 +51,7 @@ class CategoryEdit extends Component
         ]);
 
         session()->flash('success', 'Category updated successfully.');
+
         return redirect()->route('categories.list'); // Rediriger après mise à jour
     }
 

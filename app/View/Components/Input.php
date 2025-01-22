@@ -7,21 +7,19 @@ use Illuminate\View\Component;
 class Input extends Component
 {
     public string $label;
+
     public string $id;
+
     public string $type;
+
     public string $wireModel;
+
     public string $value;
+
     public string $step;
 
     /**
      * Créez une instance du composant Input.
-     *
-     * @param string $label
-     * @param string $id
-     * @param string $type
-     * @param string $wireModel
-     * @param string $value
-     * @param string $step
      */
     public function __construct(
         string $label = '',

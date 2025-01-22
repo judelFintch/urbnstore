@@ -30,24 +30,21 @@ class Product extends Model
         return $this->hasOne(ProductDetails::class);
     }
 
-
     public function getFirstImageUrl(): string
     {
-        $imageUrls = !empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
-        return (!empty($imageUrls) && is_array($imageUrls) && count($imageUrls) > 0)
+        $imageUrls = ! empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
+
+        return (! empty($imageUrls) && is_array($imageUrls) && count($imageUrls) > 0)
             ? Storage::url($imageUrls[0])
             : asset('path/to/default-image.jpg');
     }
 
     public function getAllImageUrls(): array
     {
-        $imageUrls = !empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
+        $imageUrls = ! empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
+
         return array_map(function ($image) {
             return Storage::url($image);
         }, $imageUrls);
     }
-
-
-
-
 }

@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Guest\Shipping;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.guest', ['title' => 'About Shipping'])]
 

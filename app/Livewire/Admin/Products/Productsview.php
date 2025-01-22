@@ -1,47 +1,67 @@
 <?php
+
 namespace App\Livewire\Admin\Products;
 
-use Livewire\Attributes\Layout;
-use Livewire\Component;
-use App\Models\Product;
-use App\Models\ProductDetail;
 use App\Models\CategoryArticles;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class Productsview extends Component
 {
-    use WithPagination;
     use WithFileUploads;
+    use WithPagination;
 
     #[Layout('layouts.app')]
-
     public $title = 'Test Product';
-    public $price = 99.99;
-    public $stock = 100;
-    public $category_id = 1; // Assuming category with ID 1 exists
-    public $color = 'Red';
-    public $material = 'Cotton';
-    public $sleeve_type = 'Short Sleeve';
-    public $collar_type = 'V-neck';
-    public $fit = 'Regular';
-    public $size_available = 'M, L, XL';
-    public $care_instructions = 'Machine Washable';
-    public $tags = 'Summer, Casual';
-    public $image_url = 'https://example.com/product-image.jpg';
-    public $rating = 4.5;
-    public $sales_count = 200;
-    public $discount = 10;
-    public $discount_end_date = '2024-12-31';
-    public $long_description = 'This is a sample long description for the test product.';
-    public  $isEdit =false;
-    public $currency = 'USD';
-    public $is_active = 1;
-    public $categories = []; // Add categories here if necessary.
-    public $image; // Image property
 
+    public $price = 99.99;
+
+    public $stock = 100;
+
+    public $category_id = 1; // Assuming category with ID 1 exists
+
+    public $color = 'Red';
+
+    public $material = 'Cotton';
+
+    public $sleeve_type = 'Short Sleeve';
+
+    public $collar_type = 'V-neck';
+
+    public $fit = 'Regular';
+
+    public $size_available = 'M, L, XL';
+
+    public $care_instructions = 'Machine Washable';
+
+    public $tags = 'Summer, Casual';
+
+    public $image_url = 'https://example.com/product-image.jpg';
+
+    public $rating = 4.5;
+
+    public $sales_count = 200;
+
+    public $discount = 10;
+
+    public $discount_end_date = '2024-12-31';
+
+    public $long_description = 'This is a sample long description for the test product.';
+
+    public $isEdit = false;
+
+    public $currency = 'USD';
+
+    public $is_active = 1;
+
+    public $categories = []; // Add categories here if necessary.
+
+    public $image; // Image property
 
     public function mount()
     {
@@ -50,10 +70,10 @@ class Productsview extends Component
 
     public function render()
     {
-       
+
         // Récupérer les produits avec leurs détails
         $products = Product::with('details', 'category')->paginate(10);
-        
+
         return view('livewire.admin.adminproduct.adminproduct', compact('products'));
     }
 
@@ -68,7 +88,6 @@ class Productsview extends Component
     public function save()
     {
 
-       
         /* $this->validate([
             'title' => 'required|string|max:255',
             'slug' => 'required|string|unique:products,slug,' . $this->productId,
@@ -94,9 +113,9 @@ class Productsview extends Component
         ]);*/
 
         // Créer ou mettre à jour le produit
-       // $imagePath = $this->image->store('products', 'public');
-       // $img = Image::make(Storage::disk('public')->get($imagePath));
-       // $img->encode('jpg')->save(Storage::disk('public')->path('products/' . pathinfo($imagePath, PATHINFO_FILENAME) . '.jpg'));
+        // $imagePath = $this->image->store('products', 'public');
+        // $img = Image::make(Storage::disk('public')->get($imagePath));
+        // $img->encode('jpg')->save(Storage::disk('public')->path('products/' . pathinfo($imagePath, PATHINFO_FILENAME) . '.jpg'));
         if ($this->isEdit) {
             $product = Product::find($this->productId);
             $product->update([
@@ -111,7 +130,6 @@ class Productsview extends Component
             ]);
         } else {
 
-            
             $product = Product::create([
                 'title' => $this->title,
                 'slug' => $this->title,
@@ -163,7 +181,7 @@ class Productsview extends Component
         $this->currency = '$';
         $this->is_active = true;
         $this->category_id = null;
-        
+
         // Réinitialisation des détails
         $this->isNew = false;
         $this->inSold = false;

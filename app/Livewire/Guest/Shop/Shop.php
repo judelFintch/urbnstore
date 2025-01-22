@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Guest\Shop;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Shop extends Component
 {
-    #[Layout("layouts.guest")]
+    #[Layout('layouts.guest')]
     public function render()
     {
         return view('livewire.guest.shop.shop');

@@ -2,29 +2,77 @@
 
 namespace App\Livewire\Admin\Product;
 
-use Livewire\Attributes\Layout;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
 use App\Models\CategoryArticles;
+use App\Models\Product;
 use App\Services\ProductService;
 use App\Traits\HandlesProductImages;
-use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ProductStore extends Component
 {
-    use WithPagination, WithFileUploads, HandlesProductImages;
+    use HandlesProductImages, WithFileUploads, WithPagination;
 
     #[Layout('layouts.app')]
+    public $title;
 
-    public $title, $price, $stock, $category_id, $color, $material, $sleeve_type, $collar_type, $fit;
-    public $size_available, $care_instructions = 'Machine washable at 30°C', $tags, $rating, $sales_count, $discount;
-    public $discount_end_date, $long_description, $description, $currency = 'USD', $is_active = 1, $productId;
-    public $isEdit = false, $isCreate = false, $categories = [], $images = [];
+    public $price;
+
+    public $stock;
+
+    public $category_id;
+
+    public $color;
+
+    public $material;
+
+    public $sleeve_type;
+
+    public $collar_type;
+
+    public $fit;
+
+    public $size_available;
+
+    public $care_instructions = 'Machine washable at 30°C';
+
+    public $tags;
+
+    public $rating;
+
+    public $sales_count;
+
+    public $discount;
+
+    public $discount_end_date;
+
+    public $long_description;
+
+    public $description;
+
+    public $currency = 'USD';
+
+    public $is_active = 1;
+
+    public $productId;
+
+    public $isEdit = false;
+
+    public $isCreate = false;
+
+    public $categories = [];
+
+    public $images = [];
+
     public bool $isList = true;
+
     public $uploadedFiles = [];
+
     public $showSuccessModal = false;
+
     public $productToDelete = null;
 
     protected $rules = [
@@ -56,6 +104,7 @@ class ProductStore extends Component
     public function render()
     {
         $products = Product::with('details', 'category')->paginate(10);
+
         return view('livewire.admin.product.product-store', compact('products'));
     }
 
@@ -64,7 +113,7 @@ class ProductStore extends Component
         $this->validate();
 
         // Upload des images
-        if (!empty($this->uploadedFiles)) {
+        if (! empty($this->uploadedFiles)) {
             $uploadedImages = $this->uploadImages($this->uploadedFiles);
             $this->images = array_merge($this->images, $uploadedImages);
         }
@@ -86,10 +135,10 @@ class ProductStore extends Component
             $this->showSuccessModal = true;
 
         } catch (\Exception $e) {
-            \Log::error('Error saving product: ' . $e->getMessage());
+            \Log::error('Error saving product: '.$e->getMessage());
             session()->flash('notification', [
                 'type' => 'error',
-                'message' => 'Error: ' . $e->getMessage(),
+                'message' => 'Error: '.$e->getMessage(),
             ]);
         }
     }
@@ -102,9 +151,10 @@ class ProductStore extends Component
                 $path = $file->store('products', 'public');
                 $uploadedPaths[] = $path;
             } catch (\Exception $e) {
-                \Log::error('Image upload failed: ' . $e->getMessage());
+                \Log::error('Image upload failed: '.$e->getMessage());
             }
         }
+
         return $uploadedPaths;
     }
 

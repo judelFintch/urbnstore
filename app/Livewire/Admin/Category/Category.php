@@ -3,10 +3,9 @@
 namespace App\Livewire\Admin\Category;
 
 use App\Models\CategoryArticles;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use Livewire\Attributes\Layout;
-use Illuminate\Support\Str;
 
 #[Layout('layouts.app')]
 class Category extends Component

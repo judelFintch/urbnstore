@@ -2,12 +2,11 @@
 
 namespace App\Livewire\Admin\SliderManager;
 
+use App\Models\Slider;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Layout; // Modèle Slider (à créer)
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Models\Slider; // Modèle Slider (à créer)
-use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\Layout;
-
 
 #[Layout('layouts.app')]
 
@@ -15,10 +14,17 @@ class SliderStore extends Component
 {
     use WithFileUploads;
 
-
     public $sliders;
+
     public $sliderId;
-    public $name, $caption, $image, $link;
+
+    public $name;
+
+    public $caption;
+
+    public $image;
+
+    public $link;
 
     public $isEditing = false;
 
@@ -61,7 +67,7 @@ class SliderStore extends Component
         try {
             $this->validate();
 
-            $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider();
+            $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider;
 
             $slider->name = $this->name;
             $slider->caption = $this->caption;
@@ -83,7 +89,7 @@ class SliderStore extends Component
             $this->loadSliders();
             $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
 
-            session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . 'avec succès.');
+            session()->flash('success', 'Le slider a été '.($this->isEditing ? 'modifié' : 'créé').'avec succès.');
         } catch (\Exception $e) {
             // Gérer l'exception
         }

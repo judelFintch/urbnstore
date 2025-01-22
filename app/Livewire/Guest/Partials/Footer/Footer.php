@@ -2,13 +2,13 @@
 
 namespace App\Livewire\Guest\Partials\Footer;
 
-use Livewire\Component;
 use App\Models\CategoryArticles;
+use Livewire\Component;
 
 class Footer extends Component
 {
-
     public $categories;
+
     const CATEGORIES_LIMIT = 5;
 
     public function mount()
@@ -19,6 +19,7 @@ class Footer extends Component
             ->take(self::CATEGORIES_LIMIT)
             ->get();
     }
+
     public function render()
     {
         return view('livewire.guest.partials.footer.footer');

@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Guest\Error\Page;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Denied extends Component
 {

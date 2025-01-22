@@ -180,32 +180,30 @@
                         </a>
                     </li>
 
-                      <!-- User Options -->
-                        @guest
-                            <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
-                                <i class="fas fa-sign-in-alt"></i>
+                    <!-- User Options -->
+                    @guest
+                        <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </a>
+                    @else
+                        <div class="dropdown">
+                            <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
+                                <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
                             </a>
-                        @else
-                            <div class="dropdown">
-                                <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
-                                    <i class="fas fa-user-circle"></i> {{ Auth::user()->name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Tableau de bord</a></li>
-                                    <li>
-                                        <a class="dropdown-item" href="{{ route('logout') }}" 
-                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                           Déconnexion
-                                        </a>
-                                    </li>
-                                </ul>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </div>
-                        @endguest
-
-
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('dashboard') }}">Tableau de bord</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Déconnexion
+                                    </a>
+                                </li>
+                            </ul>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    @endguest
                 </ul>
 
                 <div class="sidebar-gallery w-full p-tb-30">

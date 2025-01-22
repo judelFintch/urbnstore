@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Admin\Product;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
 use App\Models\Product;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 
@@ -14,6 +14,7 @@ class ProductListCard extends Component
     {
 
         $products = Product::all();
+
         return view('livewire.admin.product.product-list-card', compact('products'));
     }
 }

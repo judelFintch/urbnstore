@@ -2,25 +2,29 @@
 
 namespace App\Livewire\Admin\Category;
 
-use Livewire\Component;
 use App\Models\CategoryArticles;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 
 class CategoryCreate extends Component
 {
     public $name;
+
     public $slug;
+
     public $description;
+
     public $is_active = false;
+
     public $slugEditable = false; // Permet de gérer l'état du champ slug
 
     public function updatedName($value)
     {
         // Générer automatiquement le slug si l'édition manuelle est désactivée
-        if (!$this->slugEditable) {
+        if (! $this->slugEditable) {
             $this->slug = Str::slug($value);
         }
     }
@@ -28,7 +32,7 @@ class CategoryCreate extends Component
     public function toggleSlugEditable()
     {
         // Permet de basculer l'édition du slug
-        $this->slugEditable = !$this->slugEditable;
+        $this->slugEditable = ! $this->slugEditable;
     }
 
     public function save()
@@ -59,7 +63,6 @@ class CategoryCreate extends Component
         $this->is_active = false;
         $this->slugEditable = false;
     }
-
 
     public function render()
     {

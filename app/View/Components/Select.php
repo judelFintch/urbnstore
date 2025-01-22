@@ -2,31 +2,38 @@
 
 namespace App\View\Components;
 
-use Illuminate\View\Component;
 use Illuminate\Support\Collection;
+use Illuminate\View\Component;
 
 class Select extends Component
 {
     public string $label;
+
     public string $id;
+
     public string $wireModel;
+
     public array $options; // On stocke les options comme tableau
+
     public string $optionLabel;
+
     public string $optionValue;
+
     public string $placeholder;
+
     public string $error;
 
     /**
      * Constructeur du composant Select.
      *
-     * @param string $label Le label du champ select.
-     * @param string $id L'identifiant HTML du champ select.
-     * @param string $wireModel Le modèle Livewire associé.
-     * @param iterable|array|Collection $options Les options à afficher (tableau ou collection).
-     * @param string $optionLabel La clé pour afficher le texte de l'option.
-     * @param string $optionValue La clé pour les valeurs des options.
-     * @param string $placeholder Option par défaut (vide).
-     * @param string $error Message d'erreur à afficher.
+     * @param  string  $label  Le label du champ select.
+     * @param  string  $id  L'identifiant HTML du champ select.
+     * @param  string  $wireModel  Le modèle Livewire associé.
+     * @param  iterable|array|Collection  $options  Les options à afficher (tableau ou collection).
+     * @param  string  $optionLabel  La clé pour afficher le texte de l'option.
+     * @param  string  $optionValue  La clé pour les valeurs des options.
+     * @param  string  $placeholder  Option par défaut (vide).
+     * @param  string  $error  Message d'erreur à afficher.
      */
     public function __construct(
         string $label,

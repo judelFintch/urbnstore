@@ -1,64 +1,44 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
-
-// Guest components
-use App\Livewire\Guest\Home\Index;
-use App\Livewire\Guest\About\About;
-use App\Livewire\Guest\Shop\Shop;
-use App\Livewire\Guest\Contact\Contact;
-use App\Livewire\Guest\Error\Page\Denied;
-use App\Livewire\Guest\Shipping\AboutShipping;
-use App\Livewire\Guest\Commande\AboutCommend;
-use App\Livewire\Guest\Cancel\AboutCancel;
-
-use App\Livewire\Guest\PrivacyPolicy\PrivacyPolicy;
-use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
-use App\Livewire\Guest\RefundPolicy\RefundPolicy;
-
-// Product components
-use App\Livewire\Products\ProductDetails;
-
-// Admin components
 use App\Livewire\Admin\AdminDashboard;
+// Guest components
+use App\Livewire\Admin\Category\Category;
+use App\Livewire\Admin\Category\CategoryCreate;
+use App\Livewire\Admin\Category\CategoryDelete;
+use App\Livewire\Admin\Category\CategoryEdit;
 use App\Livewire\Admin\Invoices\Invoicelist;
 use App\Livewire\Admin\Invoices\Invoiceview;
-
-
-use App\Livewire\Admin\Category\Category;
-use App\Livewire\Admin\Stock\Stock;
-use App\Livewire\Admin\Promotion\Promotion;
-use App\Livewire\Admin\Shipping\Shipping;
 use App\Livewire\Admin\Message\ContactMessage;
-
-
-// Order processing components
-use App\Livewire\ProcessOrder\Checkout;
-use App\Livewire\ProcessOrder\Payment;
-use App\Livewire\ProcessOrder\OrderCompleted;
-use App\Livewire\ProcessOrder\OrderCancelled;
-
-// Cart components
-use App\Livewire\Cart\Cartshow;
-
-
-use App\Livewire\Admin\Category\CategoryCreate;
-use App\Livewire\Admin\Category\CategoryEdit;
-use App\Livewire\Admin\Category\CategoryDelete;
-
-use App\Livewire\Admin\Product\ProductStore;
-use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Product\ProductDelete;
 use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
+// Product components
 use App\Livewire\Admin\Product\ProductListCard;
+// Admin components
+use App\Livewire\Admin\Product\ProductStore;
+use App\Livewire\Admin\Product\ProductUpdate;
+use App\Livewire\Admin\Promotion\Promotion;
+use App\Livewire\Admin\Shipping\Shipping;
 use App\Livewire\Admin\SliderManager\SliderList;
-
 use App\Livewire\Admin\SliderManager\SliderStore;
+use App\Livewire\Admin\Stock\Stock;
+use App\Livewire\Cart\Cartshow;
+// Order processing components
 
-
-
+// Cart components
+use App\Livewire\Guest\About\About;
+use App\Livewire\Guest\Commande\AboutCommend;
+use App\Livewire\Guest\Contact\Contact;
+use App\Livewire\Guest\Error\Page\Denied;
+use App\Livewire\Guest\Home\Index;
+use App\Livewire\Guest\PrivacyPolicy\PrivacyPolicy;
+use App\Livewire\Guest\RefundPolicy\RefundPolicy;
+use App\Livewire\Guest\Shipping\AboutShipping;
+use App\Livewire\Guest\Shop\Shop;
+use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
+use App\Livewire\Products\ProductDetails;
+use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
@@ -105,8 +85,6 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/delete/{id}', CategoryDelete::class)->name('delete');
     });
 
-
-
     // Invoice routes
     Route::prefix('invoices')->group(function () {
         Route::get('/', Invoicelist::class)->name('admin.invoices.list');
@@ -137,9 +115,6 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/slider_store', SliderStore::class)->name('store');
     });
 
-
-
-
 });
 
 // Fallback route
@@ -148,4 +123,4 @@ Route::fallback(function () {
 });
 
 // Authentication routes
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

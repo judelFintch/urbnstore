@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Cart;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Cartshow extends Component
 {

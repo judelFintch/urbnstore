@@ -2,12 +2,12 @@
 
 namespace App\Livewire\Admin\Product;
 
-use Livewire\Component;
-use Livewire\WithFileUploads;
-use App\Models\Product;
 use App\Models\CategoryArticles as Category;
+use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
+use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
 class ProductUpdate extends Component
@@ -15,9 +15,13 @@ class ProductUpdate extends Component
     use WithFileUploads;
 
     public $product;
+
     public $categories = [];
+
     public $uploadedFiles = [];
+
     public $images = [];
+
     public $form = [];
 
     protected $rules = [
@@ -64,7 +68,7 @@ class ProductUpdate extends Component
         $this->product->details()->update($details);
 
         session()->flash('message', 'Produit mis à jour avec succès.');
-        //return redirect()->route('admin.products.view');
+        // return redirect()->route('admin.products.view');
     }
 
     public function deleteImage($imageKey)
@@ -126,8 +130,8 @@ class ProductUpdate extends Component
     private function uploadImages($files)
     {
         return collect($files)
-            ->filter(fn($file) => $file->isValid())
-            ->map(fn($file) => $file->store('products', 'public'))
+            ->filter(fn ($file) => $file->isValid())
+            ->map(fn ($file) => $file->store('products', 'public'))
             ->toArray();
     }
 

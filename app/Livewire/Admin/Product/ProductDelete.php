@@ -2,17 +2,17 @@
 
 namespace App\Livewire\Admin\Product;
 
-use Livewire\Component;
 use App\Models\Product;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
-
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 
 class ProductDelete extends Component
 {
     public $productId;
+
     public $product;
 
     // Récupérer les données du produit à supprimer lors du montage du composant

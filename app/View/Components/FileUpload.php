@@ -7,9 +7,13 @@ use Illuminate\View\Component;
 class FileUpload extends Component
 {
     public string $label;
+
     public string $id;
+
     public string $wireModel;
+
     public bool $multiple;
+
     public string $error;
 
     public function __construct(

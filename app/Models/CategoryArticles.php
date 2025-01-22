@@ -21,6 +21,4 @@ class CategoryArticles extends Model
     {
         return $this->hasMany(Product::class);
     }
-
-
 }

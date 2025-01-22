@@ -4,7 +4,6 @@ namespace App\Traits;
 
 use Illuminate\Support\Facades\Storage;
 
-
 trait HandlesProductImages
 {
     public function uploadImages(array $files): array
@@ -16,7 +15,7 @@ trait HandlesProductImages
                 $uploadedImages[] = Storage::url($path);
             }
         }
+
         return $uploadedImages;
     }
-
 }
