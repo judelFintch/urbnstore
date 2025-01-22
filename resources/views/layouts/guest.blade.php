@@ -49,6 +49,8 @@
             });
         })
     </script>
+
+  
     <!--===============================================================================================-->
     <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
     <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
@@ -134,6 +136,7 @@
     <!--===============================================================================================-->
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{ asset('js/cart.js') }}" defer></script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
 </body>
 
 </html>
