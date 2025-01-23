@@ -18,7 +18,7 @@ class CategoryCreate extends Component
     public $slug;
     public $description;
     public $is_active = false;
-    public $is_featured = false; // Champ pour catégorie phare
+    public $is_featured = true; // Champ pour catégorie phare
     public $photo; // Champ pour l'upload de photo
     public $slugEditable = false;
 

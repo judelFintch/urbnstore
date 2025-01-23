@@ -3,29 +3,19 @@
 namespace App\Livewire\Products\Partials;
 
 use Livewire\Component;
+use App\Models\CategoryArticles;
+use Illuminate\Support\Facades\Storage;
 
 class SecBanner extends Component
 {
-    public $banners = [
-        [
-            'image' => 'images/banner-01.jpg',
-            'name' => 'Femme',
-            'info' => 'Collection 2024',
-            'link' => '#',
-        ],
-        [
-            'image' => 'images/banner-02.jpg',
-            'name' => 'Homme',
-            'info' => 'Collection 2024',
-            'link' => 'product.html',
-        ],
-        [
-            'image' => 'images/banner-03.jpg',
-            'name' => 'Accessoires',
-            'info' => 'Collection 2024',
-            'link' => 'product.html',
-        ],
-    ];
+    public $banners;
+
+
+    public function mount()
+    {
+        $this->banners = CategoryArticles::where('is_featured', true)->get();
+
+    }
 
     public function render()
     {

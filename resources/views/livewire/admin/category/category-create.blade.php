@@ -90,14 +90,15 @@
 
                                                     <!-- Preview de l'image -->
                                                     <div class="col-lg-2">
-                                                    @if ($photo)
-                                                        <div class="mt-3">
-                                                            <p>Aperçu :</p>
-                                                            <img src="{{ $photo->temporaryUrl() }}" alt="Aperçu de la photo"
-                                                                style="max-width: 200px; max-height: 200px;">
-                                                        </div>
-                                                    @endif
-                                                </div>
+                                                        @if ($photo)
+                                                            <div class="mt-3">
+                                                                <p>Aperçu :</p>
+                                                                <img src="{{ $photo->temporaryUrl() }}"
+                                                                    alt="Aperçu de la photo"
+                                                                    style="max-width: 200px; max-height: 200px;">
+                                                            </div>
+                                                        @endif
+                                                    </div>
                                                 </div>
 
 
@@ -108,7 +109,7 @@
                                                             phare</label>
                                                         <div class="form-control-wrap">
                                                             <select class="form-control" id="is_featured"
-                                                                wire:model="is_featured">
+                                                                wire:model.live="is_featured">
                                                                 <option value="1">Oui</option>
                                                                 <option value="0">Non</option>
                                                             </select>
