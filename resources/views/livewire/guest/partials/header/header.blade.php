@@ -106,7 +106,7 @@
                 <li class="menu-item-has-children">
                     <a href="#">Boutique</a>
                     <ul class="sub-menu-m">
-                        <li id="shop-loading-mobile" style="display: none;">Chargement...</li>
+
                         @foreach ($categoryArticles as $categoryArticle)
                             <li>
                                 <a
@@ -270,14 +270,16 @@
 
                 <div class="sidebar-gallery w-full">
                     <span class="mtext-101 cl5">
-                        About Us
+                        Apropos
                     </span>
 
                     <p class="stext-108 cl6 p-t-27">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur maximus vulputate hendrerit.
-                        Praesent faucibus erat vitae rutrum gravida. Vestibulum tempus mi enim, in molestie sem
-                        fermentum
-                        quis.
+                        C'est en observant la scène mode à Lubumbashi que Moise A. NGONGO a perçu une opportunité unique
+                        : créer une marque qui
+                        non seulement suit les tendances internationales, mais célèbre aussi l’héritage local. Cette
+                        dualité entre global et
+                        local est au cœur de la philosophie d’Urban Store. Dès ses débuts, Urban Store a misé sur la
+                        qualité, l’authenticité,
                     </p>
                 </div>
             </div>
