@@ -76,7 +76,7 @@
                                                 </div>
 
                                                 <!-- Photo -->
-                                                <div class="col-lg-6">
+                                                <div class="col-lg-4">
                                                     <div class="form-group">
                                                         <label class="form-label" for="photo">Photo</label>
                                                         <div class="form-control-wrap">
@@ -87,7 +87,19 @@
                                                             <span class="text-danger">{{ $message }}</span>
                                                         @enderror
                                                     </div>
+
+                                                    <!-- Preview de l'image -->
+                                                    <div class="col-lg-2">
+                                                    @if ($photo)
+                                                        <div class="mt-3">
+                                                            <p>Aperçu :</p>
+                                                            <img src="{{ $photo->temporaryUrl() }}" alt="Aperçu de la photo"
+                                                                style="max-width: 200px; max-height: 200px;">
+                                                        </div>
+                                                    @endif
                                                 </div>
+                                                </div>
+
 
                                                 <!-- Catégorie phare -->
                                                 <div class="col-lg-6">
