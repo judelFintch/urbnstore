@@ -25,8 +25,8 @@
                                                     wireModel="title" value="TEST" error="title" />
 
                                                 <!-- Prix -->
-                                                <x-input label="Prix" id="regular-price" type="number"
-                                                    wireModel="price" value="10" error="price" />
+                                                <x-input label="Prix" id="regular-price" type="number" wireModel="price"
+                                                    value="10" error="price" />
 
                                                 <!-- Stock -->
                                                 <x-input label="Stock" id="stock" type="number" wireModel="stock"
@@ -44,8 +44,8 @@
                                                 @endforeach
 
                                                 <!-- Évaluation -->
-                                                <x-input label="Évaluation" id="rating" type="number"
-                                                    wireModel="rating" step="0.1" error="rating" />
+                                                <x-input label="Évaluation" id="rating" type="number" wireModel="rating"
+                                                    step="0.1" error="rating" />
 
                                                 <!-- Nombre de Ventes -->
                                                 <x-input label="Nombre de Ventes" id="sales_count" type="number"
@@ -67,28 +67,37 @@
                                                 <!-- Images du Produit -->
                                                 <div class="col-12">
                                                     <label for="images">Images du Produit</label>
-                                                    <input type="file" id="images" wire:model="uploadedFiles"
-                                                        multiple>
+                                                    <input type="file" id="images" wire:model="uploadedFiles" multiple
+                                                        accept="image/*">
 
                                                     <!-- Affichage des erreurs -->
                                                     @error('uploadedFiles.*')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
 
-                                                    <!-- Prévisualisation des images -->
+                                                    <!-- Prévisualisation des nouvelles images -->
                                                     <div class="image-preview mt-3">
                                                         @if ($uploadedFiles)
                                                             @foreach ($uploadedFiles as $file)
-                                                                <img src="{{ $file->temporaryUrl() }}" alt="Preview"
-                                                                    class="img-thumbnail"
-                                                                    style="width: 100px; height: 100px;">
+                                                                <div class="d-inline-block position-relative">
+                                                                    <img src="{{ $file->temporaryUrl() }}" alt="Preview"
+                                                                        class="img-thumbnail"
+                                                                        style="width: 100px; height: 100px;">
+                                                                    <button type="button"
+                                                                        class="btn btn-danger btn-sm position-absolute"
+                                                                        style="top: 5px; right: 5px;"
+                                                                        wire:click="removeUploadedFile({{ $loop->index }})">
+                                                                        &times;
+                                                                    </button>
+                                                                </div>
                                                             @endforeach
                                                         @endif
 
+                                                        <!-- Prévisualisation des images existantes -->
                                                         @foreach ($images as $index => $image)
                                                             <div class="d-inline-block position-relative">
-                                                                <img src="{{ asset('storage/' . $image) }}"
-                                                                    alt="Uploaded" class="img-thumbnail"
+                                                                <img src="{{ asset('storage/' . $image) }}" alt="Uploaded"
+                                                                    class="img-thumbnail"
                                                                     style="width: 100px; height: 100px;">
                                                                 <button type="button"
                                                                     class="btn btn-danger btn-sm position-absolute"
@@ -100,7 +109,6 @@
                                                         @endforeach
                                                     </div>
                                                 </div>
-
 
                                                 <!-- Bouton Soumettre -->
                                                 <div class="col-12">

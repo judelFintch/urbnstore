@@ -18,61 +18,33 @@ class ProductStore extends Component
 
     #[Layout('layouts.app')]
     public $title;
-
     public $price;
-
     public $stock;
-
     public $category_id;
-
     public $color;
-
     public $material;
-
     public $sleeve_type;
-
     public $collar_type;
-
     public $fit;
-
     public $size_available;
-
     public $care_instructions = 'Machine washable at 30°C';
-
     public $tags;
-
     public $rating;
-
     public $sales_count;
-
     public $discount;
-
     public $discount_end_date;
-
     public $long_description;
-
     public $description;
-
     public $currency = 'USD';
-
     public $is_active = 1;
-
     public $productId;
-
     public $isEdit = false;
-
     public $isCreate = false;
-
     public $categories = [];
-
     public $images = [];
-
     public bool $isList = true;
-
     public $uploadedFiles = [];
-
     public $showSuccessModal = false;
-
     public $productToDelete = null;
 
     protected $rules = [
@@ -113,7 +85,7 @@ class ProductStore extends Component
         $this->validate();
 
         // Upload des images
-        if (! empty($this->uploadedFiles)) {
+        if (!empty($this->uploadedFiles)) {
             $uploadedImages = $this->uploadImages($this->uploadedFiles);
             $this->images = array_merge($this->images, $uploadedImages);
         }
@@ -135,10 +107,10 @@ class ProductStore extends Component
             $this->showSuccessModal = true;
 
         } catch (\Exception $e) {
-            \Log::error('Error saving product: '.$e->getMessage());
+            \Log::error('Error saving product: ' . $e->getMessage());
             session()->flash('notification', [
                 'type' => 'error',
-                'message' => 'Error: '.$e->getMessage(),
+                'message' => 'Error: ' . $e->getMessage(),
             ]);
         }
     }
@@ -146,12 +118,15 @@ class ProductStore extends Component
     private function uploadImages($files)
     {
         $uploadedPaths = [];
+
         foreach ($files as $file) {
-            try {
-                $path = $file->store('products', 'public');
-                $uploadedPaths[] = $path;
-            } catch (\Exception $e) {
-                \Log::error('Image upload failed: '.$e->getMessage());
+            if ($file->isValid()) {
+                try {
+                    $path = $file->store('products', 'public');
+                    $uploadedPaths[] = $path;
+                } catch (\Exception $e) {
+                    \Log::error('Image upload failed: ' . $e->getMessage());
+                }
             }
         }
 
@@ -190,13 +165,19 @@ class ProductStore extends Component
             'size_available' => $this->size_available,
             'care_instructions' => $this->care_instructions,
             'tags' => $this->tags,
-            'image_url' => json_encode($this->images), // Encodage propre des images
+            'image_url' => json_encode($this->images),
             'rating' => $this->rating,
             'sales_count' => $this->sales_count,
             'discount' => $this->discount,
             'discount_end_date' => $this->discount_end_date,
             'long_description' => $this->long_description,
         ];
+    }
+
+    public function removeUploadedFile($index)
+    {
+        unset($this->uploadedFiles[$index]);
+        $this->uploadedFiles = array_values($this->uploadedFiles); // Réindexation
     }
 
     private function prepareProductData()
