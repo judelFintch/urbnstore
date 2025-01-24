@@ -11,7 +11,7 @@
                                     <img src="{{ asset('images/logo/circle_favicon.svg') }}" alt="Logo"
                                         class="img-fluid mb-3" style="max-height: 50px;">
                                 </a>
-                                <h5 class="text-primary">Connexion</h5>
+                                <h5 class="">Connexion</h5>
                                 <p class="text-muted">Accédez à votre compte avec votre email et mot de passe.</p>
                             </div>
 
@@ -48,7 +48,7 @@
 
                                 <!-- Submit Button -->
                                 <div class="mb-3">
-                                    <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+                                    <button type="submit" class="btn btn- w-100">Se connecter</button>
                                 </div>
                             </form>
 
