@@ -79,10 +79,11 @@
                             class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-tiktok"></i>
                         </a>
-                        <a href=https://api.whatsapp.com/send?phone=0976938094"
+                        <a href="https://wa.me/243999990756?text=Bonjour,%20je%20viens%20du%20site%20UrbanStore%20et%20j%27aimerais%20obtenir%20plus%20d%27informations."
                         class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                         <i class="fa fa-whatsapp"></i>
                     </a>
+
                     </div>
                 </div>
 
