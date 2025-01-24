@@ -10,7 +10,7 @@
                         @if ($categories->isNotEmpty())
                             @foreach ($categories as $category)
                                 <li class="p-b-10">
-                                    <a href="" class="stext-107 cl7 hov-cl1 trans-04">
+                                    <a href="{{ route('home.shop', ['id' => $category->id, 'slug' => $category->slug]) }}" class="stext-107 cl7 hov-cl1 trans-04">
                                         {{ $category->name }}
                                     </a>
                                 </li>
