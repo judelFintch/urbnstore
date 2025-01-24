@@ -23,7 +23,7 @@
 
                 <div class="col-sm-6 col-lg-3 p-b-50">
                     <h4 class="stext-301 cl0 p-b-30">
-                        Aide
+                        Assistance
                     </h4>
 
                     <ul class="help-menu">
@@ -33,23 +33,25 @@
                                 Politique de confidentialité
                             </a>
                         </li>
+
+                      
                         <li class="p-b-10">
                             <a href="{{route('terms-and-conditions')}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 Termes et Conditions
                             </a>
                         </li>
                         <li class="p-b-10">
-                            <a href="{{ route('refund-policy') }}" class="stext-107 cl7 hov-cl1 trans-04">
-                                Réclamation et remboursement
+                            <a href="{{route('privacy-policy')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Tableau Taille
                             </a>
                         </li>
-
 
                         <li class="p-b-10">
-                            <a href="{{route('help.shipping')}}" class="stext-107 cl7 hov-cl1 trans-04">
-                                Livraison
+                            <a href="{{route('home.contact')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                                Contact
                             </a>
                         </li>
+
                     </ul>
                 </div>
 
@@ -59,8 +61,9 @@
                         Contactez-nous
                     </h4>
                     <p class="stext-107 cl7 size-201">
-                        Adresse : 180, Av. 30 Juin, Q. Gambela, Lubumbashi, République Démocratique du Congo.<br>
-                        Téléphone : (+243) 99 01 000 05, (+243) 99 99 907 56
+                       
+                        Téléphone : (+243) 99 99 907 56<br>
+                        Email :support@urbanbrands.store.com<br>
                     </p>
 
                     <div class="p-t-27">
@@ -76,6 +79,10 @@
                             class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
                             <i class="fa fa-tiktok"></i>
                         </a>
+                        <a href=https://api.whatsapp.com/send?phone=0976938094"
+                        class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
+                        <i class="fa fa-whatsapp"></i>
+                    </a>
                     </div>
                 </div>
 

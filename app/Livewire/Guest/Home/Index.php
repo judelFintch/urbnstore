@@ -5,6 +5,7 @@ namespace App\Livewire\Guest\Home;
 use App\Livewire\ConfigCinet;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Index extends Component
 {
