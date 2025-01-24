@@ -39,7 +39,7 @@
                             </a>
                         </li>
                         <li class="p-b-10">
-                            <a href="{{route('privacy-policy')}}" class="stext-107 cl7 hov-cl1 trans-04">
+                            <a href="{{route('size-chart')}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 Tableau Taille
                             </a>
                         </li>

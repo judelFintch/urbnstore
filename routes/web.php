@@ -39,6 +39,7 @@ use App\Livewire\Guest\Shop\Shop;
 use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Guest\TableChart\SizeChart;
 
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
@@ -58,6 +59,7 @@ Route::prefix('/')->group(function () {
     Route::get('/privacy-policy', PrivacyPolicy::class)->name('privacy-policy');
     Route::get('/terms-and-conditions', TermsAndConditions::class)->name('terms-and-conditions');
     Route::get('/refund-policy', RefundPolicy::class)->name('refund-policy');
+    Route::get('/size-chart', SizeChart::class)->name('size-chart');
 });
 
 // Admin routes
