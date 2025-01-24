@@ -29,7 +29,6 @@
                                         loading="lazy" class="img-fluid">
                                 </a>
 
-
                             </div>
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l">

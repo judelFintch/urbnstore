@@ -162,29 +162,22 @@
                         </a>
                     </li>
 
-                    <li class="p-b-13">
-                        <a href="{{ route('refund-policy') }}" class="stext-102 cl2 hov-cl1 trans-04">
-                            Réclamation et remboursement
-                        </a>
-                    </li>
 
-                    <li class="p-b-13">
-                        <a href="{{route('privacy-policy')}}" class="stext-102 cl2 hov-cl1 trans-04">
-                            Politique de confidentialité
-                        </a>
-                    </li>
-
-                    <li class="p-b-13">
-                        <a href="#" class="stext-102 cl2 hov-cl1 trans-04">
-                            Mom compte
-                        </a>
-                    </li>
+                   
 
                     <!-- User Options -->
                     @guest
-                        <a href="{{ route('login') }}" class="icon-header-item cl2 hov-cl1 trans-04">
-                            <i class="fas fa-sign-in-alt"></i>
+                    <li class="p-b-13">
+                        <a href="{{route('login')}}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Connexion
                         </a>
+                    </li>
+                    <li class="p-b-13">
+                        <a href="{{route('register')}}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Inscription
+                        </a>
+                    </li>
+                       
                     @else
                         <div class="dropdown">
                             <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
