@@ -90,11 +90,10 @@
                         <!-- Footer Section -->
                         <div class="card-footer bg-light text-center py-3">
                             <ul class="list-inline mb-0">
-                                <li class="list-inline-item"><a href="#" class="text-muted">Conditions d'utilisation</a>
+                                <li class="list-inline-item"><a href="{{route('terms-and-conditions')}}" class="text-muted">Conditions d'utilisation</a>
                                 </li>
-                                <li class="list-inline-item"><a href="#" class="text-muted">Politique de
+                                <li class="list-inline-item"><a href="{{route('privacy-policy')}}" class="text-muted">Politique de
                                         confidentialité</a></li>
-                                <li class="list-inline-item"><a href="#" class="text-muted">Aide</a></li>
                             </ul>
                             <p class="mt-3 text-muted mb-0">&copy; {{ date('Y') }} UrbanStore. Tous droits réservés.</p>
                         </div>

@@ -28,7 +28,6 @@
                     </h4>
 
                     <ul class="help-menu">
-
                         <li class="p-b-10">
                             <a href="{{route('privacy-policy')}}" class="stext-107 cl7 hov-cl1 trans-04">
                                 Politique de confidentialité

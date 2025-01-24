@@ -20,13 +20,13 @@
             <div class="nk-wrap nk-wrap-nosidebar">
                 <!-- content @s -->
                 <div class="nk-content ">
-    <main>
-        {{ $slot }}
-    </main>
+                    <main>
+                        {{ $slot }}
+                    </main>
 
-    <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
-    <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
-    <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
+                    <script src="{{ asset('admin/assets/js/bundle.js?ver=3.1.2') }}"></script>
+                    <script src="{{ asset('admin/assets/js/scripts.js?ver=3.1.2') }}"></script>
+                    <script src="{{ asset('admin/assets/js/charts/chart-ecommerce.js?ver=3.1.2') }}"></script>
 
 </body>
 

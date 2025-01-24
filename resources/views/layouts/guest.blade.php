@@ -6,19 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Urban Store' }}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
     <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
 </head>
 
 <body class="animsition">
-
     <!-- Header -->
     @livewire('guest.partials.header.header')
-
     <!-- Cart -->
     @include('partials.cart')
-
     <!-- Main Content -->
     <main>
         {{ $slot }}
@@ -32,8 +28,12 @@
         <x-backtop></x-backtop>
     @endif
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 
     <!--===============================================================================================-->
     <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
@@ -53,7 +53,7 @@
         })
     </script>
 
-  
+
     <!--===============================================================================================-->
     <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
     <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
