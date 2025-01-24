@@ -1,4 +1,83 @@
 <div>
+
+    <style>
+        /* Styles de base pour le menu principal */
+        .menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .menu-item {
+            position: relative;
+            margin: 10px 0;
+        }
+        
+        /* Lien principal */
+        .menu-link {
+            text-decoration: none;
+            
+            color: #333;
+            display: inline-block;
+           
+            cursor: pointer;
+        }
+        
+        /* Contenu du menu caché par défaut */
+        .menu-content {
+            display: none; /* Cacher par défaut */
+            position: absolute;
+            top: 100%; /* Positionné sous le lien principal */
+            left: 0;
+            background: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 250px; /* Largeur minimale */
+        }
+        
+        /* Affichage du menu au survol */
+        .menu-item:hover > .menu-content {
+            display: flex; /* Flex pour organiser les catégories */
+            flex-wrap: wrap; /* Permet l'adaptation dynamique */
+            gap: 20px; /* Espacement entre les colonnes */
+        }
+        
+        /* Catégories */
+        .category {
+            min-width: 200px;
+        }
+        
+        .category h3 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: #007BFF;
+        }
+        
+        .category ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .category li {
+            margin: 5px 0;
+        }
+        
+        .category a {
+            text-decoration: none;
+            color: #333;
+            font-size: 0.9rem;
+        }
+        
+        .category a:hover {
+            text-decoration: underline;
+            color: #007BFF;
+        }
+        </style>
+        
     <!-- Header -->
     <header class="header-v2">
         <!-- Header desktop -->
@@ -16,21 +95,41 @@
                             <li class="{{ request()->routeIs('home.index') ? 'active-menu' : '' }}">
                                 <a href="{{ route('home.index') }}">Accueil</a>
                             </li>
-                            <li
-                                class="menu-item-has-children {{ request()->routeIs('home.shop') ? 'active-menu' : '' }}">
-                                <a href="#">Boutique</a>
-                                <ul class="sub-menu">
-                                    <li id="shop-loading" style="display: none;">Chargement...</li>
-                                    @foreach ($categoryArticles as $categoryArticle)
-                                        <li>
-                                            <a
-                                                href="{{ route('home.shop', ['id' => $categoryArticle->id, 'slug' => $categoryArticle->slug]) }}">
-                                                {{ $categoryArticle->name }}
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </li>
+                            <ul class="menu">
+                                <li class="menu-item">
+                                    <a href="#" class="menu-link">Boutique</a>
+                                    <div class="menu-content">
+                                        <!-- Premier sous-menu -->
+                                        <div class="category">
+                                            <h3>Catégorie 1</h3>
+                                            <ul>
+                                                <li><a href="#">Sous-catégorie 1-1</a></li>
+                                                <li><a href="#">Sous-catégorie 1-2</a></li>
+                                                <li><a href="#">Sous-catégorie 1-3</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Deuxième sous-menu -->
+                                        <div class="category">
+                                            <h3>Catégorie 2</h3>
+                                            <ul>
+                                                <li><a href="#">Sous-catégorie 2-1</a></li>
+                                                <li><a href="#">Sous-catégorie 2-2</a></li>
+                                            </ul>
+                                        </div>
+                                        <!-- Troisième sous-menu -->
+                                        <div class="category">
+                                            <h3>Catégorie 3</h3>
+                                            <ul>
+                                                <li><a href="#">Sous-catégorie 3-1</a></li>
+                                                <li><a href="#">Sous-catégorie 3-2</a></li>
+                                                <li><a href="#">Sous-catégorie 3-3</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            
+                            
                             <li class="{{ request()->routeIs('home.about') ? 'active-menu' : '' }}">
                                 <a href="{{ route('home.about') }}">À propos</a>
                             </li>
@@ -278,5 +377,26 @@
             </div>
         </div>
     </aside>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuItem = document.querySelector('.menu-item-has-children');
+            const shopLoading = document.getElementById('shop-loading');
+    
+            menuItem.addEventListener('mouseenter', function () {
+                // Simulez un délai de chargement
+                shopLoading.style.display = 'block';
+                setTimeout(() => {
+                    shopLoading.style.display = 'none';
+                }, 1000); // 1 seconde de délai
+            });
+    
+            menuItem.addEventListener('mouseleave', function () {
+                // Réinitialiser l'état du message de chargement
+                shopLoading.style.display = 'none';
+            });
+        });
+    </script>
+    
 
 </div>
