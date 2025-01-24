@@ -2,14 +2,12 @@
 
 namespace App\Livewire\Products\Partials;
 
-use Livewire\Component;
 use App\Models\CategoryArticles;
-use Illuminate\Support\Facades\Storage;
+use Livewire\Component;
 
 class SecBanner extends Component
 {
     public $banners;
-
 
     public function mount()
     {

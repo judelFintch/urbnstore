@@ -17,7 +17,7 @@ class CategoryArticles extends Model
         'created_at',
         'updated_at',
         'is_featured',
-        'photo'
+        'photo',
     ];
 
     public function products()
@@ -25,13 +25,12 @@ class CategoryArticles extends Model
         return $this->hasMany(Product::class);
     }
 
-
     public function getAllCategoryImageUrls(): array
     {
         $imageUrls = [];
 
         // Vérifier si l'image est un chemin unique ou un JSON
-        if (!empty($this->image_url)) {
+        if (! empty($this->image_url)) {
             // Si c'est un tableau JSON encodé
             $decoded = json_decode($this->image_url, true);
             if (is_array($decoded)) {
@@ -47,6 +46,4 @@ class CategoryArticles extends Model
             return Storage::url($image);
         }, $imageUrls);
     }
-
-
 }

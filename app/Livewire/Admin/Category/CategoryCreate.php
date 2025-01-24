@@ -15,17 +15,23 @@ class CategoryCreate extends Component
     use WithFileUploads;
 
     public $name;
+
     public $slug;
+
     public $description;
+
     public $is_active = false;
+
     public $is_featured = true; // Champ pour catégorie phare
+
     public $photo; // Champ pour l'upload de photo
+
     public $slugEditable = false;
 
     public function updatedName($value)
     {
         // Générer automatiquement le slug si l'édition manuelle est désactivée
-        if (!$this->slugEditable) {
+        if (! $this->slugEditable) {
             $this->slug = Str::slug($value);
         }
     }
@@ -33,7 +39,7 @@ class CategoryCreate extends Component
     public function toggleSlugEditable()
     {
         // Permet de basculer l'édition du slug
-        $this->slugEditable = !$this->slugEditable;
+        $this->slugEditable = ! $this->slugEditable;
     }
 
     public function save()

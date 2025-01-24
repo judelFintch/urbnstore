@@ -16,4 +16,3 @@ class ProductList extends Component
         return view('livewire.admin.product.product-list', compact('products'));
     }
 }
-

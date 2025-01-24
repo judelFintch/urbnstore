@@ -7,10 +7,10 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-
 class ProductGrid extends Component
 {
     use WithPagination;
+
     public $products;
 
     public $categories;

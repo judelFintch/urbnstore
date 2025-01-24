@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\On;
 
 #[Layout('layouts.app')]
 class ProductUpdate extends Component
@@ -16,9 +15,13 @@ class ProductUpdate extends Component
     use WithFileUploads;
 
     public $product;
+
     public $categories = [];
+
     public $uploadedFiles = [];
+
     public $images = [];
+
     public $form = [];
 
     protected $rules = [
@@ -67,19 +70,19 @@ class ProductUpdate extends Component
                 // Notification de succès
                 $this->dispatch('notification', [
                     'type' => 'success',
-                    'message' => 'Produit mis à jour avec succès.'
+                    'message' => 'Produit mis à jour avec succès.',
                 ]);
             }
         } catch (\Illuminate\Validation\ValidationException $e) {
             // Notification d'erreur
             $this->dispatch('notification', [
                 'type' => 'error',
-                'message' => 'Des erreurs de validation ont été détectées.'
+                'message' => 'Des erreurs de validation ont été détectées.',
             ]);
 
             // Optionnel : Débogage des erreurs dans la console (dev uniquement)
             $this->dispatchBrowserEvent('console-log', [
-                'errors' => $e->errors()
+                'errors' => $e->errors(),
             ]);
         }
     }
@@ -144,8 +147,8 @@ class ProductUpdate extends Component
     private function uploadImages($files)
     {
         return collect($files)
-            ->filter(fn($file) => $file->isValid())
-            ->map(fn($file) => $file->store('products', 'public'))
+            ->filter(fn ($file) => $file->isValid())
+            ->map(fn ($file) => $file->store('products', 'public'))
             ->toArray();
     }
 
