@@ -12,7 +12,7 @@
                     <!-- Collecte et utilisation des données -->
                     <h3 class="mtext-111 cl2 p-b-16 text-center">Collecte et Utilisation des Données</h3>
                     <p class="stext-113 cl6 p-b-26 text-justify">
-                        Chez URBN, nous comprenons que votre vie privée est importante et que vous vous souciez de la manière dont vos données personnelles sont utilisées et partagées en ligne. Nous respectons et valorisons la confidentialité de tous ceux qui visitent ce site web www.urbnclothing.com ("notre Site") et nous ne collecterons et n’utiliserons vos données personnelles que de manière décrite ici, en conformité avec nos obligations et vos droits en vertu de la loi.
+                        Chez URBN, nous comprenons que votre vie privée est importante et que vous vous souciez de la manière dont vos données personnelles sont utilisées et partagées en ligne. Nous respectons et valorisons la confidentialité de tous ceux qui visitent ce site web https://urbanbrands.store ("notre Site") et nous ne collecterons et n’utiliserons vos données personnelles que de manière décrite ici, en conformité avec nos obligations et vos droits en vertu de la loi.
                     </p>
                     <p class="stext-113 cl6 p-b-26 text-justify">
                         Veuillez lire attentivement cette politique de confidentialité et vous assurer de bien la comprendre. Votre acceptation de notre politique de confidentialité est considérée comme acquise dès votre première utilisation de notre Site. Si vous n’acceptez pas cette politique de confidentialité, vous devez cesser immédiatement d’utiliser notre Site.
