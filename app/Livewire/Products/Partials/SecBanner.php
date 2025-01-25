@@ -11,7 +11,10 @@ class SecBanner extends Component
 
     public function mount()
     {
-        $this->banners = CategoryArticles::where('is_featured', true)->take(3)->get();
+        $this->banners = CategoryArticles::where('is_featured', true)
+                                         ->orderBy('id', 'desc')
+                                         ->take(3)
+                                         ->get();
 
     }
 
