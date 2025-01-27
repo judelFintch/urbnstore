@@ -21,7 +21,9 @@ class SliderStore extends Component
     public $image;
     public $link;
     public $isEditing = false;
-    public $sliderIdToDelete = null; // Pour gérer la confirmation de suppression
+    public $sliderIdToDelete = null; // ID du slider à supprimer
+    public $sliderToDelete = null; // Objet slider à supprimer
+
 
     protected $rules = [
         'name' => 'required|string|max:255',
@@ -89,33 +91,33 @@ class SliderStore extends Component
 
     public function confirmDelete($id)
     {
-        $this->sliderIdToDelete = $id;
+        $this->sliderIdToDelete = $id; // Assignez l'ID à supprimer
+        $this->sliderToDelete = Slider::find($id); // Chargez les informations du slider
     }
+
 
     public function delete()
     {
-        try {
-            $slider = Slider::findOrFail($this->sliderIdToDelete);
+        $slider = Slider::findOrFail($this->sliderIdToDelete);
 
-            if ($slider->image) {
-                Storage::disk('public')->delete($slider->image);
-            }
-
-            $slider->delete();
-
-            $this->sliderIdToDelete = null;
-            $this->loadSliders();
-
-            session()->flash('success', 'Le slider a été supprimé avec succès.');
-        } catch (\Exception $e) {
-            session()->flash('error', 'Une erreur s\'est produite lors de la suppression du slider.');
+        if ($slider->image) {
+            \Storage::disk('public')->delete($slider->image);
         }
+
+        $slider->delete();
+
+        // Réinitialiser après suppression
+        $this->sliderIdToDelete = null;
+        $this->sliderToDelete = null;
+
+        session()->flash('success', 'Slider supprimé avec succès.');
     }
+
     public function cancelDelete()
     {
         $this->sliderIdToDelete = null;
+        $this->sliderToDelete = null;
     }
-
     public function render()
     {
         return view('livewire.admin.slider-manager.slider-store', [
