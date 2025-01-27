@@ -3,12 +3,11 @@
 namespace App\Livewire\Admin\Category;
 
 use App\Models\CategoryArticles;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
-
 
 #[Layout('layouts.app')]
 class CategoryEdit extends Component
@@ -47,7 +46,7 @@ class CategoryEdit extends Component
     public function updatedName($value)
     {
         // Générer automatiquement le slug si l'édition manuelle est désactivée
-        if (!$this->slugEditable) {
+        if (! $this->slugEditable) {
             $this->slug = Str::slug($value);
         }
     }
@@ -55,7 +54,7 @@ class CategoryEdit extends Component
     public function toggleSlugEditable()
     {
         // Basculer l'état d'édition manuelle du slug
-        $this->slugEditable = !$this->slugEditable;
+        $this->slugEditable = ! $this->slugEditable;
     }
 
     public function update()
@@ -63,7 +62,7 @@ class CategoryEdit extends Component
         // Validation des champs
         $this->validate([
             'name' => 'required|string|max:255',
-            'slug' => 'nullable|string|unique:category_articles,slug,' . $this->categoryId,
+            'slug' => 'nullable|string|unique:category_articles,slug,'.$this->categoryId,
             'description' => 'nullable|string',
             'is_active' => 'required|boolean',
             'is_featured' => 'required|boolean',

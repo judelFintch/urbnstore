@@ -13,7 +13,7 @@ class Footer extends Component
 
     public function mount()
     {
-        $this->categories = CategoryArticles::select('id', 'name','slug')
+        $this->categories = CategoryArticles::select('id', 'name', 'slug')
             ->where('is_active', true)
             ->orderBy('id', 'desc')
             ->take(self::CATEGORIES_LIMIT)

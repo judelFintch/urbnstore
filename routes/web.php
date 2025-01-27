@@ -17,9 +17,7 @@ use App\Livewire\Admin\Product\ProductStore;
 use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Promotion\Promotion;
 use App\Livewire\Admin\Shipping\Shipping;
-use App\Livewire\Admin\SliderManager\SliderList;
 use App\Livewire\Admin\SliderManager\SliderStore;
-
 use App\Livewire\Admin\Stock\Stock;
 use App\Livewire\Cart\Cartshow;
 use App\Livewire\Guest\About\About;
@@ -31,9 +29,9 @@ use App\Livewire\Guest\PrivacyPolicy\PrivacyPolicy;
 use App\Livewire\Guest\RefundPolicy\RefundPolicy;
 use App\Livewire\Guest\Shipping\AboutShipping;
 use App\Livewire\Guest\Shop\Shop;
+use App\Livewire\Guest\TableChart\SizeChart;
 use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
 use App\Livewire\Products\ProductDetails;
-use App\Livewire\Guest\TableChart\SizeChart;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -126,4 +124,4 @@ Route::fallback(function () {
 });
 
 // Authentication routes
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';

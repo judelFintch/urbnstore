@@ -15,13 +15,21 @@ class SliderStore extends Component
     use WithFileUploads, WithPagination;
 
     public $sliders;
+
     public $sliderId = null;
+
     public $name;
+
     public $caption;
+
     public $image;
+
     public $link;
+
     public $isEditing = false;
+
     public $sliderIdToDelete = null;
+
     public $sliderToDelete = null;
 
     protected $rules = [
@@ -84,7 +92,7 @@ class SliderStore extends Component
             $this->loadSliders();
             $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
 
-            session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . ' avec succès.');
+            session()->flash('success', 'Le slider a été '.($this->isEditing ? 'modifié' : 'créé').' avec succès.');
         } catch (\Exception $e) {
             session()->flash('error', 'Une erreur s\'est produite lors de l\'enregistrement du slider.');
         }

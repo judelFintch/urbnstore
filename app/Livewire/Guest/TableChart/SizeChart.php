@@ -2,11 +2,8 @@
 
 namespace App\Livewire\Guest\TableChart;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout; // Modèle pour insérer les messages
-
-
-
+use Livewire\Attributes\Layout;
+use Livewire\Component; // Modèle pour insérer les messages
 
 class SizeChart extends Component
 {
