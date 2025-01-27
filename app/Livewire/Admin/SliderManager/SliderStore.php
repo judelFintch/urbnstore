@@ -15,20 +15,19 @@ class SliderStore extends Component
     use WithFileUploads, WithPagination;
 
     public $sliders;
-    public $sliderId = null; // Initialisation de la variable
+    public $sliderId = null;
     public $name;
     public $caption;
     public $image;
     public $link;
     public $isEditing = false;
-    public $sliderIdToDelete = null; // ID du slider à supprimer
-    public $sliderToDelete = null; // Objet slider à supprimer
-
+    public $sliderIdToDelete = null;
+    public $sliderToDelete = null;
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'caption' => 'nullable|string|max:255',
-        'image' => 'nullable|image|max:1024',
+        'image' => 'nullable|image|max:1024', // Limitation de 1 Mo pour l'image
         'link' => 'nullable|url',
     ];
 
@@ -55,6 +54,7 @@ class SliderStore extends Component
         $this->name = $slider->name;
         $this->caption = $slider->caption;
         $this->link = $slider->link;
+        $this->image = null; // Réinitialiser pour ne pas charger une image par défaut
         $this->isEditing = true;
     }
 
@@ -69,10 +69,13 @@ class SliderStore extends Component
             $slider->caption = $this->caption;
             $slider->link = $this->link;
 
+            // Gestion de l'image
             if ($this->image) {
                 if ($this->isEditing && $slider->image) {
+                    // Supprimer l'image existante si elle est remplacée
                     Storage::disk('public')->delete($slider->image);
                 }
+                // Stocker la nouvelle image
                 $slider->image = $this->image->store('sliders', 'public');
             }
 
@@ -87,26 +90,22 @@ class SliderStore extends Component
         }
     }
 
-
-
     public function confirmDelete($id)
     {
-        $this->sliderIdToDelete = $id; // Assignez l'ID à supprimer
-        $this->sliderToDelete = Slider::find($id); // Chargez les informations du slider
+        $this->sliderIdToDelete = $id;
+        $this->sliderToDelete = Slider::find($id);
     }
-
 
     public function delete()
     {
         $slider = Slider::findOrFail($this->sliderIdToDelete);
 
         if ($slider->image) {
-            \Storage::disk('public')->delete($slider->image);
+            Storage::disk('public')->delete($slider->image);
         }
 
         $slider->delete();
 
-        // Réinitialiser après suppression
         $this->sliderIdToDelete = null;
         $this->sliderToDelete = null;
 
@@ -118,10 +117,11 @@ class SliderStore extends Component
         $this->sliderIdToDelete = null;
         $this->sliderToDelete = null;
     }
+
     public function render()
     {
         return view('livewire.admin.slider-manager.slider-store', [
-            'slidersPaginated' => Slider::paginate(10), // Utilisation de paginate
+            'slidersPaginated' => Slider::paginate(10),
         ]);
     }
 }
