@@ -7,7 +7,6 @@
                     <div class="item-slick1 bg-overlay1"
                         style="background-image: url('{{ Storage::url($slider->image) }}');"
                         data-thumb="{{ Storage::url($slider->image) }}" data-caption="{{ $slider->caption }}">
-
                         <div class="container h-full">
                             <div class="flex-col-c-m h-full p-t-100 p-b-60 respon5">
                                 <!-- Caption -->
