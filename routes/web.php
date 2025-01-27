@@ -19,6 +19,7 @@ use App\Livewire\Admin\Promotion\Promotion;
 use App\Livewire\Admin\Shipping\Shipping;
 use App\Livewire\Admin\SliderManager\SliderList;
 use App\Livewire\Admin\SliderManager\SliderStore;
+use App\Livewire\Admin\SliderManager\SliderEdit;
 use App\Livewire\Admin\Stock\Stock;
 use App\Livewire\Cart\Cartshow;
 use App\Livewire\Guest\About\About;
@@ -115,6 +116,7 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     Route::prefix('slider')->name('slider.')->group(function () {
         Route::get('/slider_list', SliderList::class)->name('list');
         Route::get('/slider_store', SliderStore::class)->name('store');
+        Route::get('/slider_edit/{id}', SliderEdit::class)->name('edit');
     });
 });
 

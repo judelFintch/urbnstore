@@ -60,101 +60,103 @@
                                                     </div><!-- .nk-tb-item -->
 
                                                     @foreach ($sliders as $slider)
-                                                    @php
-                                                        $images = json_decode($slider->image, true) ?? []; // Decode JSON into an array
-                                                    @endphp
-                                                    <div class="nk-tb-item">
-                                                        <div class="nk-tb-col nk-tb-col-check">
-                                                            <div
-                                                                class="custom-control custom-control-sm custom-checkbox notext">
-                                                                <input type="checkbox" class="custom-control-input"
-                                                                    id="slider-{{ $slider->id }}">
-                                                                <label class="custom-control-label"
-                                                                    for="slider-{{ $slider->id }}"></label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="nk-tb-col">
-                                                            <a href="#">
-                                                                <div class="user-card">
-                                                                    <div class="user-avatar xs bg-primary">
-                                                                        <img src="{{ Storage::url($slider->image) }}"
-                                                                            alt="Image du slider {{ $slider->name }}">
-                                                                    </div>
-                                                                    <div class="user-name">
-                                                                        <span class="tb-lead">{{ $slider->name }}</span>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-sm">
-                                                            <span class="sub-text">{{ $slider->caption }}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="sub-text">{{ $slider->link }}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-md">
-                                                            <span class="sub-text">{{ $slider->link }}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-xxl">
-                                                            <span
-                                                                class="sub-text">{{ $slider->created_at->format('d M Y, h:i a') }}</span>
-                                                        </div>
-                                                        <div class="nk-tb-col tb-col-lg">
-                                                            <span class="tb-status text-success">Active</span>
-                                                        </div>
-                                                        <div class="nk-tb-col nk-tb-col-tools">
-                                                            <ul class="nk-tb-actions gx-1">
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Détails">
-                                                                        <em class="icon ni ni-eye-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Modifier">
-                                                                        <em class="icon ni ni-edit-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nk-tb-action-hidden">
-                                                                    <a href="#" class="btn btn-trigger btn-icon"
-                                                                        data-bs-toggle="tooltip" data-bs-placement="top"
-                                                                        title="Supprimer">
-                                                                        <em class="icon ni ni-trash-fill"></em>
-                                                                    </a>
-                                                                </li>
-                                                                <li>
-                                                                    <div class="dropdown">
-                                                                        <a href="#"
-                                                                            class="dropdown-toggle btn btn-icon btn-trigger"
-                                                                            data-bs-toggle="dropdown">
-                                                                            <em class="icon ni ni-more-h"></em>
-                                                                        </a>
-                                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                                            <ul class="link-list-opt no-bdr">
-                                                                                <li>
-                                                                                    <a href="#"><em
-                                                                                            class="icon ni ni-eye"></em><span>Voir
-                                                                                            les détails</span></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#"><em
-                                                                                            class="icon ni ni-edit"></em><span>Modifier</span></a>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <a href="#"><em
-                                                                                            class="icon ni ni-trash"></em><span>Supprimer</span></a>
-                                                                                </li>
-                                                                            </ul>
-                                                                        </div>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                @endforeach
+                                                                                                        @php
+                                                                                                            $images = json_decode($slider->image, true) ?? []; // Decode JSON into an array
+                                                                                                        @endphp
+                                                                                                        <div class="nk-tb-item">
+                                                                                                            <div class="nk-tb-col nk-tb-col-check">
+                                                                                                                <div
+                                                                                                                    class="custom-control custom-control-sm custom-checkbox notext">
+                                                                                                                    <input type="checkbox" class="custom-control-input"
+                                                                                                                        id="slider-{{ $slider->id }}">
+                                                                                                                    <label class="custom-control-label"
+                                                                                                                        for="slider-{{ $slider->id }}"></label>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col">
+                                                                                                                <a href="#">
+                                                                                                                    <div class="user-card">
+                                                                                                                        <div class="user-avatar xs bg-primary">
+                                                                                                                            <img src="{{ Storage::url($slider->image) }}"
+                                                                                                                                alt="Image du slider {{ $slider->name }}">
+                                                                                                                        </div>
+                                                                                                                        <div class="user-name">
+                                                                                                                            <span class="tb-lead">{{ $slider->name }}</span>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col tb-col-sm">
+                                                                                                                <span class="sub-text">{{ $slider->caption }}</span>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col tb-col-md">
+                                                                                                                <span class="sub-text">{{ $slider->link }}</span>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col tb-col-md">
+                                                                                                                <span class="sub-text">{{ $slider->link }}</span>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col tb-col-xxl">
+                                                                                                                <span
+                                                                                                                    class="sub-text">{{ $slider->created_at->format('d M Y, h:i a') }}</span>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col tb-col-lg">
+                                                                                                                <span class="tb-status text-success">Active</span>
+                                                                                                            </div>
+                                                                                                            <div class="nk-tb-col nk-tb-col-tools">
+                                                                                                                <ul class="nk-tb-actions gx-1">
+                                                                                                                    <li class="nk-tb-action-hidden">
+                                                                                                                        <a href="#" class="btn btn-trigger btn-icon"
+                                                                                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                                                                            title="Détails">
+                                                                                                                            <em class="icon ni ni-eye-fill"></em>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li class="nk-tb-action-hidden">
+                                                                                                                        <a href="{{route('slider.edit', [$slider->id])}}"
+                                                                                                                            class="btn btn-trigger btn-icon"
+                                                                                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                                                                            title="Modifier">
+                                                                                                                            <em class="icon ni ni-edit-fill"></em>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li class="nk-tb-action-hidden">
+                                                                                                                        <a href="#" class="btn btn-trigger btn-icon"
+                                                                                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                                                                                            title="Supprimer">
+                                                                                                                            <em class="icon ni ni-trash-fill"></em>
+                                                                                                                        </a>
+                                                                                                                    </li>
+                                                                                                                    <li>
+                                                                                                                        <div class="dropdown">
+                                                                                                                            <a href="#"
+                                                                                                                                class="dropdown-toggle btn btn-icon btn-trigger"
+                                                                                                                                data-bs-toggle="dropdown">
+                                                                                                                                <em class="icon ni ni-more-h"></em>
+                                                                                                                            </a>
+                                                                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                                                                <ul class="link-list-opt no-bdr">
+                                                                                                                                    <li>
+                                                                                                                                        <a href="#"><em
+                                                                                                                                                class="icon ni ni-eye"></em><span>Voir
+                                                                                                                                                les détails</span></a>
+                                                                                                                                    </li>
+                                                                                                                                    <li>
+                                                                                                                                        <a
+                                                                                                                                            href="{{route('slider.edit', [$slider->id])}}"><em
+                                                                                                                                                class="icon ni ni-edit"></em><span>Modifier</span></a>
+                                                                                                                                    </li>
+                                                                                                                                    <li>
+                                                                                                                                        <a href="#"><em
+                                                                                                                                                class="icon ni ni-trash"></em><span>Supprimer</span></a>
+                                                                                                                                    </li>
+                                                                                                                                </ul>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </li>
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                    @endforeach
 
 
                                                 </div><!-- .nk-tb-list -->
