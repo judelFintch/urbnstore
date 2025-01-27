@@ -50,59 +50,129 @@
                 </div>
             </aside>
 
-            <!-- Main Content -->
-        <main class="col-lg-9">
-            <!-- Spinner de chargement -->
-            <div wire:loading class="text-center">
-                <div class="spinner-border text-primary" role="status">
-                    <span class="visually-hidden">Chargement...</span>
-                </div>
-            </div>
-        
-            <!-- Produits -->
-            <div class="row">
-                @if ($products->isEmpty())
-                    <!-- Message Aucun produit trouvé -->
-                    <div class="col-12 text-center my-5">
-                        <h5 class="text-muted">Aucun produit trouvé pour les filtres sélectionnés.</h5>
+
+            <main class="col-lg-9">
+                <!-- Spinner de chargement -->
+                <div wire:loading class="text-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Chargement...</span>
                     </div>
-                @else
-                    @foreach ($products as $product)
-                        <div class="col-md-4 mb-4">
-                            <div class="card product-card border-0 shadow-sm h-100">
-                                <!-- Product Image -->
-                                <a href="#" class="product-link">
-                                    <div class="position-relative overflow-hidden">
-                                        <img src="{{ $product->getFirstImageUrl() }}" alt="Product Image"
-                                            class="card-img-top img-fluid hover-scale">
+                </div>
+
+                <!-- Produits -->
+                <div class="row">
+                    @if ($products->isEmpty())
+                        <!-- Message Aucun produit trouvé -->
+                        <div class="col-12 text-center my-5">
+                            <i class="bi bi-box-seam text-muted" style="font-size: 3rem;"></i>
+                            <h5 class="text-muted mt-3">Aucun produit trouvé pour les filtres sélectionnés.</h5>
+                            <a href="#" wire:click.prevent="resetFilters" class="btn btn-primary mt-3">
+                                Réinitialiser les filtres
+                            </a>
+                        </div>
+
+                        <!-- Produits suggérés -->
+                        <div class="col-12 mt-5">
+                            <h5 class="fw-bold text-dark">Produits similaires</h5>
+                            <div class="row">
+                                @foreach ($suggestedProducts as $suggestedProduct)
+                                    <div class="col-md-4 mb-4">
+                                        <div class="card product-card border-0 shadow-sm h-100">
+                                            <a href="#" class="product-link">
+                                                <div class="position-relative overflow-hidden">
+                                                    <img src="{{ $suggestedProduct->getFirstImageUrl() }}" alt="Product Image"
+                                                        class="card-img-top img-fluid hover-scale">
+                                                </div>
+                                            </a>
+                                            <div class="card-body">
+                                                <h5 class="card-title">
+                                                    <a href="#" class="text-dark text-decoration-none hover-underline">
+                                                        {{ $suggestedProduct->title }}
+                                                    </a>
+                                                </h5>
+                                                <div class="d-flex justify-content-between align-items-center">
+                                                    <span class="text-primary fw-bold">{{ $suggestedProduct->currency }}
+                                                        {{ $suggestedProduct->price }}</span>
+                                                    <small class="text-muted">
+                                                        {{ $suggestedProduct->stock > 0 ? $suggestedProduct->stock . ' en stock' : 'Indisponible' }}
+                                                    </small>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </a>
-                                <div class="card-body">
-                                    <!-- Product Title -->
-                                    <h5 class="card-title">
-                                        <a href="#" class="text-dark text-decoration-none hover-underline">
-                                            {{ $product->title }}
-                                        </a>
-                                    </h5>
-                                    <!-- Product Price -->
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary fw-bold">{{ $product->currency }} {{ $product->price }}</span>
-                                        <small class="text-muted">
-                                            {{ $product->stock > 0 ? $product->stock . ' en stock' : 'Indisponible' }}
-                                        </small>
+                                @endforeach
+                            </div>
+                        </div>
+
+                        <!-- Produits récemment consultés -->
+                        @if ($recentlyViewedProducts->isNotEmpty())
+                            <div class="col-12 mt-5">
+                                <h5 class="fw-bold text-dark">Produits récemment consultés</h5>
+                                <div class="row">
+                                    @foreach ($recentlyViewedProducts as $recentProduct)
+                                        <div class="col-md-4 mb-4">
+                                            <div class="card product-card border-0 shadow-sm h-100">
+                                                <a href="#" class="product-link">
+                                                    <div class="position-relative overflow-hidden">
+                                                        <img src="{{ $recentProduct->getFirstImageUrl() }}" alt="Product Image"
+                                                            class="card-img-top img-fluid hover-scale">
+                                                    </div>
+                                                </a>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <a href="#" class="text-dark text-decoration-none hover-underline">
+                                                            {{ $recentProduct->title }}
+                                                        </a>
+                                                    </h5>
+                                                    <div class="d-flex justify-content-between align-items-center">
+                                                        <span class="text-primary fw-bold">{{ $recentProduct->currency }}
+                                                            {{ $recentProduct->price }}</span>
+                                                        <small class="text-muted">
+                                                            {{ $recentProduct->stock > 0 ? $recentProduct->stock . ' en stock' : 'Indisponible' }}
+                                                        </small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        @endif
+                    @else
+                        @foreach ($products as $product)
+                            <div class="col-md-4 mb-4">
+                                <div class="card product-card border-0 shadow-sm h-100">
+                                    <a href="#" class="product-link" wire:click="trackProduct({{ $product->id }})">
+                                        <div class="position-relative overflow-hidden">
+                                            <img src="{{ $product->getFirstImageUrl() }}" alt="Product Image"
+                                                class="card-img-top img-fluid hover-scale">
+                                        </div>
+                                    </a>
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <a href="#" class="text-dark text-decoration-none hover-underline">
+                                                {{ $product->title }}
+                                            </a>
+                                        </h5>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <span class="text-primary fw-bold">{{ $product->currency }}
+                                                {{ $product->price }}</span>
+                                            <small class="text-muted">
+                                                {{ $product->stock > 0 ? $product->stock . ' en stock' : 'Indisponible' }}
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-        
-            <!-- Pagination -->
-            <div class="d-flex justify-content-center mt-4">
-                {{ $products->links('pagination::bootstrap-4') }}
-            </div>
-        </main>
+                        @endforeach
+                    @endif
+                </div>
+
+                <!-- Pagination -->
+                <div class="d-flex justify-content-center mt-4">
+                    {{ $products->links('pagination::bootstrap-4') }}
+                </div>
+            </main>
         </div>
     </div>
 
@@ -128,18 +198,18 @@
         }
 
         /* Transition pour la hauteur de la barre latérale */
-    .sidebar {
-        transition: all 0.3s ease-in-out;
-    }
+        .sidebar {
+            transition: all 0.3s ease-in-out;
+        }
 
-    /* Effet lors du survol des liens */
-    .sidebar a {
-        transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-    }
+        /* Effet lors du survol des liens */
+        .sidebar a {
+            transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out;
+        }
 
-    .sidebar a:hover {
-        color: #0d6efd;
-        font-weight: bold;
+        .sidebar a:hover {
+            color: #0d6efd;
+            font-weight: bold;
     </style>
 
 </div>

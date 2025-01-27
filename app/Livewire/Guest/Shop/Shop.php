@@ -44,8 +44,17 @@ class Shop extends Component
         }
     }
 
+    public function resetFilters()
+    {
+        $this->selectedCategory = null;
+        $this->priceRange = 1000;
+        $this->search = '';
+        $this->resetPage(); // Réinitialise la pagination
+    }
+
     public function render()
     {
+
         $productsQuery = Product::with('category', 'details')
             ->when($this->selectedCategory, function ($query) {
                 return $query->where('category_id', $this->selectedCategory);
@@ -55,11 +64,34 @@ class Shop extends Component
             })
             ->where('price', '<=', $this->priceRange);
 
-        $products = $productsQuery->paginate(12); // Limite de 12 produits par page
+        $products = $productsQuery->paginate(12);
+
+        // Suggestions basées sur la catégorie ou par défaut
+        $suggestedProducts = $this->selectedCategory
+            ? Product::where('category_id', $this->selectedCategory)
+                ->inRandomOrder()
+                ->take(6)
+                ->get()
+            : Product::inRandomOrder()->take(6)->get();
+
+        // Produits récemment consultés (stockés en session)
+        $recentlyViewedProductIds = session()->get('recently_viewed', []);
+        $recentlyViewedProducts = Product::whereIn('id', $recentlyViewedProductIds)->take(6)->get();
 
         return view('livewire.guest.shop.shop', [
             'products' => $products,
             'categories' => $this->categories,
+            'suggestedProducts' => $suggestedProducts,
+            'recentlyViewedProducts' => $recentlyViewedProducts,
         ]);
+    }
+
+    public function trackProduct($productId)
+    {
+        $recentlyViewed = session()->get('recently_viewed', []);
+        if (!in_array($productId, $recentlyViewed)) {
+            $recentlyViewed[] = $productId;
+            session()->put('recently_viewed', $recentlyViewed);
+        }
     }
 }
