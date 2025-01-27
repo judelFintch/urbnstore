@@ -74,6 +74,7 @@ class CategoryCreate extends Component
         session()->flash('success', 'La catégorie a été créée avec succès.');
         $this->resetForm();
     }
+    
 
     public function resetForm()
     {

@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\AdminDashboard;
-// Guest components
 use App\Livewire\Admin\Category\Category;
 use App\Livewire\Admin\Category\CategoryCreate;
 use App\Livewire\Admin\Category\CategoryDelete;
@@ -13,9 +12,7 @@ use App\Livewire\Admin\Message\ContactMessage;
 use App\Livewire\Admin\Product\ProductDelete;
 use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
-// Product components
 use App\Livewire\Admin\Product\ProductListCard;
-// Admin components
 use App\Livewire\Admin\Product\ProductStore;
 use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Promotion\Promotion;
@@ -24,9 +21,6 @@ use App\Livewire\Admin\SliderManager\SliderList;
 use App\Livewire\Admin\SliderManager\SliderStore;
 use App\Livewire\Admin\Stock\Stock;
 use App\Livewire\Cart\Cartshow;
-// Order processing components
-
-// Cart components
 use App\Livewire\Guest\About\About;
 use App\Livewire\Guest\Commande\AboutCommend;
 use App\Livewire\Guest\Contact\Contact;
@@ -38,8 +32,14 @@ use App\Livewire\Guest\Shipping\AboutShipping;
 use App\Livewire\Guest\Shop\Shop;
 use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
 use App\Livewire\Products\ProductDetails;
-use Illuminate\Support\Facades\Route;
 use App\Livewire\Guest\TableChart\SizeChart;
+use Illuminate\Support\Facades\Route;
+
+/*
+|--------------------------------------------------------------------------
+| Guest Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
@@ -62,61 +62,60 @@ Route::prefix('/')->group(function () {
     Route::get('/size-chart', SizeChart::class)->name('size-chart');
 });
 
-// Admin routes
+/*
+|--------------------------------------------------------------------------
+| Admin Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
 
-    // Management routes
+    // Management
     Route::prefix('management')->group(function () {
         Route::get('/stock', Stock::class)->name('admin.stock.view');
         Route::get('/promotion', Promotion::class)->name('admin.promotions.view');
         Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
     });
 
-    // Category routes
-
+    // Categories
     Route::prefix('categories')->name('categories.')->group(function () {
-        // Route pour afficher la liste des catégories
-        Route::get('/categories', Category::class)->name('list');
-        // Route pour créer une nouvelle catégorie
+        Route::get('/', Category::class)->name('list');
         Route::get('/create', CategoryCreate::class)->name('create');
-        // Route pour éditer une catégorie
         Route::get('/edit/{id}', CategoryEdit::class)->name('edit');
-        // Route pour supprimer une catégorie
         Route::get('/delete/{id}', CategoryDelete::class)->name('delete');
     });
 
-    // Invoice routes
-    Route::prefix('invoices')->group(function () {
-        Route::get('/', Invoicelist::class)->name('admin.invoices.list');
-        Route::get('/{id}', Invoiceview::class)->name('admin.invoices.view');
+    // Invoices
+    Route::prefix('invoices')->name('admin.invoices.')->group(function () {
+        Route::get('/', Invoicelist::class)->name('list');
+        Route::get('/{id}', Invoiceview::class)->name('view');
     });
 
-    // Profile routes
+    // Profile
     Route::prefix('profile')->group(function () {
         Route::get('/', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/Message', ContactMessage::class)->name('admin.contact.message');
-
     });
 
+    // Products
     Route::prefix('product')->name('product.')->group(function () {
         Route::get('/create', ProductStore::class)->name('create');
         Route::get('/edit/{id}', ProductUpdate::class)->name('edit');
         Route::get('/delete/{id}', ProductDelete::class)->name('delete');
         Route::get('/detail/{id}', ProductDetail::class)->name('details');
-        Route::get('/list', ProductList::class)->name('list'); // admin.products.list
-
+        Route::get('/list', ProductList::class)->name('list');
         Route::get('/list-card', ProductListCard::class)->name('list-card');
     });
 
+    // Sliders
     Route::prefix('slider')->name('slider.')->group(function () {
         Route::get('/slider_list', SliderList::class)->name('list');
         Route::get('/slider_store', SliderStore::class)->name('store');
     });
-
 });
 
 // Fallback route
@@ -125,4 +124,4 @@ Route::fallback(function () {
 });
 
 // Authentication routes
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
