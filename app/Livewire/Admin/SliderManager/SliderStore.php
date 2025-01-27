@@ -4,35 +4,29 @@ namespace App\Livewire\Admin\SliderManager;
 
 use App\Models\Slider;
 use Illuminate\Support\Facades\Storage;
-use Livewire\Attributes\Layout; // Modèle Slider (à créer)
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
 #[Layout('layouts.app')]
-
 class SliderStore extends Component
 {
     use WithFileUploads;
 
     public $sliders;
-
-    public $sliderId;
-
+    public $sliderId = null; // Initialisation de la variable
     public $name;
-
     public $caption;
-
     public $image;
-
     public $link;
-
     public $isEditing = false;
+    public $sliderIdToDelete = null; // Pour gérer la confirmation de suppression
 
     protected $rules = [
         'name' => 'required|string|max:255',
         'caption' => 'nullable|string|max:255',
-        'image' => 'nullable|image', // 1MB max pour l'image
-        'link' => 'nullable',
+        'image' => 'nullable|image|max:1024',
+        'link' => 'nullable|url',
     ];
 
     public function mount()
@@ -47,8 +41,7 @@ class SliderStore extends Component
 
     public function create()
     {
-        $this->reset(['name', 'caption', 'image', 'link']);
-        $this->isEditing = false;
+        $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
     }
 
     public function edit($id)
@@ -66,48 +59,60 @@ class SliderStore extends Component
     {
         try {
             $this->validate();
-
+    
             $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider;
-
+    
             $slider->name = $this->name;
             $slider->caption = $this->caption;
             $slider->link = $this->link;
-
+    
             if ($this->image) {
                 if ($this->isEditing && $slider->image) {
-                    try {
-                        Storage::delete($slider->image);
-                    } catch (\Exception $e) {
-                        // Gérer l'exception
-                    }
+                    Storage::disk('public')->delete($slider->image);
                 }
                 $slider->image = $this->image->store('sliders', 'public');
             }
-
+    
             $slider->save();
-
+    
             $this->loadSliders();
             $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
-
-            session()->flash('success', 'Le slider a été '.($this->isEditing ? 'modifié' : 'créé').'avec succès.');
+    
+            session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . ' avec succès.');
         } catch (\Exception $e) {
-            // Gérer l'exception
+            session()->flash('error', 'Une erreur s\'est produite lors de l\'enregistrement du slider.');
         }
     }
+    
+  
 
-    public function delete($id)
+    public function confirmDelete($id)
     {
-        $slider = Slider::findOrFail($id);
+        $this->sliderIdToDelete = $id;
+    }
 
-        if ($slider->image) {
-            Storage::delete($slider->image);
+    public function delete()
+    {
+        try {
+            $slider = Slider::findOrFail($this->sliderIdToDelete);
+    
+            if ($slider->image) {
+                Storage::disk('public')->delete($slider->image);
+            }
+    
+            $slider->delete();
+    
+            $this->sliderIdToDelete = null;
+            $this->loadSliders();
+    
+            session()->flash('success', 'Le slider a été supprimé avec succès.');
+        } catch (\Exception $e) {
+            session()->flash('error', 'Une erreur s\'est produite lors de la suppression du slider.');
         }
-
-        $slider->delete();
-
-        $this->loadSliders();
-
-        session()->flash('success', 'Le slider a été supprimé avec succès.');
+    }
+    public function cancelDelete()
+    {
+        $this->sliderIdToDelete = null;
     }
 
     public function render()

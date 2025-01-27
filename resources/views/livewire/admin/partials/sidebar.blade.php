@@ -71,7 +71,7 @@
                     </li>
 
                     <li class="nk-menu-item">
-                        <a href="{{ route('slider.list') }}" class="nk-menu-link">
+                        <a href="{{ route('slider.store') }}" class="nk-menu-link">
                             <span class="nk-menu-icon"><em class="icon ni ni-list"></em></span>
                             <span class="nk-menu-text">Slider</span>
                         </a>

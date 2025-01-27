@@ -11,6 +11,7 @@
                     </div>
                 </div>
                 <!-- main header @e -->
+
                 <!-- content @s -->
                 <div class="nk-content">
                     <div class="container-fluid">
@@ -21,16 +22,17 @@
                                 <div class="card">
                                     <div class="card-header">
                                         <h4 class="card-title">Gestion des Sliders</h4>
-                                        <p class="card-description">Ajoutez ou modifiez les informations d'un slider.
-                                        </p>
+                                        <p class="card-description">Ajoutez, modifiez ou supprimez un slider.</p>
                                     </div>
                                     <div class="card-body">
+                                        <!-- Notification -->
                                         @if (session()->has('success'))
                                             <div class="alert alert-success mb-4">
                                                 {{ session('success') }}
                                             </div>
                                         @endif
 
+                                        <!-- Formulaire de création ou d'édition -->
                                         @if ($isEditing || $sliderId === null)
                                             <form wire:submit.prevent="save" class="row g-3">
                                                 <!-- Champ Nom -->
@@ -107,6 +109,70 @@
                                                     </div>
                                                 </div>
                                             </form>
+                                        @endif
+
+                                        <!-- Liste des sliders -->
+                                        <div class="mt-4">
+                                            <h5 class="mb-3">Liste des sliders</h5>
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Nom</th>
+                                                        <th>Légende</th>
+                                                        <th>Image</th>
+                                                        <th>Lien</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($sliders as $slider)
+                                                        <tr>
+                                                            <td>{{ $slider->name }}</td>
+                                                            <td>{{ $slider->caption }}</td>
+                                                            <td>
+                                                                @if ($slider->image)
+                                                                    <img src="{{ Storage::url($slider->image) }}"
+                                                                        alt="{{ $slider->name }}" width="50">
+                                                                @endif
+                                                            </td>
+                                                            <td>
+                                                                <a href="{{ $slider->link }}"
+                                                                    target="_blank">{{ $slider->link }}</a>
+                                                            </td>
+                                                            <td>
+                                                                <button wire:click="edit({{ $slider->id }})"
+                                                                    class="btn btn-warning btn-sm">Modifier</button>
+                                                                <button wire:click="confirmDelete({{ $slider->id }})"
+                                                                    class="btn btn-danger btn-sm">Supprimer</button>
+                                                            </td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <!-- Modale de confirmation de suppression -->
+                                        @if ($sliderIdToDelete)
+                                            <div class="modal show d-block" tabindex="-1">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title">Confirmation de suppression</h5>
+                                                            <button type="button" wire:click="cancelDelete"
+                                                                class="btn-close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p>Êtes-vous sûr de vouloir supprimer ce slider ?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" wire:click="delete"
+                                                                class="btn btn-danger">Oui, supprimer</button>
+                                                            <button type="button" wire:click="cancelDelete"
+                                                                class="btn btn-secondary">Annuler</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         @endif
                                     </div>
                                 </div>

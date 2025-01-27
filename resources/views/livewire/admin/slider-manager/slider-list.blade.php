@@ -1,9 +1,9 @@
 <div>
     <div class="nk-app-root">
         <!-- main @s -->
-        <div class="nk-main ">
+        <div class="nk-main">
             <!-- wrap @s -->
-            <div class="nk-wrap ">
+            <div class="nk-wrap">
                 <!-- main header @s -->
                 <div class="nk-header nk-header-fixed nk-header-fluid is-light">
                     <div class="container-fluid">
@@ -12,7 +12,7 @@
                 </div>
                 <!-- main header @e -->
                 <!-- content @s -->
-                <div class="nk-content ">
+                <div class="nk-content">
                     <div class="container-fluid">
                         <div class="nk-content-inner">
                             <div class="nk-content-body">
@@ -35,7 +35,6 @@
                                                                     for="select-all"></label>
                                                             </div>
                                                         </div>
-
                                                         <div class="nk-tb-col">
                                                             <span class="sub-text">Nom</span>
                                                         </div>
@@ -112,8 +111,7 @@
                                                                                                                         </a>
                                                                                                                     </li>
                                                                                                                     <li class="nk-tb-action-hidden">
-                                                                                                                        <a href="{{route('slider.edit', [$slider->id])}}"
-                                                                                                                            class="btn btn-trigger btn-icon"
+                                                                                                                        <a href="" class="btn btn-trigger btn-icon"
                                                                                                                             data-bs-toggle="tooltip" data-bs-placement="top"
                                                                                                                             title="Modifier">
                                                                                                                             <em class="icon ni ni-edit-fill"></em>
@@ -141,8 +139,7 @@
                                                                                                                                                 les détails</span></a>
                                                                                                                                     </li>
                                                                                                                                     <li>
-                                                                                                                                        <a
-                                                                                                                                            href="{{route('slider.edit', [$slider->id])}}"><em
+                                                                                                                                        <a href=""><em
                                                                                                                                                 class="icon ni ni-edit"></em><span>Modifier</span></a>
                                                                                                                                     </li>
                                                                                                                                     <li>
@@ -157,8 +154,6 @@
                                                                                                             </div>
                                                                                                         </div>
                                                     @endforeach
-
-
                                                 </div><!-- .nk-tb-list -->
                                             </div><!-- .card-inner -->
                                             <div class="card-inner">
@@ -181,8 +176,6 @@
                                                                     data-dropdown="xs center">
                                                                     <option value="page-1">1</option>
                                                                     <option value="page-2">2</option>
-
-
                                                                 </select>
                                                             </div>
                                                             <div>OF 102</div>
