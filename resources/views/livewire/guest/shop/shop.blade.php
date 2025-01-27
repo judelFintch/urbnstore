@@ -51,13 +51,22 @@
             </aside>
 
             <!-- Main Content -->
-            <main class="col-lg-9">
-                <div wire:loading class="text-center">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Chargement...</span>
-                    </div>
+        <main class="col-lg-9">
+            <!-- Spinner de chargement -->
+            <div wire:loading class="text-center">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Chargement...</span>
                 </div>
-                <div class="row">
+            </div>
+        
+            <!-- Produits -->
+            <div class="row">
+                @if ($products->isEmpty())
+                    <!-- Message Aucun produit trouvé -->
+                    <div class="col-12 text-center my-5">
+                        <h5 class="text-muted">Aucun produit trouvé pour les filtres sélectionnés.</h5>
+                    </div>
+                @else
                     @foreach ($products as $product)
                         <div class="col-md-4 mb-4">
                             <div class="card product-card border-0 shadow-sm h-100">
@@ -77,8 +86,7 @@
                                     </h5>
                                     <!-- Product Price -->
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <span class="text-primary fw-bold">{{ $product->currency }}
-                                            {{ $product->price }}</span>
+                                        <span class="text-primary fw-bold">{{ $product->currency }} {{ $product->price }}</span>
                                         <small class="text-muted">
                                             {{ $product->stock > 0 ? $product->stock . ' en stock' : 'Indisponible' }}
                                         </small>
@@ -87,13 +95,14 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <!-- Pagination -->
-                <div class="d-flex justify-content-center mt-4">
-                    {{ $products->links('pagination::bootstrap-4') }}
-                </div>
-            </main>
+                @endif
+            </div>
+        
+            <!-- Pagination -->
+            <div class="d-flex justify-content-center mt-4">
+                {{ $products->links('pagination::bootstrap-4') }}
+            </div>
+        </main>
         </div>
     </div>
 
