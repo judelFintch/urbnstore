@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 #[Layout('layouts.app')]
 class SliderStore extends Component
 {
-    use WithFileUploads;
+    use WithFileUploads, WithPagination;
 
     public $sliders;
     public $sliderId = null; // Initialisation de la variable
@@ -59,32 +60,32 @@ class SliderStore extends Component
     {
         try {
             $this->validate();
-    
+
             $slider = $this->isEditing ? Slider::findOrFail($this->sliderId) : new Slider;
-    
+
             $slider->name = $this->name;
             $slider->caption = $this->caption;
             $slider->link = $this->link;
-    
+
             if ($this->image) {
                 if ($this->isEditing && $slider->image) {
                     Storage::disk('public')->delete($slider->image);
                 }
                 $slider->image = $this->image->store('sliders', 'public');
             }
-    
+
             $slider->save();
-    
+
             $this->loadSliders();
             $this->reset(['name', 'caption', 'image', 'link', 'isEditing', 'sliderId']);
-    
+
             session()->flash('success', 'Le slider a été ' . ($this->isEditing ? 'modifié' : 'créé') . ' avec succès.');
         } catch (\Exception $e) {
             session()->flash('error', 'Une erreur s\'est produite lors de l\'enregistrement du slider.');
         }
     }
-    
-  
+
+
 
     public function confirmDelete($id)
     {
@@ -95,16 +96,16 @@ class SliderStore extends Component
     {
         try {
             $slider = Slider::findOrFail($this->sliderIdToDelete);
-    
+
             if ($slider->image) {
                 Storage::disk('public')->delete($slider->image);
             }
-    
+
             $slider->delete();
-    
+
             $this->sliderIdToDelete = null;
             $this->loadSliders();
-    
+
             session()->flash('success', 'Le slider a été supprimé avec succès.');
         } catch (\Exception $e) {
             session()->flash('error', 'Une erreur s\'est produite lors de la suppression du slider.');
@@ -117,6 +118,8 @@ class SliderStore extends Component
 
     public function render()
     {
-        return view('livewire.admin.slider-manager.slider-store');
+        return view('livewire.admin.slider-manager.slider-store', [
+            'slidersPaginated' => Slider::paginate(10), // Utilisation de paginate
+        ]);
     }
 }

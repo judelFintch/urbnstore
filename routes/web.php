@@ -114,9 +114,9 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
 
     // Sliders
     Route::prefix('slider')->name('slider.')->group(function () {
-        Route::get('/slider_list', SliderList::class)->name('list');
+
         Route::get('/slider_store', SliderStore::class)->name('store');
-       
+
     });
 });
 

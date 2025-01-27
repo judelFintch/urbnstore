@@ -26,15 +26,15 @@
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <ul class="link-list-opt no-bdr">
                                         <li><a href="{{route('slider.store')}}"><span>Ajouter un Slider</span></a></li>
-                                        <li><a href="{{route('slider.list')}}"><span>Mes Sliders</span></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
                         </li>
                     </ul>
                 </div>
-            </div><!-- .toggle-wrap -->
-        </div><!-- .nk-block-head-content -->
-    </div><!-- .nk-block-between -->
+            </div>
+            </li>
+            </ul>
+        </div>
+    </div><!-- .toggle-wrap -->
+</div><!-- .nk-block-head-content -->
+</div><!-- .nk-block-between -->
 </div><!-- .nk-block-head -->
