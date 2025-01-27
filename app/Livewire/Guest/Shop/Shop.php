@@ -41,7 +41,7 @@ class Shop extends Component
 
     public function render()
     {
-        $productsQuery = Product::with('category')
+        $productsQuery = Product::with('category','details')
             ->when($this->selectedCategory, function ($query) {
                 return $query->where('category_id', $this->selectedCategory);
             })
