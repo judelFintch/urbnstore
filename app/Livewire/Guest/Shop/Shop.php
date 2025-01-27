@@ -8,9 +8,7 @@ use App\Models\Product;
 use App\Models\CategoryArticles;
 use Livewire\Attributes\Layout;
 
-
 #[Layout('layouts.guest', ['title' => 'Boutique'])]
-
 class Shop extends Component
 {
     use WithPagination;
@@ -28,7 +26,14 @@ class Shop extends Component
 
     public function mount()
     {
-        $this->categories = CategoryArticles::take(5)->get();
+        $this->categories = CategoryArticles::all(); // Récupère toutes les catégories
+    }
+
+    public function selectCategory($categoryId)
+    {
+        // Mise à jour de la catégorie sélectionnée
+        $this->selectedCategory = $categoryId;
+        $this->resetPage(); // Réinitialise la pagination
     }
 
     public function updating($field)
@@ -41,7 +46,7 @@ class Shop extends Component
 
     public function render()
     {
-        $productsQuery = Product::with('category','details')
+        $productsQuery = Product::with('category', 'details')
             ->when($this->selectedCategory, function ($query) {
                 return $query->where('category_id', $this->selectedCategory);
             })
