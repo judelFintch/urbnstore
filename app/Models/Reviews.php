@@ -13,7 +13,7 @@ class Reviews extends Model
         'name',
         'rating',
         'content',
-       
+
     ];
 
     // Relation example: reviews belong to a product

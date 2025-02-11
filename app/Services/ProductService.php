@@ -3,21 +3,19 @@
 namespace App\Services;
 
 use App\Models\Product;
-use App\Models\ProductDetail;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
-
+use Illuminate\Support\Str;
 
 class ProductService
 {
     /**
      * Create or update a product with its details.
      *
-     * @param array $data Main product data.
-     * @param array $dataDetails Product details data.
-     * @param bool $isEdit Whether it's an update operation.
-     * @param int|null $productId ID of the product to update (null for creation).
+     * @param  array  $data  Main product data.
+     * @param  array  $dataDetails  Product details data.
+     * @param  bool  $isEdit  Whether it's an update operation.
+     * @param  int|null  $productId  ID of the product to update (null for creation).
      * @return Product
      */
     public function createOrUpdateProduct(array $data, array $dataDetails, bool $isEdit = false, $productId = null)
@@ -41,9 +39,6 @@ class ProductService
 
     /**
      * Generate a unique slug for a product.
-     *
-     * @param string $slug
-     * @return string
      */
     private function generateUniqueSlug(string $slug): string
     {
@@ -61,8 +56,6 @@ class ProductService
     /**
      * Delete a product and its details.
      *
-     * @param int $productId
-     * @return bool
      * @throws \Exception If the product cannot be deleted.
      */
     public function deleteProduct(int $productId): bool
@@ -77,7 +70,7 @@ class ProductService
 
             return true;
         } catch (\Exception $e) {
-            Log::error('Erreur lors de la suppression du produit : ' . $e->getMessage());
+            Log::error('Erreur lors de la suppression du produit : '.$e->getMessage());
             throw new \RuntimeException('Impossible de supprimer le produit.');
         }
     }
@@ -88,7 +81,7 @@ class ProductService
         return Product::with('details')->get();
     }
 
-    public function getPaginateProduct(int $paginate )
+    public function getPaginateProduct(int $paginate)
     {
         $paginator = Product::with('details')->paginate($paginate);
 
@@ -96,11 +89,11 @@ class ProductService
 
     }
 
-
-    public function getImagesUrl($productId){
+    public function getImagesUrl($productId)
+    {
         $product = Product::findOrFail($productId);
-        return $images = json_decode($product->details->image_url, true); // Decode JSON into an array
-       
-    }
 
+        return $images = json_decode($product->details->image_url, true); // Decode JSON into an array
+
+    }
 }

@@ -33,7 +33,12 @@
                                         <!-- Slug Field -->
                                         <div class="form-group">
                                             <label for="slug">Slug</label>
-                                            <input type="text" id="slug" wire:model="slug" class="form-control">
+                                            <input type="text" id="slug" wire:model="slug" class="form-control" 
+                                                @if(!$slugEditable) readonly @endif>
+                                            <button type="button" wire:click="toggleSlugEditable" 
+                                                class="btn btn-sm btn-secondary mt-1">
+                                                {{ $slugEditable ? 'Verrouiller' : 'Déverrouiller' }}
+                                            </button>
                                             @error('slug') 
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
@@ -56,6 +61,38 @@
                                                 <option value="0">Inactif</option>
                                             </select>
                                             @error('is_active') 
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Is Featured Field -->
+                                        <div class="form-group">
+                                            <label for="is_featured">Catégorie Phare</label>
+                                            <select id="is_featured" wire:model="is_featured" class="form-control">
+                                                <option value="1">Oui</option>
+                                                <option value="0">Non</option>
+                                            </select>
+                                            @error('is_featured') 
+                                                <span class="text-danger">{{ $message }}</span>
+                                            @enderror
+                                        </div>
+
+                                        <!-- Photo Field -->
+                                        <div class="form-group">
+                                            <label for="photo">Photo</label>
+                                            <input type="file" id="photo" wire:model="photo" class="form-control">
+                                            @if ($photo)
+                                                <div class="mt-2">
+                                                    <img src="{{ $photo->temporaryUrl() }}" alt="Preview" 
+                                                         class="img-thumbnail" width="150">
+                                                </div>
+                                            @elseif ($photoPath ?? false)
+                                                <div class="mt-2">
+                                                    <img src="{{ Storage::url($photoPath) }}" alt="Current Photo" 
+                                                         class="img-thumbnail" width="150">
+                                                </div>
+                                            @endif
+                                            @error('photo') 
                                                 <span class="text-danger">{{ $message }}</span>
                                             @enderror
                                         </div>

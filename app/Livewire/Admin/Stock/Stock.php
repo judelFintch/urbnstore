@@ -2,12 +2,11 @@
 
 namespace App\Livewire\Admin\Stock;
 
-use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class Stock extends Component
 {
-
     #[Layout('layouts.app')]
     public function render()
     {

@@ -1,0 +1,74 @@
+/* Styles principaux regroupés pour plus de clarté */
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-item {
+    position: relative;
+    margin: 10px 0;
+}
+
+.menu-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+}
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 300px;
+    background: #f9f9f9;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-20px);
+    opacity: 0;
+    pointer-events: none; /* Empêche l'interaction quand caché */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-item:hover > .menu-content {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.category {
+    margin-bottom: 15px;
+}
+
+.category h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: #007BFF;
+}
+
+.category ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.category li {
+    margin: 5px 0;
+}
+
+.category a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.category a:hover {
+    text-decoration: underline;
+    color: #007BFF;
+}

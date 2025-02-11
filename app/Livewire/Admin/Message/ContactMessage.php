@@ -2,9 +2,9 @@
 
 namespace App\Livewire\Admin\Message;
 
-use Livewire\Component;
 use App\Models\ContactMessage as Message;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 #[Layout('layouts.app')]
 

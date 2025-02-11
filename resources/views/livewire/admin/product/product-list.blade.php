@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class="nk-content-inner">
                         <div class="nk-content-body">
-                            @livewire('admin.product.partials.header', ['content' => 'list'])
+                            @livewire('admin.product.partials.header', ['content' => 'create'])
                             <div class="nk-block nk-block-lg">
                                 <div class="nk-block-head">
                                 </div>
@@ -29,22 +29,17 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($products as $product)
-                                                    @php
-                                                        $images = json_decode($product->details->image_url, true) ?? []; // Decode JSON into an array
-                                                    @endphp
+
                                                     <tr>
                                                         <td class="nk-tb-col tb-col-sm">
                                                             <div class="user-card">
                                                                 <span class="tb-product">
-                                                                    @if (count($images) > 0)
-                                                                        <!-- Affiche la première image si elle existe -->
-                                                                        <img src="{{ url($images[0]) }}"
-                                                                            alt="{{ $product->title }}"
-                                                                            class="thumb tb-product-img">
-                                                                    @else
-                                                                        <img src="{{ asset('path/to/default-image.jpg') }}"
-                                                                            alt="No image" class="thumb tb-product-img">
-                                                                    @endif
+
+                                                                    <!-- Affiche la première image si elle existe -->
+                                                                    <img src="{{ $product->getFirstImageUrl() }}"
+                                                                        alt="{{ $product->title }}"
+                                                                        class="thumb tb-product-img">
+
                                                                     <span class="title">{{ $product->title }}</span>
                                                                 </span>
                                                             </div>
@@ -82,8 +77,7 @@
                                                                                 <li>
                                                                                     <a
                                                                                         href="{{ route('product.edit', ['id' => $product->id]) }}">
-                                                                                        <em
-                                                                                            class="icon ni ni-edit"></em>
+                                                                                        <em class="icon ni ni-edit"></em>
                                                                                         <span>Edit Product</span>
                                                                                     </a>
                                                                                 </li>

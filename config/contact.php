@@ -3,7 +3,7 @@
 return [
     'title' => 'Contactez-nous',
     'subtitle' => 'Envoyez-nous un message',
-    'address' => '180, Av/ 30 juin Q/ Gambela, Lubumbashi, République Démocratique du Congo. ',
+    'address' => '180, Av/ 30 juin, Lubumbashi, Rep Dem Du Congo. ',
     'phone' => ' (+243) 99 01 000 05 / 99 99 907 56 ',
     'email' => 'contact@urbanbrands.store',
     'map' => [

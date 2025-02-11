@@ -2,22 +2,21 @@
 
 namespace App\Livewire\Guest\Partials\Post;
 
-use Livewire\Component;
-
 use App\Models\Reviews;
-
-
-
+use Livewire\Component;
 
 class Review extends Component
 {
-
-
     public $name;
+
     public $email;
+
     public $rating;
+
     public $content;
+
     public $productId;
+
     public $reviews;
 
     protected $rules = [
@@ -27,13 +26,14 @@ class Review extends Component
         'content' => 'required|string|max:1000',
     ];
 
-    public function mount($productId){
+    public function mount($productId)
+    {
         $this->reviews = Reviews::where('product_id', $this->productId)->get();
     }
 
     public function submit()
     {
-    $this->validate();
+        $this->validate();
 
         $test = Reviews::create([
             'name' => $this->name,
@@ -43,7 +43,6 @@ class Review extends Component
             'product_id' => $this->productId,
         ]);
 
-       
         // Reset form fields
         $this->reset(['name', 'email', 'rating', 'content']);
 

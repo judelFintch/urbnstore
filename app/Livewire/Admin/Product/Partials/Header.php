@@ -7,12 +7,17 @@ use Livewire\Component;
 class Header extends Component
 {
     public $content;
-    public $isCreated = false;
+
+    public $isCreated = true;
+
     public $isUpdated = false;
+
     public $isList = false;
 
     const UPDATE_TYPE = 'update';
+
     const CREATE_TYPE = 'create';
+
     const LIST_TYPE = 'list';
 
     public function mount($content)

@@ -2,19 +2,21 @@
 
 namespace App\Livewire\Guest\Contact;
 
+use App\Models\ContactMessage;
+use Livewire\Attributes\Layout; // Modèle pour insérer les messages
 use Livewire\Component;
-use App\Models\ContactMessage; // Modèle pour insérer les messages
-use Livewire\Attributes\Layout;
 
 class Contact extends Component
 {
     public $email;
+
     public $msg;
 
     #[Layout('layouts.guest')]
     public function render()
     {
         $contact = config('contact');
+
         return view('livewire.guest.contact.contact', compact('contact'));
     }
 

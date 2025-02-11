@@ -1,11 +1,103 @@
 {
   "resources/css/app.css": {
-    "file": "assets/app-oD80Gab-.css",
+    "file": "assets/app-BnLhceH7.css",
     "src": "resources/css/app.css",
     "isEntry": true
   },
+  "resources/fonts/Montserrat/Montserrat-Bold.ttf": {
+    "file": "assets/Montserrat-Bold-C_xxkq68.ttf",
+    "src": "resources/fonts/Montserrat/Montserrat-Bold.ttf"
+  },
+  "resources/fonts/Montserrat/Montserrat-Regular.ttf": {
+    "file": "assets/Montserrat-Regular-BJgBmYAR.ttf",
+    "src": "resources/fonts/Montserrat/Montserrat-Regular.ttf"
+  },
+  "resources/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf": {
+    "file": "assets/PlayfairDisplay-Bold-DwaG28qG.ttf",
+    "src": "resources/fonts/PlayfairDisplay/PlayfairDisplay-Bold.ttf"
+  },
+  "resources/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf": {
+    "file": "assets/PlayfairDisplay-Regular-R90L74e3.ttf",
+    "src": "resources/fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-Bold.ttf": {
+    "file": "assets/Poppins-Bold-C62YTul5.ttf",
+    "src": "resources/fonts/Poppins/Poppins-Bold.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-ExtraLight.ttf": {
+    "file": "assets/Poppins-ExtraLight-DX4RJaer.ttf",
+    "src": "resources/fonts/Poppins/Poppins-ExtraLight.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-Italic.ttf": {
+    "file": "assets/Poppins-Italic-BB0-qagb.ttf",
+    "src": "resources/fonts/Poppins/Poppins-Italic.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-Light.ttf": {
+    "file": "assets/Poppins-Light-Dtvcf0Mr.ttf",
+    "src": "resources/fonts/Poppins/Poppins-Light.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-Medium.ttf": {
+    "file": "assets/Poppins-Medium-ChhwLuLx.ttf",
+    "src": "resources/fonts/Poppins/Poppins-Medium.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-Regular.ttf": {
+    "file": "assets/Poppins-Regular-JiV4gZDp.ttf",
+    "src": "resources/fonts/Poppins/Poppins-Regular.ttf"
+  },
+  "resources/fonts/Poppins/Poppins-SemiBold.ttf": {
+    "file": "assets/Poppins-SemiBold-ConD-CtJ.ttf",
+    "src": "resources/fonts/Poppins/Poppins-SemiBold.ttf"
+  },
+  "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot": {
+    "file": "assets/fontawesome-webfont-G5YE5S7X.eot",
+    "src": "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot"
+  },
+  "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg": {
+    "file": "assets/fontawesome-webfont-D13rzr4g.svg",
+    "src": "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg"
+  },
+  "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf": {
+    "file": "assets/fontawesome-webfont-CQDK8MU3.ttf",
+    "src": "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf"
+  },
+  "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff": {
+    "file": "assets/fontawesome-webfont-CDK5bt4p.woff",
+    "src": "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff"
+  },
+  "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2": {
+    "file": "assets/fontawesome-webfont-B-jkhYfk.woff2",
+    "src": "resources/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2"
+  },
+  "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.ttf": {
+    "file": "assets/Material-Design-Iconic-Font-CzPeeGu0.ttf",
+    "src": "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.ttf"
+  },
+  "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.woff": {
+    "file": "assets/Material-Design-Iconic-Font-Ban8V9I0.woff",
+    "src": "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.woff"
+  },
+  "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.woff2": {
+    "file": "assets/Material-Design-Iconic-Font-DXNmxXJ9.woff2",
+    "src": "resources/fonts/iconic/fonts/Material-Design-Iconic-Font.woff2"
+  },
+  "resources/images/icons/icon-close.png": {
+    "file": "assets/icon-close-DcoGVfpc.png",
+    "src": "resources/images/icons/icon-close.png"
+  },
+  "resources/images/icons/icon-next.png": {
+    "file": "assets/icon-next-IrTlOMCT.png",
+    "src": "resources/images/icons/icon-next.png"
+  },
+  "resources/images/icons/icon-prev.png": {
+    "file": "assets/icon-prev-CqiBna8c.png",
+    "src": "resources/images/icons/icon-prev.png"
+  },
   "resources/js/app.js": {
-    "file": "assets/app-BjCBnTiP.js",
+<<<<<<< HEAD
+    "file": "assets/app-Ct2Aw4Ba.js",
+=======
+    "file": "assets/app-CcB-kJ62.js",
+>>>>>>> ff0c84d4015223b31736c36d89eb6e92ec3b6bc4
     "name": "app",
     "src": "resources/js/app.js",
     "isEntry": true

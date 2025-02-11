@@ -2,28 +2,77 @@
 
 namespace App\Livewire\Admin\Product;
 
-use Livewire\Attributes\Layout;
-use Livewire\Component;
-use Livewire\WithPagination;
-use Livewire\WithFileUploads;
 use App\Models\CategoryArticles;
+use App\Models\Product;
 use App\Services\ProductService;
 use App\Traits\HandlesProductImages;
-use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
+use Livewire\WithFileUploads;
+use Livewire\WithPagination;
 
 class ProductStore extends Component
 {
-    use WithPagination, WithFileUploads, HandlesProductImages;
+    use HandlesProductImages, WithFileUploads, WithPagination;
 
     #[Layout('layouts.app')]
+    public $title;
 
-    public $title, $price, $stock, $category_id, $color, $material, $sleeve_type, $collar_type, $fit;
-    public $size_available, $care_instructions = 'Machine washable at 30°C', $tags, $rating, $sales_count, $discount;
-    public $discount_end_date, $long_description, $description, $currency = 'USD', $is_active = 1, $productId;
-    public $isEdit = false, $isCreate = false, $categories = [], $images = [];
+    public $price;
+
+    public $stock;
+
+    public $category_id;
+
+    public $color;
+
+    public $material;
+
+    public $sleeve_type;
+
+    public $collar_type;
+
+    public $fit;
+
+    public $size_available;
+
+    public $care_instructions = 'Machine washable at 30°C';
+
+    public $tags;
+
+    public $rating;
+
+    public $sales_count;
+
+    public $discount;
+
+    public $discount_end_date;
+
+    public $long_description;
+
+    public $description;
+
+    public $currency = 'USD';
+
+    public $is_active = 1;
+
+    public $productId;
+
+    public $isEdit = false;
+
+    public $isCreate = false;
+
+    public $categories = [];
+
+    public $images = [];
+
     public bool $isList = true;
+
     public $uploadedFiles = [];
+
     public $showSuccessModal = false;
+
     public $productToDelete = null;
 
     protected $rules = [
@@ -43,27 +92,35 @@ class ProductStore extends Component
         'sales_count' => 'required|integer|min:0',
         'discount' => 'required|numeric|min:0',
         'discount_end_date' => 'required|date',
-        'images.*' => 'image|mimes:jpg,png,jpeg|max:2048'
+        'images.*' => 'image|mimes:jpg,png,jpeg|max:2048',
+        'uploadedFiles' => 'array|min:1',
     ];
 
     public function mount()
     {
         $this->categories = CategoryArticles::all();
     }
+
     public function render()
     {
         $products = Product::with('details', 'category')->paginate(10);
+
         return view('livewire.admin.product.product-store', compact('products'));
     }
 
-     public function save(ProductService $productService)
+    public function save(ProductService $productService)
     {
         $this->validate();
-        if (!empty($this->uploadedFiles)) {
-            $this->images = $this->uploadImages($this->uploadedFiles);
+
+        // Upload des images
+        if (! empty($this->uploadedFiles)) {
+            $uploadedImages = $this->uploadImages($this->uploadedFiles);
+            $this->images = array_merge($this->images, $uploadedImages);
         }
+
         $data = $this->prepareProductData();
         $dataDetails = $this->prepareProductDetails();
+
         try {
             $productService->createOrUpdateProduct($data, $dataDetails, $this->isEdit, $this->productId);
 
@@ -78,10 +135,38 @@ class ProductStore extends Component
             $this->showSuccessModal = true;
 
         } catch (\Exception $e) {
+            \Log::error('Error saving product: '.$e->getMessage());
             session()->flash('notification', [
                 'type' => 'error',
-                'message' => 'Error: ' . $e->getMessage(),
+                'message' => 'Error: '.$e->getMessage(),
             ]);
+        }
+    }
+
+    private function uploadImages($files)
+    {
+        $uploadedPaths = [];
+
+        foreach ($files as $file) {
+            if ($file->isValid()) {
+                try {
+                    $path = $file->store('products', 'public');
+                    $uploadedPaths[] = $path;
+                } catch (\Exception $e) {
+                    \Log::error('Image upload failed: '.$e->getMessage());
+                }
+            }
+        }
+
+        return $uploadedPaths;
+    }
+
+    public function removeImage($index)
+    {
+        if (isset($this->images[$index])) {
+            Storage::disk('public')->delete($this->images[$index]);
+            unset($this->images[$index]);
+            $this->images = array_values($this->images);
         }
     }
 
@@ -93,31 +178,8 @@ class ProductStore extends Component
             'stock' => '',
             'category_id' => null,
             'images' => [],
+            'uploadedFiles' => [],
         ]);
-    }
-
-    public function create(string $options)
-    {
-        $this->isCreate = true;
-        $this->isList = false;
-    }
-
-    public function confirmDeleteProduct($productId)
-    {
-        $this->productToDelete = $productId;
-        $this->dispatch('show-delete-confirmation'); //
-
-    }
-
-    public function edit($productId)
-    {
-
-    }
-
-    public function deleteProduct(ProductService $productService, $productId)
-    {
-        $delete = $productService->DeleteProduct($productId);
-
     }
 
     private function prepareProductDetails()
@@ -138,7 +200,12 @@ class ProductStore extends Component
             'discount_end_date' => $this->discount_end_date,
             'long_description' => $this->long_description,
         ];
+    }
 
+    public function removeUploadedFile($index)
+    {
+        unset($this->uploadedFiles[$index]);
+        $this->uploadedFiles = array_values($this->uploadedFiles); // Réindexation
     }
 
     private function prepareProductData()
@@ -153,7 +220,4 @@ class ProductStore extends Component
             'category_id' => $this->category_id,
         ];
     }
-
 }
-
-

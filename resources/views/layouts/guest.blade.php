@@ -5,26 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title ?? 'Urban Store' }}</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/icons/favicon.png') }}?v={{ filemtime(public_path('images/icons/favicon.png')) }}">
-
-    <!-- CSS Dependencies -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('vendor/bootstrap/css/bootstrap.min.css') }}?v={{ filemtime(public_path('vendor/bootstrap/css/bootstrap.min.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/main.css') }}?v={{ filemtime(public_path('css/main.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/util.css') }}?v={{ filemtime(public_path('css/util.css')) }}">
-    <link rel="stylesheet" href="{{ asset('vendor/slick/slick.css') }}?v={{ filemtime(public_path('vendor/slick/slick.css')) }}">
-    <link rel="stylesheet" href="{{ asset('fonts/iconic/css/material-design-iconic-font.min.css') }}?v={{ filemtime(public_path('fonts/iconic/css/material-design-iconic-font.min.css')) }}">
-    <link rel="stylesheet" href="{{ asset('vendor/daterangepicker/daterangepicker.css') }}?v={{ filemtime(public_path('vendor/daterangepicker/daterangepicker.css')) }}">
-    <link rel="stylesheet" href="{{ asset('css/personaliz.css') }}?v={{ filemtime(public_path('css/personaliz.css')) }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
 </head>
 
 <body class="animsition">
     <!-- Header -->
     @livewire('guest.partials.header.header')
-
-    <!-- Cart Section -->
+    <!-- Cart -->
     @include('partials.cart')
-
     <!-- Main Content -->
     <main>
         {{ $slot }}
@@ -33,23 +23,123 @@
     <!-- Footer -->
     @livewire('guest.partials.footer.footer')
 
-    <!-- Back to Top Component -->
+    <!-- Back to Top -->
     @if (View::exists('components.backtop'))
         <x-backtop></x-backtop>
     @endif
 
-    <!-- JavaScript Dependencies -->
-    <script src="{{ asset('vendor/jquery/jquery-3.2.1.min.js') }}?v={{ filemtime(public_path('vendor/jquery/jquery-3.2.1.min.js')) }}" defer></script>
-    <script src="{{ asset('vendor/animsition/js/animsition.min.js') }}?v={{ filemtime(public_path('vendor/animsition/js/animsition.min.js')) }}" defer></script>
-    <script src="{{ asset('vendor/bootstrap/js/popper.js') }}?v={{ filemtime(public_path('vendor/bootstrap/js/popper.js')) }}" defer></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}?v={{ filemtime(public_path('vendor/bootstrap/js/bootstrap.min.js')) }}" defer></script>
-    <script src="{{ asset('vendor/slick/slick.min.js') }}?v={{ filemtime(public_path('vendor/slick/slick.min.js')) }}" defer></script>
-    <script src="{{ asset('vendor/sweetalert/sweetalert.min.js') }}?v={{ filemtime(public_path('vendor/sweetalert/sweetalert.min.js')) }}" defer></script>
-    
-    <!-- Custom Scripts -->
-    <script src="{{ asset('js/slick-custom.js') }}?v={{ filemtime(public_path('js/slick-custom.js')) }}" defer></script>
-    <script src="{{ asset('js/main.js') }}?v={{ filemtime(public_path('js/main.js')) }}" defer></script>
-    <script src="{{ asset('js/personaliz.js') }}?v={{ filemtime(public_path('js/personaliz.js')) }}" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
+    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+        })
+    </script>
+
+
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
+    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/slick/slick.min.js')}}"></script>
+    <script src="{{asset('js/slick-custom.js')}}"></script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
+    <script>
+        $('.parallax100').parallax100();
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+    <script>
+        $('.gallery-lb').each(function () { // the containers for all your galleries
+            $(this).magnificPopup({
+                delegate: 'a', // the selector for gallery item
+                type: 'image',
+                gallery: {
+                    enabled: true
+                },
+                mainClass: 'mfp-fade'
+            });
+        });
+    </script>
+    <!--===============================================================================================-->
+
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
+    <script>
+        $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
+            e.preventDefault();
+        });
+
+        $('.js-addwish-b2').each(function () {
+            var nameProduct = $(this).parent().parent().find('.js-name-b2').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-b2');
+                $(this).off('click');
+            });
+        });
+
+        $('.js-addwish-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().find('.js-name-detail').html();
+
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to wishlist !", "success");
+
+                $(this).addClass('js-addedwish-detail');
+                $(this).off('click');
+            });
+        });
+
+        /*---------------------------------------------*/
+
+        $('.js-addcart-detail').each(function () {
+            var nameProduct = $(this).parent().parent().parent().parent().find('.js-name-detail').html();
+            $(this).on('click', function () {
+                swal(nameProduct, "is added to cart !", "success");
+            });
+        });
+
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <script>
+        $('.js-pscroll').each(function () {
+            $(this).css('position', 'relative');
+            $(this).css('overflow', 'hidden');
+            var ps = new PerfectScrollbar(this, {
+                wheelSpeed: 1,
+                scrollingThreshold: 1000,
+                wheelPropagation: false,
+            });
+
+            $(window).on('resize', function () {
+                ps.update();
+            })
+        });
+    </script>
+    <!--===============================================================================================-->
+    <script src="{{asset('js/main.js')}}"></script>
+    <script src="{{ asset('js/cart.js') }}" defer></script>
+    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
 </body>
 
 </html>
