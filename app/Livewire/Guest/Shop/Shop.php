@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Guest\Shop;
 
+use App\Models\CategoryArticles;
+use App\Models\Product;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Product;
-use App\Models\CategoryArticles;
-use Livewire\Attributes\Layout;
 
 #[Layout('layouts.guest', ['title' => 'Boutique'])]
 class Shop extends Component
@@ -14,8 +14,11 @@ class Shop extends Component
     use WithPagination;
 
     public $categories;
+
     public $selectedCategory = null; // ID de la catégorie sélectionnée
+
     public $priceRange = 1000; // Filtre par prix
+
     public $search = ''; // Recherche par titre
 
     protected $queryString = [
@@ -60,7 +63,7 @@ class Shop extends Component
                 return $query->where('category_id', $this->selectedCategory);
             })
             ->when($this->search, function ($query) {
-                return $query->where('title', 'like', '%' . $this->search . '%');
+                return $query->where('title', 'like', '%'.$this->search.'%');
             })
             ->where('price', '<=', $this->priceRange);
 
@@ -89,7 +92,7 @@ class Shop extends Component
     public function trackProduct($productId)
     {
         $recentlyViewed = session()->get('recently_viewed', []);
-        if (!in_array($productId, $recentlyViewed)) {
+        if (! in_array($productId, $recentlyViewed)) {
             $recentlyViewed[] = $productId;
             session()->put('recently_viewed', $recentlyViewed);
         }
