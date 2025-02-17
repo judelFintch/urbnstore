@@ -1,5 +1,6 @@
 <!-- Panier d'achat -->
-<form class="bg0 p-t-75 p-b-85">
+<div>
+    @csrf
     <div class="container">
         <div class="row">
             <div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -72,8 +73,8 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer proceed-to-checkout">
-                        Passer à la caisse
+                    <button type="button" onclick="window.location='{{ route('order.confirm') }}'" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 ">
+                        Finaliser la commande
                     </button>
                 </div>
             </div>
@@ -82,7 +83,7 @@
 </form>
 
 
-<script src="{{asset('js/detailsCart.js')}}"></script>
+<script src="{{ asset('js/detailsCart.js') }}"></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -91,11 +92,11 @@
         fetch('https://restcountries.com/v3.1/all')
             .then(response => response.json())
             .then(data => {
-                data.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Sort countries alphabetically
+                data.sort((a, b) => a.name.common.localeCompare(b.name.common)); // Tri alphabétique des pays
                 data.forEach(country => {
                     const option = document.createElement('option');
-                    option.value = country.cca2; // Country code
-                    option.textContent = country.name.common; // Country name
+                    option.value = country.cca2; // Code du pays
+                    option.textContent = country.name.common; // Nom du pays
                     countrySelect.appendChild(option);
                 });
             })
@@ -103,4 +104,5 @@
     });
 </script>
 
+</div>
 

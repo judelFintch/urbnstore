@@ -33,13 +33,16 @@ use App\Livewire\Guest\TableChart\SizeChart;
 use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
+use App\Livewire\ProcessOrder\Confirmation;
+use App\Http\Controllers\FlexPayController;
+use App\Http\Controllers\MaxiNotifyPaymentController;
 
 /*
 |--------------------------------------------------------------------------
 | Guest Routes
 |--------------------------------------------------------------------------
 */
-
+Route::get('/confirmation', Confirmation::class)->name('order.confirm');
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
     Route::get('/about', About::class)->name('home.about');
@@ -59,6 +62,7 @@ Route::prefix('/')->group(function () {
     Route::get('/terms-and-conditions', TermsAndConditions::class)->name('terms-and-conditions');
     Route::get('/refund-policy', RefundPolicy::class)->name('refund-policy');
     Route::get('/size-chart', SizeChart::class)->name('size-chart');
+    
 });
 
 /*
@@ -66,6 +70,13 @@ Route::prefix('/')->group(function () {
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+Route::group(['prefix' => 'process'], function () {
+    Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
+    Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
+    Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
+    Route::get('/maxi-notify/payment', [MaxiNotifyPaymentController::class, 'handlePayment'])->name('maxi-notify.payment');
+});
+
 
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard

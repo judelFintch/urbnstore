@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12220bcb2ee7e972fc8a8bee34dbb400",
+    "content-hash": "4b039ebb608193b9b830043cfec62329",
     "packages": [
         {
             "name": "brick/math",
@@ -134,6 +134,58 @@
                 }
             ],
             "time": "2024-02-09T16:56:22+00:00"
+        },
+        {
+            "name": "devscast/maxicash",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/devscast/maxicash.git",
+                "reference": "5b12559b8aea6fb9cdf060fe8bc7565788e9c6c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/devscast/maxicash/zipball/5b12559b8aea6fb9cdf060fe8bc7565788e9c6c5",
+                "reference": "5b12559b8aea6fb9cdf060fe8bc7565788e9c6c5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.2",
+                "webmozart/assert": "^1.11"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.4",
+                "symplify/easy-coding-standard": "^12.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Devscast\\Maxicash\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "bernard-ng",
+                    "email": "ngandubernard@gmail.com"
+                }
+            ],
+            "description": "The MaxiCash integration platform enables merchants to integrate with the MaxiCash platform to receive payments via their mobile applications or websites. The API uses JSON to interact with .Net or open source platforms such as PHP.",
+            "keywords": [
+                "api",
+                "maxicash",
+                "mobile money",
+                "payment gateway"
+            ],
+            "support": {
+                "issues": "https://github.com/devscast/maxicash/issues",
+                "source": "https://github.com/devscast/maxicash/tree/1.0.1"
+            },
+            "time": "2023-10-13T08:17:03+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -9956,12 +10008,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }
