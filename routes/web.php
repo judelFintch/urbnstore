@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\ProcessOrder\Confirmation;
 use App\Http\Controllers\FlexPayController;
 use App\Http\Controllers\MaxiNotifyPaymentController;
+use App\Livewire\ProcessOrder\Checkout;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ use App\Http\Controllers\MaxiNotifyPaymentController;
 |--------------------------------------------------------------------------
 */
 Route::get('/confirmation', Confirmation::class)->name('order.confirm');
+Route::get('/checkout', Checkout::class)->name('order.checkout');
 Route::prefix('/')->group(function () {
     Route::get('/', Index::class)->name('home.index');
     Route::get('/about', About::class)->name('home.about');
