@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartTable = document.querySelector('.table-shopping-cart');
     const cartSubtotal = document.querySelector('.cart-subtotal');
@@ -114,6 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
         cartSubtotal.textContent = `$${subtotal.toFixed(2)}`;
         cartTotal.textContent = `$${subtotal.toFixed(2)}`;
+        console.log(cartTotal.textContent);
     }
 
     // Met à jour le compteur d'articles dans le panier

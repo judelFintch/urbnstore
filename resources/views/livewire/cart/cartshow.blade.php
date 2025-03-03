@@ -86,6 +86,5 @@
         </div>
     </div>
 </form>
-
 <script src="{{ asset('js/detailsCart.js') }}"></script>
 
