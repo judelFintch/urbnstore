@@ -181,7 +181,7 @@
                             <a class="nav-link" data-toggle="tab" href="#reviews" role="tab">Avis (1)</a>
                         </li>
                         <li class="nav-item p-b-10">
-                            <a class="nav-link" href="{{ asset('images/doc/size_guide.pdf') }}" role="tab">Guide des
+                            <a class="nav-link" href="{{ route('size-chart') }}" role="tab">Guide des
                                 tailles</a>
                         </li>
                     </ul>
