@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Admin\Product;
 
-use App\Models\Pictures;
+use App\Models\Picture;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
@@ -39,7 +39,7 @@ class ProductPhotoUpload extends Component
         foreach ($this->photos as $photo) {
             $path = $photo->store('products', 'public');
 
-            Pictures::create([
+            Picture::create([
                 'product_id' => $this->product_id,
                 'image_path' => $path,
             ]);
@@ -53,7 +53,7 @@ class ProductPhotoUpload extends Component
     public function render()
     {
         return view('livewire.admin.product.product-photo-upload', [
-            'pictures' => Pictures::where('product_id', $this->product_id)->get(),
+            'pictures' => Picture::where('product_id', $this->product_id)->get(),
         ]);
     }
 }

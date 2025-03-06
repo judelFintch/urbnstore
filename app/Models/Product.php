@@ -50,6 +50,6 @@ class Product extends Model
 
 
     public function productPicture() {
-        return $this->hasMany(Pictures::class);
+        return $this->hasMany(Picture::class);
     }
 }
