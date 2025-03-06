@@ -29,7 +29,7 @@
 
                             <div class="slick3 gallery-lb">
                                 
-                               @foreach($product->pictures as $picture)
+                               @foreach($product->productPicture as $picture)
                                 <div class="item-slick3" data-thumb="{{ asset('storage/' . $picture->image_path) }}">
                                     <div class="wrap-pic-w pos-relative">
                                         <img src="{{ asset('storage/' . $picture->image_path) }}" alt="IMG-PRODUCT">
