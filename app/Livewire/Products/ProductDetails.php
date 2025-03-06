@@ -18,8 +18,6 @@ class ProductDetails extends Component
         if (! ctype_digit($id)) {
             abort(404);
         }
-
-
         $this->product = Product::with(['details', 'productPicture'])->findOrFail($id);
         
         $this->selectedSize = null;
