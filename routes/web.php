@@ -37,6 +37,7 @@ use App\Livewire\ProcessOrder\Checkout;
 use App\Livewire\ProcessOrder\Confirmation;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
+USE App\Livewire\Admin\Product\ProductPhotoUpload;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,6 +83,8 @@ Route::group(['prefix' => 'process'], function () {
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
+     Route::get('/product-photo-upload/{id}', ProductPhotoUpload::class)->name('admin.product-photo-upload');
+
 
     // Management
     Route::prefix('management')->group(function () {
