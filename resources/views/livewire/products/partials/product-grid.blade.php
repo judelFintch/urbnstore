@@ -40,7 +40,7 @@
                                                 'slug' => $product->slug,
                                             ]);
                                         @endphp
-
+                                        <a href="{{ $productUrl }}" class="product-link">
                                          <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
                                             <div class="block2">
                                                 <div class="block2-pic hov-img0">
@@ -75,6 +75,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
