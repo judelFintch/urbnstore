@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Product;
+use App\Models\Picture;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
@@ -33,6 +34,15 @@ class ProductService
             ['product_id' => $product->id],
             $dataDetails
         );
+
+        if (!empty($data['image_url'])) {
+            $picture = Picture::create([
+                'product_id' => $product->id,
+                'image_url'  => $data['image_url'],
+            ]);
+        }
+
+        
 
         return $product;
     }

@@ -75,6 +75,7 @@ class ProductStore extends Component
 
     public $productToDelete = null;
 
+
     protected $rules = [
         'title' => 'required|string|max:255',
         'price' => 'required|numeric|min:0',
@@ -123,6 +124,8 @@ class ProductStore extends Component
 
         try {
             $productService->createOrUpdateProduct($data, $dataDetails, $this->isEdit, $this->productId);
+
+            //dd($productService);
 
             session()->flash('notification', [
                 'type' => 'success',

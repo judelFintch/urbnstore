@@ -12,14 +12,14 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     @php
-                        $categories = $products->pluck('category.name');
+                        $categories = $categories;
                     @endphp
 
-                    @foreach($categories as $key => $category)
+                    @foreach($categories as $category)
                         <li class="nav-item p-b-10">
-                            <a class="nav-link {{ $loop->first ? 'active' : '' }}" 
-                               data-toggle="tab" href="#{{ $category }}" role="tab">
-                                {{ $category }}
+                            <a class="nav-link {{ $category->name ? 'active' : '' }}" 
+                               data-toggle="tab" href="#{{ $category->name }}" role="tab">
+                                {{ $category->name }}
                             </a>
                         </li>
                     @endforeach

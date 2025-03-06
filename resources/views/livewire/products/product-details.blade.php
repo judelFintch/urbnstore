@@ -26,19 +26,19 @@
                         <div class="wrap-slick3 flex-sb flex-w">
                             <div class="wrap-slick3-dots"></div>
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-
+                            
+                           
                             <div class="slick3 gallery-lb">
-                                
                                @foreach($product->productPicture as $picture)
-                                <div class="item-slick3" data-thumb="{{ asset('storage/' . $picture->image_path) }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ $product->getFirstImageUrl() }}" alt="IMG-PRODUCT">
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ asset('storage/' . $picture->image_path) }}">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
+                               <div class="item-slick3" data-thumb="{{ asset('storage/' . $picture->image_path) }}">
+                                <div class="wrap-pic-w pos-relative">
+                                    <img src="{{ asset('storage/' . $picture->image_path) }}" alt="IMG-PRODUCT">
+                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                        href="{{ asset('storage/' . $picture->image_path) }}">
+                                        <i class="fa fa-expand"></i>
+                                    </a>
                                 </div>
+                            </div>
                                 @endforeach
                             </div>
                         </div>
