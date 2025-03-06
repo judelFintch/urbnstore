@@ -19,7 +19,8 @@ class ProductDetails extends Component
             abort(404);
         }
 
-        $this->product = Product::with('details')->findOrFail($id);
+
+        $this->product = Product::with(['details', 'pictures'])->findOrFail($id);
         $this->selectedSize = null;
     }
 

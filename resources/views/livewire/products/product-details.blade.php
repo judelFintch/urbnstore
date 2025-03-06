@@ -1,4 +1,5 @@
 <div>
+    
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -15,6 +16,7 @@
             </span>
         </div>
     </div>
+
     <!-- Product Detail -->
     <section class="sec-product-detail bg0 p-t-65 p-b-60">
         <div class="container">
@@ -26,9 +28,11 @@
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
 
                             <div class="slick3 gallery-lb">
-                                <div class="item-slick3" data-thumb="{{ $product->getFirstImageUrl() }}">
+                                
+                               @foreach($product->pictures as $picture)
+                                <div class="item-slick3" data-thumb="{{ asset('storage/' . $picture->image_path) }}">
                                     <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ $product->getFirstImageUrl() }}" alt="IMG-PRODUCT">
+                                        <img src="{{ asset('storage/' . $picture->image_path) }}" alt="IMG-PRODUCT">
 
                                         <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
                                             href="{{ $product->getFirstImageUrl() }}">
@@ -36,28 +40,9 @@
                                         </a>
                                     </div>
                                 </div>
+                                @endforeach
 
-                                <div class="item-slick3" data-thumb="{{ $product->getFirstImageUrl() }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ $product->getFirstImageUrl() }}" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ $product->getFirstImageUrl() }}">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
-
-                                <div class="item-slick3" data-thumb="{{ $product->getFirstImageUrl() }}">
-                                    <div class="wrap-pic-w pos-relative">
-                                        <img src="{{ $product->getFirstImageUrl() }}" alt="IMG-PRODUCT">
-
-                                        <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                            href="{{ $product->getFirstImageUrl() }}">
-                                            <i class="fa fa-expand"></i>
-                                        </a>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

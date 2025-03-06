@@ -47,4 +47,9 @@ class Product extends Model
             return Storage::url($image);
         }, $imageUrls);
     }
+
+
+    public function pictures() {
+        return $this->hasMany(Pictures::class);
+    }
 }
