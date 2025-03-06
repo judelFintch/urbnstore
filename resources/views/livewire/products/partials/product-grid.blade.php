@@ -12,19 +12,13 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                     @php
-                        $categories = [
-                            'best-seller' => 'Best Seller',
-                            'featured' => 'Featured',
-                            'sale' => 'Sale',
-                            'top-rate' => 'Top Rate',
-                        ];
-                        $firstCategory = array_key_first($categories);
+                        $categories = $products->pluck('category.name');
                     @endphp
 
                     @foreach($categories as $key => $category)
                         <li class="nav-item p-b-10">
                             <a class="nav-link {{ $loop->first ? 'active' : '' }}" 
-                               data-toggle="tab" href="#{{ $key }}" role="tab">
+                               data-toggle="tab" href="#{{ $category }}" role="tab">
                                 {{ $category }}
                             </a>
                         </li>
@@ -35,7 +29,7 @@
                 <div class="tab-content p-t-50">
                     @foreach($categories as $key => $category)
                         <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" 
-                             id="{{ $key }}" role="tabpanel">
+                             id="{{ $category }}" role="tabpanel">
                             <div class="wrap-slick2">
                                 <div class="slick2">
                                     @foreach($products as $product)
