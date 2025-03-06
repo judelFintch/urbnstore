@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\FlexPayController;
+use App\Http\Controllers\MaxiNotifyPaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Admin\AdminDashboard;
 use App\Livewire\Admin\Category\Category;
@@ -31,12 +33,10 @@ use App\Livewire\Guest\Shipping\AboutShipping;
 use App\Livewire\Guest\Shop\Shop;
 use App\Livewire\Guest\TableChart\SizeChart;
 use App\Livewire\Guest\TermsAndConditions\TermsAndConditions;
+use App\Livewire\ProcessOrder\Checkout;
+use App\Livewire\ProcessOrder\Confirmation;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\ProcessOrder\Confirmation;
-use App\Http\Controllers\FlexPayController;
-use App\Http\Controllers\MaxiNotifyPaymentController;
-use App\Livewire\ProcessOrder\Checkout;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,7 +64,7 @@ Route::prefix('/')->group(function () {
     Route::get('/terms-and-conditions', TermsAndConditions::class)->name('terms-and-conditions');
     Route::get('/refund-policy', RefundPolicy::class)->name('refund-policy');
     Route::get('/size-chart', SizeChart::class)->name('size-chart');
-    
+
 });
 
 /*
@@ -78,7 +78,6 @@ Route::group(['prefix' => 'process'], function () {
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/maxi-notify/payment', [MaxiNotifyPaymentController::class, 'handlePayment'])->name('maxi-notify.payment');
 });
-
 
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
