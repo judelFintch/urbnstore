@@ -21,6 +21,7 @@ class ProductDetails extends Component
 
 
         $this->product = Product::with(['details', 'productPicture'])->findOrFail($id);
+        
         $this->selectedSize = null;
     }
 
