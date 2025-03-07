@@ -20,8 +20,7 @@
                     @endif
                     @foreach ($categories as $category)
                         <li class="nav-item p-b-10">
-                            <a class="nav-link {{ $category->name ? 'active' : '' }}" data-toggle="tab"
-                                href="#{{ $category->name }}" role="tab">
+                            <a class="nav-link ">
                                 {{ $category->name }}
                             </a>
                         </li>
