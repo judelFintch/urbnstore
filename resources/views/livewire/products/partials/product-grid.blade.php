@@ -94,9 +94,14 @@
     <div>
         <section class="bg0 p-t-23 p-b-130">
             <div class="container">
-                
+                <div class="p-b-10">
+                    <h3 class="ltext-103 cl5">
+                        Aperçu des produits
+                    </h3>
+                </div>
     
                 
+    
                 <div class="row isotope-grid">
                     @foreach ($products as $product)
                                     @php
