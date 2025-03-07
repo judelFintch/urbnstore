@@ -12,25 +12,23 @@
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
 					<li class="nav-item p-b-10">
-						<a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">Toutes</a>
+						<a class="nav-link active" data-toggle="tab" href="#all" role="tab">Toutes</a>
 					</li>
                     @foreach ($categories as $category )
                     <li class="nav-item p-b-10">
-						<a class="nav-link" data-toggle="tab" href="#featured" role="tab">{{$category->name}}</a>
-					</li>
-                        
+						<a class="nav-link" data-toggle="tab" href="#{{$category->name}}" role="tab">{{$category->name}}</a>
+					</li> 
                     @endforeach
-
 				</ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content p-t-50">
-                    @foreach ($categories as $key => $category)
-                        <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="{{ $category }}"
-                            role="tabpanel">
+                   
+                    <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+                        
                             <div class="wrap-slick2">
                                 <div class="slick2">
-                                    @foreach ($products as $product)
+                                    @foreach ($filteredProducts as $product)
                                         @php
                                             $productUrl = route('show-product', [
                                                 'id' => $product->id,
@@ -82,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                    @endforeach
+                   
                 </div>
             </div>
         </div>

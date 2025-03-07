@@ -61,6 +61,8 @@ class ProductGrid extends Component
             ->orderBy('id', 'desc')
             ->get();
 
+           
+
 
 
         $specificProducts = Product::where('category_id', $this->specificProductCategory)
