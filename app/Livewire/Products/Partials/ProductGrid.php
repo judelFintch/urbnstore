@@ -63,7 +63,9 @@ class ProductGrid extends Component
 
 
 
-        $specificProducts = Product::where('category_id', $this->specificProductCategory)->get();
+        $specificProducts = Product::where('category_id', $this->specificProductCategory)
+        ->orderBy('id', 'desc')
+        ->get();
 
         return view('livewire.products.partials.product-grid', ['filteredProducts' => $filteredProducts, 'specificProducts' => $specificProducts]);
     }
