@@ -14,7 +14,7 @@ class ProductGrid extends Component
     public $products;
 
     //this code is temporary until
-    public $specificProductCategory ='4';
+    public $specificProductCategory = '4';
 
     public $categories;
 
@@ -40,7 +40,6 @@ class ProductGrid extends Component
         $this->categories = CategoryArticles::take(5)->get();
         // this active the title for the homepage product is true
         $this->isHomePage = $isHomePage;
-
     }
 
     public function showProduct($productId)
@@ -58,13 +57,14 @@ class ProductGrid extends Component
     public function render()
     {
 
-        $filteredProducts = $this->selectedCategory === 'all'
-            ? $this->products
-            : array_filter($this->products, fn ($product) => $product['category'] === $this->selectedCategory);
+        $filteredProducts = Product::where('category_id', '!=', $this->specificProductCategory)
+            ->orderBy('id', 'desc')
+            ->get();
 
-            $specificProducts = Product::where('category_id', $this->specificProductCategory)->get();
+
+
+        $specificProducts = Product::where('category_id', $this->specificProductCategory)->get();
 
         return view('livewire.products.partials.product-grid', ['filteredProducts' => $filteredProducts, 'specificProducts' => $specificProducts]);
-
     }
 }
