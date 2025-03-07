@@ -26,8 +26,6 @@
                         <div class="wrap-slick3 flex-sb flex-w">
                             <div class="wrap-slick3-dots"></div>
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
-                            
-                           
                             <div class="slick3 gallery-lb">
                                @foreach($product->productPicture as $picture)
                                <div class="item-slick3" data-thumb="{{ asset('storage/' .cleanImageUrl($picture->image_path)) }}">
