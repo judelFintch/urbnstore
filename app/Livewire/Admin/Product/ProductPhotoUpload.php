@@ -6,11 +6,13 @@ use App\Models\Picture;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\Attributes\Layout;
+use App\Helpers\Helpers;
 
 #[Layout('layouts.app')]
 class ProductPhotoUpload extends Component
 {
     use WithFileUploads;
+    
     public $product_id;
     public $photos = [];
 

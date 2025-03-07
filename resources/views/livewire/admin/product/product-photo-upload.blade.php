@@ -36,31 +36,20 @@
                                     @endif
                                    
 
-                                    
-
-
                                     <!-- Affichage des photos existantes -->
                                     <h5 class="mt-5 font-semibold">Photos enregistrées :</h5>
                                     <div class="row">
-                                    
                                         @foreach ($pictures as $picture)
-
-                                        
-                                         {{ asset('storage/' . $picture->image_path) }}
-                                    
+                                        <?php $url_image = cleanImageUrl($picture->image_path); ?>
                                         <div class="col-md-4">
                                             <div
                                                 class="border rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
-                                                <img src="{{ asset('storage/' . $picture->image_path) }}"
+                                                <img src="{{ asset('storage/' . $url_image) }}"
                                                     class="w-full aspect-square object-cover">
                                             </div>
                                         </div>
                                         @endforeach
-                                    
                                     </div>
-
-
-
                                 </div> <!-- Fin de nk-block nk-block-lg -->
                             </div> <!-- Fin de nk-content-body -->
                         </div> <!-- Fin de nk-content-inner -->

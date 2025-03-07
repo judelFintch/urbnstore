@@ -101,7 +101,7 @@
                 </div>
     
                 
-    
+
                 <div class="row isotope-grid">
                     @foreach ($products as $product)
                                     @php
