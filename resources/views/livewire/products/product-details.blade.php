@@ -329,5 +329,6 @@
             </span>
         </div>
     </section>
-    @livewire('products.partials.related-products', [$product->category->id])
+
+    @livewire('products.partials.related-products', [$product->category->id, $product->id])
 </div>

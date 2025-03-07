@@ -9,11 +9,13 @@ class RelatedProducts extends Component
 {
     public $products;
 
-    public function mount($categoyProductSelectId)
+    public function mount($categoyProductSelectId,$activeProduct)
     {
 
+       
         $this->products = Product::where('category_id', $categoyProductSelectId)
             ->inRandomOrder()
+            ->where('id', '!=', $activeProduct)
             ->take(10)
             ->get();
 

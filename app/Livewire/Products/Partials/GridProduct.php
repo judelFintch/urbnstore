@@ -13,6 +13,7 @@ class GridProduct extends Component
     {
         $specificProducts = Product::where('category_id', $this->specificProductCategory)
             ->orderBy('id', 'desc')
+            ->take(16)
             ->get();
 
         return view('livewire.products.partials.grid-product', compact('specificProducts'));

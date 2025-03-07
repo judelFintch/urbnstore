@@ -7,6 +7,7 @@
                     Produits Associés
                 </h3>
             </div>
+            
             <!-- Carrousel Produits -->
             <div class="wrap-slick2">
                 <div class="slick2">
@@ -15,7 +16,6 @@
                         <!-- Bloc Produit -->
                         <div class="block2">
                             @php
-
                                 $productUrl = route('show-product', [
                                     'id' => $product->id,
                                     'category' => $product->category->name,
