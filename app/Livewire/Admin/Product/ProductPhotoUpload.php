@@ -3,22 +3,23 @@
 namespace App\Livewire\Admin\Product;
 
 use App\Models\Picture;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use Livewire\Attributes\Layout;
-use App\Helpers\Helpers;
 
 #[Layout('layouts.app')]
 class ProductPhotoUpload extends Component
 {
     use WithFileUploads;
-    
+
     public $product_id;
+
     public $photos = [];
 
-    public function mount($id){
+    public function mount($id)
+    {
         $this->product_id = $id;
-        
+
     }
 
     public function updatedPhotos()
@@ -27,6 +28,7 @@ class ProductPhotoUpload extends Component
             'photos.*' => 'image|max:2048', // Limite 2MB par image
         ]);
     }
+
     public function savePhotos()
     {
         $this->validate([
@@ -45,6 +47,7 @@ class ProductPhotoUpload extends Component
 
         session()->flash('message', 'Photos ajoutées avec succès.');
     }
+
     public function render()
     {
         return view('livewire.admin.product.product-photo-upload', [

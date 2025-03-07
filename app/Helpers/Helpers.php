@@ -1,21 +1,20 @@
 <?php
 
-
 // Check if the function 'cleanImageUrl' does not already exist to avoid redeclaration errors
-if (!function_exists('cleanImageUrl')) {
+if (! function_exists('cleanImageUrl')) {
     /**
      * Cleans a product image URL by removing special characters
      * that might cause display issues.
      *
-     * Problem: When saving a product image, special characters like brackets `[" "]` 
+     * Problem: When saving a product image, special characters like brackets `[" "]`
      * and backslashes `\` are sometimes inserted into the URL, making the image path invalid.
-     * 
-     * Solution: This function detects and removes these unwanted characters, ensuring 
+     *
+     * Solution: This function detects and removes these unwanted characters, ensuring
      * the URL is properly formatted and readable.
-     * 
+     *
      * Author: Judel Fincht
      *
-     * @param string $url The image URL to be cleaned.
+     * @param  string  $url  The image URL to be cleaned.
      * @return string The cleaned URL.
      */
     function cleanImageUrl($url)

@@ -5,7 +5,6 @@ namespace App\Livewire\Products;
 use App\Models\Product;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Helpers\Helpers;
 
 class ProductDetails extends Component
 {
@@ -20,7 +19,7 @@ class ProductDetails extends Component
             abort(404);
         }
         $this->product = Product::with(['details', 'productPicture'])->findOrFail($id);
-        
+
         $this->selectedSize = null;
     }
 

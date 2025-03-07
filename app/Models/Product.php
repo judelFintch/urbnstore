@@ -48,8 +48,8 @@ class Product extends Model
         }, $imageUrls);
     }
 
-
-    public function productPicture() {
+    public function productPicture()
+    {
         return $this->hasMany(Picture::class);
     }
 }

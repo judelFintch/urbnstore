@@ -15,6 +15,7 @@ use App\Livewire\Admin\Product\ProductDelete;
 use App\Livewire\Admin\Product\ProductDetail;
 use App\Livewire\Admin\Product\ProductList;
 use App\Livewire\Admin\Product\ProductListCard;
+use App\Livewire\Admin\Product\ProductPhotoUpload;
 use App\Livewire\Admin\Product\ProductStore;
 use App\Livewire\Admin\Product\ProductUpdate;
 use App\Livewire\Admin\Promotion\Promotion;
@@ -37,7 +38,6 @@ use App\Livewire\ProcessOrder\Checkout;
 use App\Livewire\ProcessOrder\Confirmation;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
-USE App\Livewire\Admin\Product\ProductPhotoUpload;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,8 +83,7 @@ Route::group(['prefix' => 'process'], function () {
 Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
-     Route::get('/product-photo-upload/{id}', ProductPhotoUpload::class)->name('admin.product-photo-upload');
-
+    Route::get('/product-photo-upload/{id}', ProductPhotoUpload::class)->name('admin.product-photo-upload');
 
     // Management
     Route::prefix('management')->group(function () {
