@@ -11,21 +11,17 @@
             <div class="tab01">
                 <!-- Nav tabs -->
                 <ul class="nav nav-tabs" role="tablist">
-                    @if ($categories->isEmpty())
-                        <li class="nav-item p-b-10">
-                            <a class="nav-link active" data-toggle="tab" href="#all" role="tab">
-                                Tous les produits
-                            </a>
-                        </li>
-                    @endif
-                    @foreach ($categories as $category)
-                        <li class="nav-item p-b-10">
-                            <a class="nav-link ">
-                                {{ $category->name }}
-                            </a>
-                        </li>
+					<li class="nav-item p-b-10">
+						<a class="nav-link active" data-toggle="tab" href="#best-seller" role="tab">Toutes</a>
+					</li>
+                    @foreach ($categories as $category )
+                    <li class="nav-item p-b-10">
+						<a class="nav-link" data-toggle="tab" href="#featured" role="tab">{{$category->name}}</a>
+					</li>
+                        
                     @endforeach
-                </ul>
+
+				</ul>
 
                 <!-- Tab panes -->
                 <div class="tab-content p-t-50">
