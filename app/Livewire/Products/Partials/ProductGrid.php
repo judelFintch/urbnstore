@@ -13,6 +13,9 @@ class ProductGrid extends Component
 
     public $products;
 
+    //this code is temporary until
+    public $specificProductCategory ='4';
+
     public $categories;
 
     public $selectedCategory = 'all';
@@ -59,7 +62,9 @@ class ProductGrid extends Component
             ? $this->products
             : array_filter($this->products, fn ($product) => $product['category'] === $this->selectedCategory);
 
-        return view('livewire.products.partials.product-grid', ['filteredProducts' => $filteredProducts]);
+            $specificProducts = Product::where('category_id', $this->specificProductCategory)->get();
+
+        return view('livewire.products.partials.product-grid', ['filteredProducts' => $filteredProducts, 'specificProducts' => $specificProducts]);
 
     }
 }
