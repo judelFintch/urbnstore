@@ -32,13 +32,22 @@
                                     <!-- Message de confirmation -->
                                     @if (session()->has('message'))
                                         <p class="text-green-500 mt-2">{{ session('message') }}</p>
+                                       
                                     @endif
+                                   
+
+                                    
+
 
                                     <!-- Affichage des photos existantes -->
                                     <h5 class="mt-5 font-semibold">Photos enregistrées :</h5>
                                     <div class="row">
                                     
                                         @foreach ($pictures as $picture)
+
+                                        
+                                         {{ asset('storage/' . $picture->image_path) }}
+                                    
                                         <div class="col-md-4">
                                             <div
                                                 class="border rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform duration-300">
