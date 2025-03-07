@@ -10,13 +10,9 @@ use Livewire\Attributes\Layout;
 #[Layout('layouts.app')]
 class ProductPhotoUpload extends Component
 {
-
-
     use WithFileUploads;
-
     public $product_id;
     public $photos = [];
-
 
     public function mount($id){
         $this->product_id = $id;
@@ -29,16 +25,13 @@ class ProductPhotoUpload extends Component
             'photos.*' => 'image|max:2048', // Limite 2MB par image
         ]);
     }
-
     public function savePhotos()
     {
         $this->validate([
             'photos.*' => 'image|max:2048',
         ]);
-
         foreach ($this->photos as $photo) {
             $path = $photo->store('products', 'public');
-
             Picture::create([
                 'product_id' => $this->product_id,
                 'image_path' => $path,

@@ -21,6 +21,8 @@ class ProductService
      */
     public function createOrUpdateProduct(array $data, array $dataDetails, bool $isEdit = false, $productId = null)
     {
+
+        
         // Generate a unique slug
         $data['slug'] = $this->generateUniqueSlug(Str::slug($data['title']));
 
@@ -29,18 +31,24 @@ class ProductService
             ? tap(Product::findOrFail($productId))->update($data)
             : Product::create($data);
 
+            if (!empty($dataDetails['image_url'])) {
+                
+                Picture::create([
+                    'product_id' => $product->id,
+                    'image_path'  => $dataDetails['image_url'],
+                ]);
+                
+            }
+
         // Update or create the product details
         $product->details()->updateOrCreate(
             ['product_id' => $product->id],
             $dataDetails
         );
 
-        if (!empty($data['image_url'])) {
-            $picture = Picture::create([
-                'product_id' => $product->id,
-                'image_url'  => $data['image_url'],
-            ]);
-        }
+       
+
+        
 
         
 
