@@ -68,24 +68,29 @@
 
 
                 <script>
-                    document.addEventListener('livewire:update', initSlickSlider);
-                    document.addEventListener('DOMContentLoaded', initSlickSlider);
-
                     function initSlickSlider() {
-                        const slider = $('.slick2');
+    const slider = $('.slick2');
 
-                        if (slider.hasClass('slick-initialized')) {
-                            slider.slick('unslick');
-                        }
+    if (slider.hasClass('slick-initialized')) {
+        slider.slick('unslick');
+    }
 
-                        slider.slick({
-                            slidesToShow: 3,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: true,
-                            autoplay: true,
-                        });
-                    }
+    slider.slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>',
+    });
+}
+
+// Initialisation à chaque mise à jour de Livewire
+document.addEventListener('livewire:update', initSlickSlider);
+document.addEventListener('DOMContentLoaded', initSlickSlider);
+
                 </script>
 
 
