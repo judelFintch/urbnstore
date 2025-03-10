@@ -2,31 +2,14 @@
     <div class="container">
         <div class="p-b-32">
             <h3 class="ltext-105 cl5 txt-center respon1">
-                Aperçu des produits
+                Nouvelle collection
             </h3>
         </div>
 
         <!-- Tab01 -->
         <div class="tab01">
             <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li class="nav-item p-b-10">
-                    <a class="nav-link {{ is_null($selectedCategoryId) ? 'active' : '' }}"
-                        wire:click.prevent="categorySelected(null)">
-                        Toutes
-                    </a>
-                </li>
-                @foreach ($categories as $category)
-                    <li class="nav-item p-b-10">
-                        <a class="nav-link {{ $selectedCategoryId == $category->id ? 'active' : '' }}"
-                            wire:click.prevent="categorySelected({{ $category->id }})">
-                            {{ $category->name }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-
-
+          
             <!-- Tab panes -->
             <div class="tab-content p-t-50">
                 <div class="tab-pane fade show active">
