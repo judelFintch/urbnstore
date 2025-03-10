@@ -1,51 +1,98 @@
 <div>
     <style type="text/css">
     /* Pagination horizontale centrée proprement */
+./* Conteneur du slider */
+.wrap-slick2 {
+    position: relative;
+    overflow: hidden;
+    padding: 0 50px;
+}
+
+/* Images totalement responsive */
+.slick2 .block2-pic img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* Boutons Précédent et Suivant personnalisés */
+.slick2 .slick-prev,
+.slick2 .slick-next {
+    position: absolute;
+    top: 45%; /* Légèrement au-dessus du centre pour mieux équilibrer */
+    transform: translateY(-50%);
+    width: 38px;
+    height: 38px;
+    background-color: rgba(255,255,255,0.95);
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.slick2 .slick-prev { left: -20px; }
+.slick2 .slick-next { right: -20px; }
+
+/* Icônes flèches Font Awesome */
+.slick2 .slick-prev::before,
+.slick2 .slick-next::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 16px;
+    color: #555;
+}
+
+.slick2 .slick-prev::before { content: "\f053"; }
+.slick2 .slick-next::before { content: "\f054"; }
+
+/* Points de pagination Slick personnalisés */
 .slick2 .slick-dots {
     position: absolute;
-    bottom: -40px; /* Ajuste selon l'espace voulu sous les images */
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
     display: flex !important;
-    justify-content: center;
-    align-items: center;
-    gap: 8px; /* Espace entre les points */
-    padding: 0;
-    margin: 0;
-}
-
-.slick2 .slick-dots li {
-    list-style: none;
+    gap: 10px;
 }
 
 .slick2 .slick-dots li button {
     font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 12px;
-    height: 12px;
-    padding: 0;
+    width: 10px;
+    height: 10px;
     border-radius: 50%;
-    background-color: #ddd;
+    background-color: #ccc;
     border: none;
-    transition: background-color 0.3s ease;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .slick2 .slick-dots li.slick-active button {
     background-color: #333;
+    width: 14px;
+    height: 14px;
 }
 
-/* Responsive */
-@media(max-width:768px) {
+/* Responsive (Mobile & Tablette) */
+@media(max-width: 768px){
+    .slick2 .slick-prev, .slick2 .slick-next {
+        width: 30px;
+        height: 30px;
+        top: 50%;
+        left: -15px;
+        right: -15px;
+    }
+    
+    .slick2 .slick-prev::before,
+    .slick2 .slick-next::before {
+        font-size: 14px;
+    }
+
     .slick2 .slick-dots {
         bottom: -30px;
     }
-
-    .slick2 .slick-dots button {
-        width: 10px;
-        height: 10px;
-    }
 }
+
 
     
 
@@ -120,7 +167,7 @@
 
 
                 <script>
-                   function initSlickSlider() {
+                  function initSlickSlider() {
     const slider = $('.slick2');
 
     if (slider.hasClass('slick-initialized')) {
@@ -128,7 +175,7 @@
     }
 
     slider.slick({
-        slidesToShow: 4, // valeur par défaut sur PC
+        slidesToShow: 4,
         slidesToScroll: 1,
         infinite: true,
         dots: true,
@@ -137,26 +184,16 @@
         prevArrow: '<button type="button" class="slick-prev"></button>',
         nextArrow: '<button type="button" class="slick-next"></button>',
         responsive: [
-            {
-                breakpoint: 992, // taille tablette
-                settings: { slidesToShow: 3 }
-            },
-            {
-                breakpoint: 768, // mobile/tablette petite taille
-                settings: {
-                    slidesToShow: 2,
-                }
-            },
-            {
-                breakpoint: 576,
-                settings: { slidesToShow: 1 } // un produit à la fois sur téléphone
-            }
+            { breakpoint: 1024, settings: { slidesToShow: 3 } },
+            { breakpoint: 768, settings: { slidesToShow: 2 } },
+            { breakpoint: 576, settings: { slidesToShow: 1 } }
         ]
     });
 }
 
 document.addEventListener('livewire:update', initSlickSlider);
 document.addEventListener('DOMContentLoaded', initSlickSlider);
+
 
 
                 </script>
