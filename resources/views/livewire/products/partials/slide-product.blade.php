@@ -79,7 +79,7 @@
                             slidesToShow: 4,
                             slidesToScroll: 1,
                             infinite: true,
-                            dots: true,
+                            dots: false,
                             autoplay: true,
                             autoplaySpeed: 3000,
                             prevArrow: '<button type="button" class="slick-prev"></button>',
