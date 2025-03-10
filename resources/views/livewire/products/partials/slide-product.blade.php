@@ -1,3 +1,4 @@
+
 <section class="sec-product bg0 p-t-100 p-b-50">
     <div class="container">
         <div class="p-b-32">
@@ -8,8 +9,7 @@
 
         <!-- Tab01 -->
         <div class="tab01">
-            <!-- Nav tabs -->
-          
+
             <!-- Tab panes -->
             <div class="tab-content p-t-50">
                 <div class="tab-pane fade show active">
@@ -69,24 +69,23 @@
 
                 <script>
                     document.addEventListener('livewire:update', initSlickSlider);
-document.addEventListener('DOMContentLoaded', initSlickSlider);
+                    document.addEventListener('DOMContentLoaded', initSlickSlider);
 
-function initSlickSlider() {
-    const slider = $('.slick2');
-    
-    if (slider.hasClass('slick-initialized')) {
-        slider.slick('unslick');
-    }
+                    function initSlickSlider() {
+                        const slider = $('.slick2');
 
-    slider.slick({
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        infinite: true,
-        dots: true,
-        autoplay: true,
-    });
-}
+                        if (slider.hasClass('slick-initialized')) {
+                            slider.slick('unslick');
+                        }
 
+                        slider.slick({
+                            slidesToShow: 3,
+                            slidesToScroll: 1,
+                            infinite: true,
+                            dots: true,
+                            autoplay: true,
+                        });
+                    }
                 </script>
 
 
