@@ -1,3 +1,69 @@
+<div>
+    <style type="text/css">
+    .wrap-slick2 {
+    position: relative;
+    padding: 0 40px; /* espace suffisant pour les flèches */
+}
+
+.slick2 .slick-prev,
+.slick2 .slick-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.slick2 .slick-prev {
+    left: -20px;
+}
+
+.slick2 .slick-next {
+    right: -20px;
+}
+
+.slick2 .slick-prev::before,
+.slick2 .slick-next::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 18px;
+    color: #333;
+}
+
+.slick2 .slick-prev::before {
+    content: "\f053"; /* icône FontAwesome gauche */
+}
+
+.slick2 .slick-next::before {
+    content: "\f054"; /* icône FontAwesome droite */
+}
+
+/* Responsive : réajuster sur les écrans plus petits */
+@media(max-width:768px){
+    .slick2 .slick-prev,
+    .slick2 .slick-next{
+        width:30px;
+        height:30px;
+        left:-10px;
+        right:-10px;
+    }
+    
+    .slick2 .slick-prev::before,
+    .slick2 .slick-next::before{
+        font-size:14px;
+    }
+}
+
+    </style>
 <section class="sec-product bg0 p-t-100 p-b-50">
     
     <div class="container">
@@ -68,29 +134,29 @@
 
 
                 <script>
-                    function initSlickSlider() {
-                        const slider = $('.slick2');
+                   function initSlickSlider() {
+    const slider = $('.slick2');
 
-                        if (slider.hasClass('slick-initialized')) {
-                            slider.slick('unslick');
-                        }
+    if (slider.hasClass('slick-initialized')) {
+        slider.slick('unslick');
+    }
 
-                        slider.slick({
-                            slidesToShow: 4,
-                            slidesToScroll: 1,
-                            infinite: true,
-                            dots: false,
-                            autoplay: true,
-                            autoplaySpeed: 3000,
-                            prevArrow: '<button type="button" class="slick-prev"></button>',
-                            nextArrow: '<button type="button" class="slick-next"></button>',
-                        });
-                    }
+    slider.slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        infinite: true,
+        dots: false,
+        autoplay: true,
+        prevArrow: '<button type="button" class="slick-prev"></button>',
+        nextArrow: '<button type="button" class="slick-next"></button>',
+    });
+}
 
-                    // Initialisation à chaque mise à jour de Livewire
-                    document.addEventListener('livewire:update', initSlickSlider);
-                    document.addEventListener('DOMContentLoaded', initSlickSlider);
+document.addEventListener('livewire:update', initSlickSlider);
+document.addEventListener('DOMContentLoaded', initSlickSlider);
+
                 </script>
 
 
 </section>
+</div>
