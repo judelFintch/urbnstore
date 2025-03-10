@@ -1,91 +1,52 @@
 <div>
     <style type="text/css">
-    /* Slider Container Responsive */
-    .wrap-slick2 {
-        position: relative;
-        overflow: hidden;
-        padding: 0 40px; /* espace pour les flèches */
+    /* Pagination horizontale centrée proprement */
+.slick2 .slick-dots {
+    position: absolute;
+    bottom: -40px; /* Ajuste selon l'espace voulu sous les images */
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* Espace entre les points */
+    padding: 0;
+    margin: 0;
+}
+
+.slick2 .slick-dots li {
+    list-style: none;
+}
+
+.slick2 .slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+    display: block;
+    width: 12px;
+    height: 12px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: #ddd;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.slick2 .slick-dots li.slick-active button {
+    background-color: #333;
+}
+
+/* Responsive */
+@media(max-width:768px) {
+    .slick2 .slick-dots {
+        bottom: -30px;
     }
-    
-    /* Ajustement des images pour être totalement responsive */
-    .slick2 .block2-pic img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 8px;
+
+    .slick2 .slick-dots button {
+        width: 10px;
+        height: 10px;
     }
-    
-    /* Positionnement vertical parfait des boutons */
-    .slick2 .slick-prev,
-    .slick2 .slick-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 35px;
-        height: 35px;
-        background-color: rgba(255,255,255,0.95);
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        z-index: 10;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-        transition: background 0.3s ease;
-    }
-    
-    .slick2 .slick-prev {
-        left: 10px;
-    }
-    
-    .slick2 .slick-next {
-        right: 10px;
-    }
-    
-    /* icônes FontAwesome pour les flèches */
-    .slick2 .slick-prev::before,
-    .slick2 .slick-next::before {
-        font-family: 'Font Awesome 6 Free';
-        font-weight: 900;
-        font-size: 16px;
-        color: #333;
-    }
-    
-    .slick2 .slick-prev::before { content: "\f053"; }
-    .slick2 .slick-next::before { content: "\f054"; }
-    
-    /* Responsive adjustments pour téléphones/tablettes */
-    @media (max-width: 768px) {
-        .slick2 .slick-prev,
-        .slick2 .slick-next {
-            width: 28px;
-            height: 28px;
-            left: 5px;
-            right: 5px;
-        }
-    
-        .wrap-slick2 {
-            padding: 0 25px; /* réduit l'espace sur mobiles */
-        }
-    
-        .slick2 .slick-prev::before,
-        .slick2 .slick-next::before {
-            font-size: 12px;
-        }
-    }
-    
-    /* Responsive nombre de slides selon taille d'écran */
-    @media(max-width: 1024px) {
-        .slick2 .item-slick2 {
-            padding-left: 10px;
-            padding-right: 10px;
-        }
-    }
-    
-    @media(max-width: 768px) {
-        .slick2 .slick-prev,
-        .slick2 .slick-next {
-            top: 45%; /* ajuste la position verticale */
-        }
-    }
+}
+
     
 
     </style>
