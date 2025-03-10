@@ -6,9 +6,8 @@
                     Aperçu des produits
                 </h3>
             </div>
-
             <div class="row isotope-grid">
-                @foreach ($specificProducts  as $product)
+                @foreach ($specificProducts as $product)
                     @php
 
                         $productUrl = route('show-product', [
@@ -16,7 +15,6 @@
                             'category' => $product->category->name,
                             'slug' => $product->slug,
                         ]);
-
                         $categoryName = $product->category->name;
                     @endphp
                     <!-- Produit -->
@@ -27,7 +25,6 @@
                                 <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
                                     class="product-image">
                             </div>
-
                             <!-- Informations du produit -->
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <!-- Titre et prix -->
@@ -51,8 +48,8 @@
                                     @endif
 
                                     <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
-                                        <img class="icon-heart1 dis-block trans-04"
-                                            src="images/icons/icon-heart-01.png" alt="Ajouter à la wishlist">
+                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png"
+                                            alt="Ajouter à la wishlist">
                                         <img class="icon-heart2 dis-block trans-04 ab-t-l"
                                             src="images/icons/icon-heart-02.png" alt="Retirer de la wishlist">
                                     </a>
@@ -61,16 +58,13 @@
                         </div>
                     </a>
                 @endforeach
-
             </div>
             <!-- Pagination -->
             <div class="flex-c-m flex-w w-full p-t-38">
                 <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
                     1
                 </a>
-
             </div>
         </div>
     </section>
-
 </div>

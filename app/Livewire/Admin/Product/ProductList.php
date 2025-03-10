@@ -11,7 +11,7 @@ class ProductList extends Component
 {
     public function render()
     {
-        $products = Product::with('details', 'category')->paginate(10);
+        $products = Product::with('details', 'category')->get();
 
         return view('livewire.admin.product.product-list', compact('products'));
     }

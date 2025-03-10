@@ -1,5 +1,4 @@
 <div>
-    
     <!-- breadcrumb -->
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -27,16 +26,18 @@
                             <div class="wrap-slick3-dots"></div>
                             <div class="wrap-slick3-arrows flex-sb-m flex-w"></div>
                             <div class="slick3 gallery-lb">
-                               @foreach($product->productPicture as $picture)
-                               <div class="item-slick3" data-thumb="{{ asset('storage/' .cleanImageUrl($picture->image_path)) }}">
-                                <div class="wrap-pic-w pos-relative">
-                                    <img src="{{ asset('storage/' . cleanImageUrl($picture->image_path)) }}" alt="IMG-PRODUCT">
-                                    <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
-                                        href="{{ asset('storage/' . $picture->image_path) }}">
-                                        <i class="fa fa-expand"></i>
-                                    </a>
-                                </div>
-                            </div>
+                                @foreach ($product->productPicture as $picture)
+                                    <div class="item-slick3"
+                                        data-thumb="{{ asset('storage/' . cleanImageUrl($picture->image_path)) }}">
+                                        <div class="wrap-pic-w pos-relative">
+                                            <img src="{{ asset('storage/' . cleanImageUrl($picture->image_path)) }}"
+                                                alt="IMG-PRODUCT">
+                                            <a class="flex-c-m size-108 how-pos1 bor0 fs-16 cl10 bg0 hov-btn3 trans-04"
+                                                href="{{ asset('storage/' . $picture->image_path) }}">
+                                                <i class="fa fa-expand"></i>
+                                            </a>
+                                        </div>
+                                    </div>
                                 @endforeach
                             </div>
                         </div>
@@ -65,7 +66,8 @@
                                         <select class="js-select2" wire:model="selectedSize" name="size">
                                             <option>Choisissez une option</option>
                                             @foreach (explode(',', $product->details->size_available) as $size)
-                                                <option value="{{ trim($size) }}">Taille {{ trim($size) }}</option>
+                                                <option value="{{ trim($size) }}">Taille {{ trim($size) }}
+                                                </option>
                                             @endforeach
                                         </select>
                                         <div class="dropDownSelect2"></div>
@@ -151,7 +153,8 @@
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item p-b-10">
-                            <a class="nav-link active" data-toggle="tab" href="#description" role="tab">Description</a>
+                            <a class="nav-link active" data-toggle="tab" href="#description"
+                                role="tab">Description</a>
                         </li>
                         <li class="nav-item p-b-10">
                             <a class="nav-link" data-toggle="tab" href="#information" role="tab">Informations

@@ -5,7 +5,7 @@
             <div class="size-202 m-lr-auto respon4">
                 <!-- Block1 -->
                 <div class="block1 wrap-pic-w">
-                    <img src="{{Storage::url($banner->photo) ?? 'default_image.jpg' }}" alt="IMG-BANNER">
+                    <img src="{{ Storage::url($banner->photo) ?? 'default_image.jpg' }}" alt="IMG-BANNER">
 
                     <a href="{{ route('home.shop', ['id' => $banner->id, 'slug' => $banner->slug]) }}"
                         class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
@@ -27,8 +27,5 @@
                 </div>
             </div>
         @endforeach
-
-
-
     </div>
 </div>
