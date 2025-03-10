@@ -13,7 +13,8 @@
     <section id="product-grid" class="product-section">
         @if ($isHomePage ?? false)
             <!-- Product grid displayed only on the home page -->
-            @livewire('products.partials.product-grid', ['isHomePage' => true])
+            @livewire('products.partials.slide-product', ['isHomePage' => true])
+            @livewire('products.partials.grid-product', ['isHomePage' => true])
         @endif
     </section>
 </div>

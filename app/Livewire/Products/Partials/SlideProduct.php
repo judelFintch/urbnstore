@@ -15,6 +15,7 @@ class SlideProduct extends Component
 
     // this code is temporary until
     public $specificProductCategory = '4';
+    public $selectedCategoryId = null;
 
     public $categories;
     public $selectedCategory;
@@ -24,13 +25,11 @@ class SlideProduct extends Component
         $this->categories = CategoryArticles::take(5)->get();
         // this active the title for the homepage product is true
     }
+    public function categorySelected($categoryId)
+{
+    $this->selectedCategoryId = $categoryId;
+}
 
-
-    public function categorySelected($category)
-    {
-        $this->selectedCategory = $category;
-        $this->dispatch('reloadComponent');
-    }
 
     public function render()
     {
@@ -39,6 +38,11 @@ class SlideProduct extends Component
             ->where('category_id', '=', $this->selectedCategory)
             ->get();
 
-        return view('livewire.products.partials.slide-product', ['filteredProducts' => $filteredProducts]);
+        return view('livewire.products.partials.slide-product',[
+            'filteredProducts' => Product::when($this->selectedCategoryId, function($query){
+                $query->where('category_id', $this->selectedCategoryId);
+            })->get(),
+            'categories' => CategoryArticles::all(),
+        ]);
     }
 }

@@ -7,6 +7,18 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
+/**
+ * ProductPhotoUpload Component
+ *
+ * Ce composant Livewire permet de gérer l'upload de photos pour un produit spécifique.
+ * Il permet de valider et stocker les images uploadées et d'afficher la liste des photos existantes.
+ *
+ * Informations sur l'auteur :
+ * Auteur : judel fintch
+ * Email : judfintch@gmail.com
+ * Date : 2025-03-07
+ * Description : Composant pour gérer l'upload des photos d'un produit dans l'administration.
+ */
 #[Layout('layouts.app')]
 class ProductPhotoUpload extends Component
 {
@@ -19,7 +31,6 @@ class ProductPhotoUpload extends Component
     public function mount($id)
     {
         $this->product_id = $id;
-
     }
 
     public function updatedPhotos()

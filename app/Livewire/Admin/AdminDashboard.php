@@ -20,8 +20,6 @@ class AdminDashboard extends Component
 
     public function mount(ProductService $productService)
     {
-
-        $this->products = $productService->getPaginateProduct(5);
-
+        $this->products = $productService->getPaginateProduct(self::PAGINATE_NUMBER);
     }
 }
