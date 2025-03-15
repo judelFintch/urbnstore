@@ -57,9 +57,47 @@
                 @endforeach
             </div>
 
-            <!-- Pagination 100% asynchrone -->
-            <div class="flex-c-m flex-w w-full p-t-38">
-                {{ $specificProducts->links() }}
+            <!-- Pagination personnalisée Bootstrap avec wire:click.prevent -->
+            <div class="d-flex justify-content-center pt-4">
+                <ul class="pagination">
+                    {{-- Page précédente --}}
+                    @if ($specificProducts->onFirstPage())
+                        <li class="page-item disabled"><span class="page-link">Précédent</span></li>
+                    @else
+                        <li class="page-item">
+                            <a href="#" class="page-link"
+                                wire:click.prevent="gotoPage({{ $specificProducts->currentPage() - 1 }})">
+                                Précédent
+                            </a>
+                        </li>
+                    @endif
+
+                    {{-- Pages numérotées --}}
+                    @foreach ($specificProducts->getUrlRange(1, $specificProducts->lastPage()) as $page => $url)
+                        @if ($page == $specificProducts->currentPage())
+                            <li class="page-item active">
+                                <span class="page-link">{{ $page }}</span>
+                            </li>
+                        @else
+                            <li class="page-item">
+                                <a href="#" class="page-link"
+                                    wire:click.prevent="gotoPage({{ $page }})">{{ $page }}</a>
+                            </li>
+                        @endif
+                    @endforeach
+
+                    {{-- Page suivante --}}
+                    @if ($specificProducts->hasMorePages())
+                        <li class="page-item">
+                            <a href="#" class="page-link"
+                                wire:click.prevent="gotoPage({{ $specificProducts->currentPage() + 1 }})">
+                                Suivant
+                            </a>
+                        </li>
+                    @else
+                        <li class="page-item disabled"><span class="page-link">Suivant</span></li>
+                    @endif
+                </ul>
             </div>
         </div>
     </section>
