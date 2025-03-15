@@ -12,9 +12,9 @@
     <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/theme.css?ver=3.1.2') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('admin/assets/css/aditional.css') }}">
     <link id="skin-default" rel="stylesheet" href="{{ asset('assets/css/personaliz.css') }}" />
-       
 
-    
+
+
 </head>
 
 <body class="nk-body ui-rounder npc-default has-sidebar ">
@@ -36,23 +36,23 @@
     <script src="{{ asset('admin/js/personal.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        window.addEventListener('notification', event => {
-            Swal.fire({
-                icon: event.detail.type,
-                title: event.detail.type === 'error' ? 'Erreur' : 'Succès',
-                text: event.detail.message,
-                showConfirmButton: false,
-                timer: 3000
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            window.addEventListener('notification', event => {
+                Swal.fire({
+                    icon: event.detail.type,
+                    title: event.detail.type === 'error' ? 'Erreur' : 'Succès',
+                    text: event.detail.message,
+                    showConfirmButton: false,
+                    timer: 3000
+                });
             });
         });
-    });
-</script>
+    </script>
 
-    
+
 </body>
 
 </html>
