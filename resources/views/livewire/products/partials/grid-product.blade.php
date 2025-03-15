@@ -2,7 +2,7 @@
     <section class="bg0 p-t-23 p-b-130">
         <div class="container">
             <div class="p-b-10">
-                <h3 class="ltext-103 cl5 txt-center respon1">
+                <h3 class="ltext-103 cl5">
                     Aperçu des produits
                 </h3>
             </div>
@@ -60,9 +60,10 @@
                     </a>
                 @endforeach
             </div>
-            <!-- Pagination avec Livewire -->
+
+            <!-- Pagination dynamique Livewire -->
             <div class="flex-c-m flex-w w-full p-t-38">
-                {{ $specificProducts->links() }}
+                {{ $specificProducts->links() }} <!-- Pour pagination Bootstrap stylée -->
             </div>
         </div>
     </section>
