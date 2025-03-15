@@ -6,10 +6,10 @@
                     Aperçu des produits
                 </h3>
             </div>
+
             <div class="row isotope-grid">
                 @foreach ($specificProducts as $product)
                     @php
-
                         $productUrl = route('show-product', [
                             'id' => $product->id,
                             'category' => $product->category->name,
@@ -25,11 +25,12 @@
                                 <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
                                     class="product-image">
                             </div>
+
                             <!-- Informations du produit -->
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <!-- Titre et prix -->
                                 <div class="block2-txt-child1 flex-col-l">
-                                    <a href="product-detail.html"
+                                    <a href="{{ $productUrl }}"
                                         class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         {{ $product['title'] }}
                                     </a>
@@ -59,11 +60,10 @@
                     </a>
                 @endforeach
             </div>
-            <!-- Pagination -->
+
+            <!-- Pagination avec Livewire -->
             <div class="flex-c-m flex-w w-full p-t-38">
-                <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-                    1
-                </a>
+                {{ $specificProducts->links() }}
             </div>
         </div>
     </section>
