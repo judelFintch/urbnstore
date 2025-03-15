@@ -1,23 +1,13 @@
 <div>
-    <section id="products-section" class="bg0 p-t-23 p-b-130">
+    <section class="bg0 p-t-23 p-b-130">
         <div class="container">
             <div class="p-b-10">
-                <h3 class="ltext-103 cl5">
+                <h3 class="ltext-103 cl5 text-center">
                     Aperçu des produits
                 </h3>
             </div>
 
-            <!-- Chargement -->
-            <div wire:loading.delay>
-                <div class="d-flex justify-content-center my-4">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Chargement...</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Grille de produits avec animation -->
-            <div class="row isotope-grid" wire:loading.remove>
+            <div class="row isotope-grid">
                 @foreach ($specificProducts as $product)
                     @php
                         $productUrl = route('show-product', [
@@ -27,14 +17,16 @@
                         ]);
                         $categoryName = $product->category->name;
                     @endphp
-
+                    <!-- Produit -->
                     <a href="{{ $productUrl }}" class="product-link">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }} product-item"
-                             style="opacity: 0; transform: translateY(20px); transition: all 0.5s ease;">
+                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }}">
+                            <!-- Image du produit -->
                             <div class="block2-pic hov-img0 label-new" data-label="Nouveau">
                                 <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
                                     class="product-image">
                             </div>
+
+                            <!-- Informations du produit -->
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l">
                                     <a href="{{ $productUrl }}"
@@ -51,6 +43,13 @@
                                     @else
                                         <span class="stext-105 cl3">Indisponible</span>
                                     @endif
+
+                                    <a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                                        <img class="icon-heart1 dis-block trans-04" src="images/icons/icon-heart-01.png"
+                                            alt="Ajouter à la wishlist">
+                                        <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                                            src="images/icons/icon-heart-02.png" alt="Retirer de la wishlist">
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -58,33 +57,42 @@
                 @endforeach
             </div>
 
-            <!-- Pagination stylisée -->
+            <!-- Pagination personnalisée Bootstrap avec wire:click.prevent -->
             <div class="d-flex justify-content-center pt-4">
                 <ul class="pagination">
-                    {{-- Précédent --}}
+                    {{-- Page précédente --}}
                     @if ($specificProducts->onFirstPage())
                         <li class="page-item disabled"><span class="page-link">Précédent</span></li>
                     @else
                         <li class="page-item">
-                            <a href="#" class="page-link" wire:click.prevent="gotoPage({{ $specificProducts->currentPage() - 1 }})">Précédent</a>
+                            <a href="#" class="page-link"
+                                wire:click.prevent="gotoPage({{ $specificProducts->currentPage() - 1 }})">
+                                Précédent
+                            </a>
                         </li>
                     @endif
 
-                    {{-- Numéros --}}
+                    {{-- Pages numérotées --}}
                     @foreach ($specificProducts->getUrlRange(1, $specificProducts->lastPage()) as $page => $url)
                         @if ($page == $specificProducts->currentPage())
-                            <li class="page-item active"><span class="page-link">{{ $page }}</span></li>
+                            <li class="page-item active">
+                                <span class="page-link">{{ $page }}</span>
+                            </li>
                         @else
                             <li class="page-item">
-                                <a href="#" class="page-link" wire:click.prevent="gotoPage({{ $page }})">{{ $page }}</a>
+                                <a href="#" class="page-link"
+                                    wire:click.prevent="gotoPage({{ $page }})">{{ $page }}</a>
                             </li>
                         @endif
                     @endforeach
 
-                    {{-- Suivant --}}
+                    {{-- Page suivante --}}
                     @if ($specificProducts->hasMorePages())
                         <li class="page-item">
-                            <a href="#" class="page-link" wire:click.prevent="gotoPage({{ $specificProducts->currentPage() + 1 }})">Suivant</a>
+                            <a href="#" class="page-link"
+                                wire:click.prevent="gotoPage({{ $specificProducts->currentPage() + 1 }})">
+                                Suivant
+                            </a>
                         </li>
                     @else
                         <li class="page-item disabled"><span class="page-link">Suivant</span></li>
@@ -93,9 +101,7 @@
             </div>
         </div>
     </section>
-</div>
-
-<!-- Script pour scroll doux vers la section produits -->
+    <!-- Script pour scroll doux vers la section produits -->
 <script>
     Livewire.on('scrollToProducts', () => {
         document.getElementById('products-section').scrollIntoView({ behavior: 'smooth' });
@@ -108,3 +114,4 @@
         });
     });
 </script>
+</div>
