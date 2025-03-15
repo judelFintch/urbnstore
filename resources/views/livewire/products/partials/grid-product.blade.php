@@ -28,19 +28,15 @@
 
                             <!-- Informations du produit -->
                             <div class="block2-txt flex-w flex-t p-t-14">
-                                <!-- Titre et prix -->
                                 <div class="block2-txt-child1 flex-col-l">
                                     <a href="{{ $productUrl }}"
                                         class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                                         {{ $product['title'] }}
                                     </a>
                                     <span class="stext-105 cl3">
-                                        <span class="new-price">{{ $product['currency'] }}
-                                            {{ $product['price'] }}</span>
+                                        <span class="new-price">{{ $product['currency'] }} {{ $product['price'] }}</span>
                                     </span>
                                 </div>
-
-                                <!-- Stock et wishlist -->
                                 <div class="block2-txt-child2 flex-r p-t-3">
                                     @if ($product['stock'] > 0)
                                         <span class="stext-105 cl3">{{ $product['stock'] }} pcs</span>
@@ -61,9 +57,9 @@
                 @endforeach
             </div>
 
-            <!-- Pagination dynamique Livewire -->
+            <!-- Pagination 100% asynchrone -->
             <div class="flex-c-m flex-w w-full p-t-38">
-                {{ $specificProducts->links() }} <!-- Pour pagination Bootstrap stylée -->
+                {{ $specificProducts->links() }}
             </div>
         </div>
     </section>
