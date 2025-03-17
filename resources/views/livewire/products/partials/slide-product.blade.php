@@ -112,6 +112,7 @@
         <h3 class="ltext-105 cl5 txt-center respon1">
             Nouvelle collection
         </h3>
+        <p class="ltext-105 cl2 text-center respon1">Trouve ton style</p>
         <!-- Tab01 -->
         <div class="tab01">
             <!-- Tab panes -->

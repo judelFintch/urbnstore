@@ -25,7 +25,6 @@
                                 <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
                                     class="product-image">
                             </div>
-
                             <!-- Informations du produit -->
                             <div class="block2-txt flex-w flex-t p-t-14">
                                 <div class="block2-txt-child1 flex-col-l">
