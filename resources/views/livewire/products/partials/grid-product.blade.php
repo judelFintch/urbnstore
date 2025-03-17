@@ -21,7 +21,7 @@
                     <a href="{{ $productUrl }}" class="product-link">
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }}">
                             <!-- Image du produit -->
-                            <div class="block2-pic hov-img0 label-new" data-label="Nouveau">
+                            <div class="block2-pic hov-img0 label-new" data-label="new">
                                 <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
                                     class="product-image">
                             </div>
