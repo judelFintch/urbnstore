@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let subtotal = parseFloat(getCartSubtotal());
-        let shipping = 14.00; 
+        let shipping = 0; 
         let total = subtotal + shipping;
 
         subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
