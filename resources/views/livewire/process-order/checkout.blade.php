@@ -1,44 +1,5 @@
 <div>
-<style type="text/css">
-    .recpaImage {
-    display: flex;
-    flex-direction: column; /* Aligne les produits en colonne */
-    gap: 15px; /* Espacement entre les articles */
-    width: 100%;
-}
 
-.product-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    width: 100%;
-    padding: 10px;
-    border-bottom: 1px solid #ddd; /* Ligne de séparation */
-    background-color: #fff;
-    border-radius: 8px;
-    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
-}
-
-.product-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-}
-
-.product-item h3 {
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.product-item .price {
-    font-size: 16px;
-    font-weight: bold;
-    color: #333;
-    text-align: right;
-}
-
-</style>
     <section class="bg-white min-h-screen">
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Left Column - Checkout Form -->
@@ -111,7 +72,8 @@
                     <div class="recpaImage flex items-center gap-4 grap display-flex"> ">
                         <div class="relative">
                             <img src="https://placehold.co/80x80" alt="Product" class="rounded">
-                            <span class="absolute -top-2 -right-2 bg-gray-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">1</span>
+                            <span
+                                class="absolute -top-2 -right-2 bg-gray-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">1</span>
                         </div>
                         <div class="flex-grow">
                             <h3 class="font-semibold">MARINA ANGLING TEE - SAND</h3>
@@ -119,8 +81,8 @@
                         </div>
                         <div class="font-semibold">$68.00</div>
                     </div>
-                    
-                    <div class="flex items-center gap-4 mb-4 mt-8" >
+
+                    <div class="flex items-center gap-4 mb-4 mt-8">
                         <input type="text" placeholder="Discount code or gift card"
                             class="flex-1 px-4 py-3 border border-gray-300 rounded-md" />
                         <button class="px-6 py-3 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">Apply</button>
