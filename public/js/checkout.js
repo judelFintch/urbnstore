@@ -28,26 +28,31 @@ document.addEventListener('DOMContentLoaded', () => {
         let cartItems = getCartItems();
 
         if (cartItems.length === 0) {
-            cartContainer.innerHTML = "<p class='text-gray-500'>Votre panier est vide.</p>";
+            cartContainer.innerHTML = "<p class='text-gray-500 text-center'>Votre panier est vide.</p>";
             return;
         }
 
-        cartItems.forEach(item => {
+        cartItems.forEach((item, index) => {
             let productHTML = `
-                <div class="product-item">
+                <div class="product-item" style="animation-delay: ${index * 0.1}s">
                     <div class="relative">
-                        <img src="${item.image}" alt="${item.name}" class="rounded w-20 h-20 object-cover">
-                        <span class="absolute -top-2 -right-2 bg-gray-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">${item.quantity}</span>
+                        <img src="${item.image}" alt="${item.name}">
                     </div>
                     <div class="flex-grow">
-                        <h3 class="font-semibold">${item.name}</h3>
+                        <h3>${item.name}</h3>
                     </div>
-                    <div class="font-semibold">$${item.price}</div>
+                    <div class="price">$${item.price}</div>
                 </div>
-                <br>
             `;
             cartContainer.insertAdjacentHTML("beforeend", productHTML);
         });
+
+        // Ajouter l'effet d'apparition après un léger délai
+        setTimeout(() => {
+            document.querySelectorAll(".product-item").forEach(item => {
+                item.classList.add("show");
+            });
+        }, 100);
     }
 
     displayCartItems();

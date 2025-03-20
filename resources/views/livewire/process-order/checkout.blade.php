@@ -1,43 +1,44 @@
 <div>
-    <style type="text">
-        .recpaImage {
+<style type="text/css">
+    .recpaImage {
     display: flex;
-    flex-wrap: wrap; /* Permet le retour à la ligne */
-    gap: 10px; /* Espacement entre les éléments */
+    flex-direction: column; /* Aligne les produits en colonne */
+    gap: 15px; /* Espacement entre les articles */
+    width: 100%;
 }
 
 .product-item {
     display: flex;
     align-items: center;
-    gap: 10px;
-    width: 100%; /* Permet d’occuper toute la largeur */
-    border-bottom: 1px solid #ddd; /* Séparation entre les articles */
+    gap: 15px;
+    width: 100%;
     padding: 10px;
-    opacity: 0; /* Animation au chargement */
-    transform: translateY(20px);
+    border-bottom: 1px solid #ddd; /* Ligne de séparation */
+    background-color: #fff;
+    border-radius: 8px;
     transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
-.product-item.show {
-    opacity: 1;
-    transform: translateY(0);
+.product-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
-.remove-btn {
-    background-color: #e53e3e;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease-in-out;
+.product-item h3 {
+    font-size: 16px;
+    font-weight: 600;
 }
 
-.remove-btn:hover {
-    background-color: #c53030;
+.product-item .price {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
 }
 
-        </style>
+</style>
     <section class="bg-white min-h-screen">
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Left Column - Checkout Form -->
