@@ -25,11 +25,9 @@
                 <!-- Contact -->
                 <div class="mb-8">
                     <div class="flex justify-between items-center mb-4">
-                       
                         <a href="{{route('login')}}"><button class="text-blue-600 text-sm">J'ai dispose de compte Urbn</button></a>
                     </div>
                 </div>
-
                 <!-- Delivery -->
                 <div class="mb-8">
                     <h2 class="text-lg font-medium mb-4">Achete sans compte</h2>
