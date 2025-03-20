@@ -7,18 +7,12 @@
                 <div class="mb-8">
                     <h2 class="text-lg font-medium mb-4">Express checkout</h2>
                     <div class="grid grid-cols-3 gap-2">
-                        <button class="bg-[#f0f1f5] text-white py-3 px-4 rounded-md">
-                            <img src="https://maxicash.co/wp-content/uploads/2024/04/maxicashlogo-1.png" alt="max cash"
+                        
+                            <img src="{{asset('imgs/1.png')}}" alt="max cash"
                                 class="h-6 mx-auto" />
-                        </button>
-                        <button class="bg-[#FFC439] text-[#003087] py-3 px-4 rounded-md">
-                            <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png"
-                                alt="PayPal" class="h-6 mx-auto" />
-                        </button>
-                        <button class="bg-black text-white py-3 px-4 rounded-md">
-                            <img src="https://www.gstatic.com/instantbuy/svg/dark_gpay.svg" alt="Google Pay"
-                                class="h-6 mx-auto" />
-                        </button>
+                       
+                        
+                        
                     </div>
                     <div class="text-center my-4 text-gray-500">OR</div>
                 </div>
