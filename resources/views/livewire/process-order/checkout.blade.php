@@ -1,4 +1,43 @@
 <div>
+    <style type="text">
+        .recpaImage {
+    display: flex;
+    flex-wrap: wrap; /* Permet le retour à la ligne */
+    gap: 10px; /* Espacement entre les éléments */
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%; /* Permet d’occuper toute la largeur */
+    border-bottom: 1px solid #ddd; /* Séparation entre les articles */
+    padding: 10px;
+    opacity: 0; /* Animation au chargement */
+    transform: translateY(20px);
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.product-item.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.remove-btn {
+    background-color: #e53e3e;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.remove-btn:hover {
+    background-color: #c53030;
+}
+
+        </style>
     <section class="bg-white min-h-screen">
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Left Column - Checkout Form -->
