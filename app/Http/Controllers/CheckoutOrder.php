@@ -17,6 +17,19 @@ class CheckoutOrder extends Controller
 {
     public function handlePayment(Request $request)
     {
+
+        $validated = $request->validate([
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'country' => 'required|string',
+            'address' => 'required|string',
+            'company' => 'nullable|string',
+            'product_id' => 'required|exists:products,id',
+            'qte' => 'required|integer|min:1',
+        ]);
+
+
+        dd($validated);
         
     }
 }
