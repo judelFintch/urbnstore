@@ -67,7 +67,7 @@
                 
                         <!-- Champs cachés pour le produit -->
                         <input type="hidden" name="product_id" value="1">
-                        <input type="hidden" name="qte" value="1">
+                        <input type="hidden" name="qte" value="2">
                     </div>
                 
                     <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
