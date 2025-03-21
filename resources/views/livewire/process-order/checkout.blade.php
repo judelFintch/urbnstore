@@ -23,7 +23,7 @@
                     </div>
                     <!-- Formulaire invité Livewire -->
                     
-                    />
+            
                 @endguest
 
                 @auth
