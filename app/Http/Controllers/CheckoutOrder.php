@@ -68,12 +68,6 @@ class CheckoutOrder extends Controller
             route('rejected.payment'),
             route('maxi-notify.payment')
         );
-
-       // return Redirect::to($maxicash->queryStringURLPayment($paymentEntry));
-
-
-
-        
-        
+       return Redirect::to($maxicash->queryStringURLPayment($paymentEntry));
     }
 }
