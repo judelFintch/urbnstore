@@ -37,46 +37,50 @@
 
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
-                <form wire:submit.prevent="submit" class="mt-6 space-y-4">
-                <div class="space-y-4">
-                    <label for="country" class="sr-only">Pays</label>
-                    <select id="country" name="country" wire:model="country"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white @error('country') border-red-500 @enderror" required>
-                        <option value="">Sélectionnez un pays</option>
-                        <option value="cd">Congo Kinshasa</option>
-                    </select>
-                    @error('country')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-
-                    <div class="grid grid-cols-2 gap-4">
-                        <input type="text" name="first_name" wire:model="first_name" placeholder="Prénom" required
-                            class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('first_name') border-red-500 @enderror" />
-                        <input type="text" name="last_name" wire:model="last_name" placeholder="Nom" required
-                            class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('last_name') border-red-500 @enderror" />
+                <form method="POST" action="{{ route('payment') }}" class="mt-6 space-y-4">
+                    @csrf
+                    <div class="space-y-4">
+                        <label for="country" class="sr-only">Pays</label>
+                        <select id="country" name="country"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white @error('country') border-red-500 @enderror" required>
+                            <option value="">Sélectionnez un pays</option>
+                            <option value="cd">Congo Kinshasa</option>
+                        </select>
+                        @error('country')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
+                
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" name="first_name" placeholder="Prénom" required
+                                class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('first_name') border-red-500 @enderror" />
+                            <input type="text" name="last_name" placeholder="Nom" required
+                                class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('last_name') border-red-500 @enderror" />
+                        </div>
+                        @error('first_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
+                        @error('last_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
+                
+                        <input type="text" name="company" placeholder="Société (optionnel)"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror" />
+                        @error('company')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
+                
+                        <input type="text" name="address" placeholder="Adresse" required
+                            class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
+                        @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
+                
+                        <!-- Champs cachés pour le produit -->
+                        <input type="hidden" name="product_id" value="1">
+                        <input type="hidden" name="qte" value="1">
                     </div>
-                    @error('first_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
-                    @error('last_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
-
-                    <input type="text" name="company" wire:model="company" placeholder="Société (optionnel)"
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror" />
-                    @error('company')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-
-                    <input type="text" name="address" wire:model="address" placeholder="Adresse" required
-                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
-                    @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-                </div>
-
-                <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
-                    <legend class="text-base font-medium text-gray-700">Choisissez votre mode de paiement</legend>
-
-                    <!-- Paiement connecté -->
-                   
-                        @csrf
+                
+                    <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
+                        <legend class="text-base font-medium text-gray-700">Choisissez votre mode de paiement</legend>
                         <input type="hidden" name="total" value="6800">
                         <button type="submit"
                             class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
                             Payer maintenant (connecté) - {{ auth()->user()->name }}
                         </button>
-                    </form>
+                    </fieldset>
+                </form>
+                
+                
                 </fieldset>
                 @endauth
             </div>

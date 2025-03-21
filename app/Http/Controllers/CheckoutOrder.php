@@ -1,10 +1,9 @@
 <?php
 
-namespace App\Livewire\ProcessOrder;
+namespace App\Http\Controllers;
 
-use Livewire\Component;
-use Livewire\Attributes\Layout;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Product;
 use App\Models\Order;
@@ -14,21 +13,11 @@ use Devscast\Maxicash\Credential;
 use Devscast\Maxicash\Environment;
 use Devscast\Maxicash\PaymentEntry;
 
-class Checkout extends Component
+class CheckoutOrder extends Controller
 {
-    #[Layout('layouts.guest')]
-    public string $first_name = '';
-    public string $last_name = '';
-    public string $country = '';
-    public string $company = '';
-    public string $address = '';
-    public int $product_id = 1;
-    public int $qte = 1;
-
-   
-    public function submit()
+    public function handlePayment(Request $request)
     {
-        $data = $this->validate([
+        $validated = $request->validate([
             'first_name' => 'required|string',
             'last_name' => 'required|string',
             'country' => 'required|string',
@@ -38,31 +27,30 @@ class Checkout extends Component
             'qte' => 'required|integer|min:1',
         ]);
 
-        $product = Product::findOrFail($this->product_id);
-        $total = $product->price * $this->qte;
+        $product = Product::findOrFail($validated['product_id']);
+        $total = $product->price * $validated['qte'];
         $priceInCents = intval($total * 100);
+
         $latestOrder = Order::latest()->first();
-        $lastId = $latestOrder ? $latestOrder->id : 1;
+        $lastId = $latestOrder?->id ?? 1;
         $reference = sprintf('ORD/URBN/%s/%d/%d', now()->format('Y-m-d'), $lastId, rand(1, 100));
+
         $order = Order::create([
-            'user_id' => \Illuminate\Support\Facades\Auth::check() ? \Illuminate\Support\Facades\Auth::id() : null,
-            'name' => $this->first_name . ' ' . $this->last_name,
-            'email' => \Illuminate\Support\Facades\Auth::check() ? \Illuminate\Support\Facades\Auth::user()->email : null,
-            'address' => $this->address,
+            'user_id' => Auth::check() ? Auth::id() : null,
+            'name' => $validated['first_name'] . ' ' . $validated['last_name'],
+            'email' => Auth::check() ? Auth::user()->email : null,
+            'address' => $validated['address'],
             'status' => 'pending',
             'reference' => $reference,
         ]);
-        
 
         DetailsOrder::create([
             'order_id' => $order->id,
-            'quantity' => $this->qte,
+            'quantity' => $validated['qte'],
             'product_description' => $product->id,
             'product_title' => $product->title,
             'product_price' => $product->price,
         ]);
-
-
 
         $maxicash = new Maxicash(
             new Credential(
@@ -82,13 +70,6 @@ class Checkout extends Component
             route('maxi-notify.payment')
         );
 
-        dd($paymentEntry);
-
         return Redirect::to($maxicash->queryStringURLPayment($paymentEntry));
-    }
-    public function render()
-    {
-
-        return view('livewire.process-order.checkout');
     }
 }

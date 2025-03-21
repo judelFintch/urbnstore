@@ -38,6 +38,7 @@ use App\Livewire\ProcessOrder\Checkout;
 use App\Livewire\ProcessOrder\Confirmation;
 use App\Livewire\Products\ProductDetails;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CheckoutOrder;
 
 /*
 |--------------------------------------------------------------------------
@@ -74,7 +75,8 @@ Route::prefix('/')->group(function () {
 |--------------------------------------------------------------------------
 */
 Route::group(['prefix' => 'process'], function () {
-    Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
+    //Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
+    Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
     Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/maxi-notify/payment', [MaxiNotifyPaymentController::class, 'handlePayment'])->name('maxi-notify.payment');
