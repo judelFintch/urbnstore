@@ -23,6 +23,8 @@
                     </div>
                     <!-- Formulaire invité Livewire -->
                     
+                    />
+                @endguest
 
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
