@@ -9,7 +9,6 @@
                     <h2 class="text-lg font-medium mb-4">Paiement express</h2>
                     <img src="{{ asset('imgs/logo.jpeg') }}" alt="Max Cash Paiement Express" class="mx-auto" />
                 </div>
-
                 <!-- Connexion -->
                 @guest
                     @php
@@ -22,7 +21,6 @@
                             pour suivre votre commande et accélérer le paiement.
                         </p>
                     </div>
-
                     <!-- Formulaire invité Livewire -->
                     <livewire:guest-checkout 
                         wire:model:first_name="first_name" 
