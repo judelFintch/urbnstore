@@ -7,12 +7,7 @@
                 <div class="mb-8">
                     <h2 class="text-lg font-medium mb-4">Express checkout</h2>
                     <div class="grid grid-cols-3 gap-2">
-                        
-                            <img src="{{asset('imgs/1.png')}}" alt="max cash"
-                                class="h-6 mx-auto" />
-                       
-                        
-                        
+                            <img src="{{asset('imgs/1.png')}}" alt="max cash"class="h-6 mx-auto" />
                     </div>
                     <div class="text-center my-4 text-gray-500">OR</div>
                 </div>
