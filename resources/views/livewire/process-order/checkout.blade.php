@@ -1,14 +1,9 @@
 <div>
     <section class="bg-white min-h-screen" role="main" aria-label="Section de paiement">
-        @if (session('success'))
-            <div class="mb-4 p-4 bg-green-50 text-green-800 border-l-4 border-green-500 rounded-md">
-                {{ session('success') }}
-            </div>
-        @endif
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Colonne gauche - Formulaire de commande -->
-            <div id="formulaire" class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm"
-                role="form" aria-label="Formulaire de commande">
+            <div id="formulaire" class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm" role="form"
+                aria-label="Formulaire de commande">
                 <!-- Paiement express -->
                 <div class="mb-8 max-w-4xl mx-auto text-center">
                     <h2 class="text-lg font-medium mb-4">Paiement express</h2>
@@ -23,52 +18,67 @@
                     <div class="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-md">
                         <p>
                             Vous avez déjà un compte ?
-                            <a href="{{ route('login') }}" class="text-blue-600 underline">Connectez-vous ici</a>
+                            <a href="{{ route('login') }}?redirect=#formulaire" class="text-blue-600 underline">Connectez-vous ici</a>
                             pour suivre votre commande et accélérer le paiement.
                         </p>
                     </div>
+
+                    <!-- Formulaire invité Livewire -->
+                    <livewire:guest-checkout 
+                        wire:model:first_name="first_name" 
+                        wire:model:last_name="last_name" 
+                        wire:model:country="country" 
+                        wire:model:company="company" 
+                        wire:model:address="address" 
+                        wire:model:product_id="product_id" 
+                        wire:model:qte="qte"
+                    />
                 @endguest
 
-                <!-- Livraison -->
-                <div class="mb-8">
-                    @auth
-                        <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
-                        <div class="space-y-4">
-                            <label for="country" class="sr-only">Pays</label>
-                            <select id="country" name="country"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white" required>
-                                <option value="">Sélectionnez un pays</option>
-                                <option value="cd">Congo Kinshasa</option>
-                            </select>
+                @auth
+                <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
+                <form wire:submit.prevent="submit" class="mt-6 space-y-4">
+                <div class="space-y-4">
+                    <label for="country" class="sr-only">Pays</label>
+                    <select id="country" name="country" wire:model="country"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white @error('country') border-red-500 @enderror" required>
+                        <option value="">Sélectionnez un pays</option>
+                        <option value="cd">Congo Kinshasa</option>
+                    </select>
+                    @error('country')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
 
-                            <div class="grid grid-cols-2 gap-4">
-                                <input type="text" name="first_name" placeholder="Prénom" required
-                                    class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
-                                <input type="text" name="last_name" placeholder="Nom" required
-                                    class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
-                            </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" name="first_name" wire:model="first_name" placeholder="Prénom" required
+                            class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('first_name') border-red-500 @enderror" />
+                        <input type="text" name="last_name" wire:model="last_name" placeholder="Nom" required
+                            class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('last_name') border-red-500 @enderror" />
+                    </div>
+                    @error('first_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
+                    @error('last_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
 
-                            <input type="text" name="company" placeholder="Société (optionnel)"
-                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
-                            <input type="text" name="address" placeholder="Adresse" required
-                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
-                        </div>
+                    <input type="text" name="company" wire:model="company" placeholder="Société (optionnel)"
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror" />
+                    @error('company')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
 
-                        <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
-
-                            <!-- Paiement connecté -->
-                            <form action="" method="POST" id="payment-form-auth">
-                                @csrf
-                                <input type="hidden" name="total" value="6800">
-                                <button type="submit"
-                                    class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
-                                    Payer maintenant (connecté) - {{ auth()->user()->name }}
-                                </button>
-                            </form>
-
-                        </fieldset>
-                    @endauth
+                    <input type="text" name="address" wire:model="address" placeholder="Adresse" required
+                        class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
+                    @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
                 </div>
+
+                <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
+                    <legend class="text-base font-medium text-gray-700">Choisissez votre mode de paiement</legend>
+
+                    <!-- Paiement connecté -->
+                   
+                        @csrf
+                        <input type="hidden" name="total" value="6800">
+                        <button type="submit"
+                            class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
+                            Payer maintenant (connecté) - {{ auth()->user()->name }}
+                        </button>
+                    </form>
+                </fieldset>
+                @endauth
             </div>
 
             <!-- Colonne droite - Résumé de la commande -->
@@ -122,25 +132,4 @@
         </div>
     </section>
     <script src="{{ asset('js/checkout.js') }}"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            const hash = window.location.hash;
-            if (hash === '#formulaire') {
-                const el = document.querySelector(hash);
-                if (el) {
-                    setTimeout(() => {
-                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 300); // délai pour laisser la page se charger
-                }
-            }
-
-            setTimeout(() => {
-            const msg = document.getElementById('flash-message');
-            if (msg) {
-                msg.style.opacity = '0';
-                setTimeout(() => msg.remove(), 1000);
-            }
-        }, 4000); // 4s avant disparition
-        });
-    </script>
 </div>

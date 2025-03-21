@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable(); // L'identifiant de l'utilisateur qui a passé la commande
+            $table->string('reference')->unique();
+            $table->string('name'); 
+            $table->string('tel')->nullable(); 
+            $table->string('email'); 
+            $table->string('address'); 
+            $table->string('status')->default('pending'); // Statut de la commande (pending, completed, canceled)
             $table->timestamps();
         });
     }
