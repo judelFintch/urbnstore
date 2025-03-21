@@ -22,10 +22,7 @@
                         </p>
                     </div>
                     <!-- Formulaire invité Livewire -->
-                    
-            
                 @endguest
-
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
                 <form method="POST" action="{{ route('payment') }}" class="mt-6 space-y-4">
@@ -55,7 +52,6 @@
                         <input type="text" name="address" placeholder="Adresse" required
                             class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
                         @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-                
                         <!-- Champs cachés pour le produit -->
                         <input type="hidden" name="product_id" value="1">
                         <input type="hidden" name="qte" value="2">
@@ -70,8 +66,6 @@
                         </button>
                     </fieldset>
                 </form>
-                
-                
                 </fieldset>
                 @endauth
             </div>
@@ -82,7 +76,6 @@
                 <div class="mb-6 space-y-4" id="order-summary-products">
                     <!-- Produits dynamiques injectés ici -->
                 </div>
-
                 <div class="border-t border-gray-200 pt-4 gap-4">
                     <div class="recpaImage flex items-center gap-4">
                         <div class="relative">
