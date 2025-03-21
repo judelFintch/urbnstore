@@ -2,7 +2,8 @@
     <section class="bg-white min-h-screen" role="main" aria-label="Section de paiement">
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Colonne gauche - Formulaire de commande -->
-            <div class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm" role="form" aria-label="Formulaire de commande">
+            <div class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm" role="form"
+                aria-label="Formulaire de commande">
                 <!-- Paiement express -->
                 <div class="mb-8 max-w-4xl mx-auto text-center">
                     <h2 class="text-lg font-medium mb-4">Paiement express</h2>
@@ -10,41 +11,64 @@
                 </div>
 
                 <!-- Connexion -->
-                <div class="mb-8">
-                    <div class="flex justify-between items-center mb-4">
-                        <a href="{{route('login')}}">
-                            <button class="text-blue-600 text-sm" aria-label="Connexion Urbn">J’ai déjà un compte Urbn</button>
-                        </a>
+                @guest
+                    @php
+                        session(['url.intended' => url()->current()]);
+                    @endphp
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-md">
+                        <p>
+                            Vous avez déjà un compte ?
+                            <a href="{{ route('login') }}" class="text-blue-600 underline">Connectez-vous ici</a>
+                            pour suivre votre commande et accélérer le paiement.
+                        </p>
                     </div>
-                </div>
+                @endguest
 
                 <!-- Livraison -->
                 <div class="mb-8">
-                    <h2 class="text-lg font-medium mb-4">Acheter sans compte</h2>
-                    <div class="space-y-4">
-                        <label for="country" class="sr-only">Pays</label>
-                        <select id="country" name="country" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white" required>
-                            <option value="">Sélectionnez un pays</option>
-                            <option value="cd">Congo Kinshasa</option>
-                        </select>
+                    @auth
+                        <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
+                        <div class="space-y-4">
+                            <label for="country" class="sr-only">Pays</label>
+                            <select id="country" name="country"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white" required>
+                                <option value="">Sélectionnez un pays</option>
+                                <option value="cd">Congo Kinshasa</option>
+                            </select>
 
-                        <div class="grid grid-cols-2 gap-4">
-                            <input type="text" name="first_name" placeholder="Prénom" required
-                                class="px-4 py-3 border border-gray-300 rounded-md" />
-                            <input type="text" name="last_name" placeholder="Nom" required
-                                class="px-4 py-3 border border-gray-300 rounded-md" />
+                            <div class="grid grid-cols-2 gap-4">
+                                <input type="text" name="first_name" placeholder="Prénom" required
+                                    class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+                                <input type="text" name="last_name" placeholder="Nom" required
+                                    class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+                            </div>
+
+                            <input type="text" name="company" placeholder="Société (optionnel)"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
+                            <input type="text" name="address" placeholder="Adresse" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500" />
                         </div>
 
-                        <input type="text" name="company" placeholder="Société (optionnel)"
-                            class="w-full px-4 py-3 border border-gray-300 rounded-md" />
-                        <input type="text" name="address" placeholder="Adresse" required
-                            class="w-full px-4 py-3 border border-gray-300 rounded-md" />
-                    </div>
+                        <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
+                            
+                            <!-- Paiement connecté -->
+                            <form action="" method="POST" id="payment-form-auth">
+                                @csrf
+                                <input type="hidden" name="total" value="6800">
+                                <button type="submit"
+                                    class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
+                                    Payer maintenant (connecté) - {{ auth()->user()->name }}
+                                </button>
+                            </form>
+
+                        </fieldset>
+                    @endauth
                 </div>
             </div>
 
             <!-- Colonne droite - Résumé de la commande -->
-            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm" role="region" aria-label="Résumé de commande">
+            <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm" role="region"
+                aria-label="Résumé de commande">
                 <div class="mb-6 space-y-4" id="order-summary-products">
                     <!-- Produits dynamiques injectés ici -->
                 </div>
@@ -66,7 +90,8 @@
                     <div class="flex items-center gap-4 mb-4 mt-8">
                         <input type="text" name="discount_code" placeholder="Code promo ou carte cadeau"
                             class="flex-1 px-4 py-3 border border-gray-300 rounded-md" />
-                        <button class="px-6 py-3 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">Appliquer</button>
+                        <button
+                            class="px-6 py-3 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">Appliquer</button>
                     </div>
 
                     <div class="space-y-2 text-sm mb-4">
