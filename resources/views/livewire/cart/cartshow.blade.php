@@ -47,25 +47,7 @@
                             <p class="stext-111 cl6 p-t-2">
                                 Aucune méthode de livraison n'est disponible. Veuillez vérifier votre adresse ou nous contacter si vous avez besoin d'aide.
                             </p>
-                            <div class="p-t-15">
-                                <span class="stext-112 cl8">Calculer les frais de livraison</span>
-                                <div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-                                    <select class="js-select2" name="time">
-                                        <option>Sélectionner un pays...</option>
-                                        <option>CONGO KINSHASA</option>
-                                    </select>
-                                    <div class="dropDownSelect2"></div>
-                                </div>
-                                <div class="bor8 bg0 m-b-12">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="État / Pays">
-                                </div>
-                                <div class="bor8 bg0 m-b-22">
-                                    <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Code postal">
-                                </div>
-                                <div class="flex-w">
-                                    <!-- Possibilité d'ajouter un bouton pour recalculer -->
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 
