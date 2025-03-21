@@ -122,4 +122,25 @@
         </div>
     </section>
     <script src="{{ asset('js/checkout.js') }}"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const hash = window.location.hash;
+            if (hash === '#formulaire') {
+                const el = document.querySelector(hash);
+                if (el) {
+                    setTimeout(() => {
+                        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 300); // délai pour laisser la page se charger
+                }
+            }
+
+            setTimeout(() => {
+            const msg = document.getElementById('flash-message');
+            if (msg) {
+                msg.style.opacity = '0';
+                setTimeout(() => msg.remove(), 1000);
+            }
+        }, 4000); // 4s avant disparition
+        });
+    </script>
 </div>
