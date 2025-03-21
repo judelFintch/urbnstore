@@ -6,9 +6,7 @@
                 <!-- Express Checkout -->
                 <div class="mb-8 max-w-4xl mx-auto">
                     <h2 class="text-lg font-medium mb-4">Express checkout</h2>
-                    <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4 sm:gap-6 md:gap-8">
-                        <img src="{{ asset('imgs/logo.jpeg') }}" alt="max cash" class="h-6 mx-auto" />
-                    </div>
+                        <img src="{{ asset('imgs/logo.jpeg') }}" alt="max cash" class="mx-auto" />
                 </div>
                 
                 <!-- Contact -->
