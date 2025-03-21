@@ -22,16 +22,7 @@
                         </p>
                     </div>
                     <!-- Formulaire invité Livewire -->
-                    <livewire:guest-checkout 
-                        wire:model:first_name="first_name" 
-                        wire:model:last_name="last_name" 
-                        wire:model:country="country" 
-                        wire:model:company="company" 
-                        wire:model:address="address" 
-                        wire:model:product_id="product_id" 
-                        wire:model:qte="qte"
-                    />
-                @endguest
+                    
 
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
