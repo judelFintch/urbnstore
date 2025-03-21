@@ -28,8 +28,11 @@ class AuthenticatedSessionController extends Controller
     $request->authenticate();
 
     $request->session()->regenerate();
+    session()->flash('success', 'Bienvenue de retour !');
 
-    return redirect()->intended(session()->pull('url.intended', route('dashboard')));
+
+    return redirect()->intended(session()->pull('url.intended', route('dashboard')) . $request->query('redirect', ''));
+
 }
 
     /**

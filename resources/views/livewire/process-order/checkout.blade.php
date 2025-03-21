@@ -1,9 +1,14 @@
 <div>
     <section class="bg-white min-h-screen" role="main" aria-label="Section de paiement">
+        @if (session('success'))
+            <div class="mb-4 p-4 bg-green-50 text-green-800 border-l-4 border-green-500 rounded-md">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
             <!-- Colonne gauche - Formulaire de commande -->
-            <div class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm" role="form"
-                aria-label="Formulaire de commande">
+            <div id="formulaire" class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm"
+                role="form" aria-label="Formulaire de commande">
                 <!-- Paiement express -->
                 <div class="mb-8 max-w-4xl mx-auto text-center">
                     <h2 class="text-lg font-medium mb-4">Paiement express</h2>
@@ -50,7 +55,7 @@
                         </div>
 
                         <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
-                            
+
                             <!-- Paiement connecté -->
                             <form action="" method="POST" id="payment-form-auth">
                                 @csrf

@@ -44,7 +44,9 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        session()->flash('success', 'Bienvenue sur Urbn ! Votre compte a bien été créé.');
+        return redirect(session()->pull('url.intended', route('dashboard')) . $request->query('redirect', ''));
 
-        return redirect(route('dashboard', absolute: false));
+
     }
 }
