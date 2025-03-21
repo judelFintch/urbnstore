@@ -28,15 +28,12 @@ class CheckoutOrder extends Controller
             'qte' => 'required|integer|min:1',
 
         ]);
-
         $product = Product::findOrFail($validated['product_id']);
         $total = $product->price * $validated['qte'];
         $priceInCents = intval($total * 100);
-
         $latestOrder = Order::latest()->first();
         $lastId = $latestOrder?->id ?? 1;
         $reference = sprintf('ORD/URBN/%s/%d/%d', now()->format('Y-m-d'), $lastId, rand(1, 100));
-
         $order = Order::create([
             'user_id' => Auth::check() ? Auth::id() : null,
             'name' => $validated['first_name'] . ' ' . $validated['last_name'],
@@ -72,7 +69,7 @@ class CheckoutOrder extends Controller
             route('maxi-notify.payment')
         );
 
-        return Redirect::to($maxicash->queryStringURLPayment($paymentEntry));
+       // return Redirect::to($maxicash->queryStringURLPayment($paymentEntry));
 
 
 
