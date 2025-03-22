@@ -86,9 +86,9 @@ class CheckoutOrder extends Controller
 
             $priceInCents = intval($amount * 100);
 
-            $acceptedUrl = route('accepted.payment');
-            $rejectedUrl = route('rejected.payment');
-            $notifyUrl = route('maxi-notify.payment');
+            $acceptedUrl = url('/process/accepted/payment');
+            $rejectedUrl = url('/process/rejected/payment');
+            $notifyUrl = url('/process/maxi-notify/payment');
 
             Log::info('Maxicash Payment URLs', [
                 'accepted' => $acceptedUrl,
