@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Log;
 use App\Models\Product;
 use App\Models\Order;
 use App\Models\DetailsOrder;
@@ -85,20 +86,38 @@ class CheckoutOrder extends Controller
 
             $priceInCents = intval($amount * 100);
 
+            $acceptedUrl = route('accepted.payment');
+            $rejectedUrl = route('rejected.payment');
+            $notifyUrl = route('maxi-notify.payment');
+
+            Log::info('Maxicash Payment URLs', [
+                'accepted' => $acceptedUrl,
+                'rejected' => $rejectedUrl,
+                'notify' => $notifyUrl,
+                'reference' => $order->reference,
+            ]);
+
             $paymentEntry = new PaymentEntry(
                 $maxicash->credential,
                 $priceInCents,
                 $order->reference,
-                route('accepted.payment'),
-                route('rejected.payment'),
-                route('rejected.payment'),
-                route('maxi-notify.payment')
+                $acceptedUrl,
+                $rejectedUrl,
+                $rejectedUrl,
+                $notifyUrl
             );
 
-            dd($paymentEntry);
+            $url = $maxicash->queryStringURLPayment($paymentEntry);
 
-            return $maxicash->queryStringURLPayment($paymentEntry);
+            Log::info('Generated Maxicash payment URL', [
+                'url' => $url
+            ]);
+
+            return $url;
         } catch (\Exception $e) {
+            Log::error('Maxicash payment failed', [
+                'error' => $e->getMessage()
+            ]);
             abort(500, 'Erreur de paiement : ' . $e->getMessage());
         }
     }
