@@ -95,6 +95,8 @@ class CheckoutOrder extends Controller
                 route('maxi-notify.payment')
             );
 
+            dd($paymentEntry);
+
             return $maxicash->queryStringURLPayment($paymentEntry);
         } catch (\Exception $e) {
             abort(500, 'Erreur de paiement : ' . $e->getMessage());
