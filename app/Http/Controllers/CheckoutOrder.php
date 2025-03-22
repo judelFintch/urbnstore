@@ -37,7 +37,7 @@ class CheckoutOrder extends Controller
             'country' => 'required|string',
             'address' => 'required|string',
             'company' => 'nullable|string',
-            'product_id' => 'required|exists:products,id',
+            'product_id' => 'required',
             'qte' => 'required|integer|min:1',
         ]);
     }
