@@ -41,12 +41,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CheckoutOrder;
 use App\Livewire\Payment\Success;
 use App\Livewire\Payment\Reject;
+use App\Http\Controllers\Payement;
 
 /*
 |--------------------------------------------------------------------------
 | Guest Routes
 |--------------------------------------------------------------------------
 */
+
+Route::post('/test', [Payement::class, 'handlePayment'])->name('process.payment');
 Route::get('/confirmation', Confirmation::class)->name('order.confirm');
 Route::get('/checkout', Checkout::class)->name('order.checkout');
 Route::prefix('/')->group(function () {
@@ -77,7 +80,10 @@ Route::prefix('/')->group(function () {
 |--------------------------------------------------------------------------
 */
 
+
 Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
+
+
 Route::group(['prefix' => 'process'], function () {
     //Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
    // Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');

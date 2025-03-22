@@ -25,7 +25,7 @@
                 @endguest
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
-                <form method="POST" action="{{ route('payment') }}" class="mt-6 space-y-4">
+                <form method="POST" action="{{ route('process.payment') }}" class="mt-6 space-y-4">
                     @csrf
                     <div class="space-y-4">
                         <label for="country" class="sr-only">Pays</label>
