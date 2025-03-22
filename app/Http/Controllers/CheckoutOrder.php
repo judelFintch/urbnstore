@@ -18,13 +18,22 @@ class CheckoutOrder extends Controller
 {
     public function handlePayment(Request $request)
     {
+        Log::debug('handlePayment: start');
+
         $validated = $this->validateRequest($request);
+        Log::debug('handlePayment: validated data', $validated);
+
         $product = Product::findOrFail($validated['product_id']);
+        Log::debug('handlePayment: product found', ['product_id' => $product->id, 'title' => $product->title]);
 
         $order = $this->createOrder($validated, $product);
+        Log::debug('handlePayment: order created', ['order_id' => $order->id, 'reference' => $order->reference]);
+
         $this->createOrderDetails($order, $product, $validated);
+        Log::debug('handlePayment: order details created');
 
         $paymentUrl = $this->initiateMaxicashPayment($order, $product->price * $validated['qte']);
+        Log::debug('handlePayment: redirecting to payment URL', ['url' => $paymentUrl]);
 
         return Redirect::to($paymentUrl);
     }
@@ -37,7 +46,7 @@ class CheckoutOrder extends Controller
             'country' => 'required|string',
             'address' => 'required|string',
             'company' => 'nullable|string',
-            'product_id' => 'required',
+            'product_id' => 'required|exists:products,id',
             'qte' => 'required|integer|min:1',
         ]);
     }
@@ -76,6 +85,8 @@ class CheckoutOrder extends Controller
     private function initiateMaxicashPayment(Order $order, float $amount): string
     {
         try {
+            Log::debug('initiateMaxicashPayment: start', ['amount' => $amount]);
+
             $maxicash = new Maxicash(
                 new Credential(
                     config('services.maxicash.merchant_id'),
@@ -90,7 +101,7 @@ class CheckoutOrder extends Controller
             $rejectedUrl = url('/process/rejected/payment');
             $notifyUrl = url('/process/maxi-notify/payment');
 
-            Log::info('Maxicash Payment URLs', [
+            Log::debug('initiateMaxicashPayment: URLs generated', [
                 'accepted' => $acceptedUrl,
                 'rejected' => $rejectedUrl,
                 'notify' => $notifyUrl,
@@ -109,9 +120,7 @@ class CheckoutOrder extends Controller
 
             $url = $maxicash->queryStringURLPayment($paymentEntry);
 
-            Log::info('Generated Maxicash payment URL', [
-                'url' => $url
-            ]);
+            Log::debug('initiateMaxicashPayment: payment URL generated', ['url' => $url]);
 
             return $url;
         } catch (\Exception $e) {
