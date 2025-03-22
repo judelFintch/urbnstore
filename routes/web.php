@@ -76,9 +76,11 @@ Route::prefix('/')->group(function () {
 | Admin Routes
 |--------------------------------------------------------------------------
 */
+
+Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
 Route::group(['prefix' => 'process'], function () {
     //Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
-    Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
+   // Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
     Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/maxi-notify/payment', [MaxiNotifyPaymentController::class, 'handlePayment'])->name('maxi-notify.payment');
