@@ -25,32 +25,40 @@ class Payement extends Controller
         $address = $request->input('address');
         $country = $request->input('country');
         $company = $request->input('company');
-        $productId = $request->input('product_id');
-        $quantity = (int) $request->input('qte');
+
+        $cart = json_decode($request->input('cart_json'), true);
+
+
         
-        $product = Product::find(19);
-        if (!$product) {
-            
-            echo 'produit non trouver';
-            //return redirect()->back()->with('error', 'Produit non trouvé.');
+
+        if (!is_array($cart) || empty($cart)) {
+            return redirect()->back()->with('error', 'Le panier est vide.');
         }
+
+        $total = array_reduce($cart, function ($sum, $item) {
+            return $sum + ($item['price'] * $item['quantity']);
+        }, 0);
+
+        echo json_encode($total);
+
+
         
+
+        $priceInCents = intval($total * 100);
+
         $randomNumber = rand(1, 100);
         $latestOrder = Order::latest()->first();
         $orderId = $latestOrder ? $latestOrder->id : 1;
         $reference = sprintf("ORD/URBN/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
-        
-        $totprice = $quantity * $product->price;
-        $priceInCents = intval($totprice * 100);
-        
-         $maxicash = new Maxicash(
+
+        $maxicash = new Maxicash(
             new Credential(
                 config('services.maxicash.merchant_id'),
                 config('services.maxicash.merchant_password')
             ),
             Environment::LIVE
         );
-        
+
         $paymentEntry = new PaymentEntry(
             $maxicash->credential,
             $priceInCents,
@@ -60,26 +68,26 @@ class Payement extends Controller
             route('rejected.payment'),
             route('maxi-notify.payment')
         );
-        
-         Order::create([
+
+        $order = Order::create([
             'name' => $fullName,
             'email' => $email,
             'address' => $address,
             'status' => 'pending',
             'reference' => $reference,
         ]);
-        
-         DetailsOrder::create([
-            'order_id' => Order::latest()->first()->id,
-            'quantity' => $quantity,
-            'product_description' => $product->id,
-            'product_title' => $product->title,
-            'product_price' => $product->price,
-        ]);
-        
+
+        foreach ($cart as $item) {
+            DetailsOrder::create([
+                'order_id' => $order->id,
+                'quantity' => $item['quantity'],
+                'product_description' => $item['id'],
+                'product_title' => $item['name'],
+                'product_price' => $item['price'],
+            ]);
+        }
+
         $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
-        return redirect()->to($paymentUrl);
-
-
+       // return redirect()->to($paymentUrl);
     }
 }
