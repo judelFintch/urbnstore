@@ -16,112 +16,70 @@ use Devscast\Maxicash\PaymentEntry;
 
 class Payement extends Controller
 {
-    //
-
     public function handlePayment(Request $request)
     {
+        $firstName = $request->input('first_name');
+        $lastName = $request->input('last_name');
+        $fullName = $firstName . ' ' . $lastName;
+        $email = auth()->check() ? auth()->user()->email : null;
+        $address = $request->input('address');
+        $country = $request->input('country');
+        $company = $request->input('company');
+        $productId = $request->input('product_id');
+        $quantity = (int) $request->input('qte');
+        
+        $product = Product::find(19);
+        if (!$product) {
+            
+            echo 'produit non trouver';
+            //return redirect()->back()->with('error', 'Produit non trouvé.');
+        }
+        
+        $randomNumber = rand(1, 100);
+        $latestOrder = Order::latest()->first();
+        $orderId = $latestOrder ? $latestOrder->id : 1;
+        $reference = sprintf("ORD/URBN/%s/%d/%d", date('Y-m-d'), $orderId, $randomNumber);
+        
+        $totprice = $quantity * $product->price;
+        $priceInCents = intval($totprice * 100);
+        
+         $maxicash = new Maxicash(
+            new Credential(
+                config('services.maxicash.merchant_id'),
+                config('services.maxicash.merchant_password')
+            ),
+            Environment::LIVE
+        );
+        
+        $paymentEntry = new PaymentEntry(
+            $maxicash->credential,
+            $priceInCents,
+            $reference,
+            route('accepted.payment'),
+            route('rejected.payment'),
+            route('rejected.payment'),
+            route('maxi-notify.payment')
+        );
+        
+         Order::create([
+            'name' => $fullName,
+            'email' => $email,
+            'address' => $address,
+            'status' => 'pending',
+            'reference' => $reference,
+        ]);
+        
+         DetailsOrder::create([
+            'order_id' => Order::latest()->first()->id,
+            'quantity' => $quantity,
+            'product_description' => $product->id,
+            'product_title' => $product->title,
+            'product_price' => $product->price,
+        ]);
+        
+        $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
+        return redirect()->to($paymentUrl);
 
-            $validated = $this->validateRequest($request);
-            $product = Product::findOrFail($validated['product_id']);
-    
-            $order = $this->createOrder($validated, $product);
-            $this->createOrderDetails($order, $product, $validated);
-    
-            $paymentUrl = $this->initiateMaxicashPayment($order, $product->price * $validated['qte']);
-    
-            return Redirect::to($paymentUrl);
-        }
-    
-        private function validateRequest(Request $request): array
-        {
-            return $request->validate([
-                'first_name' => 'required|string',
-                'last_name' => 'required|string',
-                'country' => 'required|string',
-                'address' => 'required|string',
-                'company' => 'nullable|string',
-                'product_id' => 'required',
-                'qte' => 'required|integer|min:1',
-            ]);
-        }
-    
-        private function createOrder(array $validated, Product $product): Order
-        {
-            $reference = $this->generateReference();
-    
-            return Order::create([
-                'user_id' => Auth::id(),
-                'name' => $validated['first_name'] . ' ' . $validated['last_name'],
-                'email' => Auth::check() ? Auth::user()->email : null,
-                'address' => $validated['address'],
-                'status' => 'pending',
-                'reference' => $reference,
-            ]);
-        }
-    
-        private function createOrderDetails(Order $order, Product $product, array $validated): void
-        {
-            DetailsOrder::create([
-                'order_id' => $order->id,
-                'quantity' => $validated['qte'],
-                'product_description' => $product->id,
-                'product_title' => $product->title,
-                'product_price' => $product->price,
-            ]);
-        }
-    
-        private function generateReference(): string
-        {
-            $lastId = Order::max('id') ?? 0;
-            return sprintf('ORD/URBN/%s/%d/%d', now()->format('Y-m-d'), $lastId + 1, rand(1, 100));
-        }
-    
-        private function initiateMaxicashPayment(Order $order, float $amount): string
-        {
-            try {
-                $maxicash = new Maxicash(
-                    new Credential(
-                        config('services.maxicash.merchant_id'),
-                        config('services.maxicash.merchant_password')
-                    ),
-                    Environment::LIVE
-                );
-    
-                $priceInCents = intval($amount * 100);
-    
-                $acceptedUrl = url('/process/accepted/payment');
-                $rejectedUrl = url('/process/rejected/payment');
-                $notifyUrl = url('/process/maxi-notify/payment');
-    
-                Log::info('Maxicash Payment URLs', [
-                    'accepted' => $acceptedUrl,
-                    'rejected' => $rejectedUrl,
-                    'notify' => $notifyUrl,
-                    'reference' => $order->reference,
-                ]);
-    
-                $paymentEntry = new PaymentEntry(
-                    $maxicash->credential,
-                    $priceInCents,
-                    $order->reference,
-                    $acceptedUrl,
-                    $rejectedUrl,
-                    $rejectedUrl,
-                    $notifyUrl
-                );
-    
-                $url = $maxicash->queryStringURLPayment($paymentEntry);
-    
-                Log::info('Generated Maxicash payment URL', [
-                    'url' => $url
-                ]);
-    
-                return $url;
-            } catch (\Exception $e) {
-                Log::error('Maxicash payment failed', [
-                    'error' => $e->getMessage()
-                ]);
-                abort(500, 'Erreur de paiement : ' . $e->getMessage());
-            }
-        }
+
+    }
 }
