@@ -21,15 +21,12 @@ class Payement extends Controller
         $firstName = $request->input('first_name');
         $lastName = $request->input('last_name');
         $fullName = $firstName . ' ' . $lastName;
-        $email = auth()->check() ? auth()->user()->email : null;
+        $email = Auth::check() ? Auth::user()->email : null;
         $address = $request->input('address');
         $country = $request->input('country');
         $company = $request->input('company');
 
         $cart = json_decode($request->input('cart_json'), true);
-
-
-        
 
         if (!is_array($cart) || empty($cart)) {
             return redirect()->back()->with('error', 'Le panier est vide.');
@@ -39,10 +36,6 @@ class Payement extends Controller
             return $sum + ($item['price'] * $item['quantity']);
         }, 0);
 
-        echo json_encode($total);
-
-
-        
 
         $priceInCents = intval($total * 100);
 
@@ -71,6 +64,7 @@ class Payement extends Controller
 
         $order = Order::create([
             'name' => $fullName,
+            'user_id' => Auth::check() ? Auth::user()->id : null,
             'email' => $email,
             'address' => $address,
             'status' => 'pending',
@@ -88,6 +82,6 @@ class Payement extends Controller
         }
 
         $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
-       // return redirect()->to($paymentUrl);
+        return redirect()->to($paymentUrl);
     }
 }
