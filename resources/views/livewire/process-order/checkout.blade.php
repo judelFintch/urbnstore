@@ -21,8 +21,8 @@
                             pour suivre votre commande et accélérer le paiement.
                         </p>
                     </div>
-                    <!-- Formulaire invité Livewire -->
                 @endguest
+
                 @auth
                 <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
                 <form method="POST" action="{{ route('process.payment') }}" class="mt-6 space-y-4">
@@ -35,7 +35,7 @@
                             <option value="cd">Congo Kinshasa</option>
                         </select>
                         @error('country')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-                
+
                         <div class="grid grid-cols-2 gap-4">
                             <input type="text" name="first_name" placeholder="Prénom" required
                                 class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('first_name') border-red-500 @enderror" />
@@ -44,29 +44,28 @@
                         </div>
                         @error('first_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
                         @error('last_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
-                
+
                         <input type="text" name="company" placeholder="Société (optionnel)"
                             class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror" />
                         @error('company')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-                
+
                         <input type="text" name="address" placeholder="Adresse" required
                             class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
                         @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
-                        <!-- Champs cachés pour le produit -->
-                        <input type="hidden" name="product_id" value="1">
-                        <input type="hidden" name="qte" value="2">
+
+                        <!-- Champs dynamiques injectés depuis le panier -->
+                        <input type="hidden" name="cart_json" id="cart_json">
+                        <input type="hidden" name="total" id="total">
                     </div>
-                
+
                     <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
-                        <legend class="text-base font-medium text-gray-700">Choisissez votre mode de paiement</legend>
-                        <input type="hidden" name="total" value="6800">
+                       
                         <button type="submit"
                             class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
                             Payer maintenant (connecté) - {{ auth()->user()->name }}
                         </button>
                     </fieldset>
                 </form>
-                </fieldset>
                 @endauth
             </div>
 
@@ -87,7 +86,7 @@
                             <h3 class="font-semibold">T-shirt MARINA ANGLING - SABLE</h3>
                             <p class="text-gray-500">Taille S</p>
                         </div>
-                        <div class="font-semibold">68,00 $</div>
+                        <div class="font-semibold">68,00 $</div>
                     </div>
 
                     <div class="flex items-center gap-4 mb-4 mt-8">
@@ -100,11 +99,11 @@
                     <div class="space-y-2 text-sm mb-4">
                         <div class="flex justify-between">
                             <span>Sous-total</span>
-                            <span id="order-subtotal">0,00 $</span>
+                            <span id="order-subtotal">0,00 $</span>
                         </div>
                         <div class="flex justify-between">
                             <span>Livraison</span>
-                            <span id="order-shipping">14,00 $</span>
+                            <span id="order-shipping">14,00 $</span>
                         </div>
                     </div>
 
@@ -112,12 +111,12 @@
                         <span class="text-lg font-medium cartSubtotal">Total</span>
                         <div class="text-right">
                             <span class="text-sm text-gray-500">USD</span>
-                            <span id="order-total" class="text-2xl font-medium ml-1">0,00 $</span>
+                            <span id="order-total" class="text-2xl font-medium ml-1">0,00 $</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <script src="{{ asset('js/checkout.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/cartOrderDetails.js') }}"></script>
 </div>
