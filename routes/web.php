@@ -49,7 +49,7 @@ use App\Http\Controllers\Payement;
 |--------------------------------------------------------------------------
 */
 
-Route::post('/test', [Payement::class, 'handlePayment'])->name('process.payment');
+
 Route::get('/confirmation', Confirmation::class)->name('order.confirm');
 Route::get('/checkout', Checkout::class)->name('order.checkout');
 Route::prefix('/')->group(function () {
@@ -87,6 +87,7 @@ Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment'
 Route::group(['prefix' => 'process'], function () {
     //Route::post('/payment', [FlexPayController::class, 'handlePayment'])->name('payment');
    // Route::post('/payment', [CheckoutOrder::class, 'handlePayment'])->name('payment');
+    Route::post('/payement', [Payement::class, 'handlePayment'])->name('process.payment');
     Route::get('/accepted/payment', \App\Livewire\Payment\Success::class)->name('accepted.payment');
     Route::get('/rejected/payment', \App\Livewire\Payment\Reject::class)->name('rejected.payment');
     Route::get('/maxi-notify/payment', [MaxiNotifyPaymentController::class, 'handlePayment'])->name('maxi-notify.payment');
