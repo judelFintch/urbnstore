@@ -23,7 +23,7 @@ class AdminDashboard extends Component
     public function mount(ProductService $productService)
     {
         $this->products = $productService->getPaginateProduct(self::PAGINATE_NUMBER);
-        $this->lastOrders = Order::latest()->take(5)->get(); // Récupère les 5 dernières commandes
+        $this->lastOrders = Order::with('details')->latest()->take(5)->get(); // Récupère les 5 dernières commandes
 
     }
 }

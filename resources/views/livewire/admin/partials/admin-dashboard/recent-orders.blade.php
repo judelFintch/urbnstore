@@ -28,12 +28,13 @@
                     <div class="user-card">
                         <div class="user-avatar sm bg-purple-dim">
                             <span>
-                                {{ strtoupper(substr($order->customer->name ?? '??', 0, 1)) }}
-                                {{ strtoupper(substr($order->customer->name ?? '??', strpos($order->customer->name ?? '', ' ') + 1, 1)) }}
+                                {{ strtoupper(substr($order->name ?? '??', 0, 1)) }}
+                                {{ strtoupper(substr($order->name ?? '??', strpos($order->name ?? '', ' ') + 1, 1)) }}
                             </span>
+
                         </div>
                         <div class="user-name">
-                            <span class="tb-lead">{{ $order->customer->name ?? 'Client inconnu' }}</span>
+                            <span class="tb-lead">{{ $order->name ?? 'Client inconnu' }}</span>
                         </div>
                     </div>
                 </div>
@@ -43,7 +44,7 @@
                 </div>
 
                 <div class="nk-tb-col">
-                    <span class="tb-sub tb-amount">{{ number_format($order->amount, 2) }}
+                    <span class="tb-sub tb-amount">
                         <span>USD</span></span>
                 </div>
 
