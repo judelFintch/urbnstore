@@ -84,9 +84,17 @@
                             <h5 class="fw-bold text-dark">Produits similaires</h5>
                             <div class="row">
                                 @foreach ($suggestedProducts as $suggestedProduct)
+                                    @php
+                                        $productUrl = route('show-product', [
+                                            'id' => $suggestedProduct->id,
+                                            'category' => $suggestedProduct->category->name,
+                                            'slug' => $suggestedProduct->slug,
+                                        ]);
+                                        $categoryName = $suggestedProduct->category->name;
+                                    @endphp
                                     <div class="col-md-4 mb-4">
                                         <div class="card product-card border-0 shadow-sm h-100">
-                                            <a href="#" class="product-link">
+                                            <a href="{{$productUrl}}" class="product-link">
                                                 <div class="position-relative overflow-hidden">
                                                     <img src="{{ $suggestedProduct->getFirstImageUrl() }}"
                                                         alt="Product Image" class="card-img-top img-fluid hover-scale">
@@ -188,41 +196,5 @@
             </main>
         </div>
     </div>
-
-
-
-    <!-- Styles -->
-    <style>
-        .hover-active:hover {
-            color: #0d6efd;
-            font-weight: bold;
-        }
-
-        .hover-scale {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-
-        .hover-underline:hover {
-            text-decoration: underline;
-        }
-
-        /* Transition pour la hauteur de la barre latérale */
-        .sidebar {
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Effet lors du survol des liens */
-        .sidebar a {
-            transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-        }
-
-        .sidebar a:hover {
-            color: #0d6efd;
-            font-weight: bold;
-    </style>
 
 </div>
