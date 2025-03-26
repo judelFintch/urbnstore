@@ -2,7 +2,7 @@
     <section class="bg0 p-t-23 p-b-130">
         <div class="container">
             <div class="p-b-10">
-                <h3 class="ltext-103 cl5 text-center">
+                <h3 class="ltext-103 cl5 text-center mb-4">
                     Aperçu des produits
                 </h3>
             </div>
