@@ -1,5 +1,4 @@
 <?php
-// app/Livewire/Guest/Shop/Shop.php
 
 namespace App\Livewire\Guest\Shop;
 
@@ -19,11 +18,11 @@ class Shop extends Component
     public $selectedCategory = null;
     public $search = '';
 
-    public $minPrice = 0;
-    public $maxPrice = 500;
-
     public $filterMin = 0;
-    public $filterMax = 500;
+    public $filterMax = 1000;
+
+    public $minPrice = 0;
+    public $maxPrice = 1000;
 
     protected $queryString = [
         'selectedCategory' => ['except' => null],
@@ -33,6 +32,8 @@ class Shop extends Component
     public function mount()
     {
         $this->categories = CategoryArticles::all();
+        $this->minPrice = $this->filterMin;
+        $this->maxPrice = $this->filterMax;
     }
 
     public function applyFilters()
@@ -59,7 +60,9 @@ class Shop extends Component
         $this->search = '';
         $this->filterMin = 0;
         $this->filterMax = 1000;
-        $this->applyFilters();
+        $this->minPrice = 0;
+        $this->maxPrice = 1000;
+        $this->resetPage();
     }
 
     public function render()
@@ -89,7 +92,7 @@ class Shop extends Component
     public function trackProduct($productId)
     {
         $recentlyViewed = session()->get('recently_viewed', []);
-        if (! in_array($productId, $recentlyViewed)) {
+        if (!in_array($productId, $recentlyViewed)) {
             $recentlyViewed[] = $productId;
             session()->put('recently_viewed', $recentlyViewed);
         }

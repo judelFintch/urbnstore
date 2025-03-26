@@ -129,7 +129,7 @@
                                     @foreach ($recentlyViewedProducts as $recentProduct)
                                         <div class="col-md-4 mb-4">
                                             <div class="card product-card border-0 shadow-sm h-100">
-                                                <a href="#" class="product-link">
+                                                <a href="{{$productUrl}}" class="product-link">
                                                     <div class="position-relative overflow-hidden">
                                                         <img src="{{ $recentProduct->getFirstImageUrl() }}"
                                                             alt="Product Image"
@@ -138,7 +138,7 @@
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title">
-                                                        <a href="#"
+                                                        <a href="{{$productUrl}}"
                                                             class="text-dark text-decoration-none hover-underline">
                                                             {{ $recentProduct->title }}
                                                         </a>
@@ -160,9 +160,17 @@
                         @endif
                     @else
                         @foreach ($products as $product)
+                        @php
+                        $productUrl = route('show-product', [
+                            'id' => $product->id,
+                            'category' => $product->category->name,
+                            'slug' => $product->slug,
+                        ]);
+                        $categoryName = $product->category->name;
+                    @endphp
                             <div class="col-md-4 mb-4">
                                 <div class="card product-card border-0 shadow-sm h-100">
-                                    <a href="#" class="product-link"
+                                    <a href="{{$productUrl}}" class="product-link"
                                         wire:click="trackProduct({{ $product->id }})">
                                         <div class="position-relative overflow-hidden">
                                             <img src="{{ $product->getFirstImageUrl() }}" alt="Product Image"
@@ -171,7 +179,7 @@
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            <a href="#" class="text-dark text-decoration-none hover-underline">
+                                            <a href="{{$productUrl}}" class="text-dark text-decoration-none hover-underline">
                                                 {{ $product->title }}
                                             </a>
                                         </h5>
