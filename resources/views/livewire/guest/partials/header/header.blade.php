@@ -121,18 +121,18 @@
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
                 @guest
-                <li class="p-b-13">
-                    <a href="{{route('login')}}" class="stext-102 cl2 hov-cl1 trans-04">
-                        Connexion
-                    </a>
-                </li>
-                <li class="p-b-13">
-                    <a href="{{route('register')}}" class="stext-102 cl2 hov-cl1 trans-04">
-                        Inscription
-                    </a>
-                </li>
-            
-                    
+                    <li class="p-b-13">
+                        <a href="{{ route('login') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Connexion
+                        </a>
+                    </li>
+                    <li class="p-b-13">
+                        <a href="{{ route('register') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                            Inscription
+                        </a>
+                    </li>
+
+
                 @endguest
             </ul>
 
@@ -173,24 +173,23 @@
                     </li>
 
                     <li class="p-b-13">
-                        <a href="{{route('terms-and-conditions')}}"" class=" stext-102 cl2 hov-cl1 trans-04">
+                        <a href="{{ route('terms-and-conditions') }}"" class=" stext-102 cl2 hov-cl1 trans-04">
                             Termes et Conditions
                         </a>
                     </li>
 
                     <!-- User Options -->
                     @guest
-                    <li class="p-b-13">
-                        <a href="{{route('login')}}" class="stext-102 cl2 hov-cl1 trans-04">
-                            Connexion
-                        </a>
-                    </li>
-                    <li class="p-b-13">
-                        <a href="{{route('register')}}" class="stext-102 cl2 hov-cl1 trans-04">
-                            Inscription
-                        </a>
-                    </li>
-                       
+                        <li class="p-b-13">
+                            <a href="{{ route('login') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                                Connexion
+                            </a>
+                        </li>
+                        <li class="p-b-13">
+                            <a href="{{ route('register') }}" class="stext-102 cl2 hov-cl1 trans-04">
+                                Inscription
+                            </a>
+                        </li>
                     @else
                         <div class="dropdown">
                             <a href="#" class="icon-header-item dropdown-toggle" data-bs-toggle="dropdown">
@@ -205,7 +204,8 @@
                                     </a>
                                 </li>
                             </ul>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
                                 @csrf
                             </form>
                         </div>
@@ -218,18 +218,19 @@
                     </span>
 
                     <div class="flex-w flex-sb p-t-36 gallery-lb">
-                      
-                        @if(!empty($products) && is_iterable($products))
-                        @foreach ($products as $product)
-                            <!-- item gallery sidebar -->
-                            <div class="wrap-item-gallery m-b-10">
-                                <a class="item-gallery bg-img1" href="images/gallery-09.jpg" data-lightbox="gallery"
-                                    style="background-image: url('{{ $product->getFirstImageUrl() }}');"></a>
-                            </div>
-                        @endforeach
-                    @else
-                        <p>Aucun produit disponible.</p>
-                    @endif
+
+                        @if (!empty($products) && is_iterable($products))
+                            @foreach ($products as $product)
+                                <!-- item gallery sidebar -->
+                                <div class="wrap-item-gallery m-b-10">
+                                    <a class="item-gallery bg-img1" href="images/gallery-09.jpg"
+                                        data-lightbox="gallery"
+                                        style="background-image: url('{{ $product->getFirstImageUrl() }}');"></a>
+                                </div>
+                            @endforeach
+                        @else
+                            <p>Aucun produit disponible.</p>
+                        @endif
 
                     </div>
                 </div>

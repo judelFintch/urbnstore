@@ -42,6 +42,8 @@ use App\Http\Controllers\CheckoutOrder;
 use App\Livewire\Payment\Success;
 use App\Livewire\Payment\Reject;
 use App\Http\Controllers\Payement;
+use App\Livewire\Admin\User\Partials\ListUser;
+use App\Livewire\Admin\User\UserDashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,6 +96,12 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
     // Dashboard
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
     Route::get('/product-photo-upload/{id}', ProductPhotoUpload::class)->name('admin.product-photo-upload');
+    
+    
+    
+    Route::get('users/list', ListUser::class)->name('admin.user.view');
+    Route::get('users/dashboard', UserDashboard::class)->name('admin.user.dashboard');
+       
 
     // Management
     Route::prefix('management')->group(function () {
@@ -101,6 +109,12 @@ Route::middleware(['auth', 'check.admin:9', 'verified'])->group(function () {
         Route::get('/promotion', Promotion::class)->name('admin.promotions.view');
         Route::get('/shipping', Shipping::class)->name('admin.shipping.view');
     });
+
+
+  
+  
+     
+   
 
     // Categories
     Route::prefix('categories')->name('categories.')->group(function () {
