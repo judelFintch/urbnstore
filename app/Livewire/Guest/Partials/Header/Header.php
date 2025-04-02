@@ -42,3 +42,4 @@ class Header extends Component
         return view('livewire.guest.partials.header.header', compact('products'));
     }
 }
+

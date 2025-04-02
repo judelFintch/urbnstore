@@ -120,7 +120,22 @@
                 </li>
                 <li><a href="{{ route('home.about') }}">À propos</a></li>
                 <li><a href="{{ route('home.contact') }}">Contact</a></li>
+                @guest
+                <li class="p-b-13">
+                    <a href="{{route('login')}}" class="stext-102 cl2 hov-cl1 trans-04">
+                        Connexion
+                    </a>
+                </li>
+                <li class="p-b-13">
+                    <a href="{{route('register')}}" class="stext-102 cl2 hov-cl1 trans-04">
+                        Inscription
+                    </a>
+                </li>
+            
+                    
+                @endguest
             </ul>
+
         </div>
 
         <!-- Modal Search -->
@@ -162,9 +177,6 @@
                             Termes et Conditions
                         </a>
                     </li>
-
-
-                   
 
                     <!-- User Options -->
                     @guest
