@@ -49,7 +49,32 @@ class RegisteredUserController extends Controller
                     }
                 },
             ],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'email' => [
+                'required',
+                'string',
+                'email:rfc,dns',
+                'max:255',
+                'lowercase',
+                'unique:' . User::class,
+                function ($attribute, $value, $fail) {
+                    $blacklist = [
+                        'yopmail.com',
+                        'mailinator.com',
+                        'tempmail.com',
+                        '10minutemail.com',
+                        'guerrillamail.com',
+                        'trashmail.com',
+                        'fakeinbox.com'
+                    ];
+
+                    $domain = substr(strrchr($value, "@"), 1);
+
+                    if (in_array(strtolower($domain), $blacklist)) {
+                        $fail("L'adresse email semble provenir d'un service temporaire. Veuillez utiliser une adresse valide.");
+                    }
+                },
+            ],
+
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
