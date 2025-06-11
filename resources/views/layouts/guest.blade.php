@@ -144,6 +144,7 @@
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{ asset('js/cart.js') }}" defer></script>
     <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+    <script type="module" src="{{ asset('build/assets/app.js') }}"></script>
 
     <!-- noUiSlider CSS -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
