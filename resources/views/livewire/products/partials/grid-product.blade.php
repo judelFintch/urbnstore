@@ -22,7 +22,7 @@
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $categoryName }}">
                             <!-- Image du produit -->
                             <div class="block2-pic hov-img0 label-new" data-label="new">
-                                <img src="{{ $product->getFirstImageUrl() }}" alt="Image du produit"
+                                <img src="{{ $product->getFirstImageUrl() }}" alt="{{ $product['title'] }}"
                                     class="product-image">
                             </div>
                             <!-- Informations du produit -->
