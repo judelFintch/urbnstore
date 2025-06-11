@@ -39,6 +39,10 @@ mix
         'resources/js/main.js',
     ], 'public/js/app.js')
 
+    // Fichiers du slider produit
+    .postCss('resources/css/slide-product.css', 'public/css/slide-product.css')
+    .js('resources/js/slide-product.js', 'public/js/slide-product.js')
+
     // Ajout de version pour éviter les problèmes de cache
     .version();
 d
