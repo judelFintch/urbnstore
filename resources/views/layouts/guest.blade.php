@@ -32,22 +32,7 @@
         <x-backtop></x-backtop>
     @endif
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/jquery/jquery-3.2.1.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/animsition/js/animsition.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/bootstrap/js/popper.js')}}"></script>
-    <script src="{{asset('vendor/bootstrap/js/bootstrap.min.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/select2/select2.min.js')}}"></script>
+    @vite(['resources/js/app.js', 'resources/js/cart.js'])
     <script>
         $(".js-select2").each(function () {
             $(this).select2({
@@ -59,18 +44,12 @@
 
 
     <!--===============================================================================================-->
-    <script src="{{asset('vendor/daterangepicker/moment.min.js')}}"></script>
-    <script src="{{asset('vendor/daterangepicker/daterangepicker.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/slick/slick.min.js')}}"></script>
-    <script src="{{asset('js/slick-custom.js')}}"></script>
-    <!--===============================================================================================-->
-    <script src="{{asset('vendor/parallax100/parallax100.js')}}"></script>
+    <!-- Scripts relying on the compiled dependencies -->
     <script>
         $('.parallax100').parallax100();
     </script>
     <!--===============================================================================================-->
-    <script src="{{asset('vendor/MagnificPopup/jquery.magnific-popup.min.js')}}"></script>
+    <!-- Magnific Popup initialization -->
     <script>
         $('.gallery-lb').each(function () { // the containers for all your galleries
             $(this).magnificPopup({
@@ -86,7 +65,7 @@
     <!--===============================================================================================-->
 
     <!--===============================================================================================-->
-    <script src="{{asset('vendor/sweetalert/sweetalert.min.js')}}"></script>
+    <!-- SweetAlert initialization -->
     <script>
         $('.js-addwish-b2, .js-addwish-detail').on('click', function (e) {
             e.preventDefault();
@@ -124,7 +103,7 @@
 
     </script>
     <!--===============================================================================================-->
-    <script src="{{asset('vendor/perfect-scrollbar/perfect-scrollbar.min.js')}}"></script>
+    <!-- Perfect Scrollbar initialization -->
     <script>
         $('.js-pscroll').each(function () {
             $(this).css('position', 'relative');
@@ -141,13 +120,6 @@
         });
     </script>
     <!--===============================================================================================-->
-    <script src="{{asset('js/main.js')}}"></script>
-    <script src="{{ asset('js/cart.js') }}" defer></script>
-    <script src="vendor/isotope/isotope.pkgd.min.js"></script>
-
-    <!-- noUiSlider CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
-
 </body>
 
 </html>
