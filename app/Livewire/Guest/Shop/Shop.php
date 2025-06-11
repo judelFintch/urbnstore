@@ -2,11 +2,11 @@
 
 namespace App\Livewire\Guest\Shop;
 
+use App\Models\CategoryArticles;
+use App\Models\Product;
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Product;
-use App\Models\CategoryArticles;
-use Livewire\Attributes\Layout;
 
 #[Layout('layouts.guest', ['title' => 'Boutique'])]
 class Shop extends Component
@@ -14,67 +14,70 @@ class Shop extends Component
     use WithPagination;
 
     public $categories;
-    public $selectedCategory = null; // ID de la catégorie sélectionnée
-    public $priceRange = 1000; // Filtre par prix
-    public $search = ''; // Recherche par titre
+
+    public $selectedCategory = null;
+    public $search = '';
+
+    public $filterMin = 0;
+    public $filterMax = 1000;
+
+    public $minPrice = 0;
+    public $maxPrice = 1000;
 
     protected $queryString = [
         'selectedCategory' => ['except' => null],
-        'priceRange' => ['except' => 1000],
         'search' => ['except' => ''],
     ];
 
     public function mount()
     {
-        $this->categories = CategoryArticles::all(); // Récupère toutes les catégories
+        $this->categories = CategoryArticles::all();
+        $this->minPrice = $this->filterMin;
+        $this->maxPrice = $this->filterMax;
+    }
+
+    public function applyFilters()
+    {
+        $this->minPrice = $this->filterMin;
+        $this->maxPrice = $this->filterMax;
+        $this->resetPage();
     }
 
     public function selectCategory($categoryId)
     {
-        // Mise à jour de la catégorie sélectionnée
         $this->selectedCategory = $categoryId;
-        $this->resetPage(); // Réinitialise la pagination
+        $this->resetPage();
     }
 
-    public function updating($field)
+    public function updatingSearch()
     {
-        // Réinitialise la pagination lors de la mise à jour d'un filtre
-        if (in_array($field, ['selectedCategory', 'priceRange', 'search'])) {
-            $this->resetPage();
-        }
+        $this->resetPage();
     }
 
     public function resetFilters()
     {
         $this->selectedCategory = null;
-        $this->priceRange = 1000;
         $this->search = '';
-        $this->resetPage(); // Réinitialise la pagination
+        $this->filterMin = 0;
+        $this->filterMax = 1000;
+        $this->minPrice = 0;
+        $this->maxPrice = 1000;
+        $this->resetPage();
     }
 
     public function render()
     {
-
         $productsQuery = Product::with('category', 'details')
-            ->when($this->selectedCategory, function ($query) {
-                return $query->where('category_id', $this->selectedCategory);
-            })
-            ->when($this->search, function ($query) {
-                return $query->where('title', 'like', '%' . $this->search . '%');
-            })
-            ->where('price', '<=', $this->priceRange);
+            ->when($this->selectedCategory, fn($q) => $q->where('category_id', $this->selectedCategory))
+            ->when($this->search, fn($q) => $q->where('title', 'like', '%'.$this->search.'%'))
+            ->whereBetween('price', [$this->minPrice, $this->maxPrice]);
 
         $products = $productsQuery->paginate(12);
 
-        // Suggestions basées sur la catégorie ou par défaut
         $suggestedProducts = $this->selectedCategory
-            ? Product::where('category_id', $this->selectedCategory)
-                ->inRandomOrder()
-                ->take(6)
-                ->get()
+            ? Product::where('category_id', $this->selectedCategory)->inRandomOrder()->take(6)->get()
             : Product::inRandomOrder()->take(6)->get();
 
-        // Produits récemment consultés (stockés en session)
         $recentlyViewedProductIds = session()->get('recently_viewed', []);
         $recentlyViewedProducts = Product::whereIn('id', $recentlyViewedProductIds)->take(6)->get();
 

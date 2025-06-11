@@ -146,7 +146,6 @@ class ProductStore extends Component
     private function uploadImages($files)
     {
         $uploadedPaths = [];
-
         foreach ($files as $file) {
             if ($file->isValid()) {
                 try {

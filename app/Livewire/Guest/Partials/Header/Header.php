@@ -4,6 +4,7 @@ namespace App\Livewire\Guest\Partials\Header;
 
 use App\Models\CategoryArticles;
 use Livewire\Component;
+use App\Models\Product;
 
 class Header extends Component
 {
@@ -12,6 +13,7 @@ class Header extends Component
     public $defaultCategoryArticles;
 
     public $defaultUrl;
+    public $products;
 
     // Définir directement les constantes ici
     const DEFAULT_CATEGORY = 'all_categories';
@@ -27,12 +29,16 @@ class Header extends Component
             ->take(5)
             ->get();
 
+
+
         $this->defaultCategoryArticles = $providedDefaultCategory ?: self::DEFAULT_CATEGORY;
         $this->defaultUrl = self::DEFAULT_URL_PRODUCT;
     }
 
     public function render()
     {
-        return view('livewire.guest.partials.header.header');
+
+        $products = Product::with(['details', 'productPicture'])->take(5)->get();
+        return view('livewire.guest.partials.header.header', compact('products'));
     }
 }

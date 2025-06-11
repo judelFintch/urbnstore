@@ -30,16 +30,24 @@
                     </ul>
 
                     <hr class="my-4">
-
                     <!-- Price Filter -->
                     <h5 class="fw-bold mb-3 text-primary">Filtrer par prix</h5>
-                    <form>
-                        <input type="range" wire:model="priceRange" class="form-range" min="0" max="1000">
-                        <div class="d-flex justify-content-between">
-                            <span>0€</span>
-                            <span>{{ $priceRange }}€</span>
-                        </div>
-                    </form>
+
+                    <div class="mb-2">
+                        <label for="filterMin" class="form-label">Min: {{ $filterMin }} $</label>
+                        <input type="range" min="0" max="1000" wire:model="filterMin" class="form-range"
+                            id="filterMin">
+                    </div>
+
+                    <div class="mb-2">
+                        <label for="filterMax" class="form-label">Max: {{ $filterMax }} $</label>
+                        <input type="range" min="0" max="1000" wire:model="filterMax" class="form-range"
+                            id="filterMax">
+                    </div>
+
+                    <button class="btn btn-outline-primary btn-sm w-100" wire:click="applyFilters">
+                        Appliquer les filtres
+                    </button>
 
                     <hr class="my-4">
 
@@ -76,17 +84,26 @@
                             <h5 class="fw-bold text-dark">Produits similaires</h5>
                             <div class="row">
                                 @foreach ($suggestedProducts as $suggestedProduct)
+                                    @php
+                                        $productUrl = route('show-product', [
+                                            'id' => $suggestedProduct->id,
+                                            'category' => $suggestedProduct->category->name,
+                                            'slug' => $suggestedProduct->slug,
+                                        ]);
+                                        $categoryName = $suggestedProduct->category->name;
+                                    @endphp
                                     <div class="col-md-4 mb-4">
                                         <div class="card product-card border-0 shadow-sm h-100">
-                                            <a href="#" class="product-link">
+                                            <a href="{{$productUrl}}" class="product-link">
                                                 <div class="position-relative overflow-hidden">
-                                                    <img src="{{ $suggestedProduct->getFirstImageUrl() }}" alt="Product Image"
-                                                        class="card-img-top img-fluid hover-scale">
+                                                    <img src="{{ $suggestedProduct->getFirstImageUrl() }}"
+                                                        alt="Product Image" class="card-img-top img-fluid hover-scale">
                                                 </div>
                                             </a>
                                             <div class="card-body">
                                                 <h5 class="card-title">
-                                                    <a href="#" class="text-dark text-decoration-none hover-underline">
+                                                    <a href="#"
+                                                        class="text-dark text-decoration-none hover-underline">
                                                         {{ $suggestedProduct->title }}
                                                     </a>
                                                 </h5>
@@ -112,20 +129,23 @@
                                     @foreach ($recentlyViewedProducts as $recentProduct)
                                         <div class="col-md-4 mb-4">
                                             <div class="card product-card border-0 shadow-sm h-100">
-                                                <a href="#" class="product-link">
+                                                <a href="{{$productUrl}}" class="product-link">
                                                     <div class="position-relative overflow-hidden">
-                                                        <img src="{{ $recentProduct->getFirstImageUrl() }}" alt="Product Image"
+                                                        <img src="{{ $recentProduct->getFirstImageUrl() }}"
+                                                            alt="Product Image"
                                                             class="card-img-top img-fluid hover-scale">
                                                     </div>
                                                 </a>
                                                 <div class="card-body">
                                                     <h5 class="card-title">
-                                                        <a href="#" class="text-dark text-decoration-none hover-underline">
+                                                        <a href="{{$productUrl}}"
+                                                            class="text-dark text-decoration-none hover-underline">
                                                             {{ $recentProduct->title }}
                                                         </a>
                                                     </h5>
                                                     <div class="d-flex justify-content-between align-items-center">
-                                                        <span class="text-primary fw-bold">{{ $recentProduct->currency }}
+                                                        <span
+                                                            class="text-primary fw-bold">{{ $recentProduct->currency }}
                                                             {{ $recentProduct->price }}</span>
                                                         <small class="text-muted">
                                                             {{ $recentProduct->stock > 0 ? $recentProduct->stock . ' en stock' : 'Indisponible' }}
@@ -140,9 +160,18 @@
                         @endif
                     @else
                         @foreach ($products as $product)
+                        @php
+                        $productUrl = route('show-product', [
+                            'id' => $product->id,
+                            'category' => $product->category->name,
+                            'slug' => $product->slug,
+                        ]);
+                        $categoryName = $product->category->name;
+                    @endphp
                             <div class="col-md-4 mb-4">
                                 <div class="card product-card border-0 shadow-sm h-100">
-                                    <a href="#" class="product-link" wire:click="trackProduct({{ $product->id }})">
+                                    <a href="{{$productUrl}}" class="product-link"
+                                        wire:click="trackProduct({{ $product->id }})">
                                         <div class="position-relative overflow-hidden">
                                             <img src="{{ $product->getFirstImageUrl() }}" alt="Product Image"
                                                 class="card-img-top img-fluid hover-scale">
@@ -150,7 +179,7 @@
                                     </a>
                                     <div class="card-body">
                                         <h5 class="card-title">
-                                            <a href="#" class="text-dark text-decoration-none hover-underline">
+                                            <a href="{{$productUrl}}" class="text-dark text-decoration-none hover-underline">
                                                 {{ $product->title }}
                                             </a>
                                         </h5>
@@ -175,41 +204,5 @@
             </main>
         </div>
     </div>
-
-
-
-    <!-- Styles -->
-    <style>
-        .hover-active:hover {
-            color: #0d6efd;
-            font-weight: bold;
-        }
-
-        .hover-scale {
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .hover-scale:hover {
-            transform: scale(1.05);
-        }
-
-        .hover-underline:hover {
-            text-decoration: underline;
-        }
-
-        /* Transition pour la hauteur de la barre latérale */
-        .sidebar {
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* Effet lors du survol des liens */
-        .sidebar a {
-            transition: color 0.2s ease-in-out, font-weight 0.2s ease-in-out;
-        }
-
-        .sidebar a:hover {
-            color: #0d6efd;
-            font-weight: bold;
-    </style>
 
 </div>

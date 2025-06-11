@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Picture;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -20,6 +21,7 @@ class ProductService
      */
     public function createOrUpdateProduct(array $data, array $dataDetails, bool $isEdit = false, $productId = null)
     {
+
         // Generate a unique slug
         $data['slug'] = $this->generateUniqueSlug(Str::slug($data['title']));
 
@@ -27,6 +29,15 @@ class ProductService
         $product = $isEdit
             ? tap(Product::findOrFail($productId))->update($data)
             : Product::create($data);
+
+        if (! empty($dataDetails['image_url'])) {
+
+            Picture::create([
+                'product_id' => $product->id,
+                'image_path' => $dataDetails['image_url'],
+            ]);
+
+        }
 
         // Update or create the product details
         $product->details()->updateOrCreate(

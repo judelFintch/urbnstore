@@ -8,6 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="{{ asset('build/assets/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/personaliz.css') }}" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- noUiSlider CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
+
 </head>
 
 <body class="animsition">
@@ -140,6 +144,10 @@
     <script src="{{asset('js/main.js')}}"></script>
     <script src="{{ asset('js/cart.js') }}" defer></script>
     <script src="vendor/isotope/isotope.pkgd.min.js"></script>
+
+    <!-- noUiSlider CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.0/nouislider.min.css" rel="stylesheet">
+
 </body>
 
 </html>

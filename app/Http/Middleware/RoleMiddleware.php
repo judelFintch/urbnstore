@@ -22,6 +22,6 @@ class RoleMiddleware
         }
 
         // Si l'utilisateur n'est pas autorisé ou inactif
-        abort(403, 'Unauthorized or inactive account');
+        return redirect('/');
     }
 }

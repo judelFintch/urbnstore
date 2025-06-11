@@ -41,4 +41,10 @@ return [
         ],
     ],
 
+    'maxicash' => [
+        'merchant_id' => env('MAXICASH_MERCHANT_ID'),
+        'merchant_password' => env('MAXICASH_MERCHANT_SECRET'),
+    ],
+    
+
 ];

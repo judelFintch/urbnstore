@@ -1,86 +1,114 @@
+<!-- Vue complète checkout avec transmission du panier -->
 <div>
-    <!-- Section de Paiement -->
-    <section class="bg0 p-t-75 p-b-85">
-        <div class="container">
-            <div class="row">
-                <!-- Détails de Facturation -->
-                <div class="col-lg-7 m-lr-auto m-b-50">
-                    <div class="bor10 p-lr-40 p-t-30 p-b-40">
-                        <h4 class="mtext-109 cl2 p-b-30">Détails de facturation</h4>
-                        <form>
-                            <div class="bor8 bg0 m-b-20">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="name"
-                                    placeholder="Nom complet">
-                            </div>
-                            <div class="bor8 bg0 m-b-20">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="email" name="email"
-                                    placeholder="Adresse e-mail">
-                            </div>
-                            <div class="bor8 bg0 m-b-20">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="address"
-                                    placeholder="Adresse de livraison">
-                            </div>
-                            <div class="bor8 bg0 m-b-20">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="city"
-                                    placeholder="Ville">
-                            </div>
-                            <div class="bor8 bg0 m-b-20">
-                                <input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode"
-                                    placeholder="Code postal">
-                            </div>
-                            <div class="p-t-20 d-flex align-items-center">
-                                <input type="checkbox" name="account" class="m-r-10" id="hasAccount">
-                                <label for="hasAccount" class="stext-111 cl2">Vous avez déjà un compte ? <a
-                                        href="/login" class="cl1 hov-cl2">Connectez-vous</a></label>
-                            </div>
-                        </form>
-                    </div>
+    <section class="bg-white min-h-screen" role="main" aria-label="Section de paiement">
+        <div class="max-w-[1200px] mx-auto p-6 grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <!-- Colonne gauche - Formulaire de commande -->
+            <div id="formulaire" class="lg:max-w-[550px] bg-white p-6 rounded-lg border border-gray-200 shadow-sm" role="form" aria-label="Formulaire de commande">
+                <div class="mb-8 max-w-4xl mx-auto text-center">
+                    <h2 class="text-lg font-medium mb-4">Paiement express</h2>
+                    <img src="{{ asset('imgs/logo.jpeg') }}" alt="Max Cash Paiement Express" class="mx-auto" />
                 </div>
 
-                <!-- Résumé de la Commande -->
-                <div class="col-lg-5 m-lr-auto m-b-50">
-                    <div class="bor10 p-lr-40 p-t-30 p-b-40">
-                        <h4 class="mtext-109 cl2 p-b-30">Votre commande</h4>
-                        <div class="flex-w flex-t bor12 p-b-13">
-                            <div class="size-208">
-                                <span class="stext-110 cl2">Produit :</span>
-                            </div>
-                            <div class="size-209">
-                                <span class="mtext-110 cl2">Sous-total</span>
-                            </div>
-                        </div>
+                @guest
+                    @php session(['url.intended' => url()->current()]); @endphp
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 text-yellow-800 p-4 rounded-md">
+                        <p>
+                            Vous avez déjà un compte ?
+                            <a href="{{ route('login') }}?redirect=#formulaire" class="text-blue-600 underline">Connectez-vous ici</a>
+                            pour suivre votre commande et accélérer le paiement.
+                        </p>
+                    </div>
+                @endguest
 
-                        <div class="flex-w flex-t p-t-15 p-b-30">
-                            <div class="size-208">
-                                <span class="stext-110 cl2">Total :</span>
-                            </div>
-                            <div class="size-209">
-                                <span class="mtext-110 cl2">150,00 €</span>
-                            </div>
-                        </div>
+                @auth
+                <h2 class="text-lg font-medium mb-4">Adresse de facturation</h2>
+                <form method="POST" action="{{ route('process.payment') }}" class="mt-6 space-y-4">
+                    @csrf
+                    <div class="space-y-4">
+                        <label for="country" class="sr-only">Pays</label>
+                        <select id="country" name="country" class="w-full px-4 py-3 border border-gray-300 rounded-md bg-white @error('country') border-red-500 @enderror" required>
+                            <option value="">Sélectionnez un pays</option>
+                            <option value="cd">Congo Kinshasa</option>
+                        </select>
+                        @error('country')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
 
-                        <!-- Méthodes de paiement -->
-                        <div class="p-t-20">
-                            <h5>Méthodes de paiement</h5>
-                            <div class="d-flex">
-                                <img src="{{asset('images/icons/orange.png')}}" alt="Orange Money" class="m-r-10"
-                                    style="width:80px;">
-                                <img src="{{asset('images/icons/airtel.png')}}" alt="Airtel Money" class="m-r-10"
-                                    style="width:80px;">
-                                <img src="{{asset('images/icons/visa.png')}}" alt="Visa" class="m-r-10"
-                                    style="width:140px;">
-                            </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <input type="text" name="first_name" placeholder="Prénom" required class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('first_name') border-red-500 @enderror" />
+                            <input type="text" name="last_name" placeholder="Nom" required class="px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('last_name') border-red-500 @enderror" />
                         </div>
+                        @error('first_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
+                        @error('last_name')<span class="text-red-600 text-sm block">{{ $message }}</span>@enderror
 
-                        <button
-                            class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer m-t-30">
-                            Passer la commande
+                        <input type="text" name="company" placeholder="Société (optionnel)" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('company') border-red-500 @enderror" />
+                        @error('company')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
+
+                        <input type="text" name="address" placeholder="Adresse" required class="w-full px-4 py-3 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 @error('address') border-red-500 @enderror" />
+                        @error('address')<span class="text-red-600 text-sm">{{ $message }}</span>@enderror
+
+                        <!-- Champs cachés pour JSON -->
+                        <input type="hidden" name="cart_json" id="cart_json">
+                        <input type="hidden" name="total" id="total">
+                    </div>
+
+                    <fieldset class="mt-8 border border-gray-200 rounded-lg p-4 space-y-4">
+                        <legend class="text-base font-medium text-gray-700">Choisissez votre mode de paiement</legend>
+                        <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-md hover:bg-blue-700 transition-all">
+                            Payer maintenant (connecté) - {{ auth()->user()->name }}
                         </button>
-                    </div>
-                </div>
+                    </fieldset>
+                </form>
+                @endauth
             </div>
-        </div>
-    </section>
 
-    <script src="{{asset('js/detailsCart.js')}}"></script>
+             <!-- Colonne droite - Résumé de la commande -->
+             <div class="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm" role="region"
+             aria-label="Résumé de commande">
+             <div class="mb-6 space-y-4" id="order-summary-products">
+                 <!-- Produits dynamiques injectés ici -->
+             </div>
+             <div class="border-t border-gray-200 pt-4 gap-4">
+                 <div class="recpaImage flex items-center gap-4">
+                     <div class="relative">
+                         <img src="https://placehold.co/80x80" alt="Image produit" class="rounded">
+                         <span
+                             class="absolute -top-2 -right-2 bg-gray-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">1</span>
+                     </div>
+                     <div class="flex-grow">
+                         <h3 class="font-semibold">T-shirt MARINA ANGLING - SABLE</h3>
+                         <p class="text-gray-500">Taille S</p>
+                     </div>
+                     <div class="font-semibold">68,00 $</div>
+                 </div>
+
+                 <div class="flex items-center gap-4 mb-4 mt-8">
+                     <input type="text" name="discount_code" placeholder="Code promo ou carte cadeau"
+                         class="flex-1 px-4 py-3 border border-gray-300 rounded-md" />
+                     <button
+                         class="px-6 py-3 bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">Appliquer</button>
+                 </div>
+
+                 <div class="space-y-2 text-sm mb-4">
+                     <div class="flex justify-between">
+                         <span>Sous-total</span>
+                         <span id="order-subtotal">0,00 $</span>
+                     </div>
+                     <div class="flex justify-between">
+                         <span>Livraison</span>
+                         <span id="order-shipping">14,00 $</span>
+                     </div>
+                 </div>
+
+                 <div class="flex justify-between items-center border-t border-gray-200 pt-4">
+                     <span class="text-lg font-medium cartSubtotal">Total</span>
+                     <div class="text-right">
+                         <span class="text-sm text-gray-500">USD</span>
+                         <span id="order-total" class="text-2xl font-medium ml-1">0,00 $</span>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+    </section>
+    <script src="{{ asset('js/checkout.js') }}"></script>
+    <script src="{{ asset('js/cartOrderDetails.js') }}"></script>
 </div>
