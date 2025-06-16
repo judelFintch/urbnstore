@@ -18,15 +18,17 @@ class Payement extends Controller
 {
     public function handlePayment(Request $request)
     {
-        $firstName = $request->input('first_name');
-        $lastName = $request->input('last_name');
+        $validated = $this->validateRequest($request);
+
+        $firstName = $validated['first_name'];
+        $lastName = $validated['last_name'];
         $fullName = $firstName . ' ' . $lastName;
         $email = Auth::check() ? Auth::user()->email : null;
-        $address = $request->input('address');
-        $country = $request->input('country');
-        $company = $request->input('company');
+        $address = $validated['address'];
+        $country = $validated['country'];
+        $company = $validated['company'] ?? null;
 
-        $cart = json_decode($request->input('cart_json'), true);
+        $cart = json_decode($validated['cart_json'], true);
 
         if (!is_array($cart) || empty($cart)) {
             return redirect()->back()->with('error', 'Le panier est vide.');
@@ -83,5 +85,20 @@ class Payement extends Controller
 
         $paymentUrl = $maxicash->queryStringURLPayment($paymentEntry);
         return redirect()->to($paymentUrl);
+    }
+
+    /**
+     * Validate the incoming payment request data.
+     */
+    private function validateRequest(Request $request): array
+    {
+        return $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name'  => 'required|string|max:255',
+            'address'    => 'required|string',
+            'country'    => 'required|string',
+            'company'    => 'nullable|string|max:255',
+            'cart_json'  => 'required|string',
+        ]);
     }
 }
