@@ -18,7 +18,8 @@ class UserSeeder extends Seeder
                 'name' => 'Admin User',
                 'email' => 'admin@example.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password'),
+                // Use a stronger default password for seeded admin account
+                'password' => Hash::make('AdminPassword@123'),
                 'isActive' => true,
                 'role' => 9, // 1 pour administrateur
                 'remember_token' => null,
@@ -29,7 +30,8 @@ class UserSeeder extends Seeder
                 'name' => 'Regular User',
                 'email' => 'user@example.com',
                 'email_verified_at' => now(),
-                'password' => Hash::make('password123'),
+                // Use a stronger default password for seeded user account
+                'password' => Hash::make('UserPassword@123'),
                 'isActive' => true,
                 'role' => 0, // 0 pour utilisateur normal
                 'remember_token' => null,

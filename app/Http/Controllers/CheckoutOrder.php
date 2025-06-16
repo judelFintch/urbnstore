@@ -20,8 +20,9 @@ class CheckoutOrder extends Controller
     {
         Log::debug('handlePayment: start');
 
-        $validated = $request->all(); // Validation désactivée temporairement
-        Log::debug('handlePayment: request data without validation', $validated);
+        // Validate all incoming data to prevent tampering
+        $validated = $this->validateRequest($request);
+        Log::debug('handlePayment: request data validated', $validated);
 
         $product = Product::findOrFail($validated['product_id']);
         Log::debug('handlePayment: product found', ['product_id' => $product->id, 'title' => $product->title]);
