@@ -32,7 +32,7 @@ class Product extends Model
 
     public function getFirstImageUrl(): string
     {
-        $imageUrls = ! empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
+        $imageUrls = ! empty(optional($this->details)->image_url) ? json_decode(optional($this->details)->image_url, true) : [];
 
         return (! empty($imageUrls) && is_array($imageUrls) && count($imageUrls) > 0)
             ? Storage::url($imageUrls[0])
@@ -41,7 +41,7 @@ class Product extends Model
 
     public function getAllImageUrls(): array
     {
-        $imageUrls = ! empty($this->details->image_url) ? json_decode($this->details->image_url, true) : [];
+        $imageUrls = ! empty(optional($this->details)->image_url) ? json_decode(optional($this->details)->image_url, true) : [];
 
         return array_map(function ($image) {
             return Storage::url($image);

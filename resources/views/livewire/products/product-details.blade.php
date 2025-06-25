@@ -65,7 +65,7 @@
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" wire:model="selectedSize" name="size">
                                             <option>Choisissez une option</option>
-                                            @foreach (explode(',', $product->details->size_available) as $size)
+                                            @foreach (explode(',', optional($product->details)->size_available ?? 'S, M, L, XL') as $size)
                                                 <option value="{{ trim($size) }}">Taille {{ trim($size) }}
                                                 </option>
                                             @endforeach
@@ -84,7 +84,7 @@
                                     <div class="rs1-select2 bor8 bg0">
                                         <select class="js-select2" name="time">
                                             <option>Choisissez une option</option>
-                                            @foreach (explode(',', $product->details->color) as $color)
+                                            @foreach (explode(',', optional($product->details)->color ?? 'Blanc') as $color)
                                                 <option>{{ trim($color) }}</option>
                                             @endforeach
 
@@ -175,7 +175,7 @@
                         <div class="tab-pane fade show active" id="description" role="tabpanel">
                             <div class="how-pos2 p-lr-15-md">
                                 <p class="stext-102 cl6">
-                                    {{ $product->details->long_description }}
+                                    {{ optional($product->details)->long_description }}
                                 </p>
                             </div>
                         </div>
@@ -190,7 +190,7 @@
                                                 Poids
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->weight ?? 'Non spécifié' }}
+                                                {{ optional($product->details)->weight ?? 'Non spécifié' }}
                                             </span>
                                         </li>
 
@@ -200,7 +200,7 @@
                                                 Matériaux
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->material ?? '100% coton' }}
+                                                {{ optional($product->details)->material ?? '100% coton' }}
                                             </span>
                                         </li>
 
@@ -210,7 +210,7 @@
                                                 Couleur
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->color ?? 'Blanc' }}
+                                                {{ optional($product->details)->color ?? 'Blanc' }}
                                             </span>
                                         </li>
 
@@ -220,7 +220,7 @@
                                                 Type de manches
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->sleeve_type ?? 'Manches courtes' }}
+                                                {{ optional($product->details)->sleeve_type ?? 'Manches courtes' }}
                                             </span>
                                         </li>
 
@@ -230,7 +230,7 @@
                                                 Type de col
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->collar_type ?? 'Col rond' }}
+                                                {{ optional($product->details)->collar_type ?? 'Col rond' }}
                                             </span>
                                         </li>
 
@@ -240,7 +240,7 @@
                                                 Coupe
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->fit ?? 'Coupe droite' }}
+                                                {{ optional($product->details)->fit ?? 'Coupe droite' }}
                                             </span>
                                         </li>
 
@@ -250,7 +250,7 @@
                                                 Taille
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->size_available ?? 'S, M, L, XL' }}
+                                                {{ optional($product->details)->size_available ?? 'S, M, L, XL' }}
                                             </span>
                                         </li>
 
@@ -260,7 +260,7 @@
                                                 Instructions d'entretien
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->care_instructions ?? 'Lavable en machine à 30°C' }}
+                                                {{ optional($product->details)->care_instructions ?? 'Lavable en machine à 30°C' }}
                                             </span>
                                         </li>
 
@@ -270,7 +270,7 @@
                                                 Tags
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->tags ?? 'Non spécifié' }}
+                                                {{ optional($product->details)->tags ?? 'Non spécifié' }}
                                             </span>
                                         </li>
 
@@ -280,7 +280,7 @@
                                                 Note moyenne
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->rating ?? '4.5' }} / 5
+                                                {{ optional($product->details)->rating ?? '4.5' }} / 5
                                             </span>
                                         </li>
 
@@ -290,7 +290,7 @@
                                                 Nombre de ventes
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->sales_count ?? 0 }}
+                                                {{ optional($product->details)->sales_count ?? 0 }}
                                             </span>
                                         </li>
 
@@ -300,10 +300,10 @@
                                                 Remise
                                             </span>
                                             <span class="stext-102 cl6 size-206">
-                                                {{ $product->details->discount ?? 0 }}%
-                                                @if ($product->details->discount_end_date)
+                                                {{ optional($product->details)->discount ?? 0 }}%
+                                                @if (optional($product->details)->discount_end_date)
                                                     (jusqu'au
-                                                    {{ \Carbon\Carbon::parse($product->details->discount_end_date)->format('d M Y') }})
+                                                    {{ \Carbon\Carbon::parse(optional($product->details)->discount_end_date)->format('d M Y') }})
                                                 @endif
                                             </span>
                                         </li>
