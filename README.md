@@ -38,6 +38,8 @@ This project is a Laravel application. Follow the steps below to get a developme
 
    - To use **MySQL** or another driver, update the `DB_*` variables in `.env` accordingly.
 
+   The `.env.example` file also includes placeholders for third-party services such as Maxicash, Cinetpay and Slack. Fill these values if you intend to use those integrations.
+
 5. Generate the application key and run migrations:
 
    ```bash
