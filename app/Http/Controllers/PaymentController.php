@@ -14,7 +14,7 @@ use Devscast\Maxicash\Credential;
 use Devscast\Maxicash\Environment;
 use Devscast\Maxicash\PaymentEntry;
 
-class Payement extends Controller
+class PaymentController extends Controller
 {
     public function handlePayment(Request $request)
     {

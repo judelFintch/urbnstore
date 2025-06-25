@@ -22,3 +22,5 @@ yarn-error.log
 /.zed
 *.sqlite
 urbanShop
+public/build/
+public/admin/assets/
